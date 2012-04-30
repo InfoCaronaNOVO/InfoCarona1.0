@@ -1,0 +1,95 @@
+<linked-list>
+  <ufcg.si1.InfoCaronaMaven.Sistema.Usuario>
+    <listaDeCaronas class="linked-list">
+      <ufcg.si1.InfoCaronaMaven.Sistema.Carona>
+        <origem>Campina Grande</origem>
+        <destino>João Pessoa</destino>
+        <data>02/06/2012</data>
+        <hora>12:00</hora>
+        <idCarona>00081</idCarona>
+        <donoDaCarona>Mark Zuckerberg</donoDaCarona>
+        <vagas>2</vagas>
+        <listaDeSugestoes class="linked-list"/>
+        <listaDeSolicitacao class="linked-list">
+          <ufcg.si1.InfoCaronaMaven.Sistema.SolicitacaoDeVaga>
+            <carona reference="../../.."/>
+            <donoSolicitacao>
+              <listaDeCaronas class="linked-list"/>
+              <listaDeSolicitacaoDeVagas class="linked-list">
+                <ufcg.si1.InfoCaronaMaven.Sistema.SolicitacaoDeVaga reference="../../.."/>
+                <ufcg.si1.InfoCaronaMaven.Sistema.SolicitacaoDeVaga>
+                  <carona>
+                    <origem>Campina Grande</origem>
+                    <destino>João Pessoa</destino>
+                    <data>04/06/2012</data>
+                    <hora>16:00</hora>
+                    <idCarona>00082</idCarona>
+                    <donoDaCarona>Mark Zuckerberg</donoDaCarona>
+                    <vagas>1</vagas>
+                    <listaDeSugestoes class="linked-list"/>
+                    <listaDeSolicitacao class="linked-list">
+                      <ufcg.si1.InfoCaronaMaven.Sistema.SolicitacaoDeVaga reference="../../.."/>
+                    </listaDeSolicitacao>
+                    <listaPontosDeEncontroPermitidos class="linked-list"/>
+                  </carona>
+                  <donoSolicitacao reference="../../.."/>
+                  <ponto>Default</ponto>
+                  <idSolicitacao>00085</idSolicitacao>
+                  <solicitacaoAceita>true</solicitacaoAceita>
+                  <solicitacaoPendente>false</solicitacaoPendente>
+                  <solicitacaoRejeitada>false</solicitacaoRejeitada>
+                </ufcg.si1.InfoCaronaMaven.Sistema.SolicitacaoDeVaga>
+              </listaDeSolicitacaoDeVagas>
+              <Reviews class="linked-list">
+                <string>faltou na Carona de Campina Grande para João Pessoa, no dia 02/06/2012, as 12:00</string>
+                <string>não faltou na Carona de Campina Grande para João Pessoa, no dia 04/06/2012, as 16:00</string>
+              </Reviews>
+              <caronasSeguras>0</caronasSeguras>
+              <caronaNaoFuncionaram>0</caronaNaoFuncionaram>
+              <faltasEmVagas>1</faltasEmVagas>
+              <presencaEmVagas>1</presencaEmVagas>
+              <nome>William Henry Gates III</nome>
+              <email>billzin@gmail.com</email>
+              <endereco>Medina, Washington</endereco>
+              <senha>bilz@o</senha>
+              <login>bill</login>
+            </donoSolicitacao>
+            <ponto>Default</ponto>
+            <idSolicitacao>00084</idSolicitacao>
+            <solicitacaoAceita>true</solicitacaoAceita>
+            <solicitacaoPendente>false</solicitacaoPendente>
+            <solicitacaoRejeitada>false</solicitacaoRejeitada>
+          </ufcg.si1.InfoCaronaMaven.Sistema.SolicitacaoDeVaga>
+        </listaDeSolicitacao>
+        <listaPontosDeEncontroPermitidos class="linked-list"/>
+      </ufcg.si1.InfoCaronaMaven.Sistema.Carona>
+      <ufcg.si1.InfoCaronaMaven.Sistema.Carona reference="../ufcg.si1.InfoCaronaMaven.Sistema.Carona/listaDeSolicitacao/ufcg.si1.InfoCaronaMaven.Sistema.SolicitacaoDeVaga/donoSolicitacao/listaDeSolicitacaoDeVagas/ufcg.si1.InfoCaronaMaven.Sistema.SolicitacaoDeVaga[2]/carona"/>
+    </listaDeCaronas>
+    <listaDeSolicitacaoDeVagas class="linked-list"/>
+    <Reviews class="linked-list"/>
+    <caronasSeguras>0</caronasSeguras>
+    <caronaNaoFuncionaram>0</caronaNaoFuncionaram>
+    <faltasEmVagas>0</faltasEmVagas>
+    <presencaEmVagas>0</presencaEmVagas>
+    <nome>Mark Zuckerberg</nome>
+    <email>mark@facebook.com</email>
+    <endereco>Palo Alto, California</endereco>
+    <senha>m@rk</senha>
+    <login>mark</login>
+  </ufcg.si1.InfoCaronaMaven.Sistema.Usuario>
+  <ufcg.si1.InfoCaronaMaven.Sistema.Usuario reference="../ufcg.si1.InfoCaronaMaven.Sistema.Usuario/listaDeCaronas/ufcg.si1.InfoCaronaMaven.Sistema.Carona/listaDeSolicitacao/ufcg.si1.InfoCaronaMaven.Sistema.SolicitacaoDeVaga/donoSolicitacao"/>
+  <ufcg.si1.InfoCaronaMaven.Sistema.Usuario>
+    <listaDeCaronas class="linked-list"/>
+    <listaDeSolicitacaoDeVagas class="linked-list"/>
+    <Reviews class="linked-list"/>
+    <caronasSeguras>0</caronasSeguras>
+    <caronaNaoFuncionaram>0</caronaNaoFuncionaram>
+    <faltasEmVagas>0</faltasEmVagas>
+    <presencaEmVagas>0</presencaEmVagas>
+    <nome>Anakin Skywalker</nome>
+    <email>darthvader@empire.com</email>
+    <endereco>Death Star I</endereco>
+    <senha>d4rth</senha>
+    <login>vader</login>
+  </ufcg.si1.InfoCaronaMaven.Sistema.Usuario>
+</linked-list>

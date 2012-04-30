@@ -1,0 +1,28 @@
+<linked-list>
+  <Sistema.Usuario>
+    <listaDeCaronas class="linked-list"/>
+    <listaDeSolicitacaoDeVagas class="linked-list"/>
+    <caronasSeguras>0</caronasSeguras>
+    <caronaNaoFuncionaram>0</caronaNaoFuncionaram>
+    <faltasEmVagas>0</faltasEmVagas>
+    <presencaEmVagas>0</presencaEmVagas>
+    <nome>Mark Zuckerberg</nome>
+    <email>mark@facebook.com</email>
+    <endereco>Palo Alto, California</endereco>
+    <senha>m@rk</senha>
+    <login>mark</login>
+  </Sistema.Usuario>
+  <Sistema.Usuario>
+    <listaDeCaronas class="linked-list"/>
+    <listaDeSolicitacaoDeVagas class="linked-list"/>
+    <caronasSeguras>0</caronasSeguras>
+    <caronaNaoFuncionaram>0</caronaNaoFuncionaram>
+    <faltasEmVagas>0</faltasEmVagas>
+    <presencaEmVagas>0</presencaEmVagas>
+    <nome>Steven Paul Jobs</nome>
+    <email>jobs@apple.com</email>
+    <endereco>Palo Alto, California</endereco>
+    <senha>5t3v3</senha>
+    <login>steve</login>
+  </Sistema.Usuario>
+</linked-list>
