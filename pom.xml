@@ -23,7 +23,7 @@
     </dependency>
     
     <dependency>
-			<groupId>ufcg.edu.br</groupId>
+			<groupId>ufcg.si1</groupId>
 			<artifactId>easyaccept</artifactId>
 			<version>1.0.0</version>
 		</dependency>
