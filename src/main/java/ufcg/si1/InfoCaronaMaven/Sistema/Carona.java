@@ -12,7 +12,11 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.OrigemInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SessaoInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.VagaInvalidaException;
-
+/**
+ * Classe Carona, que gerencia os dados da carona e possui as listas de solicitações, sugestões e pontos de encontro.
+ * @author Felipe Lindemberg
+ *
+ */
 public class Carona {
 	
 	private String origem, destino, data, hora, idCarona, donoDaCarona;
@@ -20,7 +24,22 @@ public class Carona {
 	private List<SugestaoDePontoDeEncontro> listaDeSugestoes;
 	private List<SolicitacaoDeVaga> listaDeSolicitacao;
 	private List<String> listaPontosDeEncontroPermitidos;
-	
+	/**
+	 * Construtor da classe Carona
+	 * @param origem - recebe uma String informando a origem da corana
+	 * @param destino - recebe uma String informando o destino da carona
+	 * @param data - recebe uma String no mormato xx/xx/xxxx e verifica se essa data é válida e nao aconteceu ainda.
+	 * @param hora - recebe uma String no formato xx:xx informando a hora que a carona vai acontecer, e verifica se é um hora válida
+	 * @param vagas - recebe um int informando o numero de vagas disponivel na carona
+	 * @param idCarona - recebe uma String identifcador da carona
+	 * @param donoDaCarona - recebe uma String com o login do dono da carona.
+	 * @throws SessaoInvalidaException
+	 * @throws OrigemInvalidaException - retorna uma exceção caso a origem passada seja null ou vazia
+	 * @throws DestinoInvalidoException - retorna uma exceção caso o destino passado seja null ou vazio
+	 * @throws DataInvalidaException - retorna uma exceção caso a data passada seja null, vazia ou data "passada"
+	 * @throws HoraInvalidaException- retorna uma exceção caso a hora passada seja null, vazia ou data em formato inválida
+	 * @throws VagaInvalidaException - retorna uma exceção caso o numero de vagsa seja negativo ou nao seja um numéro válido.
+	 */
 	public Carona(String origem, String destino, String data, String hora, int vagas, String idCarona, String donoDaCarona) throws SessaoInvalidaException, OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException {
         setOrigem(origem);
         setDestino(destino);
@@ -33,15 +52,24 @@ public class Carona {
         this.listaDeSolicitacao = new LinkedList<SolicitacaoDeVaga>();
         this.listaPontosDeEncontroPermitidos = new LinkedList<String>();
 	}
-	
+	/**
+	 * Metodo que retorna os pontos de encontro permitidos pelo dono da carona para um usuário solicitar vaga e sugerir
+	 * @return - retorna uma List<String> com todos os pontos válidos
+	 */
 	public List<String> getListaPontosDeEncontroPermitidos() {
 		return listaPontosDeEncontroPermitidos;
 	}
-
+	/**
+	 * Metodo que retorna todas as solicitações de vaga que foram feitas para a carona
+	 * @return - retorna uma List<SolicitacaoDeVaga> com todas as solicitações realizadas
+	 */
 	public List<SolicitacaoDeVaga> getListaDeSolicitacao() {
 		return listaDeSolicitacao;
 	}
-
+	/**
+	 * Metodo que retorna todos os objetos de sugestão de pontos de encontro feitos para a carona
+	 * @return - retorna uma lista List<SugestaoDePontoDeEncontro> com todos os objetos de sugestao de pontos de encontro
+	 */
 	public List<SugestaoDePontoDeEncontro> getListaDeSugestoes(){
 		return this.listaDeSugestoes;
 	}
@@ -114,7 +142,11 @@ public class Carona {
 	public String getIdCarona(){
 		return this.idCarona;
 	}
-	
+	/**
+	 * Metodo que retorna os atributos  de uma carona
+	 * @param atributo - recebe como parametro uma String q pode ser "origem", "vagas", "destino", "data"
+	 * @return - retorna uma String de acordo com o atributo solicitado.
+	 */
 	public String getAtributo(String atributo){
 		String retorno = null;
 		
@@ -130,7 +162,11 @@ public class Carona {
 		
 		return retorno;
 	}
-	
+	/**
+	 * Metodo que retorna o to String das caronas
+	 * @return - retorna uma String no formato "ORIGEM para DESTINO no dia XX/XX/XXXX as XX:XX
+	 */
+	@Override
 	public String toString(){
 		return (this.origem + " para " + this.destino + ", no dia " + this.data + ", as " + this.hora);
 	}
