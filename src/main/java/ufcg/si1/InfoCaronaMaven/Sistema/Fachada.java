@@ -196,7 +196,10 @@ public class Fachada {
 	}
 
 	public String getAtributoPerfil(String login, String atributo) throws SessaoInvalidaException, SessaoInexistenteException, LoginInvalidoException, UsuarioInexistenteException {
-		return sistema.getAtributoPerfil(login, atributo);
+		String retorno = sistema.getAtributoPerfil(login, atributo);
+		if(retorno.equals(""))
+			return "[]";
+		return retorno;
 	}
 	
 	public void rejeitarSolicitacao(String idSessao, String idSolicitacao) throws SolicitacaoInexistenteException, SessaoInvalidaException, SessaoInexistenteException{
@@ -237,9 +240,9 @@ public class Fachada {
 		
 	}
 	
-	public String getSolicitacoesPendentes(String idCarona) throws CaronaInexistenteException, CaronaInvalidaException{
+	public String getSolicitacoesPendentes(String idSessao, String idCarona) throws CaronaInexistenteException, CaronaInvalidaException{
 		return sistema.getSolicitacoesPendentes(idCarona).toString().replace("[", "{").replace("]", "}").replace(", ", ",");
-	}
+	}                  
 	
 	public String getPontosEncontro(String idSessao, String idCarona) throws CaronaInexistenteException, CaronaInvalidaException{
 		return sistema.getPontosEncontro(idCarona).toString().replace(", ", ";");

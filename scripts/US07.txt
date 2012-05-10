@@ -15,13 +15,12 @@
 zerarSistema
 
 #Criar usuário.
-
 criarUsuario login="mark" senha="m@rk" nome="Mark Zuckerberg" endereco="Palo Alto, California" email="mark@facebook.com"
-criarUsuario login="steve" senha="5t3v3" nome="Steven Paul Jobs" endereco="Palo Alto, California" email="jobs@apple.com"
+criarUsuario login="steve" senha="5t3v3" nome="Steve Paul Jobs" endereco="Palo Alto, California" email="jobs@apple.com"
 
 #Iniciar sessão.
 sessaoSteve=abrirSessao login="steve" senha="5t3v3"
-expect "Steven Paul Jobs" getAtributoUsuario login="steve" atributo="nome"
+expect "Steve Paul Jobs" getAtributoUsuario login="steve" atributo="nome"
 expect "Palo Alto, California" getAtributoUsuario login="steve" atributo="endereco"
 
 sessaoMark=abrirSessao login="mark" senha="m@rk"
@@ -40,7 +39,6 @@ carona6ID=cadastrarCarona idSessao=${sessaoSteve} origem="Leeds" destino="Londre
 encerrarSessao login="mark"
 encerrarSessao login="steve"
 
-
 #Sugerir ponto de encontro para uma carona
 sessaoSteve=abrirSessao login="steve" senha="5t3v3"
 sugestaoID=sugerirPontoEncontro idSessao=${sessaoSteve} idCarona=${carona2ID} pontos="Acude Velho;Hiper Bompreco"
@@ -51,7 +49,7 @@ solicitacao1ID=solicitarVaga idSessao=${sessaoSteve} idCarona=${carona2ID}
 expect "São Francisco" getAtributoSolicitacao idSolicitacao=${solicitacao1ID} atributo="origem"
 expect "Palo Alto" getAtributoSolicitacao idSolicitacao=${solicitacao1ID} atributo="destino"
 expect "Mark Zuckerberg" getAtributoSolicitacao idSolicitacao=${solicitacao1ID} atributo="Dono da carona"
-expect "Steven Paul Jobs" getAtributoSolicitacao idSolicitacao=${solicitacao1ID} atributo="Dono da solicitacao"
+expect "Steve Paul Jobs" getAtributoSolicitacao idSolicitacao=${solicitacao1ID} atributo="Dono da solicitacao"
 
 #Aceitar requisição
 sessaoMark=abrirSessao login="mark" senha="m@rk"
@@ -73,7 +71,7 @@ sessaoMark=abrirSessao login="mark" senha="m@rk"
 sessaoSteve=abrirSessao login="steve" senha="5t3v3"
 
 #Recupera Informacoes Usuario
-expect "Steven Paul Jobs" getAtributoUsuario login="steve" atributo="nome"
+expect "Steve Paul Jobs" getAtributoUsuario login="steve" atributo="nome"
 expect "Palo Alto, California" getAtributoUsuario login="steve" atributo="endereco"
 expect "Mark Zuckerberg" getAtributoUsuario login="mark" atributo="nome" 
 expect "Palo Alto, California" getAtributoUsuario login="mark" atributo="endereco"
@@ -109,7 +107,7 @@ expect {${carona4ID},${carona5ID},${carona6ID}} getTodasCaronasUsuario idSessao=
 
 #Recupera solicitacoes confirmadas
 expect {${solicitacao1ID}} getSolicitacoesConfirmadas idSessao=${sessaoMark} idCarona=${carona2ID}
-expect {} getSolicitacoesPendentes idCarona=${carona2ID}
+expect {} getSolicitacoesPendentes idSessao=${sessaoMark} idCarona=${carona2ID}
 expect "[Acude Velho;Hiper Bompreco]" getPontosSugeridos idSessao=${sessaoMark} idCarona=${carona2ID}
 
 #Recupera pontos sugeridos
@@ -118,3 +116,4 @@ expect "[Acude Velho;Hiper Bompreco]" getPontosEncontro idSessao=${sessaoMark} i
 #Finaliza o sistema
 encerrarSistema
 quit
+

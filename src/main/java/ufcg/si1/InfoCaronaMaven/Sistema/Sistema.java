@@ -409,7 +409,7 @@ public class Sistema {
 			if(lista.size() == 0){
 				return "";
 			}
-			return lista.toString().replace("[", "{").replace("]", "}").replace(", ", ",");
+			return lista.toString().replace("{", "[").replace("}", "]").replace(", ", ",");
 			
 		}
 	
