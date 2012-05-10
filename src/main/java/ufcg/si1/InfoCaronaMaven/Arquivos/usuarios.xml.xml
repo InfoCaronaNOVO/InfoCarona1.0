@@ -3,7 +3,7 @@
     <listaDeCaronas class="linked-list">
       <ufcg.si1.InfoCaronaMaven.Sistema.Carona>
         <origem>Campina Grande</origem>
-        <destino>Jo√£o Pessoa</destino>
+        <destino>Jo„o Pessoa</destino>
         <data>02/06/2012</data>
         <hora>12:00</hora>
         <idCarona>00081</idCarona>
@@ -20,7 +20,7 @@
                 <ufcg.si1.InfoCaronaMaven.Sistema.SolicitacaoDeVaga>
                   <carona>
                     <origem>Campina Grande</origem>
-                    <destino>Jo√£o Pessoa</destino>
+                    <destino>Jo„o Pessoa</destino>
                     <data>04/06/2012</data>
                     <hora>16:00</hora>
                     <idCarona>00082</idCarona>
@@ -41,8 +41,8 @@
                 </ufcg.si1.InfoCaronaMaven.Sistema.SolicitacaoDeVaga>
               </listaDeSolicitacaoDeVagas>
               <Reviews class="linked-list">
-                <string>faltou na Carona de Campina Grande para Jo√£o Pessoa, no dia 02/06/2012, as 12:00</string>
-                <string>n√£o faltou na Carona de Campina Grande para Jo√£o Pessoa, no dia 04/06/2012, as 16:00</string>
+                <string>faltou na Carona de Campina Grande para Jo„o Pessoa, no dia 02/06/2012, as 12:00</string>
+                <string>n„o faltou na Carona de Campina Grande para Jo„o Pessoa, no dia 04/06/2012, as 16:00</string>
               </Reviews>
               <caronasSeguras>0</caronasSeguras>
               <caronaNaoFuncionaram>0</caronaNaoFuncionaram>
