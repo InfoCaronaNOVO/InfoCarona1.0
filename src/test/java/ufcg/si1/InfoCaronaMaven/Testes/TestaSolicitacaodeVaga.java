@@ -35,8 +35,8 @@ public class TestaSolicitacaodeVaga {
 		id = new Id(5);
 		usuario1 = new Usuario("João","joao@mail.com","Rua Patati","joao123","joao");
 		usuario2 = new Usuario("Maria","maria@mail.com","Rua Patata","maria123","maria");
-		carona1 = new CaronaComum("Campina Grande", "João Pessoa", "12/12/2012", "12:00", 2, id.gerarId(), usuario1.getNome());
-		carona2 = new CaronaComum("Bahia", "Campina Grande", "11/11/2012", "11:00", 1, id.gerarId(), usuario2.getNome());
+		carona1 = new CaronaComum("Campina Grande", "João Pessoa", "12/12/2012", "12:00", 2, id.gerarId(), usuario1);
+		carona2 = new CaronaComum("Bahia", "Campina Grande", "11/11/2012", "11:00", 1, id.gerarId(), usuario2);
 		solicitacao1 = new SolicitacaoDeVaga(carona1, "Igreja do Rosario", id.gerarId(), usuario1);
 		solicitacao2 = new SolicitacaoDeVaga(carona2, "Pelourinho", id.gerarId(), usuario2);
 	}
@@ -71,8 +71,8 @@ public class TestaSolicitacaodeVaga {
 	
 	@Test
 	public void testaGetDonoDaCarona() {
-		Assert.assertEquals("João", solicitacao1.getDonoDaCarona());
-		Assert.assertEquals("Maria", solicitacao2.getDonoDaCarona());
+		Assert.assertEquals("João", solicitacao1.getDonoDaCarona().getNome());
+		Assert.assertEquals("Maria", solicitacao2.getDonoDaCarona().getNome());
 	}
 	
 	@Test
@@ -91,7 +91,7 @@ public class TestaSolicitacaodeVaga {
 	public void testaGetAtributoSolicitacao(){
 		Assert.assertEquals(solicitacao1.getAtributoSolicitacao("origem"), solicitacao1.getOrigem());
 		Assert.assertEquals(solicitacao1.getAtributoSolicitacao("destino"), solicitacao1.getDestino());
-		Assert.assertEquals(solicitacao2.getAtributoSolicitacao("Dono da carona"), solicitacao2.getDonoDaCarona());
+		Assert.assertEquals(solicitacao2.getAtributoSolicitacao("Dono da carona"), solicitacao2.getDonoDaCarona().getNome());
 		Assert.assertEquals(solicitacao2.getAtributoSolicitacao("Ponto de Encontro"), solicitacao2.getPonto());
 	}
 	

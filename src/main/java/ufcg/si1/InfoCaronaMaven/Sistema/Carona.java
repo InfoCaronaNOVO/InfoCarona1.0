@@ -19,7 +19,7 @@ public interface Carona {
 	
 	public String getOrigem();
 	
-	public String getDonoDaCarona();
+	public Usuario getDonoDaCarona();
 	
 
 	public void setOrigem(String origem) throws OrigemInvalidaException;
@@ -69,4 +69,6 @@ public interface Carona {
     public List<SolicitacaoDeVaga> getSolicitacoesPendentes();
     
     public void addPontoEncontroPermitido(String ponto);
+    
+    public void addReviewCarona(Usuario usuario, String review);
 }

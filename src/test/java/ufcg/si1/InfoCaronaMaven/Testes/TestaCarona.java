@@ -4,6 +4,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.EmailInvalidoException;
+import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.EnderecoInvalidoException;
+import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.LoginInvalidoException;
+import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NomeInvalidoException;
+import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.SenhaInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.numeroMaximoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DestinoInvalidoException;
@@ -14,54 +19,70 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.VagaInvalidaException
 import ufcg.si1.InfoCaronaMaven.Sistema.Carona;
 import ufcg.si1.InfoCaronaMaven.Sistema.CaronaComum;
 import ufcg.si1.InfoCaronaMaven.Sistema.Id;
+import ufcg.si1.InfoCaronaMaven.Sistema.Usuario;
 
 public class TestaCarona {
 	private Carona carona1, carona2, carona3, carona4;
 	private Id id;
 	
+	
+	
 	private void criaCarona1() throws Exception {
-		carona1 = new CaronaComum("Campina Grande", "João Pessoa", "22/10/2012", "10:00", 3, id.gerarId(), "Jose");
+		Usuario jose = new Usuario("Jose", "jose@email", "rua da paz", "12345", "Jose");
+		carona1 = new CaronaComum("Campina Grande", "João Pessoa", "22/10/2012", "10:00", 3, id.gerarId(), jose);
 	}
 	
 	private void criaCarona2() throws Exception {
-		carona2 = new CaronaComum("", "Natal", "02/06/2012", "03:00", 2, id.gerarId(), "Marcus");
+		Usuario marcus = new Usuario("Marcus", "marcus@email", "rua da paz", "12345", "Marcus");
+		carona2 = new CaronaComum("", "Natal", "02/06/2012", "03:00", 2, id.gerarId(), marcus);
 	}
 	
 	private void criaCarona3() throws Exception {
-		carona2 = new CaronaComum(null, "Natal", "02/06/2012", "03:00", 2, id.gerarId(), "Marcus");
+		Usuario marcus = new Usuario("Marcus", "marcus@email", "rua da paz", "12345", "Marcus");
+		carona2 = new CaronaComum(null, "Natal", "02/06/2012", "03:00", 2, id.gerarId(), marcus);
 	}
 	
 	private void criaCarona4() throws Exception {
-		carona3 = new CaronaComum("Natal", "", "11/09/2012", "00:00", 1, id.gerarId(), "Flavio");
+		Usuario flavio = new Usuario("Flavio", "falvio@email", "rua da paz", "12345", "Flavio");
+		carona3 = new CaronaComum("Natal", "", "11/09/2012", "00:00", 1, id.gerarId(), flavio);
 	}
 	
 	private void criaCarona5() throws Exception {
-		carona3 = new CaronaComum("Natal", null, "11/09/2012", "00:00", 1, id.gerarId(), "Flavio");
+		Usuario flavio = new Usuario("Flavio", "falvio@email", "rua da paz", "12345", "Flavio");
+		carona3 = new CaronaComum("Natal", null, "11/09/2012", "00:00", 1, id.gerarId(), flavio);
 	}
 	
 	private void criaCarona6() throws Exception {
-		carona4 = new CaronaComum("Recife", "João Pessoa", "11/09/2009", "00:00", 1, id.gerarId(), "Maria");
+		Usuario maria = new Usuario("Maria", "maria@email", "rua da paz", "12345", "Maria");
+		carona4 = new CaronaComum("Recife", "João Pessoa", "11/09/2009", "00:00", 1, id.gerarId(), maria);
 	}
 	
 	private void criaCarona7() throws Exception {
-		carona4 = new CaronaComum("Recife", "João Pessoa", "20/03/2013", "25:00", 1, id.gerarId(), "Maria");
+		Usuario maria = new Usuario("Maria", "maria@email", "rua da paz", "12345", "Maria");
+		carona4 = new CaronaComum("Recife", "João Pessoa", "20/03/2013", "25:00", 1, id.gerarId(), maria);
 	}
 	
 	private void criaCarona8() throws Exception {
-		carona4 = new CaronaComum("Campina Grande", "João Pessoa", "22/10/2012", "10:00", -2, id.gerarId(), "Jose");
+		Usuario jose = new Usuario("Jose", "jose@email", "rua da paz", "12345", "Jose");
+		carona4 = new CaronaComum("Campina Grande", "João Pessoa", "22/10/2012", "10:00", -2, id.gerarId(), jose);
 	}
 	
 	private void criaCarona9() throws Exception {
-		carona4 = new CaronaComum("Campina Grande", "João Pessoa", "22/10/2012", "10:00", 0, id.gerarId(), "Jose");
+		Usuario jose = new Usuario("Jose", "jose@email", "rua da paz", "12345", "Jose");
+		carona4 = new CaronaComum("Campina Grande", "João Pessoa", "22/10/2012", "10:00", 0, id.gerarId(), jose);
 	}
 	
 	@Before
-	public void instanciandoObjetos() throws SessaoInvalidaException, OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException, numeroMaximoException {
+	public void instanciandoObjetos() throws SessaoInvalidaException, OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException, numeroMaximoException, EmailInvalidoException, NomeInvalidoException, LoginInvalidoException, SenhaInvalidoException, EnderecoInvalidoException {
 		id = new Id(5);
-		carona1 = new CaronaComum("Campina Grande", "João Pessoa", "22/10/2012", "10:00", 1, id.gerarId(), "Jose");
-		carona2 = new CaronaComum("João Pessoa", "Natal", "06/06/2012", "09:00", 2, id.gerarId(), "Mario");
-		carona3 = new CaronaComum("Natal", "Recife", "10/12/2012", "08:00", 3, id.gerarId(), "Fernanda");
-		carona4 = new CaronaComum("Recife", "Campina Grande", "17/07/2012", "07:00", 4, id.gerarId(), "Isabela");
+		Usuario jose = new Usuario("Jose", "jose@email", "rua da paz", "12345", "Jose");
+		Usuario mario = new Usuario("Mario", "mario@email", "rua da paz", "12345", "Mario");
+		Usuario fernanda = new Usuario("Fernanda", "fernanda@email", "rua da paz", "12345", "Fernanda");
+		Usuario isabela = new Usuario("Isabela", "isabela@email", "rua da paz", "12345", "Isabela");
+		carona1 = new CaronaComum("Campina Grande", "João Pessoa", "22/10/2012", "10:00", 1, id.gerarId(), jose);
+		carona2 = new CaronaComum("João Pessoa", "Natal", "06/06/2012", "09:00", 2, id.gerarId(), mario);
+		carona3 = new CaronaComum("Natal", "Recife", "10/12/2012", "08:00", 3, id.gerarId(), fernanda);
+		carona4 = new CaronaComum("Recife", "Campina Grande", "17/07/2012", "07:00", 4, id.gerarId(), isabela);
 	}
 	
 	//Testando Construtor
@@ -157,10 +178,10 @@ public class TestaCarona {
 
 	@Test
 	public void testaGetDonoDaCarona() {
-		Assert.assertEquals("Jose", carona1.getDonoDaCarona());
-		Assert.assertEquals("Mario", carona2.getDonoDaCarona());
-		Assert.assertEquals("Fernanda", carona3.getDonoDaCarona());
-		Assert.assertEquals("Isabela", carona4.getDonoDaCarona());
+		Assert.assertEquals("Jose", carona1.getDonoDaCarona().getNome());
+		Assert.assertEquals("Mario", carona2.getDonoDaCarona().getNome());
+		Assert.assertEquals("Fernanda", carona3.getDonoDaCarona().getNome());
+		Assert.assertEquals("Isabela", carona4.getDonoDaCarona().getNome());
 	}
 	
 	@Test

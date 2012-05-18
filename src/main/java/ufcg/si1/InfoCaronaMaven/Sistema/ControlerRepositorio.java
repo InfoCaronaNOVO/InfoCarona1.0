@@ -143,7 +143,7 @@ public class ControlerRepositorio {
 		}else if(atributo.equals("destino")){
 			retorno = solicitacaoTemp.getDestino();
 		}else if(atributo.equals("Dono da carona")){
-			retorno = solicitacaoTemp.getDonoDaCarona();
+			retorno = solicitacaoTemp.getDonoDaCarona().getNome();
 		}else if(atributo.equals("Dono da solicitacao")){
          retorno = solicitacaoTemp.getDonoSolicitacao().getNome();
 		}else if(atributo.equals("Ponto de Encontro")){

@@ -489,4 +489,20 @@ public class Sistema {
 		}
 		return retorno;
 	}
+	
+	public void reviewCarona(String idSessao, String idCarona, String review) throws SessaoInvalidaException, SessaoInexistenteException, CaronaInexistenteException, CaronaInvalidaException, OpcaoInvalidaException, UsuarioNaoPossuiVagaNaCaronaException {
+		Usuario usuarioTemp = procuraUsuarioLogado(idSessao);
+		Carona caronaTemp = controleRepositorio.localizaCaronaPorId(idCarona);
+		if( !((review.equals("segura e tranquila")) || (review.equals("não funcionou")))){
+			throw new OpcaoInvalidaException();
+		}
+		if(usuarioJahEstahNaCarona(usuarioTemp, caronaTemp)){
+			caronaTemp.addReviewCarona(usuarioTemp, review);
+		}else{
+			throw new UsuarioNaoPossuiVagaNaCaronaException();
+		}
+		
+		
+		
+	}
 }

@@ -251,4 +251,10 @@ public class Fachada {
 	public String getPontosSugeridos(String idSessao, String idCarona) throws CaronaInexistenteException, CaronaInvalidaException{
 		return sistema.getPontosSugeridos(idCarona).toString().replace(", ", ";");
 	}
+	
+	//metodos do user 9 pra frente
+	
+	public void reviewCarona (String idSessao, String idCarona, String review) throws SessaoInvalidaException, SessaoInexistenteException, CaronaInexistenteException, CaronaInvalidaException, LoginInvalidoException, UsuarioInexistenteException, OpcaoInvalidaException, UsuarioNaoPossuiVagaNaCaronaException{
+		sistema.reviewCarona(idSessao, idCarona, review);
+	}
 }

@@ -62,7 +62,7 @@ public class Usuario {
 			VagaInvalidaException, numeroMaximoException {
 
 		Carona carona = new CaronaComum(origem, destino, data, hora, vagas,
-				idCarona, this.getNome());
+				idCarona, this);
 		listaDeCaronas.add(carona);
 		return idCarona;
 	}

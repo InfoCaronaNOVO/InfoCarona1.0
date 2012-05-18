@@ -3,8 +3,10 @@ package ufcg.si1.InfoCaronaMaven.Sistema;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DestinoInvalidoException;
@@ -19,11 +21,13 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.VagaInvalidaException
  */
 public class CaronaComum implements Carona{
 	
-	private String origem, destino, data, hora, idCarona, donoDaCarona;
+	private String origem, destino, data, hora, idCarona;
 	private int vagas;
 	private List<SugestaoDePontoDeEncontro> listaDeSugestoes;
 	private List<SolicitacaoDeVaga> listaDeSolicitacao;
 	private List<String> listaPontosDeEncontroPermitidos;
+	private Map<Usuario, String> reviewsCarona;
+	private Usuario donoDaCarona;
 	/**
 	 * Construtor da classe Carona
 	 * @param origem - recebe uma String informando a origem da corana
@@ -40,17 +44,19 @@ public class CaronaComum implements Carona{
 	 * @throws HoraInvalidaException- retorna uma exceção caso a hora passada seja null, vazia ou data em formato inválida
 	 * @throws VagaInvalidaException - retorna uma exceção caso o numero de vagsa seja negativo ou nao seja um numéro válido.
 	 */
-	public CaronaComum(String origem, String destino, String data, String hora, int vagas, String idCarona, String donoDaCarona) throws SessaoInvalidaException, OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException {
+	public CaronaComum(String origem, String destino, String data, String hora, int vagas, String idCarona, Usuario donoDaCarona) throws SessaoInvalidaException, OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException {
         setOrigem(origem);
         setDestino(destino);
         setData(data);
         setHora(hora);
         setVagas(vagas);
-        setDonoDaCarona(donoDaCarona);
+        
+        this.donoDaCarona = donoDaCarona;
         this.idCarona = idCarona;
         this.listaDeSugestoes = new LinkedList<SugestaoDePontoDeEncontro>();
         this.listaDeSolicitacao = new LinkedList<SolicitacaoDeVaga>();
         this.listaPontosDeEncontroPermitidos = new LinkedList<String>();
+        reviewsCarona = new HashMap<Usuario, String>();
 	}
 	/**
 	 * Metodo que retorna os pontos de encontro permitidos pelo dono da carona para um usuário solicitar vaga e sugerir
@@ -78,13 +84,11 @@ public class CaronaComum implements Carona{
 		return this.origem;
 	}
 	
-	public String getDonoDaCarona(){
+	public Usuario getDonoDaCarona(){
 		return this.donoDaCarona;
 	}
 	
-	 private void setDonoDaCarona(String donoDaCarona) {
-         this.donoDaCarona = donoDaCarona.trim();
-	 }
+	 
 	
 
 	public void setOrigem(String origem) throws OrigemInvalidaException {
@@ -254,5 +258,15 @@ public class CaronaComum implements Carona{
     
     public void addPontoEncontroPermitido(String ponto){
     	listaPontosDeEncontroPermitidos.add(ponto);
+    }
+    
+    public void addReviewCarona(Usuario usuario, String review){
+ 	   if(review.equals("segura e tranquila")){
+ 		   this.donoDaCarona.setCaronasSeguras();
+ 	   }else if(review.equals("não funcionou")){
+ 		   this.donoDaCarona.setCaronasNaoFuncionaram();
+ 	   }
+ 	   
+ 	   reviewsCarona.put(usuario, review);
     }
 }

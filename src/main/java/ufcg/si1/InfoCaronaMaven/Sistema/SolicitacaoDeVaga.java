@@ -31,7 +31,7 @@ public class SolicitacaoDeVaga {
 		return this.carona.getDestino();
 	}
 
-	public String getDonoDaCarona(){
+	public Usuario getDonoDaCarona(){
 		return this.carona.getDonoDaCarona();
 	}
 	
@@ -51,7 +51,7 @@ public class SolicitacaoDeVaga {
 		}else if(atributo.equals("destino")){
 			retorno = this.getDestino();
 		}else if(atributo.equals("Dono da carona")){
-			retorno = this.getDonoDaCarona();
+			retorno = this.getDonoDaCarona().getNome();
 		}else if(atributo.equals("Ponto de Encontro")){
 			retorno = this.ponto;
 		}

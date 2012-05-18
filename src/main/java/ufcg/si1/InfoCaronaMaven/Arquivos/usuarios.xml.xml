@@ -6,8 +6,7 @@
         <destino>João Pessoa</destino>
         <data>02/06/2012</data>
         <hora>12:00</hora>
-        <idCarona>00081</idCarona>
-        <donoDaCarona>Mark Zuckerberg</donoDaCarona>
+        <idCarona>00088</idCarona>
         <vagas>2</vagas>
         <listaDeSugestoes class="linked-list"/>
         <listaDeSolicitacao class="linked-list">
@@ -23,31 +22,34 @@
                     <destino>João Pessoa</destino>
                     <data>04/06/2012</data>
                     <hora>16:00</hora>
-                    <idCarona>00082</idCarona>
-                    <donoDaCarona>Mark Zuckerberg</donoDaCarona>
+                    <idCarona>00089</idCarona>
                     <vagas>1</vagas>
                     <listaDeSugestoes class="linked-list"/>
                     <listaDeSolicitacao class="linked-list">
                       <ufcg.si1.InfoCaronaMaven.Sistema.SolicitacaoDeVaga reference="../../.."/>
                     </listaDeSolicitacao>
                     <listaPontosDeEncontroPermitidos class="linked-list"/>
+                    <reviewsCarona>
+                      <entry>
+                        <ufcg.si1.InfoCaronaMaven.Sistema.Usuario reference="../../../../../.."/>
+                        <string>não funcionou</string>
+                      </entry>
+                    </reviewsCarona>
+                    <donoDaCarona reference="../../../../../../../../.."/>
                   </carona>
                   <donoSolicitacao reference="../../.."/>
                   <ponto>Default</ponto>
-                  <idSolicitacao>00085</idSolicitacao>
+                  <idSolicitacao>00092</idSolicitacao>
                   <solicitacaoAceita>true</solicitacaoAceita>
                   <solicitacaoPendente>false</solicitacaoPendente>
                   <solicitacaoRejeitada>false</solicitacaoRejeitada>
                 </ufcg.si1.InfoCaronaMaven.Sistema.SolicitacaoDeVaga>
               </listaDeSolicitacaoDeVagas>
-              <Reviews class="linked-list">
-                <string>faltou na Carona de Campina Grande para João Pessoa, no dia 02/06/2012, as 12:00</string>
-                <string>não faltou na Carona de Campina Grande para João Pessoa, no dia 04/06/2012, as 16:00</string>
-              </Reviews>
+              <Reviews class="linked-list"/>
               <caronasSeguras>0</caronasSeguras>
               <caronaNaoFuncionaram>0</caronaNaoFuncionaram>
-              <faltasEmVagas>1</faltasEmVagas>
-              <presencaEmVagas>1</presencaEmVagas>
+              <faltasEmVagas>0</faltasEmVagas>
+              <presencaEmVagas>0</presencaEmVagas>
               <nome>William Henry Gates III</nome>
               <email>billzin@gmail.com</email>
               <endereco>Medina, Washington</endereco>
@@ -55,20 +57,27 @@
               <login>bill</login>
             </donoSolicitacao>
             <ponto>Default</ponto>
-            <idSolicitacao>00084</idSolicitacao>
+            <idSolicitacao>00091</idSolicitacao>
             <solicitacaoAceita>true</solicitacaoAceita>
             <solicitacaoPendente>false</solicitacaoPendente>
             <solicitacaoRejeitada>false</solicitacaoRejeitada>
           </ufcg.si1.InfoCaronaMaven.Sistema.SolicitacaoDeVaga>
         </listaDeSolicitacao>
         <listaPontosDeEncontroPermitidos class="linked-list"/>
+        <reviewsCarona>
+          <entry>
+            <ufcg.si1.InfoCaronaMaven.Sistema.Usuario reference="../../../listaDeSolicitacao/ufcg.si1.InfoCaronaMaven.Sistema.SolicitacaoDeVaga/donoSolicitacao"/>
+            <string>segura e tranquila</string>
+          </entry>
+        </reviewsCarona>
+        <donoDaCarona reference="../../.."/>
       </ufcg.si1.InfoCaronaMaven.Sistema.CaronaComum>
       <ufcg.si1.InfoCaronaMaven.Sistema.CaronaComum reference="../ufcg.si1.InfoCaronaMaven.Sistema.CaronaComum/listaDeSolicitacao/ufcg.si1.InfoCaronaMaven.Sistema.SolicitacaoDeVaga/donoSolicitacao/listaDeSolicitacaoDeVagas/ufcg.si1.InfoCaronaMaven.Sistema.SolicitacaoDeVaga[2]/carona"/>
     </listaDeCaronas>
     <listaDeSolicitacaoDeVagas class="linked-list"/>
     <Reviews class="linked-list"/>
-    <caronasSeguras>0</caronasSeguras>
-    <caronaNaoFuncionaram>0</caronaNaoFuncionaram>
+    <caronasSeguras>1</caronasSeguras>
+    <caronaNaoFuncionaram>1</caronaNaoFuncionaram>
     <faltasEmVagas>0</faltasEmVagas>
     <presencaEmVagas>0</presencaEmVagas>
     <nome>Mark Zuckerberg</nome>

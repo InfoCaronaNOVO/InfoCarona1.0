@@ -35,7 +35,7 @@ public class TesteMaven extends TestCase {
 		files.add("scripts/US07.txt");
 		files.add("scripts/US08.txt");
 		//Falta implementar os metodos dos user abaixo e ajeitar os scripts do monitor que veio errado
-		//files.add("scripts/US09.txt");
+		files.add("scripts/US09.txt");
 		//files.add("scripts/US10.txt");
 		//files.add("scripts/US11.txt");
 		//files.add("scripts/US12.txt");
