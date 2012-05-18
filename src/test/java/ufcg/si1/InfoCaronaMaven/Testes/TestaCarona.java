@@ -12,6 +12,7 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.OrigemInvalidaExcepti
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SessaoInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.VagaInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Sistema.Carona;
+import ufcg.si1.InfoCaronaMaven.Sistema.CaronaComum;
 import ufcg.si1.InfoCaronaMaven.Sistema.Id;
 
 public class TestaCarona {
@@ -19,48 +20,48 @@ public class TestaCarona {
 	private Id id;
 	
 	private void criaCarona1() throws Exception {
-		carona1 = new Carona("Campina Grande", "João Pessoa", "22/10/2012", "10:00", 3, id.gerarId(), "Jose");
+		carona1 = new CaronaComum("Campina Grande", "João Pessoa", "22/10/2012", "10:00", 3, id.gerarId(), "Jose");
 	}
 	
 	private void criaCarona2() throws Exception {
-		carona2 = new Carona("", "Natal", "02/06/2012", "03:00", 2, id.gerarId(), "Marcus");
+		carona2 = new CaronaComum("", "Natal", "02/06/2012", "03:00", 2, id.gerarId(), "Marcus");
 	}
 	
 	private void criaCarona3() throws Exception {
-		carona2 = new Carona(null, "Natal", "02/06/2012", "03:00", 2, id.gerarId(), "Marcus");
+		carona2 = new CaronaComum(null, "Natal", "02/06/2012", "03:00", 2, id.gerarId(), "Marcus");
 	}
 	
 	private void criaCarona4() throws Exception {
-		carona3 = new Carona("Natal", "", "11/09/2012", "00:00", 1, id.gerarId(), "Flavio");
+		carona3 = new CaronaComum("Natal", "", "11/09/2012", "00:00", 1, id.gerarId(), "Flavio");
 	}
 	
 	private void criaCarona5() throws Exception {
-		carona3 = new Carona("Natal", null, "11/09/2012", "00:00", 1, id.gerarId(), "Flavio");
+		carona3 = new CaronaComum("Natal", null, "11/09/2012", "00:00", 1, id.gerarId(), "Flavio");
 	}
 	
 	private void criaCarona6() throws Exception {
-		carona4 = new Carona("Recife", "João Pessoa", "11/09/2009", "00:00", 1, id.gerarId(), "Maria");
+		carona4 = new CaronaComum("Recife", "João Pessoa", "11/09/2009", "00:00", 1, id.gerarId(), "Maria");
 	}
 	
 	private void criaCarona7() throws Exception {
-		carona4 = new Carona("Recife", "João Pessoa", "20/03/2013", "25:00", 1, id.gerarId(), "Maria");
+		carona4 = new CaronaComum("Recife", "João Pessoa", "20/03/2013", "25:00", 1, id.gerarId(), "Maria");
 	}
 	
 	private void criaCarona8() throws Exception {
-		carona4 = new Carona("Campina Grande", "João Pessoa", "22/10/2012", "10:00", -2, id.gerarId(), "Jose");
+		carona4 = new CaronaComum("Campina Grande", "João Pessoa", "22/10/2012", "10:00", -2, id.gerarId(), "Jose");
 	}
 	
 	private void criaCarona9() throws Exception {
-		carona4 = new Carona("Campina Grande", "João Pessoa", "22/10/2012", "10:00", 0, id.gerarId(), "Jose");
+		carona4 = new CaronaComum("Campina Grande", "João Pessoa", "22/10/2012", "10:00", 0, id.gerarId(), "Jose");
 	}
 	
 	@Before
 	public void instanciandoObjetos() throws SessaoInvalidaException, OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException, numeroMaximoException {
 		id = new Id(5);
-		carona1 = new Carona("Campina Grande", "João Pessoa", "22/10/2012", "10:00", 1, id.gerarId(), "Jose");
-		carona2 = new Carona("João Pessoa", "Natal", "06/06/2012", "09:00", 2, id.gerarId(), "Mario");
-		carona3 = new Carona("Natal", "Recife", "10/05/2012", "08:00", 3, id.gerarId(), "Fernanda");
-		carona4 = new Carona("Recife", "Campina Grande", "17/07/2012", "07:00", 4, id.gerarId(), "Isabela");
+		carona1 = new CaronaComum("Campina Grande", "João Pessoa", "22/10/2012", "10:00", 1, id.gerarId(), "Jose");
+		carona2 = new CaronaComum("João Pessoa", "Natal", "06/06/2012", "09:00", 2, id.gerarId(), "Mario");
+		carona3 = new CaronaComum("Natal", "Recife", "10/12/2012", "08:00", 3, id.gerarId(), "Fernanda");
+		carona4 = new CaronaComum("Recife", "Campina Grande", "17/07/2012", "07:00", 4, id.gerarId(), "Isabela");
 	}
 	
 	//Testando Construtor
@@ -174,7 +175,7 @@ public class TestaCarona {
 	public void testaGetData() {
 		Assert.assertEquals("22/10/2012", carona1.getData());
 		Assert.assertEquals("06/06/2012", carona2.getData());
-		Assert.assertEquals("10/05/2012", carona3.getData());
+		Assert.assertEquals("10/12/2012", carona3.getData());
 		Assert.assertEquals("17/07/2012", carona4.getData());
 	}
 	
@@ -226,7 +227,7 @@ public class TestaCarona {
 	public void testaGetDadosCarona(){
 		Assert.assertEquals("As informacoes da carona nao batem.","origem=Campina Grande destino=João Pessoa data=22/10/2012 hora=10:00 vagas=1", carona1.getDadosCarona());
 		Assert.assertEquals("As informacoes da carona nao batem.","origem=João Pessoa destino=Natal data=06/06/2012 hora=09:00 vagas=2", carona2.getDadosCarona());
-		Assert.assertEquals("As informacoes da carona nao batem.","origem=Natal destino=Recife data=10/05/2012 hora=08:00 vagas=3", carona3.getDadosCarona());
+		Assert.assertEquals("As informacoes da carona nao batem.","origem=Natal destino=Recife data=10/12/2012 hora=08:00 vagas=3", carona3.getDadosCarona());
 		Assert.assertEquals("As informacoes da carona nao batem.","origem=Recife destino=Campina Grande data=17/07/2012 hora=07:00 vagas=4", carona4.getDadosCarona());
 	}
 	
@@ -420,7 +421,7 @@ public class TestaCarona {
 	public void testaToString(){
 		Assert.assertEquals("Campina Grande para João Pessoa, no dia 22/10/2012, as 10:00", carona1.toString());
 		Assert.assertEquals("João Pessoa para Natal, no dia 06/06/2012, as 09:00", carona2.toString());
-		Assert.assertEquals("Natal para Recife, no dia 10/05/2012, as 08:00", carona3.toString());
+		Assert.assertEquals("Natal para Recife, no dia 10/12/2012, as 08:00", carona3.toString());
 		Assert.assertEquals("Recife para Campina Grande, no dia 17/07/2012, as 07:00", carona4.toString());
 	}
 	

@@ -18,6 +18,7 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.OrigemInvalidaExcepti
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SessaoInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.VagaInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Sistema.Carona;
+import ufcg.si1.InfoCaronaMaven.Sistema.CaronaComum;
 import ufcg.si1.InfoCaronaMaven.Sistema.Id;
 import ufcg.si1.InfoCaronaMaven.Sistema.SolicitacaoDeVaga;
 import ufcg.si1.InfoCaronaMaven.Sistema.Usuario;
@@ -34,8 +35,8 @@ public class TestaSolicitacaodeVaga {
 		id = new Id(5);
 		usuario1 = new Usuario("João","joao@mail.com","Rua Patati","joao123","joao");
 		usuario2 = new Usuario("Maria","maria@mail.com","Rua Patata","maria123","maria");
-		carona1 = new Carona("Campina Grande", "João Pessoa", "12/12/2012", "12:00", 2, id.gerarId(), usuario1.getNome());
-		carona2 = new Carona("Bahia", "Campina Grande", "11/11/2012", "11:00", 1, id.gerarId(), usuario2.getNome());
+		carona1 = new CaronaComum("Campina Grande", "João Pessoa", "12/12/2012", "12:00", 2, id.gerarId(), usuario1.getNome());
+		carona2 = new CaronaComum("Bahia", "Campina Grande", "11/11/2012", "11:00", 1, id.gerarId(), usuario2.getNome());
 		solicitacao1 = new SolicitacaoDeVaga(carona1, "Igreja do Rosario", id.gerarId(), usuario1);
 		solicitacao2 = new SolicitacaoDeVaga(carona2, "Pelourinho", id.gerarId(), usuario2);
 	}

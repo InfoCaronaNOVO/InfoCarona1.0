@@ -61,7 +61,7 @@ public class Usuario {
 			DataInvalidaException, HoraInvalidaException,
 			VagaInvalidaException, numeroMaximoException {
 
-		Carona carona = new Carona(origem, destino, data, hora, vagas,
+		Carona carona = new CaronaComum(origem, destino, data, hora, vagas,
 				idCarona, this.getNome());
 		listaDeCaronas.add(carona);
 		return idCarona;
