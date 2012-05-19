@@ -7,6 +7,7 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.LoginInvalidoExceptio
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInvalidaException;
+import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CidadeInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.ItemInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.TrajetoInexistenteException;
 
@@ -104,6 +105,12 @@ public class ControlerRepositorio {
                 retorno = caronaTemp.getDestino();
         }else if(atributo.equals("data")){
                 retorno = caronaTemp.getData();
+        }else if(atributo.equals("ehMunicipal")){
+            if(caronaTemp.getTipoCarona().equals(TiposCarona.MUNICIPAL)){
+            	retorno = "true" ;
+            }else{
+            	retorno = "false"; //sem logica essa bagaça tem q refatorar
+            }
         }
         
         return retorno;
@@ -163,6 +170,14 @@ public class ControlerRepositorio {
 
 	public void encerrarSistema() {
 		repositorio.encerrarSistema();
+	}
+
+	public List<Carona> localizarCaronaMunicipal(String cidade, String origem, String destino) throws CidadeInexistenteException {
+		if(destino.equals("") && origem.equals("")){
+			return repositorio.localizarCaronaMunicipal(cidade);
+		}else{
+			return repositorio.localizarCaronaMunicipal(cidade, origem, destino);
+		}
 	}
 		
 }

@@ -5,6 +5,7 @@ import java.util.List;
 
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInvalidaException;
+import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CidadeInexistenteException;
 
 public class Repositorio {
 	private List<Usuario> listaDeUsuarios;
@@ -205,5 +206,50 @@ public class Repositorio {
 
 	public void encerrarSistema() {
 		this.salvarXML();
+	}
+
+	public List<Carona> localizarCaronaMunicipal(String cidade) throws CidadeInexistenteException {
+		List<Carona> retorno = new LinkedList<Carona>();
+		boolean existeCidade = false;
+		
+		for (Usuario UsuarioTemp : listaDeUsuarios) {
+			for (Carona caronaTemp : UsuarioTemp.getCaronas()) {
+				if (caronaTemp.getTipoCarona().equals(TiposCarona.MUNICIPAL)) {
+					if(((CaronaMunicipal) caronaTemp).getCidade().equals(cidade)){
+						existeCidade = true;
+						retorno.add(caronaTemp);
+					}
+					
+				}
+			}
+		}
+		if(!existeCidade){
+			throw new CidadeInexistenteException();
+		}
+		return retorno;
+	}
+	
+	public List<Carona> localizarCaronaMunicipal(String cidade, String origem, String destino) throws CidadeInexistenteException {
+		List<Carona> retorno = new LinkedList<Carona>();
+		boolean existeCidade = false;
+		
+		for (Usuario UsuarioTemp : listaDeUsuarios) {
+			for (Carona caronaTemp : UsuarioTemp.getCaronas()) {
+				if (caronaTemp.getTipoCarona().equals(TiposCarona.MUNICIPAL)) {
+					if(((CaronaMunicipal) caronaTemp).getCidade().equals(cidade)){
+						existeCidade = true;
+						if(caronaTemp.getOrigem().equals(origem) && caronaTemp.getDestino().equals(destino)){
+							retorno.add(caronaTemp);
+						}
+						
+					}
+					
+				}
+			}
+		}
+		if(!existeCidade){
+			throw new CidadeInexistenteException();
+		}
+		return retorno;
 	}
 }

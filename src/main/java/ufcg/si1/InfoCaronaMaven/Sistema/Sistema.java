@@ -21,6 +21,7 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioNaoPossuiVagaN
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.numeroMaximoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInvalidaException;
+import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CidadeInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DestinoInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException;
@@ -500,9 +501,37 @@ public class Sistema {
 			caronaTemp.addReviewCarona(usuarioTemp, review);
 		}else{
 			throw new UsuarioNaoPossuiVagaNaCaronaException();
+		}	
+	}
+	
+	public String cadastrarCaronaMunicipal(String idSessao, String origem, String destino, String cidade, String data, String hora, int vagas)
+			throws SessaoInvalidaException, SessaoInexistenteException,
+			OrigemInvalidaException, DestinoInvalidoException,
+			DataInvalidaException, HoraInvalidaException,
+			VagaInvalidaException, numeroMaximoException {
+
+			Usuario usuarioTemp = procuraUsuarioLogado(idSessao);
+		String idCarona = usuarioTemp.cadastrarCaronaMunicipal(origem, destino, cidade, data,
+			hora, vagas, id.gerarId());
+
+		return idCarona;
+	}
+
+	public List<Carona> localizarCaronaMunicipal(String cidade, String origem, String destino) throws CidadeInexistenteException, OrigemInvalidaException, DestinoInvalidoException {
+		if ((cidade == null)
+				|| (cidade.matches("[\\-/.\\[_\\]()!\"+,:;<=>{|}#@$%�&*0-9].*"))) {
+			throw new CidadeInexistenteException();
 		}
-		
-		
-		
+		if ((origem == null)
+				|| (origem.matches("[\\-/.\\[_\\]()!\"+,:;<=>{|}#@$%�&*0-9].*"))) {
+			throw new OrigemInvalidaException();
+		}
+		if ((destino == null)
+				|| (destino
+						.matches("[\\-/.\\[_\\]()!\"+,:;<=>{|}#@$%�&*0-9].*"))) {
+			throw new DestinoInvalidoException();
+		}
+
+		return controleRepositorio.localizarCaronaMunicipal(cidade, origem, destino);
 	}
 }

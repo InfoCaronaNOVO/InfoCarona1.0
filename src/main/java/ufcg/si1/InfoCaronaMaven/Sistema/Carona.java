@@ -42,6 +42,8 @@ public interface Carona {
 	
 	
 	public String getIdCarona();
+	
+	public TiposCarona getTipoCarona();
 	/**
 	 * Metodo que retorna os atributos  de uma carona
 	 * @param atributo - recebe como parametro uma String q pode ser "origem", "vagas", "destino", "data"

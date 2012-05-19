@@ -13,6 +13,7 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioNaoPossuiVagaN
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.numeroMaximoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInvalidaException;
+import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CidadeInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DestinoInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException;
@@ -98,18 +99,40 @@ public class Fachada {
 		}
 		return retorno.toString().replace("[", "{").replace("]", "}").replace(", ", ",");
 	}
+	
+	
+	public String localizarCaronaMunicipal(String idSessao, String cidade, String origem, String destino)
+			throws OrigemInvalidaException, DestinoInvalidoException, SessaoInvalidaException, SessaoInexistenteException, CidadeInexistenteException {
+		LinkedList<String> retorno = new LinkedList<String>();
+		List<Carona> listaCaronas = sistema.localizarCaronaMunicipal(cidade, origem, destino);
+		for(Carona caronaTemp : listaCaronas){
+			retorno.add(caronaTemp.getIdCarona());
+		}
+		return retorno.toString().replace("[", "{").replace("]", "}").replace(", ", ",");
+	}
+	
+	public String localizarCaronaMunicipal(String idSessao, String cidade) throws OrigemInvalidaException, DestinoInvalidoException, SessaoInvalidaException, SessaoInexistenteException, CidadeInexistenteException{
+		return localizarCaronaMunicipal(idSessao, cidade, "", "");
+	}
+	
+	public String localizarCaronaMunicipal(String idSessao, String origem, String destino) throws OrigemInvalidaException, DestinoInvalidoException, SessaoInvalidaException, SessaoInexistenteException, CidadeInexistenteException{
+		return localizarCaronaMunicipal(idSessao, "", origem, destino);
+	}
 
 	public String getAtributoCarona(String idCarona, String atributo)
 			throws ItemInexistenteException, IDCaronaInexistenteException,
 			AtributoInvalidoException, AtributoInexistenteException, SessaoInvalidaException, SessaoInexistenteException, CaronaInexistenteException, CaronaInvalidaException, IDCaronaInvalidoException {
+		String retorno = null;
 		if(ehVazioOuNull(idCarona)){
 			throw new IDCaronaInvalidoException();
 		}else if(ehVazioOuNull(atributo)){
 			throw new AtributoInvalidoException();
 		}
-		String retorno = sistema.getAtributoCarona(idCarona, atributo);
-		  if(retorno.equals("")){
-	        	throw new AtributoInexistenteException();
+	
+		retorno = sistema.getAtributoCarona(idCarona, atributo);
+		
+		if(retorno.equals("")){
+	      	throw new AtributoInexistenteException();
 	    }
 		return retorno;
 	}
@@ -256,5 +279,18 @@ public class Fachada {
 	
 	public void reviewCarona (String idSessao, String idCarona, String review) throws SessaoInvalidaException, SessaoInexistenteException, CaronaInexistenteException, CaronaInvalidaException, LoginInvalidoException, UsuarioInexistenteException, OpcaoInvalidaException, UsuarioNaoPossuiVagaNaCaronaException{
 		sistema.reviewCarona(idSessao, idCarona, review);
+	}
+	
+	public String cadastrarCaronaMunicipal(String idSessao, String origem, String destino,String cidade, String data, String hora, String vagas)
+			throws SessaoInvalidaException, SessaoInexistenteException,
+			OrigemInvalidaException, DestinoInvalidoException,
+			DataInvalidaException, HoraInvalidaException, VagaInvalidaException, numeroMaximoException {
+		int vaga = 0;
+		try {
+			vaga = Integer.parseInt(vagas);
+		} catch (Exception e) {
+			
+		}
+		return sistema.cadastrarCaronaMunicipal(idSessao, origem, destino, cidade, data, hora, vaga);
 	}
 }

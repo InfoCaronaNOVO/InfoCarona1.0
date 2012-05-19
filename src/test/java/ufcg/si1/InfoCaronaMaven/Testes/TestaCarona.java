@@ -18,11 +18,12 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SessaoInvalidaExcepti
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.VagaInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Sistema.Carona;
 import ufcg.si1.InfoCaronaMaven.Sistema.CaronaComum;
+import ufcg.si1.InfoCaronaMaven.Sistema.CaronaMunicipal;
 import ufcg.si1.InfoCaronaMaven.Sistema.Id;
 import ufcg.si1.InfoCaronaMaven.Sistema.Usuario;
 
 public class TestaCarona {
-	private Carona carona1, carona2, carona3, carona4;
+	private Carona carona1, carona2, carona3, carona4, caronaMunicipal;
 	private Id id;
 	
 	
@@ -83,6 +84,7 @@ public class TestaCarona {
 		carona2 = new CaronaComum("João Pessoa", "Natal", "06/06/2012", "09:00", 2, id.gerarId(), mario);
 		carona3 = new CaronaComum("Natal", "Recife", "10/12/2012", "08:00", 3, id.gerarId(), fernanda);
 		carona4 = new CaronaComum("Recife", "Campina Grande", "17/07/2012", "07:00", 4, id.gerarId(), isabela);
+		caronaMunicipal = new CaronaMunicipal("Açude Velho","Shopping Boulevard","Campina Grande","04/06/2012", "20:00", 2, id.gerarId(), jose);
 	}
 	
 	//Testando Construtor
@@ -174,6 +176,7 @@ public class TestaCarona {
 		Assert.assertEquals("João Pessoa", carona2.getOrigem());
 		Assert.assertEquals("Natal", carona3.getOrigem());
 		Assert.assertEquals("Recife", carona4.getOrigem());
+		Assert.assertEquals("Açude Velho", caronaMunicipal.getOrigem());
 	}
 
 	@Test
@@ -182,6 +185,7 @@ public class TestaCarona {
 		Assert.assertEquals("Mario", carona2.getDonoDaCarona().getNome());
 		Assert.assertEquals("Fernanda", carona3.getDonoDaCarona().getNome());
 		Assert.assertEquals("Isabela", carona4.getDonoDaCarona().getNome());
+		Assert.assertEquals("Jose", caronaMunicipal.getDonoDaCarona().getNome());
 	}
 	
 	@Test
@@ -190,6 +194,7 @@ public class TestaCarona {
 		Assert.assertEquals("Natal", carona2.getDestino());
 		Assert.assertEquals("Recife", carona3.getDestino());
 		Assert.assertEquals("Campina Grande", carona4.getDestino());
+		Assert.assertEquals("Shopping Boulevard", caronaMunicipal.getDestino());
 	}
 	
 	@Test
@@ -198,6 +203,7 @@ public class TestaCarona {
 		Assert.assertEquals("06/06/2012", carona2.getData());
 		Assert.assertEquals("10/12/2012", carona3.getData());
 		Assert.assertEquals("17/07/2012", carona4.getData());
+		Assert.assertEquals("04/06/2012", caronaMunicipal.getData());
 	}
 	
 	@Test
@@ -206,6 +212,7 @@ public class TestaCarona {
 		Assert.assertEquals("09:00", carona2.getHora());
 		Assert.assertEquals("08:00", carona3.getHora());
 		Assert.assertEquals("07:00", carona4.getHora());
+		Assert.assertEquals("20:00", caronaMunicipal.getHora());
 	}
 	
 	@Test

@@ -267,4 +267,11 @@ public class Usuario {
 		}
 		return listaCaronaAceitas;
 	}
+	
+	public String cadastrarCaronaMunicipal(String origem, String destino,
+			String cidade, String data, String hora, int vagas, String idCarona) throws SessaoInvalidaException, OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException {
+		Carona carona = new CaronaMunicipal(origem, destino, cidade, data, hora, vagas, idCarona, this);
+		listaDeCaronas.add(carona);
+		return idCarona;
+	}
 }
