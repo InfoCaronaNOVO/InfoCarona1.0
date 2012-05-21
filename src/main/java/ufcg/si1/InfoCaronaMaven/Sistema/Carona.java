@@ -1,9 +1,5 @@
 package ufcg.si1.InfoCaronaMaven.Sistema;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.LinkedList;
 import java.util.List;
 
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;

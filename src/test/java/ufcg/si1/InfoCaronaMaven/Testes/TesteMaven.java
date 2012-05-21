@@ -4,12 +4,11 @@ package ufcg.si1.InfoCaronaMaven.Testes;
 import java.util.ArrayList;
 import java.util.List;
 
-import easyaccept.EasyAcceptFacade;
-
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
 import ufcg.si1.InfoCaronaMaven.Sistema.Fachada;
+import easyaccept.EasyAcceptFacade;
 
 public class TesteMaven extends TestCase {
 
