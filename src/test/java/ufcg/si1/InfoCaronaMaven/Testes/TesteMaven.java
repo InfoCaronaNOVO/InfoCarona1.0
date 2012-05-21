@@ -24,7 +24,7 @@ public class TesteMaven extends TestCase {
 
 		List<String> files = new ArrayList<String>();
 		// Put the us1.txt file into the "test scripts" list
-		
+		//botei mais uma linha pra testar o maven
 		files.add("scripts/US01.txt");
 		files.add("scripts/US02.txt");
 		files.add("scripts/US03.txt");
