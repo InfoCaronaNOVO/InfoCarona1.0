@@ -1,6 +1,6 @@
 package ufcg.si1.InfoCaronaMaven.Sistema;
 
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.numeroMaximoException;
+import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException;
 
 public class Id {
 	
@@ -12,13 +12,13 @@ public class Id {
 		  this.numeroDeDigitos = numeroDeDigitos;
 	}
 	
-	public String gerarId() throws numeroMaximoException{
+	public String gerarId() throws NumeroMaximoException{
 		String retorno = "";
 		String stringCont = cont+"";
 		cont++;
 		
 		if (stringCont.length() > numeroDeDigitos){
-			throw new numeroMaximoException();
+			throw new NumeroMaximoException();
 		}
 		
 		for (int i = stringCont.length(); i < numeroDeDigitos; i++) {

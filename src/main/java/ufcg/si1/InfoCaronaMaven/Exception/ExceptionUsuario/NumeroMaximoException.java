@@ -1,7 +1,7 @@
 package ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario;
 
 
-public class numeroMaximoException extends Exception {
+public class NumeroMaximoException extends Exception {
 	
      @Override
     public String getMessage() {

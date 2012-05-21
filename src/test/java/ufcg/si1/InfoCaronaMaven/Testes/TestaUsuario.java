@@ -10,7 +10,7 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.EnderecoInvalidoExcep
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.LoginInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NomeInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.SenhaInvalidoException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.numeroMaximoException;
+import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DestinoInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException;
@@ -402,7 +402,7 @@ public class TestaUsuario {
 
 	//Testando Metodos especificos
 	@Test
-	public void testaCadastrarCarona() throws SessaoInvalidaException, SessaoInexistenteException, OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException, numeroMaximoException {
+	public void testaCadastrarCarona() throws SessaoInvalidaException, SessaoInexistenteException, OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException, NumeroMaximoException {
 		usuario1.cadastrarCarona("Campina Grande", "João Pessoa", "22/12/2012", "22:00", 3, id.gerarId());
 		usuario2.cadastrarCarona("Campina Grande", "Recife", "10/10/2012", "10:00", 1, id.gerarId());
 		usuario3.cadastrarCarona("João Pessoa", "Natal", "06/08/2012", "12:00", 2, id.gerarId());

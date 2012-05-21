@@ -10,7 +10,7 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.LoginInvalidoExceptio
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.OpcaoInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioNaoPossuiVagaNaCaronaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.numeroMaximoException;
+import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CidadeInexistenteException;
@@ -33,7 +33,6 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.VagaInvalidaException
 public class Fachada {
 
 	private Sistema sistema;
-	private String argInvalido = "invalido";
 
 	public Fachada() {
 		this.sistema = new Sistema();
@@ -44,23 +43,13 @@ public class Fachada {
 		sistema.criarUsuario(login, senha, nome, endereco, email);
 	}
 
-	public void criarUsuario(String login, String nome, String endereco,
-			String email) throws Exception {
-		sistema.criarUsuario(login, argInvalido, nome, endereco, email);
-	}
-
-	public void criarUsuario(String login, String nome, String endereco)
-			throws Exception {
-		sistema.criarUsuario(login, argInvalido, nome, endereco, argInvalido);
-	}
-
 	public void zerarSistema() {
 		sistema.zerarSistema();
 	}
 
 	public String abrirSessao(String login, String senha)
 			throws LoginInvalidoException, UsuarioInexistenteException,
-			LoginExistenteException, numeroMaximoException {
+			LoginExistenteException, NumeroMaximoException {
 		return sistema.abrirSessao(login, senha);
 	}
 
@@ -79,7 +68,7 @@ public class Fachada {
 			String destino, String data, String hora, String vagas)
 			throws SessaoInvalidaException, SessaoInexistenteException,
 			OrigemInvalidaException, DestinoInvalidoException,
-			DataInvalidaException, HoraInvalidaException, VagaInvalidaException, numeroMaximoException {
+			DataInvalidaException, HoraInvalidaException, VagaInvalidaException, NumeroMaximoException {
 		int vaga = 0;
 		try {
 			vaga = Integer.parseInt(vagas);
@@ -170,7 +159,7 @@ public class Fachada {
 
 	public String sugerirPontoEncontro(String idSessao, String idCarona,
 			String pontos) throws CaronaInexistenteException,
-			CaronaInvalidaException, PontoInvalidoException, SessaoInvalidaException, SessaoInexistenteException, IDCaronaInvalidoException, ItemInexistenteException, numeroMaximoException {
+			CaronaInvalidaException, PontoInvalidoException, SessaoInvalidaException, SessaoInexistenteException, IDCaronaInvalidoException, ItemInexistenteException, NumeroMaximoException {
 		return sistema.sugerirPontoEncontro(idSessao, idCarona, pontos);
 	}
 
@@ -187,12 +176,12 @@ public class Fachada {
 
 	public String solicitarVagaPontoEncontro(String idSessao, String idCarona,
 			String ponto) throws CaronaInexistenteException,
-			CaronaInvalidaException, SessaoInvalidaException, SessaoInexistenteException, IDCaronaInvalidoException, ItemInexistenteException, numeroMaximoException {
+			CaronaInvalidaException, SessaoInvalidaException, SessaoInexistenteException, IDCaronaInvalidoException, ItemInexistenteException, NumeroMaximoException {
 		return sistema.solicitarVagaPontoEncontro(idSessao, idCarona, ponto);
 	}
 
 	public String solicitarVaga(String idSessao, String idCarona)
-			throws CaronaInexistenteException, CaronaInvalidaException, SessaoInvalidaException, SessaoInexistenteException, IDCaronaInvalidoException, ItemInexistenteException, numeroMaximoException {
+			throws CaronaInexistenteException, CaronaInvalidaException, SessaoInvalidaException, SessaoInexistenteException, IDCaronaInvalidoException, ItemInexistenteException, NumeroMaximoException {
 		return sistema.solicitarVagaPontoEncontro(idSessao, idCarona, "Default");
 	}
 
@@ -284,7 +273,7 @@ public class Fachada {
 	public String cadastrarCaronaMunicipal(String idSessao, String origem, String destino,String cidade, String data, String hora, String vagas)
 			throws SessaoInvalidaException, SessaoInexistenteException,
 			OrigemInvalidaException, DestinoInvalidoException,
-			DataInvalidaException, HoraInvalidaException, VagaInvalidaException, numeroMaximoException {
+			DataInvalidaException, HoraInvalidaException, VagaInvalidaException, NumeroMaximoException {
 		int vaga = 0;
 		try {
 			vaga = Integer.parseInt(vagas);

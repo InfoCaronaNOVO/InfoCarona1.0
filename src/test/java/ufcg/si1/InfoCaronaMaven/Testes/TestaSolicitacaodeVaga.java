@@ -10,7 +10,7 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.EnderecoInvalidoExcep
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.LoginInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NomeInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.SenhaInvalidoException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.numeroMaximoException;
+import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DestinoInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException;
@@ -31,7 +31,7 @@ public class TestaSolicitacaodeVaga {
 	private SolicitacaoDeVaga solicitacao1, solicitacao2;
 	
 	@Before
-	public void instanciandoObjetos() throws EmailInvalidoException, NomeInvalidoException, LoginInvalidoException, SenhaInvalidoException, EnderecoInvalidoException, SessaoInvalidaException, OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException, numeroMaximoException {
+	public void instanciandoObjetos() throws EmailInvalidoException, NomeInvalidoException, LoginInvalidoException, SenhaInvalidoException, EnderecoInvalidoException, SessaoInvalidaException, OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException, NumeroMaximoException {
 		id = new Id(5);
 		usuario1 = new Usuario("João","joao@mail.com","Rua Patati","joao123","joao");
 		usuario2 = new Usuario("Maria","maria@mail.com","Rua Patata","maria123","maria");
@@ -43,7 +43,7 @@ public class TestaSolicitacaodeVaga {
 
 	//Testando Construtor
 	@Test
-	public void testaSolicitacaoDeVaga() throws numeroMaximoException {
+	public void testaSolicitacaoDeVaga() throws NumeroMaximoException {
 		solicitacao1 = new SolicitacaoDeVaga(carona1, "Igreja do Rosario", id.gerarId(), usuario1);
 		solicitacao2 = new SolicitacaoDeVaga(carona2, "Pelourinha", id.gerarId(), usuario2);		
 	}

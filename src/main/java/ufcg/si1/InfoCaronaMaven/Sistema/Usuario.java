@@ -8,7 +8,7 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.EnderecoInvalidoExcep
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.LoginInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NomeInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.SenhaInvalidoException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.numeroMaximoException;
+import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
@@ -59,7 +59,7 @@ public class Usuario {
 			throws SessaoInvalidaException, SessaoInexistenteException,
 			OrigemInvalidaException, DestinoInvalidoException,
 			DataInvalidaException, HoraInvalidaException,
-			VagaInvalidaException, numeroMaximoException {
+			VagaInvalidaException, NumeroMaximoException {
 
 		Carona carona = new CaronaComum(origem, destino, data, hora, vagas,
 				idCarona, this);
@@ -74,7 +74,7 @@ public class Usuario {
 	public String sugerirPontoEncontro(String pontos, Carona carona,
 			String idSugestao, Usuario usuarioQueSugeriu)
 			throws CaronaInexistenteException, CaronaInvalidaException,
-			PontoInvalidoException, numeroMaximoException {
+			PontoInvalidoException, NumeroMaximoException {
 		SugestaoDePontoDeEncontro sugestao = new SugestaoDePontoDeEncontro(
 				idSugestao, usuarioQueSugeriu);
 
@@ -110,7 +110,7 @@ public class Usuario {
 		}
 	}
 
-	public String solicitarVagaPontoEncontro(String ponto, Carona carona, String IdSolicitacao, Usuario donoSolcitacao) throws CaronaInexistenteException, CaronaInvalidaException, numeroMaximoException {
+	public String solicitarVagaPontoEncontro(String ponto, Carona carona, String IdSolicitacao, Usuario donoSolcitacao) throws CaronaInexistenteException, CaronaInvalidaException, NumeroMaximoException {
 		SolicitacaoDeVaga novaSolicitacao = new SolicitacaoDeVaga(carona,  ponto, IdSolicitacao, donoSolcitacao);
 		listaDeSolicitacaoDeVagas.add(novaSolicitacao);
 		carona.addNovaSolicitacao(novaSolicitacao);
