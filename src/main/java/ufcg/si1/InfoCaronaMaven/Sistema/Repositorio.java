@@ -233,8 +233,8 @@ public class Repositorio {
 		List<Carona> retorno = new LinkedList<Carona>();
 		boolean existeCidade = false;
 		
-		for (Usuario UsuarioTemp : listaDeUsuarios) {
-			for (Carona caronaTemp : UsuarioTemp.getCaronas()) {
+		for (Usuario usuarioTemp : listaDeUsuarios) {
+			for (Carona caronaTemp : usuarioTemp.getCaronas()) {
 				if (caronaTemp.getTipoCarona().equals(TiposCarona.MUNICIPAL)) {
 					if(((CaronaMunicipal) caronaTemp).getCidade().equals(cidade)){
 						existeCidade = true;
@@ -250,6 +250,38 @@ public class Repositorio {
 		if(!existeCidade){
 			throw new CidadeInexistenteException();
 		}
+		return retorno;
+	}
+
+	public List<Usuario> localizaInteressados(Carona carona) {
+		List<Usuario> retorno = new LinkedList<Usuario>();
+		
+		for (Usuario usuarioTemp : listaDeUsuarios) {
+			for (Interesse interesseTemp : usuarioTemp.getListaDeInteresses()) {
+				if (interesseTemp.getOrigem().equals(carona.getOrigem())) {
+					if (interesseTemp.getDestino().equals(carona.getDestino())) {
+						System.out.println(interesseTemp.getDestino());
+						System.out.println(carona.getDestino());
+						if (interesseTemp.getData().equals("")) {
+							if ((Integer.parseInt(interesseTemp.getHoraInicio().substring(0, 1)) <= Integer.parseInt(carona.getHora().substring(0, 1))) && (Integer.parseInt(carona.getHora().substring(0, 1)) <= Integer.parseInt(interesseTemp.getHoraFim().substring(0, 1)))) {
+								if ((Integer.parseInt(interesseTemp.getHoraInicio().substring(3, 4)) <= Integer.parseInt(carona.getHora().substring(3, 4))) && (Integer.parseInt(carona.getHora().substring(3, 4)) <= Integer.parseInt(interesseTemp.getHoraFim().substring(3, 4)))){
+									retorno.add(usuarioTemp);
+								}
+							}
+						}else{
+							if (interesseTemp.getData().equals(carona.getData())) {
+								if ((Integer.parseInt(interesseTemp.getHoraInicio().substring(0, 1)) <= Integer.parseInt(carona.getHora().substring(0, 1))) && (Integer.parseInt(carona.getHora().substring(0, 1)) <= Integer.parseInt(interesseTemp.getHoraFim().substring(0, 1)))) {
+									if ((Integer.parseInt(interesseTemp.getHoraInicio().substring(3, 4)) <= Integer.parseInt(carona.getHora().substring(3, 4))) && (Integer.parseInt(carona.getHora().substring(3, 4)) <= Integer.parseInt(interesseTemp.getHoraFim().substring(3, 4)))){
+										retorno.add(usuarioTemp);
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		
 		return retorno;
 	}
 }

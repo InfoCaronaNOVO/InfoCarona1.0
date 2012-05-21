@@ -27,6 +27,8 @@ public class Usuario {
 	private List<Carona> listaDeCaronas;
 	private List<SolicitacaoDeVaga> listaDeSolicitacaoDeVagas;
 	private List<String> Reviews;
+	private List<Interesse> listaDeInteresses;
+	private List<String> listaDeMensagens;
 	
 	private int caronasSeguras;
 	private int caronaNaoFuncionaram;
@@ -45,6 +47,8 @@ public class Usuario {
 		setLogin(login);
 		this.listaDeCaronas = new LinkedList<Carona>();
 		this.listaDeSolicitacaoDeVagas = new LinkedList<SolicitacaoDeVaga>();
+		this.listaDeInteresses = new LinkedList<Interesse>();
+		this.listaDeMensagens = new LinkedList<String>();
 		this.Reviews = new LinkedList<String>();
 		this.caronasSeguras = 0;
 		this.caronaNaoFuncionaram = 0;
@@ -52,6 +56,10 @@ public class Usuario {
 		this.presencaEmVagas = 0;
 		
 
+	}
+
+	public List<Interesse> getListaDeInteresses() {
+		return listaDeInteresses;
 	}
 
 	public String cadastrarCarona(String origem, String destino, String data,
@@ -184,7 +192,11 @@ public class Usuario {
 	}
 
 	public String getSenha() {
-		return senha;
+		return this.senha;
+	}
+	
+	public List<String> getListaDeMensagens(){
+		return this.listaDeMensagens;
 	}
 
 	public void setSenha(String senha) throws SenhaInvalidoException {
@@ -258,7 +270,7 @@ public class Usuario {
 		Reviews.add(review + " na Carona de " + caronaTemp.toString());
 	}
 
-	public LinkedList<Carona> getSolicitacaoAceitas() {
+	public List<Carona> getSolicitacaoAceitas() {
 		LinkedList<Carona> listaCaronaAceitas = new LinkedList<Carona>(); 
 		for (SolicitacaoDeVaga solicitacao : listaDeSolicitacaoDeVagas) {
 			if(solicitacao.isSolicitacaoAceita()){
@@ -273,5 +285,22 @@ public class Usuario {
 		Carona carona = new CaronaMunicipal(origem, destino, cidade, data, hora, vagas, idCarona, this);
 		listaDeCaronas.add(carona);
 		return idCarona;
+	}
+	
+	private void addInteresseCarona(Interesse interesse){
+		listaDeInteresses.add(interesse);
+	}
+
+	public String cadastrarInteresse(String origem,
+			String destino, String data, String horaInicio, String horaFim,
+			String id) throws OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException {
+		Interesse interesseTemp = new Interesse(this, origem, destino, data, horaInicio, horaFim, id);
+		this.addInteresseCarona(interesseTemp);
+		
+		return id;
+	}
+	
+	public void addMensagen(String novaMensagem){
+		listaDeMensagens.add(novaMensagem);
 	}
 }

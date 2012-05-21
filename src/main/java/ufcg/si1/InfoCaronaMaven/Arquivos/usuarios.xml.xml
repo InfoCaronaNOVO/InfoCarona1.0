@@ -1,12 +1,68 @@
 <linked-list>
   <ufcg.si1.InfoCaronaMaven.Sistema.Usuario>
+    <listaDeCaronas class="linked-list"/>
+    <listaDeSolicitacaoDeVagas class="linked-list"/>
+    <Reviews class="linked-list"/>
+    <listaDeInteresses class="linked-list">
+      <ufcg.si1.InfoCaronaMaven.Sistema.Interesse>
+        <interessado reference="../../.."/>
+        <origem>João Pessoa</origem>
+        <data>23/06/2012</data>
+        <horaInicio>06:00</horaInicio>
+        <horaFim>16:00</horaFim>
+        <id>00107</id>
+        <horaInicioDefault>00:00</horaInicioDefault>
+        <horaFimDefault>23:59</horaFimDefault>
+        <destino>Campina Grande</destino>
+      </ufcg.si1.InfoCaronaMaven.Sistema.Interesse>
+    </listaDeInteresses>
+    <listaDeMensagens class="linked-list"/>
+    <caronasSeguras>0</caronasSeguras>
+    <caronaNaoFuncionaram>0</caronaNaoFuncionaram>
+    <faltasEmVagas>0</faltasEmVagas>
+    <presencaEmVagas>0</presencaEmVagas>
+    <nome>Jose de zito</nome>
+    <email>zezyto@gmail.com</email>
+    <endereco>Rua belarmina pereira 452, João Pessoa</endereco>
+    <senha>z3z1t0</senha>
+    <login>zezyt0</login>
+  </ufcg.si1.InfoCaronaMaven.Sistema.Usuario>
+  <ufcg.si1.InfoCaronaMaven.Sistema.Usuario>
+    <listaDeCaronas class="linked-list"/>
+    <listaDeSolicitacaoDeVagas class="linked-list"/>
+    <Reviews class="linked-list"/>
+    <listaDeInteresses class="linked-list">
+      <ufcg.si1.InfoCaronaMaven.Sistema.Interesse>
+        <interessado reference="../../.."/>
+        <origem>Campina Grande</origem>
+        <data>25/06/2012</data>
+        <horaInicio>11:00</horaInicio>
+        <horaFim>18:00</horaFim>
+        <id>00108</id>
+        <horaInicioDefault>00:00</horaInicioDefault>
+        <horaFimDefault>23:59</horaFimDefault>
+        <destino>João Pessoa</destino>
+      </ufcg.si1.InfoCaronaMaven.Sistema.Interesse>
+    </listaDeInteresses>
+    <listaDeMensagens class="linked-list"/>
+    <caronasSeguras>0</caronasSeguras>
+    <caronaNaoFuncionaram>0</caronaNaoFuncionaram>
+    <faltasEmVagas>0</faltasEmVagas>
+    <presencaEmVagas>0</presencaEmVagas>
+    <nome>Manel da Silva</nome>
+    <email>manel@yahoo.com.br</email>
+    <endereco>Rua adamastor pitaco 24, João Pessoa</endereco>
+    <senha>w4n3l1t0</senha>
+    <login>manelito</login>
+  </ufcg.si1.InfoCaronaMaven.Sistema.Usuario>
+  <ufcg.si1.InfoCaronaMaven.Sistema.Usuario>
     <listaDeCaronas class="linked-list">
       <ufcg.si1.InfoCaronaMaven.Sistema.CaronaComum>
         <origem>Campina Grande</origem>
         <destino>João Pessoa</destino>
-        <data>02/06/2012</data>
-        <hora>12:00</hora>
-        <idCarona>00095</idCarona>
+        <data>23/06/2012</data>
+        <hora>16:00</hora>
+        <idCarona>00117</idCarona>
         <vagas>3</vagas>
         <listaDeSugestoes class="linked-list"/>
         <listaDeSolicitacao class="linked-list"/>
@@ -16,12 +72,12 @@
         <tipoCarona>COMUM</tipoCarona>
       </ufcg.si1.InfoCaronaMaven.Sistema.CaronaComum>
       <ufcg.si1.InfoCaronaMaven.Sistema.CaronaComum>
-        <origem>Souza</origem>
-        <destino>João Pessoa</destino>
-        <data>08/06/2012</data>
+        <origem>João Pessoa</origem>
+        <destino>Campina Grande</destino>
+        <data>25/06/2012</data>
         <hora>14:00</hora>
-        <idCarona>00096</idCarona>
-        <vagas>2</vagas>
+        <idCarona>00118</idCarona>
+        <vagas>4</vagas>
         <listaDeSugestoes class="linked-list"/>
         <listaDeSolicitacao class="linked-list"/>
         <listaPontosDeEncontroPermitidos class="linked-list"/>
@@ -29,12 +85,29 @@
         <donoDaCarona reference="../../.."/>
         <tipoCarona>COMUM</tipoCarona>
       </ufcg.si1.InfoCaronaMaven.Sistema.CaronaComum>
+    </listaDeCaronas>
+    <listaDeSolicitacaoDeVagas class="linked-list"/>
+    <Reviews class="linked-list"/>
+    <listaDeInteresses class="linked-list"/>
+    <listaDeMensagens class="linked-list"/>
+    <caronasSeguras>0</caronasSeguras>
+    <caronaNaoFuncionaram>0</caronaNaoFuncionaram>
+    <faltasEmVagas>0</faltasEmVagas>
+    <presencaEmVagas>0</presencaEmVagas>
+    <nome>Juca Peroba</nome>
+    <email>jucaPeroba@gmail.com</email>
+    <endereco>Rua 13 de maio, Caruaru</endereco>
+    <senha>juqinha</senha>
+    <login>jucaPeroba</login>
+  </ufcg.si1.InfoCaronaMaven.Sistema.Usuario>
+  <ufcg.si1.InfoCaronaMaven.Sistema.Usuario>
+    <listaDeCaronas class="linked-list">
       <ufcg.si1.InfoCaronaMaven.Sistema.CaronaComum>
-        <origem>Campina Grande</origem>
-        <destino>Patos</destino>
+        <origem>João Pessoa</origem>
+        <destino>Campina Grande</destino>
         <data>25/06/2012</data>
-        <hora>8:00</hora>
-        <idCarona>00097</idCarona>
+        <hora>15:00</hora>
+        <idCarona>00119</idCarona>
         <vagas>1</vagas>
         <listaDeSugestoes class="linked-list"/>
         <listaDeSolicitacao class="linked-list"/>
@@ -43,90 +116,63 @@
         <donoDaCarona reference="../../.."/>
         <tipoCarona>COMUM</tipoCarona>
       </ufcg.si1.InfoCaronaMaven.Sistema.CaronaComum>
-      <ufcg.si1.InfoCaronaMaven.Sistema.CaronaMunicipal>
-        <origem>Açude Velho</origem>
-        <destino>Shopping Boulevard</destino>
-        <data>04/06/2012</data>
-        <hora>20:00</hora>
-        <idCarona>00098</idCarona>
-        <vagas>2</vagas>
-        <listaDeSugestoes class="linked-list"/>
-        <listaDeSolicitacao class="linked-list"/>
-        <listaPontosDeEncontroPermitidos class="linked-list"/>
-        <reviewsCarona/>
-        <donoDaCarona reference="../../.."/>
-        <tipoCarona>MUNICIPAL</tipoCarona>
-        <cidade>Campina Grande</cidade>
-      </ufcg.si1.InfoCaronaMaven.Sistema.CaronaMunicipal>
-      <ufcg.si1.InfoCaronaMaven.Sistema.CaronaMunicipal>
-        <origem>Praça do Cajú</origem>
-        <destino>Villa São Paulo</destino>
-        <data>04/06/2012</data>
-        <hora>22:00</hora>
-        <idCarona>00099</idCarona>
-        <vagas>2</vagas>
-        <listaDeSugestoes class="linked-list"/>
-        <listaDeSolicitacao class="linked-list"/>
-        <listaPontosDeEncontroPermitidos class="linked-list"/>
-        <reviewsCarona/>
-        <donoDaCarona reference="../../.."/>
-        <tipoCarona>MUNICIPAL</tipoCarona>
-        <cidade>João Pessoa</cidade>
-      </ufcg.si1.InfoCaronaMaven.Sistema.CaronaMunicipal>
-      <ufcg.si1.InfoCaronaMaven.Sistema.CaronaMunicipal>
-        <origem>Manaíra Shopping</origem>
-        <destino>Parque Solon de Lucena</destino>
-        <data>04/06/2012</data>
-        <hora>14:00</hora>
-        <idCarona>00100</idCarona>
-        <vagas>2</vagas>
-        <listaDeSugestoes class="linked-list"/>
-        <listaDeSolicitacao class="linked-list"/>
-        <listaPontosDeEncontroPermitidos class="linked-list"/>
-        <reviewsCarona/>
-        <donoDaCarona reference="../../.."/>
-        <tipoCarona>MUNICIPAL</tipoCarona>
-        <cidade>João Pessoa</cidade>
-      </ufcg.si1.InfoCaronaMaven.Sistema.CaronaMunicipal>
     </listaDeCaronas>
     <listaDeSolicitacaoDeVagas class="linked-list"/>
     <Reviews class="linked-list"/>
+    <listaDeInteresses class="linked-list">
+      <ufcg.si1.InfoCaronaMaven.Sistema.Interesse>
+        <interessado reference="../../.."/>
+        <origem>Campina Grande</origem>
+        <data>23/06/2012</data>
+        <horaInicio>00:00</horaInicio>
+        <horaFim>18:00</horaFim>
+        <id>00109</id>
+        <horaInicioDefault>00:00</horaInicioDefault>
+        <horaFimDefault>23:59</horaFimDefault>
+        <destino>João Pessoa</destino>
+      </ufcg.si1.InfoCaronaMaven.Sistema.Interesse>
+    </listaDeInteresses>
+    <listaDeMensagens class="linked-list">
+      <string>Carona cadastrada no dia 23/06/2012 , às 16:00 de acordo com os seus interesses registrados. Entrar em contato com jucaPeroba@gmail.com</string>
+    </listaDeMensagens>
     <caronasSeguras>0</caronasSeguras>
     <caronaNaoFuncionaram>0</caronaNaoFuncionaram>
     <faltasEmVagas>0</faltasEmVagas>
     <presencaEmVagas>0</presencaEmVagas>
-    <nome>Mark Zuckerberg</nome>
-    <email>mark@facebook.com</email>
-    <endereco>Palo Alto, California</endereco>
-    <senha>m@rk</senha>
-    <login>mark</login>
+    <nome>Mariano Silva</nome>
+    <email>marianoAdvogado@gmail.com</email>
+    <endereco>Rua 27 de maio, Campina Grande</endereco>
+    <senha>mariozinho</senha>
+    <login>mariano0ab</login>
   </ufcg.si1.InfoCaronaMaven.Sistema.Usuario>
   <ufcg.si1.InfoCaronaMaven.Sistema.Usuario>
     <listaDeCaronas class="linked-list"/>
     <listaDeSolicitacaoDeVagas class="linked-list"/>
     <Reviews class="linked-list"/>
+    <listaDeInteresses class="linked-list">
+      <ufcg.si1.InfoCaronaMaven.Sistema.Interesse>
+        <interessado reference="../../.."/>
+        <origem>Campina Grande</origem>
+        <data></data>
+        <horaInicio>00:00</horaInicio>
+        <horaFim>18:00</horaFim>
+        <id>00110</id>
+        <horaInicioDefault>00:00</horaInicioDefault>
+        <horaFimDefault>23:59</horaFimDefault>
+        <destino>João Pessoa</destino>
+      </ufcg.si1.InfoCaronaMaven.Sistema.Interesse>
+    </listaDeInteresses>
+    <listaDeMensagens class="linked-list">
+      <string>Carona cadastrada no dia 23/06/2012 , às 16:00 de acordo com os seus interesses registrados. Entrar em contato com jucaPeroba@gmail.com</string>
+    </listaDeMensagens>
     <caronasSeguras>0</caronasSeguras>
     <caronaNaoFuncionaram>0</caronaNaoFuncionaram>
     <faltasEmVagas>0</faltasEmVagas>
     <presencaEmVagas>0</presencaEmVagas>
-    <nome>William Henry Gates III</nome>
-    <email>billzin@gmail.com</email>
-    <endereco>Medina, Washington</endereco>
-    <senha>bilz@o</senha>
-    <login>bill</login>
-  </ufcg.si1.InfoCaronaMaven.Sistema.Usuario>
-  <ufcg.si1.InfoCaronaMaven.Sistema.Usuario>
-    <listaDeCaronas class="linked-list"/>
-    <listaDeSolicitacaoDeVagas class="linked-list"/>
-    <Reviews class="linked-list"/>
-    <caronasSeguras>0</caronasSeguras>
-    <caronaNaoFuncionaram>0</caronaNaoFuncionaram>
-    <faltasEmVagas>0</faltasEmVagas>
-    <presencaEmVagas>0</presencaEmVagas>
-    <nome>Anakin Skywalker</nome>
-    <email>darthvader@empire.com</email>
-    <endereco>Death Star I</endereco>
-    <senha>d4rth</senha>
-    <login>vader</login>
+    <nome>Marcio Sarvai</nome>
+    <email>marcioSarvai@gmail.com</email>
+    <endereco>Rua 21 de maio, Campina Grande</endereco>
+    <senha>Marcin</senha>
+    <login>caba</login>
   </ufcg.si1.InfoCaronaMaven.Sistema.Usuario>
 </linked-list>

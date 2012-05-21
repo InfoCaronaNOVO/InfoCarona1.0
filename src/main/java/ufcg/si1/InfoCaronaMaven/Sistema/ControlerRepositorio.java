@@ -179,5 +179,9 @@ public class ControlerRepositorio {
 			return repositorio.localizarCaronaMunicipal(cidade, origem, destino);
 		}
 	}
+
+	public List<Usuario> localizaInteressados(Carona carona) {
+		return repositorio.localizaInteressados(carona);
+	}
 		
 }

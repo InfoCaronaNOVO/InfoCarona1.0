@@ -68,7 +68,7 @@ public class Fachada {
 			String destino, String data, String hora, String vagas)
 			throws SessaoInvalidaException, SessaoInexistenteException,
 			OrigemInvalidaException, DestinoInvalidoException,
-			DataInvalidaException, HoraInvalidaException, VagaInvalidaException, NumeroMaximoException {
+			DataInvalidaException, HoraInvalidaException, VagaInvalidaException, NumeroMaximoException, CaronaInexistenteException, CaronaInvalidaException {
 		int vaga = 0;
 		try {
 			vaga = Integer.parseInt(vagas);
@@ -281,5 +281,13 @@ public class Fachada {
 			
 		}
 		return sistema.cadastrarCaronaMunicipal(idSessao, origem, destino, cidade, data, hora, vaga);
+	}
+	
+	public String cadastrarInteresse(String idSessao, String origem, String destino, String data, String horaInicio, String horaFim) throws SessaoInvalidaException, SessaoInexistenteException, NumeroMaximoException, OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException{
+		return sistema.cadastrarInteresse(idSessao, origem, destino, data, horaInicio, horaFim);
+	}
+	
+	public List<String> verificarMensagensPerfil(String idSessao) throws SessaoInvalidaException, SessaoInexistenteException{
+		return sistema.verificarMensagensPerfil(idSessao);
 	}
 }

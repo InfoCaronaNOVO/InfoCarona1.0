@@ -195,12 +195,15 @@ public class Sistema {
 			throws SessaoInvalidaException, SessaoInexistenteException,
 			OrigemInvalidaException, DestinoInvalidoException,
 			DataInvalidaException, HoraInvalidaException,
-			VagaInvalidaException, NumeroMaximoException {
+			VagaInvalidaException, NumeroMaximoException, CaronaInexistenteException, CaronaInvalidaException {
 
 		Usuario usuarioTemp = procuraUsuarioLogado(idSessao);
 		String idCarona = usuarioTemp.cadastrarCarona(origem, destino, data,
 				hora, vagas, id.gerarId());
-
+		
+		Carona caronaTemp = controleRepositorio.localizaCaronaPorId(idCarona);
+		enviaMsgAInteressadosEmCarona(caronaTemp);
+		
 		return idCarona;
 	}
 
@@ -534,4 +537,23 @@ public class Sistema {
 
 		return controleRepositorio.localizarCaronaMunicipal(cidade, origem, destino);
 	}
+
+	public String cadastrarInteresse(String idSessao, String origem, String destino, String data, String horaInicio, String horaFim) throws SessaoInvalidaException, SessaoInexistenteException, NumeroMaximoException, OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException {
+		Usuario usuarioTemp = procuraUsuarioLogado(idSessao);
+		return usuarioTemp.cadastrarInteresse(origem, destino, data, horaInicio, horaFim, id.gerarId());
+		
+	}
+	
+	public void enviaMsgAInteressadosEmCarona(Carona carona){
+		List<Usuario> listaDeInteressados = controleRepositorio.localizaInteressados(carona);
+		for (Usuario usuario : listaDeInteressados) {
+			String novaMensagem = "Carona cadastrada no dia " + carona.getData() + " , às " + carona.getHora() + " de acordo com os seus interesses registrados. Entrar em contato com " + carona.getDonoDaCarona().getEmail();
+			usuario.addMensagen(novaMensagem);
+		}
+	}
+	
+	public List<String> verificarMensagensPerfil(String idSessao) throws SessaoInvalidaException, SessaoInexistenteException{
+		return procuraUsuarioLogado(idSessao).getListaDeMensagens();
+	}
+
 }
