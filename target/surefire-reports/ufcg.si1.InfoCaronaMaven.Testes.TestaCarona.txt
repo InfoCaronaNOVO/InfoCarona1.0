@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: ufcg.si1.InfoCaronaMaven.Testes.TestaCarona
+-------------------------------------------------------------------------------
+Tests run: 21, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.204 sec
