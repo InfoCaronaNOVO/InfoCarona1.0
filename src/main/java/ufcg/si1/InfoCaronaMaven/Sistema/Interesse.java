@@ -109,7 +109,7 @@ public class Interesse {
 
 	private boolean checaData(String stringData) {
 		boolean retorno = true;
-		if (!stringData.equals("")) {//coloquei isso aki só pra passar no teste qdo passar string vazia mas temos q ajeitar pra qdo for do tipo DATA
+		if (!stringData.equals("")) {//coloquei isso aki sï¿½ pra passar no teste qdo passar string vazia mas temos q ajeitar pra qdo for do tipo DATA
 			Calendar data = Calendar.getInstance();
 			try {
 				SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");

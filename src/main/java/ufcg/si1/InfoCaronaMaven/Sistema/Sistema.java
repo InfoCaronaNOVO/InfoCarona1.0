@@ -1,6 +1,7 @@
 package ufcg.si1.InfoCaronaMaven.Sistema;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -37,6 +38,7 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SugestaoInexistenteEx
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.TrajetoInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.TrajetoInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.VagaInvalidaException;
+import util.UtilInfo;
 
 public class Sistema {
 	/**
@@ -47,10 +49,12 @@ public class Sistema {
 	private ControlerRepositorio controleRepositorio;
 	private Id id;
 	private Map<String, Usuario> usuariosLogados;
+	UtilInfo util;
 
 	public Sistema() {
 		id = new Id(5);
 		this.criaSistema();
+		util = new UtilInfo();
 	}
 
 	private void criaSistema() {
@@ -547,7 +551,7 @@ public class Sistema {
 	public void enviaMsgAInteressadosEmCarona(Carona carona){
 		List<Usuario> listaDeInteressados = controleRepositorio.localizaInteressados(carona);
 		for (Usuario usuario : listaDeInteressados) {
-			String novaMensagem = "Carona cadastrada no dia " + carona.getData() + " , às " + carona.getHora() + " de acordo com os seus interesses registrados. Entrar em contato com " + carona.getDonoDaCarona().getEmail();
+			String novaMensagem = "Carona cadastrada no dia " + carona.getData() + ", às " + carona.getHora() + " de acordo com os seus interesses registrados. Entrar em contato com " + carona.getDonoDaCarona().getEmail();
 			usuario.addMensagen(novaMensagem);
 		}
 	}

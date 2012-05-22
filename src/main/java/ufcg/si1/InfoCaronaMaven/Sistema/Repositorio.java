@@ -16,7 +16,7 @@ public class Repositorio {
 	}
 
 	private void criaRepositorio() {
-		arquivo = new ManipulaArquivoXML("src/main/java/ufcg/si1/InfoCaronaMaven/Arquivos/usuarios.xml");
+		arquivo = new ManipulaArquivoXML("src/main/java/ufcg/si1/InfoCaronaMaven/Arquivos/usuarios");
 		listaDeUsuarios = arquivo.ler();
 	}
 
@@ -260,8 +260,6 @@ public class Repositorio {
 			for (Interesse interesseTemp : usuarioTemp.getListaDeInteresses()) {
 				if (interesseTemp.getOrigem().equals(carona.getOrigem())) {
 					if (interesseTemp.getDestino().equals(carona.getDestino())) {
-						System.out.println(interesseTemp.getDestino());
-						System.out.println(carona.getDestino());
 						if (interesseTemp.getData().equals("")) {
 							if ((Integer.parseInt(interesseTemp.getHoraInicio().substring(0, 1)) <= Integer.parseInt(carona.getHora().substring(0, 1))) && (Integer.parseInt(carona.getHora().substring(0, 1)) <= Integer.parseInt(interesseTemp.getHoraFim().substring(0, 1)))) {
 								if ((Integer.parseInt(interesseTemp.getHoraInicio().substring(3, 4)) <= Integer.parseInt(carona.getHora().substring(3, 4))) && (Integer.parseInt(carona.getHora().substring(3, 4)) <= Integer.parseInt(interesseTemp.getHoraFim().substring(3, 4)))){

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="1" time="0.965" errors="0" skipped="0" tests="1" name="ufcg.si1.InfoCaronaMaven.Testes.TesteMaven">
+<testsuite failures="0" time="0.981" errors="0" skipped="0" tests="1" name="ufcg.si1.InfoCaronaMaven.Testes.TesteMaven">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.7.0_04\jre\bin"/>
@@ -20,7 +20,7 @@
     <property name="basedir" value="C:\Users\Felipe Lindemberg\git\InfoCarona1.0"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.7.0_04\jre\lib\endorsed"/>
     <property name="os.arch" value="x86"/>
-    <property name="surefire.real.class.path" value="C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\surefire\surefirebooter5297425037057129158.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\surefire\surefirebooter5681614904100661373.jar"/>
     <property name="java.io.tmpdir" value="C:\Users\FELIPE~1\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
@@ -44,7 +44,7 @@
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.7.0_04\jre"/>
-    <property name="sun.java.command" value="C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\surefire\surefirebooter5297425037057129158.jar C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\surefire\surefire6689081386911963378tmp C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\surefire\surefire8517686208453544384tmp"/>
+    <property name="sun.java.command" value="C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\surefire\surefirebooter5681614904100661373.jar C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\surefire\surefire5444708110400782174tmp C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\surefire\surefire4139020207201472379tmp"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="pt"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -61,99 +61,5 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase time="0.955" classname="ufcg.si1.InfoCaronaMaven.Testes.TesteMaven" name="testarEasyAcceptScript">
-    <failure message="null" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: null
-	at junit.framework.Assert.fail(Assert.java:47)
-	at junit.framework.Assert.assertTrue(Assert.java:20)
-	at junit.framework.Assert.assertTrue(Assert.java:27)
-	at ufcg.si1.InfoCaronaMaven.Testes.TesteMaven.testarEasyAcceptScript(TesteMaven.java:55)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at junit.framework.TestCase.runTest(TestCase.java:164)
-	at junit.framework.TestCase.runBare(TestCase.java:130)
-	at junit.framework.TestResult$1.protect(TestResult.java:110)
-	at junit.framework.TestResult.runProtected(TestResult.java:128)
-	at junit.framework.TestResult.run(TestResult.java:113)
-	at junit.framework.TestCase.run(TestCase.java:120)
-	at junit.framework.TestSuite.runTest(TestSuite.java:228)
-	at junit.framework.TestSuite.run(TestSuite.java:223)
-	at org.junit.internal.runners.OldTestClassRunner.run(OldTestClassRunner.java:35)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:35)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:146)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:97)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.apache.maven.surefire.booter.ProviderFactory$ClassLoaderProxy.invoke(ProviderFactory.java:103)
-	at $Proxy0.invoke(Unknown Source)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:145)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcess(SurefireStarter.java:87)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:69)
-</failure>
-    <system-out>@SLTests run: 23, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.032 sec
-@SLRunning ufcg.si1.InfoCaronaMaven.Testes.TesteMaven
-João Pessoa
-João Pessoa
-João Pessoa
-João Pessoa
-João Pessoa
-João Pessoa
-Campina Grande
-Campina Grande
-Campina Grande
-Campina Grande
-Test file: scripts/US01.txt | Passed Tests: 33 | Not Passed Tests: 0
-
-======================== 
-
-Test file: scripts/US02.txt | Passed Tests: 64 | Not Passed Tests: 0
-
-======================== 
-
-Test file: scripts/US03.txt | Passed Tests: 21 | Not Passed Tests: 0
-
-======================== 
-
-Test file: scripts/US04.txt | Passed Tests: 41 | Not Passed Tests: 0
-
-======================== 
-
-Test file: scripts/US05.txt | Passed Tests: 32 | Not Passed Tests: 0
-
-======================== 
-
-Test file: scripts/US06.txt | Passed Tests: 26 | Not Passed Tests: 0
-
-======================== 
-
-Test file: scripts/US07.txt | Passed Tests: 62 | Not Passed Tests: 0
-
-======================== 
-
-Test file: scripts/US08.txt | Passed Tests: 48 | Not Passed Tests: 0
-
-======================== 
-
-Test file: scripts/US09.txt | Passed Tests: 46 | Not Passed Tests: 0
-
-======================== 
-
-Test file: scripts/US10.txt | Passed Tests: 24 | Not Passed Tests: 0
-
-======================== 
-
-Test file: scripts/US11.txt | Passed Tests: 30 | Not Passed Tests: 3
-
-FAILURES:
-   At line 51: Expected &lt;[Carona cadastrada no dia 23/06/2012, às 16:00 de acordo com os seus interesses registrados. Entrar em contato com jucaPeroba@gmail.com]&gt;, but was &lt;[]&gt;
-   At line 53: Expected &lt;[Carona cadastrada no dia 23/06/2012, às 16:00 de acordo com os seus interesses registrados. Entrar em contato com jucaPeroba@gmail.com]&gt;, but was &lt;[Carona cadastrada no dia 23/06/2012 , às 16:00 de acordo com os seus interesses registrados. Entrar em contato com jucaPeroba@gmail.com]&gt;
-   At line 54: Expected &lt;[Carona cadastrada no dia 23/06/2012, às 16:00 de acordo com os seus interesses registrados. Entrar em contato com jucaPeroba@gmail.com]&gt;, but was &lt;[Carona cadastrada no dia 23/06/2012 , às 16:00 de acordo com os seus interesses registrados. Entrar em contato com jucaPeroba@gmail.com]&gt;
-======================== 
-
-
-</system-out>
-  </testcase>
+  <testcase time="0.971" classname="ufcg.si1.InfoCaronaMaven.Testes.TesteMaven" name="testarEasyAcceptScript"/>
 </testsuite>
