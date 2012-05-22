@@ -11,9 +11,7 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.OpcaoInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioNaoPossuiVagaNaCaronaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CidadeInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DestinoInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.IDCaronaInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.IDCaronaInvalidoException;
@@ -65,7 +63,7 @@ public class Fachada {
 	public String cadastrarCarona(String idSessao, String origem,
 			String destino, String data, String hora, String vagas)
 			throws SessaoInvalidaException, SessaoInexistenteException,
-			OrigemInvalidaException, DestinoInvalidoException,
+			OrigemInvalidaException, CaronaException,
 			DataInvalidaException, HoraInvalidaException, VagaInvalidaException, NumeroMaximoException, CaronaException {
 		int vaga = 0;
 		try {
@@ -78,7 +76,7 @@ public class Fachada {
 	}
 
 	public String localizarCarona(String idSessao, String origem, String destino)
-			throws OrigemInvalidaException, DestinoInvalidoException, SessaoInvalidaException, SessaoInexistenteException {
+			throws OrigemInvalidaException, CaronaException, SessaoInvalidaException, SessaoInexistenteException {
 		LinkedList<String> retorno = new LinkedList<String>();
 		List<Carona> listaCaronas = sistema.localizarCarona(origem, destino);
 		for(Carona caronaTemp : listaCaronas){
@@ -89,7 +87,7 @@ public class Fachada {
 	
 	
 	public String localizarCaronaMunicipal(String idSessao, String cidade, String origem, String destino)
-			throws OrigemInvalidaException, DestinoInvalidoException, SessaoInvalidaException, SessaoInexistenteException, CidadeInexistenteException {
+			throws OrigemInvalidaException, CaronaException, SessaoInvalidaException, SessaoInexistenteException, CaronaException {
 		LinkedList<String> retorno = new LinkedList<String>();
 		List<Carona> listaCaronas = sistema.localizarCaronaMunicipal(cidade, origem, destino);
 		for(Carona caronaTemp : listaCaronas){
@@ -98,11 +96,11 @@ public class Fachada {
 		return retorno.toString().replace("[", "{").replace("]", "}").replace(", ", ",");
 	}
 	
-	public String localizarCaronaMunicipal(String idSessao, String cidade) throws OrigemInvalidaException, DestinoInvalidoException, SessaoInvalidaException, SessaoInexistenteException, CidadeInexistenteException{
+	public String localizarCaronaMunicipal(String idSessao, String cidade) throws OrigemInvalidaException, CaronaException, SessaoInvalidaException, SessaoInexistenteException, CaronaException{
 		return localizarCaronaMunicipal(idSessao, cidade, "", "");
 	}
 	
-	public String localizarCaronaMunicipal(String idSessao, String origem, String destino) throws OrigemInvalidaException, DestinoInvalidoException, SessaoInvalidaException, SessaoInexistenteException, CidadeInexistenteException{
+	public String localizarCaronaMunicipal(String idSessao, String origem, String destino) throws OrigemInvalidaException, CaronaException, SessaoInvalidaException, SessaoInexistenteException, CaronaException{
 		return localizarCaronaMunicipal(idSessao, "", origem, destino);
 	}
 
@@ -266,7 +264,7 @@ public class Fachada {
 	
 	public String cadastrarCaronaMunicipal(String idSessao, String origem, String destino,String cidade, String data, String hora, String vagas)
 			throws SessaoInvalidaException, SessaoInexistenteException,
-			OrigemInvalidaException, DestinoInvalidoException,
+			OrigemInvalidaException, CaronaException,
 			DataInvalidaException, HoraInvalidaException, VagaInvalidaException, NumeroMaximoException {
 		int vaga = 0;
 		try {
@@ -277,7 +275,7 @@ public class Fachada {
 		return sistema.cadastrarCaronaMunicipal(idSessao, origem, destino, cidade, data, hora, vaga);
 	}
 	
-	public String cadastrarInteresse(String idSessao, String origem, String destino, String data, String horaInicio, String horaFim) throws SessaoInvalidaException, SessaoInexistenteException, NumeroMaximoException, OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException{
+	public String cadastrarInteresse(String idSessao, String origem, String destino, String data, String horaInicio, String horaFim) throws SessaoInvalidaException, SessaoInexistenteException, NumeroMaximoException, OrigemInvalidaException, CaronaException, DataInvalidaException{
 		return sistema.cadastrarInteresse(idSessao, origem, destino, data, horaInicio, horaFim);
 	}
 	

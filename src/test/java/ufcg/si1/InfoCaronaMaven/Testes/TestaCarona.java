@@ -11,13 +11,13 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NomeInvalidoException
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.SenhaInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DestinoInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.OrigemInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SessaoInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.VagaInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Sistema.Carona;
 import ufcg.si1.InfoCaronaMaven.Sistema.CaronaComum;
+import ufcg.si1.InfoCaronaMaven.Sistema.CaronaException;
 import ufcg.si1.InfoCaronaMaven.Sistema.CaronaMunicipal;
 import ufcg.si1.InfoCaronaMaven.Sistema.Id;
 import ufcg.si1.InfoCaronaMaven.Sistema.Usuario;
@@ -69,7 +69,7 @@ public class TestaCarona {
 	}
 	
 	@Before
-	public void instanciandoObjetos() throws SessaoInvalidaException, OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException, NumeroMaximoException, EmailInvalidoException, NomeInvalidoException, LoginInvalidoException, SenhaInvalidoException, EnderecoInvalidoException {
+	public void instanciandoObjetos() throws SessaoInvalidaException, OrigemInvalidaException, CaronaException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException, NumeroMaximoException, EmailInvalidoException, NomeInvalidoException, LoginInvalidoException, SenhaInvalidoException, EnderecoInvalidoException {
 		id = new Id(5);
 		Usuario jose = new Usuario("Jose", "jose@email", "rua da paz", "12345", "Jose");
 		Usuario mario = new Usuario("Mario", "mario@email", "rua da paz", "12345", "Mario");
@@ -108,14 +108,14 @@ public class TestaCarona {
 		try {
 			criaCarona4();
 			Assert.fail("Nao pode existir carona com destino vazio.");
-		} catch (DestinoInvalidoException e) {
+		} catch (CaronaException e) {
 			Assert.assertEquals("Destino inválido", e.getMessage());
 		}
 		
 		try {
 			criaCarona5();
 			Assert.fail("Nao pode existir carona com destino null.");
-		} catch (DestinoInvalidoException e) {
+		} catch (CaronaException e) {
 			Assert.assertEquals("Destino inválido", e.getMessage());
 		}
 		
@@ -302,28 +302,28 @@ public class TestaCarona {
 		try {
 			carona1.setDestino("");
 			Assert.fail("A carona nao pode ter destino vazio.");
-		} catch (DestinoInvalidoException e) {
+		} catch (CaronaException e) {
 			Assert.assertEquals("Destino inválido", e.getMessage());
 		}
 		
 		try {
 			carona2.setDestino(null);
 			Assert.fail("A carona nao pode ter destino null.");
-		} catch (DestinoInvalidoException e) {
+		} catch (CaronaException e) {
 			Assert.assertEquals("Destino inválido", e.getMessage());
 		}
 		
 		try {
 			carona3.setDestino("- 09 $ %");
 			Assert.fail("O destino da carona nao pode ter apenas caracteres especiais ou numeros.");
-		} catch (DestinoInvalidoException e) {
+		} catch (CaronaException e) {
 			Assert.assertEquals("Destino inválido", e.getMessage());
 		}
 		
 		Assert.assertEquals("Campina Grande",carona4.getDestino());
 		try {
 			carona4.setDestino("Bahia");
-		} catch (DestinoInvalidoException e) {
+		} catch (CaronaException e) {
 			Assert.assertEquals("Destino inválido", e.getMessage());
 		}
 		Assert.assertEquals("Bahia", carona4.getDestino());

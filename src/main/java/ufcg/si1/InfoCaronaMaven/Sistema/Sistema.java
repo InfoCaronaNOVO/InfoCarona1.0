@@ -1,7 +1,6 @@
 package ufcg.si1.InfoCaronaMaven.Sistema;
 
 import java.util.Collection;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,9 +19,7 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.OpcaoInvalidaExceptio
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.SenhaInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioNaoPossuiVagaNaCaronaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CidadeInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DestinoInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.IDCaronaInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.IDCaronaInvalidoException;
@@ -166,7 +163,7 @@ public class Sistema {
 	}
 
 	public List<Carona> localizarCarona(String origem, String destino)
-			throws OrigemInvalidaException, DestinoInvalidoException,
+			throws OrigemInvalidaException, CaronaException,
 			SessaoInvalidaException, SessaoInexistenteException {
 
 		if ((origem == null)
@@ -176,7 +173,7 @@ public class Sistema {
 		if ((destino == null)
 				|| (destino
 						.matches("[\\-/.\\[_\\]()!\"+,:;<=>{|}#@$%�&*0-9].*"))) {
-			throw new DestinoInvalidoException();
+			throw new CaronaException("Destino inválido");
 		}
 
 		return controleRepositorio.localizarCarona(origem, destino);
@@ -194,7 +191,7 @@ public class Sistema {
 	public String cadastrarCarona(String idSessao, String origem,
 			String destino, String data, String hora, int vagas)
 			throws SessaoInvalidaException, SessaoInexistenteException,
-			OrigemInvalidaException, DestinoInvalidoException,
+			OrigemInvalidaException, CaronaException,
 			DataInvalidaException, HoraInvalidaException,
 			VagaInvalidaException, NumeroMaximoException, CaronaException {
 
@@ -506,7 +503,7 @@ public class Sistema {
 	
 	public String cadastrarCaronaMunicipal(String idSessao, String origem, String destino, String cidade, String data, String hora, int vagas)
 			throws SessaoInvalidaException, SessaoInexistenteException,
-			OrigemInvalidaException, DestinoInvalidoException,
+			OrigemInvalidaException, CaronaException,
 			DataInvalidaException, HoraInvalidaException,
 			VagaInvalidaException, NumeroMaximoException {
 
@@ -517,10 +514,10 @@ public class Sistema {
 		return idCarona;
 	}
 
-	public List<Carona> localizarCaronaMunicipal(String cidade, String origem, String destino) throws CidadeInexistenteException, OrigemInvalidaException, DestinoInvalidoException {
+	public List<Carona> localizarCaronaMunicipal(String cidade, String origem, String destino) throws OrigemInvalidaException, CaronaException {
 		if ((cidade == null)
 				|| (cidade.matches("[\\-/.\\[_\\]()!\"+,:;<=>{|}#@$%�&*0-9].*"))) {
-			throw new CidadeInexistenteException();
+			throw new CaronaException("Cidade inexistente");
 		}
 		if ((origem == null)
 				|| (origem.matches("[\\-/.\\[_\\]()!\"+,:;<=>{|}#@$%�&*0-9].*"))) {
@@ -529,13 +526,13 @@ public class Sistema {
 		if ((destino == null)
 				|| (destino
 						.matches("[\\-/.\\[_\\]()!\"+,:;<=>{|}#@$%�&*0-9].*"))) {
-			throw new DestinoInvalidoException();
+			throw new CaronaException("Destino inválido");
 		}
 
 		return controleRepositorio.localizarCaronaMunicipal(cidade, origem, destino);
 	}
 
-	public String cadastrarInteresse(String idSessao, String origem, String destino, String data, String horaInicio, String horaFim) throws SessaoInvalidaException, SessaoInexistenteException, NumeroMaximoException, OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException {
+	public String cadastrarInteresse(String idSessao, String origem, String destino, String data, String horaInicio, String horaFim) throws SessaoInvalidaException, SessaoInexistenteException, NumeroMaximoException, OrigemInvalidaException, CaronaException, DataInvalidaException {
 		Usuario usuarioTemp = procuraUsuarioLogado(idSessao);
 		return usuarioTemp.cadastrarInteresse(origem, destino, data, horaInicio, horaFim, id.gerarId());
 		

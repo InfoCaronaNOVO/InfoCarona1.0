@@ -3,7 +3,6 @@ package ufcg.si1.InfoCaronaMaven.Sistema;
 import java.util.List;
 
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DestinoInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.OrigemInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.VagaInvalidaException;
@@ -22,7 +21,7 @@ public interface Carona {
 
 	public String getDestino();
 
-	public void setDestino(String destino) throws DestinoInvalidoException;
+	public void setDestino(String destino) throws CaronaException;
 
 	public String getData();
 

@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DestinoInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.OrigemInvalidaException;
 
 public class Interesse {
@@ -22,7 +21,7 @@ public class Interesse {
 
 	public Interesse(Usuario interessado, String origem, String destino,
 			String data, String horaInicio, String horaFim, String id)
-			throws OrigemInvalidaException, DestinoInvalidoException,
+			throws OrigemInvalidaException, CaronaException,
 			DataInvalidaException {
 		this.interessado = interessado;
 		setOrigem(origem);
@@ -88,12 +87,12 @@ public class Interesse {
 		this.origem = origem.trim();
 	}
 
-	private void setDestino(String destino) throws DestinoInvalidoException {
+	private void setDestino(String destino) throws CaronaException {
 		if ((destino == null)
 				|| (destino
 						.matches("[\\-/.\\[_\\]()!\"+,:;<=>{|}#@$%¨&*0-9].*"))
 				|| (destino.trim().equals(""))) {
-			throw new DestinoInvalidoException();
+			throw new CaronaException("Destino inválido");
 		}
 		this.destino = destino.trim();
 	}

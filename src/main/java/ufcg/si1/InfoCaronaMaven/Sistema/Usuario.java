@@ -1,6 +1,5 @@
 package ufcg.si1.InfoCaronaMaven.Sistema;
 
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -11,7 +10,6 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NomeInvalidoException
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.SenhaInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DestinoInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.OrigemInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.PontoInvalidoException;
@@ -63,7 +61,7 @@ public class Usuario {
 	public String cadastrarCarona(String origem, String destino, String data,
 			String hora, int vagas, String idCarona)
 			throws SessaoInvalidaException, SessaoInexistenteException,
-			OrigemInvalidaException, DestinoInvalidoException,
+			OrigemInvalidaException, CaronaException,
 			DataInvalidaException, HoraInvalidaException,
 			VagaInvalidaException, NumeroMaximoException {
 
@@ -290,7 +288,7 @@ public class Usuario {
 	public String cadastrarCaronaMunicipal(String origem, String destino,
 			String cidade, String data, String hora, int vagas, String idCarona)
 			throws SessaoInvalidaException, OrigemInvalidaException,
-			DestinoInvalidoException, DataInvalidaException,
+			CaronaException, DataInvalidaException,
 			HoraInvalidaException, VagaInvalidaException {
 		Carona carona = new CaronaMunicipal(origem, destino, cidade, data,
 				hora, vagas, idCarona, this);
@@ -304,7 +302,7 @@ public class Usuario {
 
 	public String cadastrarInteresse(String origem, String destino,
 			String data, String horaInicio, String horaFim, String id)
-			throws OrigemInvalidaException, DestinoInvalidoException,
+			throws OrigemInvalidaException, CaronaException,
 			DataInvalidaException {
 		Interesse interesseTemp = new Interesse(this, origem, destino, data,
 				horaInicio, horaFim, id);

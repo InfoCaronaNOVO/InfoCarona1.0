@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CidadeInexistenteException;
 
 public class Repositorio {
 	private List<Usuario> listaDeUsuarios;
@@ -207,7 +206,7 @@ public class Repositorio {
 		this.salvarXML();
 	}
 
-	public List<Carona> localizarCaronaMunicipal(String cidade) throws CidadeInexistenteException {
+	public List<Carona> localizarCaronaMunicipal(String cidade) throws CaronaException {
 		List<Carona> retorno = new LinkedList<Carona>();
 		boolean existeCidade = false;
 		
@@ -223,12 +222,12 @@ public class Repositorio {
 			}
 		}
 		if(!existeCidade){
-			throw new CidadeInexistenteException();
+			throw new CaronaException("Cidade inexistente");
 		}
 		return retorno;
 	}
 	
-	public List<Carona> localizarCaronaMunicipal(String cidade, String origem, String destino) throws CidadeInexistenteException {
+	public List<Carona> localizarCaronaMunicipal(String cidade, String origem, String destino) throws CaronaException {
 		List<Carona> retorno = new LinkedList<Carona>();
 		boolean existeCidade = false;
 		
@@ -247,7 +246,7 @@ public class Repositorio {
 			}
 		}
 		if(!existeCidade){
-			throw new CidadeInexistenteException();
+			throw new CaronaException("Cidade inexistente");
 		}
 		return retorno;
 	}

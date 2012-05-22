@@ -5,7 +5,6 @@ import java.util.List;
 
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.LoginInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioInexistenteException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CidadeInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.ItemInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.TrajetoInexistenteException;
 
@@ -170,7 +169,7 @@ public class ControlerRepositorio {
 		repositorio.encerrarSistema();
 	}
 
-	public List<Carona> localizarCaronaMunicipal(String cidade, String origem, String destino) throws CidadeInexistenteException {
+	public List<Carona> localizarCaronaMunicipal(String cidade, String origem, String destino) throws CaronaException {
 		if(destino.equals("") && origem.equals("")){
 			return repositorio.localizarCaronaMunicipal(cidade);
 		}else{
