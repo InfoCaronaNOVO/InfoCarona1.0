@@ -11,9 +11,6 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.OpcaoInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioNaoPossuiVagaNaCaronaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaCheiaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInexistenteException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CidadeInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DestinoInvalidoException;
@@ -69,7 +66,7 @@ public class Fachada {
 			String destino, String data, String hora, String vagas)
 			throws SessaoInvalidaException, SessaoInexistenteException,
 			OrigemInvalidaException, DestinoInvalidoException,
-			DataInvalidaException, HoraInvalidaException, VagaInvalidaException, NumeroMaximoException, CaronaInexistenteException, CaronaInvalidaException {
+			DataInvalidaException, HoraInvalidaException, VagaInvalidaException, NumeroMaximoException, CaronaException {
 		int vaga = 0;
 		try {
 			vaga = Integer.parseInt(vagas);
@@ -111,7 +108,7 @@ public class Fachada {
 
 	public String getAtributoCarona(String idCarona, String atributo)
 			throws ItemInexistenteException, IDCaronaInexistenteException,
-			AtributoInvalidoException, AtributoInexistenteException, SessaoInvalidaException, SessaoInexistenteException, CaronaInexistenteException, CaronaInvalidaException, IDCaronaInvalidoException {
+			AtributoInvalidoException, AtributoInexistenteException, SessaoInvalidaException, SessaoInexistenteException, CaronaException, IDCaronaInvalidoException {
 		String retorno = null;
 		if(ehVazioOuNull(idCarona)){
 			throw new IDCaronaInvalidoException();
@@ -128,7 +125,7 @@ public class Fachada {
 	}
 
 	public String getTrajeto(String idCarona)
-			throws TrajetoInexistenteException, TrajetoInvalidoException, SessaoInvalidaException, SessaoInexistenteException, CaronaInexistenteException, CaronaInvalidaException {
+			throws TrajetoInexistenteException, TrajetoInvalidoException, SessaoInvalidaException, SessaoInexistenteException, CaronaException {
 		if(idCarona == null){
 			throw new TrajetoInvalidoException();
 		}
@@ -138,18 +135,17 @@ public class Fachada {
 		return sistema.getTrajeto(idCarona);
 	}
 
-	public String getCarona(String idCarona) throws CaronaInexistenteException,
-			CaronaInvalidaException, SessaoInvalidaException, SessaoInexistenteException {
+	public String getCarona(String idCarona) throws CaronaException, SessaoInvalidaException, SessaoInexistenteException {
 		if(idCarona == null){
-			throw new CaronaInvalidaException();
+			throw new CaronaException("Carona Inválida");
 		}
 		if(idCarona.equals("")){
-			throw new CaronaInexistenteException();
+			throw new CaronaException("Carona Inexistente");
 		}
 		
 		Carona retorno = sistema.getCarona(idCarona);
 		if(retorno == null){
-			throw new CaronaInexistenteException();
+			throw new CaronaException("Carona Inexistente");
 		}
 		return retorno.toString();
 	}
@@ -159,14 +155,13 @@ public class Fachada {
 	}
 
 	public String sugerirPontoEncontro(String idSessao, String idCarona,
-			String pontos) throws CaronaInexistenteException,
-			CaronaInvalidaException, PontoInvalidoException, SessaoInvalidaException, SessaoInexistenteException, IDCaronaInvalidoException, ItemInexistenteException, NumeroMaximoException {
+			String pontos) throws CaronaException, PontoInvalidoException, SessaoInvalidaException, SessaoInexistenteException, IDCaronaInvalidoException, ItemInexistenteException, NumeroMaximoException {
 		return sistema.sugerirPontoEncontro(idSessao, idCarona, pontos);
 	}
 
 	public void responderSugestaoPontoEncontro(String idSessao,
 			String idCarona, String idSugestao, String pontos)
-			throws CaronaInexistenteException, CaronaInvalidaException,
+			throws CaronaException,
 			SugestaoInexistenteException, SessaoInvalidaException, SessaoInexistenteException, IDCaronaInvalidoException, ItemInexistenteException, PontoInvalidoException {
 		if(pontos.equals("")){
 			throw new PontoInvalidoException();
@@ -176,20 +171,19 @@ public class Fachada {
 	}
 
 	public String solicitarVagaPontoEncontro(String idSessao, String idCarona,
-			String ponto) throws CaronaInexistenteException,
-			CaronaInvalidaException, SessaoInvalidaException, SessaoInexistenteException, IDCaronaInvalidoException, ItemInexistenteException, NumeroMaximoException, CaronaCheiaException {
+			String ponto) throws CaronaException, SessaoInvalidaException, SessaoInexistenteException, IDCaronaInvalidoException, ItemInexistenteException, NumeroMaximoException  {
 		return sistema.solicitarVagaPontoEncontro(idSessao, idCarona, ponto);
 	}
 
 	public String solicitarVaga(String idSessao, String idCarona)
-			throws CaronaInexistenteException, CaronaInvalidaException, SessaoInvalidaException, SessaoInexistenteException, IDCaronaInvalidoException, ItemInexistenteException, NumeroMaximoException, CaronaCheiaException {
+			throws CaronaException, SessaoInvalidaException, SessaoInexistenteException, IDCaronaInvalidoException, ItemInexistenteException, NumeroMaximoException  {
 		return sistema.solicitarVagaPontoEncontro(idSessao, idCarona, "Default");
 	}
 
 	public String getAtributoSolicitacao(String idSolicitacao, String atributo) {
 		return sistema.getAtributoSolicitacao(idSolicitacao, atributo);
 	}
-	public void reviewVagaEmCarona (String idSessao, String idCarona, String loginCaroneiro, String review) throws SessaoInvalidaException, SessaoInexistenteException, CaronaInexistenteException, CaronaInvalidaException, LoginInvalidoException, UsuarioInexistenteException, OpcaoInvalidaException, UsuarioNaoPossuiVagaNaCaronaException{
+	public void reviewVagaEmCarona (String idSessao, String idCarona, String loginCaroneiro, String review) throws SessaoInvalidaException, SessaoInexistenteException, CaronaException, LoginInvalidoException, UsuarioInexistenteException, OpcaoInvalidaException, UsuarioNaoPossuiVagaNaCaronaException{
 		sistema.reviewVagaEmCarona(idSessao, idCarona, loginCaroneiro, review);
 	}
 	public void aceitarSolicitacaoPontoEncontro(String idSessao,
@@ -198,8 +192,7 @@ public class Fachada {
 	}
 
 	public void desistirRequisicao(String idSessao, String idCarona,
-			String idSugestao) throws CaronaInexistenteException,
-			CaronaInvalidaException, SessaoInvalidaException, SessaoInexistenteException, IDCaronaInvalidoException, ItemInexistenteException {
+			String idSugestao) throws CaronaException, SessaoInvalidaException, SessaoInexistenteException, IDCaronaInvalidoException, ItemInexistenteException {
 		sistema.desistirRequisicao(idSessao, idCarona, idSugestao);
 
 	}
@@ -243,7 +236,7 @@ public class Fachada {
 		return retorno.toString().replace("[", "{").replace("]", "}").replace(", ", ",");
 	}
 	
-	public String getSolicitacoesConfirmadas(String idSessao, String idCarona) throws SessaoInvalidaException, SessaoInexistenteException, CaronaInexistenteException, CaronaInvalidaException{
+	public String getSolicitacoesConfirmadas(String idSessao, String idCarona) throws SessaoInvalidaException, SessaoInexistenteException, CaronaException{
 		List<String> retorno = new LinkedList<String>(); 
 		List<SolicitacaoDeVaga> todasSolicitacoes = sistema.getSolicitacoesConfirmadas(idCarona);
 		for (SolicitacaoDeVaga solicitacao : todasSolicitacoes) {
@@ -253,21 +246,21 @@ public class Fachada {
 		
 	}
 	
-	public String getSolicitacoesPendentes(String idSessao, String idCarona) throws CaronaInexistenteException, CaronaInvalidaException{
+	public String getSolicitacoesPendentes(String idSessao, String idCarona) throws CaronaException{
 		return sistema.getSolicitacoesPendentes(idCarona).toString().replace("[", "{").replace("]", "}").replace(", ", ",");
 	}                  
 	
-	public String getPontosEncontro(String idSessao, String idCarona) throws CaronaInexistenteException, CaronaInvalidaException{
+	public String getPontosEncontro(String idSessao, String idCarona) throws CaronaException{
 		return sistema.getPontosEncontro(idCarona).toString().replace(", ", ";");
 	}
 	
-	public String getPontosSugeridos(String idSessao, String idCarona) throws CaronaInexistenteException, CaronaInvalidaException{
+	public String getPontosSugeridos(String idSessao, String idCarona) throws CaronaException{
 		return sistema.getPontosSugeridos(idCarona).toString().replace(", ", ";");
 	}
 	
 	//metodos do user 9 pra frente
 	
-	public void reviewCarona (String idSessao, String idCarona, String review) throws SessaoInvalidaException, SessaoInexistenteException, CaronaInexistenteException, CaronaInvalidaException, LoginInvalidoException, UsuarioInexistenteException, OpcaoInvalidaException, UsuarioNaoPossuiVagaNaCaronaException{
+	public void reviewCarona (String idSessao, String idCarona, String review) throws SessaoInvalidaException, SessaoInexistenteException, CaronaException, LoginInvalidoException, UsuarioInexistenteException, OpcaoInvalidaException, UsuarioNaoPossuiVagaNaCaronaException{
 		sistema.reviewCarona(idSessao, idCarona, review);
 	}
 	

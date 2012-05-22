@@ -20,9 +20,6 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.OpcaoInvalidaExceptio
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.SenhaInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioNaoPossuiVagaNaCaronaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaCheiaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInexistenteException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CidadeInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DestinoInvalidoException;
@@ -189,8 +186,7 @@ public class Sistema {
 			throws ItemInexistenteException, IDCaronaInexistenteException,
 			AtributoInvalidoException, AtributoInexistenteException,
 			SessaoInvalidaException, SessaoInexistenteException,
-			CaronaInexistenteException, CaronaInvalidaException,
-			IDCaronaInvalidoException {
+			CaronaException, IDCaronaInvalidoException {
 
 		return controleRepositorio.getAtributoCarona(idCarona, atributo);
 	}
@@ -200,7 +196,7 @@ public class Sistema {
 			throws SessaoInvalidaException, SessaoInexistenteException,
 			OrigemInvalidaException, DestinoInvalidoException,
 			DataInvalidaException, HoraInvalidaException,
-			VagaInvalidaException, NumeroMaximoException, CaronaInexistenteException, CaronaInvalidaException {
+			VagaInvalidaException, NumeroMaximoException, CaronaException {
 
 		Usuario usuarioTemp = procuraUsuarioLogado(idSessao);
 		String idCarona = usuarioTemp.cadastrarCarona(origem, destino, data,
@@ -212,11 +208,11 @@ public class Sistema {
 		return idCarona;
 	}
 
-	public Carona getCarona(String idCarona) throws CaronaInexistenteException,
-			CaronaInvalidaException, SessaoInvalidaException,
+	public Carona getCarona(String idCarona) throws CaronaException,
+			 SessaoInvalidaException,
 			SessaoInexistenteException {
 		if (ehVazioOuNull(idCarona)) {
-			throw new CaronaInvalidaException();
+			throw new CaronaException("Carona Inválida");
 		}
 		return controleRepositorio.localizaCaronaPorId(idCarona);
 	}
@@ -224,14 +220,13 @@ public class Sistema {
 	public String getTrajeto(String idCarona)
 			throws TrajetoInexistenteException, TrajetoInvalidoException,
 			SessaoInvalidaException, SessaoInexistenteException,
-			CaronaInexistenteException, CaronaInvalidaException {
+			CaronaException {
 
 		return controleRepositorio.getTrajeto(idCarona);
 	}
 
 	public String sugerirPontoEncontro(String idSessao, String idCarona,
-			String pontos) throws CaronaInexistenteException,
-			CaronaInvalidaException, PontoInvalidoException,
+			String pontos) throws CaronaException, PontoInvalidoException,
 			SessaoInvalidaException, SessaoInexistenteException,
 			IDCaronaInvalidoException, ItemInexistenteException,
 			NumeroMaximoException {
@@ -251,7 +246,7 @@ public class Sistema {
 
 	public void responderSugestaoPontoEncontro(String idSessao,
 			String idCarona, String idSugestao, String pontos)
-			throws CaronaInexistenteException, CaronaInvalidaException,
+			throws CaronaException,
 			SugestaoInexistenteException, SessaoInvalidaException,
 			SessaoInexistenteException, IDCaronaInvalidoException,
 			ItemInexistenteException, PontoInvalidoException {
@@ -307,11 +302,9 @@ public class Sistema {
 	}
 
 	public String solicitarVagaPontoEncontro(String idSessao, String idCarona,
-			String ponto) throws CaronaInexistenteException,
-
-	CaronaInvalidaException, SessaoInvalidaException,
+			String ponto) throws CaronaException, SessaoInvalidaException,
 			SessaoInexistenteException, IDCaronaInvalidoException,
-			ItemInexistenteException, NumeroMaximoException, CaronaCheiaException {
+			ItemInexistenteException, NumeroMaximoException {
 
 		Usuario usuarioTemp = procuraUsuarioLogado(idSessao);
 		Carona carona = controleRepositorio.localizaCaronaPorId(idCarona);
@@ -352,8 +345,7 @@ public class Sistema {
 	}
 
 	public void desistirRequisicao(String idSessao, String idCarona,
-			String idSolicitacao) throws CaronaInexistenteException,
-			CaronaInvalidaException, SessaoInvalidaException,
+			String idSolicitacao) throws CaronaException, SessaoInvalidaException,
 			SessaoInexistenteException, IDCaronaInvalidoException,
 			ItemInexistenteException {
 
@@ -364,7 +356,7 @@ public class Sistema {
 
 	}
 
-	public void reviewVagaEmCarona(String idSessao, String idCarona, String loginCaroneiro, String review) throws SessaoInvalidaException, SessaoInexistenteException, CaronaInexistenteException, CaronaInvalidaException, LoginInvalidoException, UsuarioInexistenteException, OpcaoInvalidaException, UsuarioNaoPossuiVagaNaCaronaException {
+	public void reviewVagaEmCarona(String idSessao, String idCarona, String loginCaroneiro, String review) throws SessaoInvalidaException, SessaoInexistenteException, CaronaException, LoginInvalidoException, UsuarioInexistenteException, OpcaoInvalidaException, UsuarioNaoPossuiVagaNaCaronaException {
 		
 		boolean achou = false;
 		Usuario usuarioTemp2 = controleRepositorio.buscarUsuarioPorLogin(loginCaroneiro);
@@ -446,18 +438,18 @@ public class Sistema {
 		return usuarioTemp.getCaronas();
 	}
 
-	public List<SolicitacaoDeVaga> getSolicitacoesConfirmadas(String idCarona) throws SessaoInvalidaException, SessaoInexistenteException,CaronaInexistenteException, CaronaInvalidaException {
+	public List<SolicitacaoDeVaga> getSolicitacoesConfirmadas(String idCarona) throws SessaoInvalidaException, SessaoInexistenteException,CaronaException {
 		return controleRepositorio.localizaCaronaPorId(idCarona).getSolicitacoesConfirmadas();
 	}
 
 	public List<SolicitacaoDeVaga> getSolicitacoesPendentes(String idCarona)
-			throws CaronaInexistenteException, CaronaInvalidaException {
+			throws CaronaException {
 		return controleRepositorio.localizaCaronaPorId(idCarona)
 				.getSolicitacoesPendentes();
 	}
 
 	public List<String> getPontosEncontro(String idCarona)
-			throws CaronaInexistenteException, CaronaInvalidaException {
+			throws CaronaException {
 		List<String> retorno = new LinkedList<String>();
         List<SugestaoDePontoDeEncontro> sugestoes = controleRepositorio.localizaCaronaPorId(idCarona)
                 .getListaDeSugestoes();
@@ -487,7 +479,7 @@ public class Sistema {
 		return false;
 	}
 
-	public LinkedList<String> getPontosSugeridos(String idCarona) throws CaronaInexistenteException, CaronaInvalidaException {
+	public LinkedList<String> getPontosSugeridos(String idCarona) throws CaronaException {
 		LinkedList<String> retorno = new LinkedList<String>();
 		Carona caronaTemp = controleRepositorio.localizaCaronaPorId(idCarona);
 		List<SugestaoDePontoDeEncontro> listaSugestoes = caronaTemp.getListaDeSugestoes();
@@ -499,7 +491,7 @@ public class Sistema {
 		return retorno;
 	}
 	
-	public void reviewCarona(String idSessao, String idCarona, String review) throws SessaoInvalidaException, SessaoInexistenteException, CaronaInexistenteException, CaronaInvalidaException, OpcaoInvalidaException, UsuarioNaoPossuiVagaNaCaronaException {
+	public void reviewCarona(String idSessao, String idCarona, String review) throws SessaoInvalidaException, SessaoInexistenteException, CaronaException, OpcaoInvalidaException, UsuarioNaoPossuiVagaNaCaronaException {
 		Usuario usuarioTemp = procuraUsuarioLogado(idSessao);
 		Carona caronaTemp = controleRepositorio.localizaCaronaPorId(idCarona);
 		if( !((review.equals("segura e tranquila")) || (review.equals("não funcionou")))){

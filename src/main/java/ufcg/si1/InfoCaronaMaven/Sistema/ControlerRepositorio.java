@@ -5,8 +5,6 @@ import java.util.List;
 
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.LoginInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioInexistenteException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInexistenteException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CidadeInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.ItemInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.TrajetoInexistenteException;
@@ -116,11 +114,11 @@ public class ControlerRepositorio {
         return retorno;
 	}
 	
-	public Carona localizaCaronaPorId(String idCarona) throws CaronaInexistenteException, CaronaInvalidaException {
+	public Carona localizaCaronaPorId(String idCarona) throws CaronaException {
 		return repositorio.getCaronaId(idCarona);
 	}
 
-	public String getTrajeto(String idCarona) throws CaronaInexistenteException, CaronaInvalidaException, TrajetoInexistenteException {
+	public String getTrajeto(String idCarona) throws CaronaException, TrajetoInexistenteException {
 		
 		Carona caronaTemp = repositorio.getCaronaId(idCarona);
 		if(caronaTemp == null){
@@ -129,7 +127,7 @@ public class ControlerRepositorio {
 		return caronaTemp.getOrigem() + " - " + caronaTemp.getDestino();
 	}
 	
-	public SugestaoDePontoDeEncontro getSugestaoId(String idSugestao, String idCarona) throws CaronaInexistenteException, CaronaInvalidaException{
+	public SugestaoDePontoDeEncontro getSugestaoId(String idSugestao, String idCarona) throws CaronaException{
 		return repositorio.getSugestaoId(idSugestao, idCarona);
 	}
 	

@@ -3,8 +3,7 @@ package ufcg.si1.InfoCaronaMaven.Sistema;
 import java.util.LinkedList;
 import java.util.List;
 
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInexistenteException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInvalidaException;
+
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CidadeInexistenteException;
 
 public class Repositorio {
@@ -80,7 +79,7 @@ public class Repositorio {
 	}
 
 	public Carona getCaronaId(String idCarona)
-			throws CaronaInexistenteException, CaronaInvalidaException {
+			throws CaronaException {
 		for (Usuario usuario : listaDeUsuarios) {
 			for(Carona caronaTemp : usuario.getCaronas()){
 				if(caronaTemp.getIdCarona().equals(idCarona)){
@@ -91,7 +90,7 @@ public class Repositorio {
 		return null;
 	}
 	
-	public SugestaoDePontoDeEncontro getSugestaoId(String idSugestao, String idCarona) throws CaronaInexistenteException, CaronaInvalidaException{
+	public SugestaoDePontoDeEncontro getSugestaoId(String idSugestao, String idCarona) throws CaronaException{
 		Carona caronaTemp = this.getCaronaId(idCarona);
 		for (SugestaoDePontoDeEncontro sugestaoTemp : caronaTemp.getListaDeSugestoes()) {
 			if(sugestaoTemp.getIdSugestao().equals(idSugestao)){

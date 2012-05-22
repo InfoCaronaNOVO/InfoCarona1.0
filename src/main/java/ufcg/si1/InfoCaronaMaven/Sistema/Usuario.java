@@ -10,9 +10,6 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.LoginInvalidoExceptio
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NomeInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.SenhaInvalidoException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaCheiaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInexistenteException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DestinoInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException;
@@ -82,7 +79,7 @@ public class Usuario {
 
 	public String sugerirPontoEncontro(String pontos, Carona carona,
 			String idSugestao, Usuario usuarioQueSugeriu)
-			throws CaronaInexistenteException, CaronaInvalidaException,
+			throws CaronaException,
 			PontoInvalidoException, NumeroMaximoException {
 		SugestaoDePontoDeEncontro sugestao = new SugestaoDePontoDeEncontro(
 				idSugestao, usuarioQueSugeriu);
@@ -108,7 +105,7 @@ public class Usuario {
 
 	public void responderSugestaoPontoEncontro(
 			SugestaoDePontoDeEncontro sugestao, String pontos, Carona carona)
-			throws CaronaInexistenteException, CaronaInvalidaException,
+			throws CaronaException,
 			SugestaoInexistenteException, PontoInvalidoException {
 		String[] locais = pontos.split(";");
 		for (String local : locais) {
@@ -123,15 +120,15 @@ public class Usuario {
 
 	public String solicitarVagaPontoEncontro(String ponto, Carona carona,
 			String IdSolicitacao, Usuario donoSolcitacao)
-			throws CaronaInexistenteException, CaronaInvalidaException,
-			NumeroMaximoException, CaronaCheiaException {
+			throws CaronaException,
+			NumeroMaximoException {
 		if (carona.getVagas() > 0) {
 			SolicitacaoDeVaga novaSolicitacao = new SolicitacaoDeVaga(carona,
 					ponto, IdSolicitacao, donoSolcitacao);
 			listaDeSolicitacaoDeVagas.add(novaSolicitacao);
 			carona.addNovaSolicitacao(novaSolicitacao);
 		}else{
-			throw new CaronaCheiaException();
+			throw new CaronaException("Carona ja está completa.");
 		}
 		return IdSolicitacao;
 	}
