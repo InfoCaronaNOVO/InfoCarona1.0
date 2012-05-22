@@ -10,6 +10,7 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.LoginInvalidoExceptio
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NomeInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.SenhaInvalidoException;
+import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaCheiaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
@@ -30,7 +31,7 @@ public class Usuario {
 	private List<String> Reviews;
 	private List<Interesse> listaDeInteresses;
 	private List<String> listaDeMensagens;
-	
+
 	private int caronasSeguras;
 	private int caronaNaoFuncionaram;
 	private int faltasEmVagas;
@@ -55,7 +56,6 @@ public class Usuario {
 		this.caronaNaoFuncionaram = 0;
 		this.faltasEmVagas = 0;
 		this.presencaEmVagas = 0;
-		
 
 	}
 
@@ -90,12 +90,12 @@ public class Usuario {
 		String[] locais = pontos.split(";");// sugestao de locais(ponto) de
 											// encontro
 		for (String local : locais) {
-			if(!carona.getListaPontosDeEncontroPermitidos().contains(local)){
+			if (!carona.getListaPontosDeEncontroPermitidos().contains(local)) {
 				sugestao.getListaDeSugestaoDePontosDeEncontro().add(local);
-			}else{
+			} else {
 				throw new PontoInvalidoException();
 			}
-			
+
 		}
 
 		carona.getListaDeSugestoes().add(sugestao);
@@ -106,23 +106,33 @@ public class Usuario {
 		return listaDeSolicitacaoDeVagas;
 	}
 
-	public void responderSugestaoPontoEncontro(SugestaoDePontoDeEncontro sugestao, String pontos, Carona carona) throws CaronaInexistenteException,
-			CaronaInvalidaException, SugestaoInexistenteException, PontoInvalidoException {
+	public void responderSugestaoPontoEncontro(
+			SugestaoDePontoDeEncontro sugestao, String pontos, Carona carona)
+			throws CaronaInexistenteException, CaronaInvalidaException,
+			SugestaoInexistenteException, PontoInvalidoException {
 		String[] locais = pontos.split(";");
 		for (String local : locais) {
-			if(!carona.getListaPontosDeEncontroPermitidos().contains(local)){
+			if (!carona.getListaPontosDeEncontroPermitidos().contains(local)) {
 				sugestao.getlistaDeRespostasDePontosDeEncontro().add(local);
 				carona.addPontoEncontroPermitido(local);
-			}else{
+			} else {
 				throw new PontoInvalidoException();
 			}
 		}
 	}
 
-	public String solicitarVagaPontoEncontro(String ponto, Carona carona, String IdSolicitacao, Usuario donoSolcitacao) throws CaronaInexistenteException, CaronaInvalidaException, NumeroMaximoException {
-		SolicitacaoDeVaga novaSolicitacao = new SolicitacaoDeVaga(carona,  ponto, IdSolicitacao, donoSolcitacao);
-		listaDeSolicitacaoDeVagas.add(novaSolicitacao);
-		carona.addNovaSolicitacao(novaSolicitacao);
+	public String solicitarVagaPontoEncontro(String ponto, Carona carona,
+			String IdSolicitacao, Usuario donoSolcitacao)
+			throws CaronaInexistenteException, CaronaInvalidaException,
+			NumeroMaximoException, CaronaCheiaException {
+		if (carona.getVagas() > 0) {
+			SolicitacaoDeVaga novaSolicitacao = new SolicitacaoDeVaga(carona,
+					ponto, IdSolicitacao, donoSolcitacao);
+			listaDeSolicitacaoDeVagas.add(novaSolicitacao);
+			carona.addNovaSolicitacao(novaSolicitacao);
+		}else{
+			throw new CaronaCheiaException();
+		}
 		return IdSolicitacao;
 	}
 
@@ -134,7 +144,8 @@ public class Usuario {
 		solicitacao.solicitacaoAceita();
 	}
 
-	public void desistirRequisicao(SolicitacaoDeVaga solicitacao ,Carona caronaTemp) {
+	public void desistirRequisicao(SolicitacaoDeVaga solicitacao,
+			Carona caronaTemp) {
 		listaDeSolicitacaoDeVagas.remove(solicitacao);
 		caronaTemp.removeSolicitacao(solicitacao);
 	}
@@ -178,7 +189,7 @@ public class Usuario {
 	}
 
 	public void setEmail(String email) throws EmailInvalidoException {
-		if ((email == null || email.trim().equals("")  || email.contains(" "))) {
+		if ((email == null || email.trim().equals("") || email.contains(" "))) {
 			throw new EmailInvalidoException();
 		}
 		this.email = email.trim();
@@ -195,8 +206,8 @@ public class Usuario {
 	public String getSenha() {
 		return this.senha;
 	}
-	
-	public List<String> getListaDeMensagens(){
+
+	public List<String> getListaDeMensagens() {
 		return this.listaDeMensagens;
 	}
 
@@ -245,63 +256,72 @@ public class Usuario {
 	public String visualizarPerfil(Usuario usuarioProcurado) {
 		return usuarioProcurado.toString();
 	}
-	
-	
+
 	@Override
 	public boolean equals(Object obj) {
-		
+
 		if (!(obj instanceof Usuario)) {
 			return false;
 		}
-		
-		if (!(((Usuario) obj).getLogin().equals(this.login))){
+
+		if (!(((Usuario) obj).getLogin().equals(this.login))) {
 			return false;
 		}
-		
+
 		return true;
 	}
 
 	public void adicionaReview(Carona caronaTemp, String review) {
-		if(review.equals("não faltou")){
+		if (review.equals("não faltou")) {
 			this.setPresencaEmVagas();
-		}
-		else{
+		} else {
 			this.setFaltasEmVagas();
 		}
 		Reviews.add(review + " na Carona de " + caronaTemp.toString());
 	}
 
 	public List<Carona> getSolicitacaoAceitas() {
-		LinkedList<Carona> listaCaronaAceitas = new LinkedList<Carona>(); 
+		LinkedList<Carona> listaCaronaAceitas = new LinkedList<Carona>();
 		for (SolicitacaoDeVaga solicitacao : listaDeSolicitacaoDeVagas) {
-			if(solicitacao.isSolicitacaoAceita()){
+			if (solicitacao.isSolicitacaoAceita()) {
 				listaCaronaAceitas.add(solicitacao.getCarona());
 			}
 		}
 		return listaCaronaAceitas;
 	}
-	
+
 	public String cadastrarCaronaMunicipal(String origem, String destino,
-			String cidade, String data, String hora, int vagas, String idCarona) throws SessaoInvalidaException, OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException {
-		Carona carona = new CaronaMunicipal(origem, destino, cidade, data, hora, vagas, idCarona, this);
+			String cidade, String data, String hora, int vagas, String idCarona)
+			throws SessaoInvalidaException, OrigemInvalidaException,
+			DestinoInvalidoException, DataInvalidaException,
+			HoraInvalidaException, VagaInvalidaException {
+		Carona carona = new CaronaMunicipal(origem, destino, cidade, data,
+				hora, vagas, idCarona, this);
 		listaDeCaronas.add(carona);
 		return idCarona;
 	}
-	
-	private void addInteresseCarona(Interesse interesse){
+
+	private void addInteresseCarona(Interesse interesse) {
 		listaDeInteresses.add(interesse);
 	}
 
-	public String cadastrarInteresse(String origem,
-			String destino, String data, String horaInicio, String horaFim,
-			String id) throws OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException {
-		Interesse interesseTemp = new Interesse(this, origem, destino, data, horaInicio, horaFim, id);
+	public String cadastrarInteresse(String origem, String destino,
+			String data, String horaInicio, String horaFim, String id)
+			throws OrigemInvalidaException, DestinoInvalidoException,
+			DataInvalidaException {
+		Interesse interesseTemp = new Interesse(this, origem, destino, data,
+				horaInicio, horaFim, id);
 		this.addInteresseCarona(interesseTemp);
-		
+
 		return id;
 	}
-	
-	public void addMensagen(String novaMensagem){
+
+	public void addMensagen(String novaMensagem) {
 		listaDeMensagens.add(novaMensagem);
+	}
+
+	public boolean enviarEmail(String destino, String message) {
+		// TODO usar a biblioteca
+		return true;
 	}
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.195" errors="0" skipped="0" tests="21" name="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona">
+<testsuite failures="0" time="0.218" errors="0" skipped="0" tests="21" name="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.7.0_04\jre\bin"/>
@@ -20,7 +20,7 @@
     <property name="basedir" value="C:\Users\Felipe Lindemberg\git\InfoCarona1.0"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.7.0_04\jre\lib\endorsed"/>
     <property name="os.arch" value="x86"/>
-    <property name="surefire.real.class.path" value="C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\surefire\surefirebooter492759505176602940.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\surefire\surefirebooter8261309445722002700.jar"/>
     <property name="java.io.tmpdir" value="C:\Users\FELIPE~1\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
@@ -44,7 +44,7 @@
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.7.0_04\jre"/>
-    <property name="sun.java.command" value="C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\surefire\surefirebooter492759505176602940.jar C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\surefire\surefire6985880404168162439tmp C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\surefire\surefire6021436556191267310tmp"/>
+    <property name="sun.java.command" value="C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\surefire\surefirebooter8261309445722002700.jar C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\surefire\surefire7548969778410787632tmp C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\surefire\surefire2258386150665599300tmp"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="pt"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -61,25 +61,25 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase time="0.047" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetSolicitacoesConfirmadas"/>
-  <testcase time="0.006" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetSolicitacoesPendentes"/>
-  <testcase time="0.011" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetAtributo"/>
-  <testcase time="0.006" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetDadosCarona"/>
-  <testcase time="0.006" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaSetOrigem"/>
-  <testcase time="0.005" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaSetDestino"/>
-  <testcase time="0.004" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaSetVagas"/>
-  <testcase time="0.005" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaToString"/>
-  <testcase time="0.004" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetOrigem"/>
-  <testcase time="0.005" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetDonoDaCarona"/>
-  <testcase time="0.004" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetDestino"/>
-  <testcase time="0.004" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetVagas"/>
-  <testcase time="0.004" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetIdCarona"/>
-  <testcase time="0.004" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetListaDeSolicitacao"/>
-  <testcase time="0.004" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetListaDeSugestoes"/>
+  <testcase time="0.051" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetSolicitacoesConfirmadas"/>
+  <testcase time="0.005" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetSolicitacoesPendentes"/>
+  <testcase time="0.01" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetListaDeSolicitacao"/>
+  <testcase time="0.006" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetListaDeSugestoes"/>
+  <testcase time="0.008" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaSetData"/>
+  <testcase time="0.006" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaSetHora"/>
+  <testcase time="0.004" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaEquals"/>
+  <testcase time="0.006" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetAtributo"/>
+  <testcase time="0.005" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetDadosCarona"/>
+  <testcase time="0.005" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaSetOrigem"/>
+  <testcase time="0.004" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaSetDestino"/>
+  <testcase time="0.005" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaSetVagas"/>
+  <testcase time="0.004" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaToString"/>
   <testcase time="0.006" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaCarona"/>
-  <testcase time="0.002" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetData"/>
-  <testcase time="0.003" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetHora"/>
-  <testcase time="0.003" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaSetData"/>
-  <testcase time="0.002" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaSetHora"/>
-  <testcase time="0.003" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaEquals"/>
+  <testcase time="0.004" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetData"/>
+  <testcase time="0.005" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetHora"/>
+  <testcase time="0.003" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetOrigem"/>
+  <testcase time="0.004" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetDonoDaCarona"/>
+  <testcase time="0.003" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetDestino"/>
+  <testcase time="0.006" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetVagas"/>
+  <testcase time="0.004" classname="ufcg.si1.InfoCaronaMaven.Testes.TestaCarona" name="testaGetIdCarona"/>
 </testsuite>

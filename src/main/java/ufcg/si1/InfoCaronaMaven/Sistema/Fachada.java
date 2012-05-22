@@ -11,6 +11,7 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.OpcaoInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioNaoPossuiVagaNaCaronaException;
+import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaCheiaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CidadeInexistenteException;
@@ -73,7 +74,7 @@ public class Fachada {
 		try {
 			vaga = Integer.parseInt(vagas);
 		} catch (Exception e) {
-			
+			throw new VagaInvalidaException();
 		}
 		return sistema.cadastrarCarona(idSessao, origem, destino, data, hora,
 				vaga);
@@ -176,12 +177,12 @@ public class Fachada {
 
 	public String solicitarVagaPontoEncontro(String idSessao, String idCarona,
 			String ponto) throws CaronaInexistenteException,
-			CaronaInvalidaException, SessaoInvalidaException, SessaoInexistenteException, IDCaronaInvalidoException, ItemInexistenteException, NumeroMaximoException {
+			CaronaInvalidaException, SessaoInvalidaException, SessaoInexistenteException, IDCaronaInvalidoException, ItemInexistenteException, NumeroMaximoException, CaronaCheiaException {
 		return sistema.solicitarVagaPontoEncontro(idSessao, idCarona, ponto);
 	}
 
 	public String solicitarVaga(String idSessao, String idCarona)
-			throws CaronaInexistenteException, CaronaInvalidaException, SessaoInvalidaException, SessaoInexistenteException, IDCaronaInvalidoException, ItemInexistenteException, NumeroMaximoException {
+			throws CaronaInexistenteException, CaronaInvalidaException, SessaoInvalidaException, SessaoInexistenteException, IDCaronaInvalidoException, ItemInexistenteException, NumeroMaximoException, CaronaCheiaException {
 		return sistema.solicitarVagaPontoEncontro(idSessao, idCarona, "Default");
 	}
 
@@ -289,5 +290,15 @@ public class Fachada {
 	
 	public List<String> verificarMensagensPerfil(String idSessao) throws SessaoInvalidaException, SessaoInexistenteException{
 		return sistema.verificarMensagensPerfil(idSessao);
+	}
+	
+	public String enviarEmail(String idSessao, String destino, String message) throws SessaoInvalidaException, SessaoInexistenteException{
+		String retorno = "";
+		if(sistema.enviarEmail(idSessao, destino, message)){
+			retorno = "true";
+		}else{
+			retorno = "false";
+		}
+		return retorno;
 	}
 }

@@ -134,7 +134,7 @@ public abstract class CaronaAbstract implements Carona{
 	}
 
 	public void setVagas(int vagas) throws VagaInvalidaException {
-		if(vagas <= 0){
+		if(vagas < 0){
 			throw new VagaInvalidaException();
 		}
 		this.vagas = vagas;

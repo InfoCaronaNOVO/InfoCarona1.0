@@ -68,11 +68,6 @@ public class TestaCarona {
 		carona4 = new CaronaComum("Campina Grande", "João Pessoa", "22/10/2012", "10:00", -2, id.gerarId(), jose);
 	}
 	
-	private void criaCarona9() throws Exception {
-		Usuario jose = new Usuario("Jose", "jose@email", "rua da paz", "12345", "Jose");
-		carona4 = new CaronaComum("Campina Grande", "João Pessoa", "22/10/2012", "10:00", 0, id.gerarId(), jose);
-	}
-	
 	@Before
 	public void instanciandoObjetos() throws SessaoInvalidaException, OrigemInvalidaException, DestinoInvalidoException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException, NumeroMaximoException, EmailInvalidoException, NomeInvalidoException, LoginInvalidoException, SenhaInvalidoException, EnderecoInvalidoException {
 		id = new Id(5);
@@ -145,12 +140,6 @@ public class TestaCarona {
 			Assert.assertEquals("Vaga inválida", e.getMessage());
 		}
 		
-		try {
-			criaCarona9();
-			Assert.fail("Nao pode existir carona com o numero de vagas igual a 0.");
-		} catch (VagaInvalidaException e) {
-			Assert.assertEquals("Vaga inválida", e.getMessage());
-		}
 	}
 
 	//Testando Metodos Get
@@ -413,12 +402,6 @@ public class TestaCarona {
 	
 	@Test
 	public void testaSetVagas() {
-		try {
-			carona1.setVagas(0);
-			Assert.fail("A quantidade de vagas na carona nao pode ser 0.");
-		} catch (VagaInvalidaException e) {
-			Assert.assertEquals("Vaga inválida",e.getMessage());
-		}
 		
 		try {
 			carona2.setVagas(-2);

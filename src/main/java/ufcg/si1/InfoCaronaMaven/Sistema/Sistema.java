@@ -20,6 +20,7 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.OpcaoInvalidaExceptio
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.SenhaInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioNaoPossuiVagaNaCaronaException;
+import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaCheiaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CaronaInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.CidadeInexistenteException;
@@ -310,7 +311,7 @@ public class Sistema {
 
 	CaronaInvalidaException, SessaoInvalidaException,
 			SessaoInexistenteException, IDCaronaInvalidoException,
-			ItemInexistenteException, NumeroMaximoException {
+			ItemInexistenteException, NumeroMaximoException, CaronaCheiaException {
 
 		Usuario usuarioTemp = procuraUsuarioLogado(idSessao);
 		Carona carona = controleRepositorio.localizaCaronaPorId(idCarona);
@@ -558,6 +559,11 @@ public class Sistema {
 	
 	public List<String> verificarMensagensPerfil(String idSessao) throws SessaoInvalidaException, SessaoInexistenteException{
 		return procuraUsuarioLogado(idSessao).getListaDeMensagens();
+	}
+
+	public boolean enviarEmail(String idSessao, String destino, String message) throws SessaoInvalidaException, SessaoInexistenteException {
+		Usuario usuarioTemp = procuraUsuarioLogado(idSessao);
+		return usuarioTemp.enviarEmail(destino, message);
 	}
 
 }
