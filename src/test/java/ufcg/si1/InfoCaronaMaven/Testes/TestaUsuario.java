@@ -6,11 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SessaoInexistenteException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SessaoInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.VagaInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Sistema.CaronaException;
 import ufcg.si1.InfoCaronaMaven.Sistema.Id;
 import ufcg.si1.InfoCaronaMaven.Sistema.LoggerException;
@@ -397,7 +393,7 @@ public class TestaUsuario {
 
 	//Testando Metodos especificos
 	@Test
-	public void testaCadastrarCarona() throws SessaoInvalidaException, SessaoInexistenteException, CaronaException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException, NumeroMaximoException {
+	public void testaCadastrarCarona() throws SessaoInexistenteException, CaronaException, NumeroMaximoException {
 		usuario1.cadastrarCarona("Campina Grande", "João Pessoa", "22/12/2012", "22:00", 3, id.gerarId());
 		usuario2.cadastrarCarona("Campina Grande", "Recife", "10/10/2012", "10:00", 1, id.gerarId());
 		usuario3.cadastrarCarona("João Pessoa", "Natal", "06/08/2012", "12:00", 2, id.gerarId());

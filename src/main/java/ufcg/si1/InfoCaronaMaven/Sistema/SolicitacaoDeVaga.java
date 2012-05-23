@@ -1,7 +1,6 @@
 package ufcg.si1.InfoCaronaMaven.Sistema;
 
 
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.VagaInvalidaException;
 
 public class SolicitacaoDeVaga {
 	
@@ -59,7 +58,7 @@ public class SolicitacaoDeVaga {
 		return retorno;
 	}
 	
-	public void solicitacaoAceita() throws VagaInvalidaException{
+	public void solicitacaoAceita(){
 		this.solicitacaoAceita = true;
 		this.solicitacaoPendente = false;
 		carona.setVagas(carona.getVagas()-1);	

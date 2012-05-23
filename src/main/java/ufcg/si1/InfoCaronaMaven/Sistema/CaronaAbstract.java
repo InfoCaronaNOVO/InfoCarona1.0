@@ -8,11 +8,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SessaoInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.VagaInvalidaException;
-
 public abstract class CaronaAbstract implements Carona{
 	private String origem, destino, data, hora, idCarona;
 	private int vagas;
@@ -38,7 +33,7 @@ public abstract class CaronaAbstract implements Carona{
 	 * @throws HoraInvalidaException- retorna uma exceção caso a hora passada seja null, vazia ou data em formato inválida
 	 * @throws VagaInvalidaException - retorna uma exceção caso o numero de vagsa seja negativo ou nao seja um numéro válido.
 	 */
-	public CaronaAbstract(String origem, String destino, String data, String hora, int vagas, String idCarona, Usuario donoDaCarona) throws SessaoInvalidaException, CaronaException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException {
+	public CaronaAbstract(String origem, String destino, String data, String hora, int vagas, String idCarona, Usuario donoDaCarona) throws CaronaException {
         setOrigem(origem);
         setDestino(destino);
         setData(data);
@@ -109,9 +104,9 @@ public abstract class CaronaAbstract implements Carona{
 		return data;
 	}
 
-	public void setData(String data) throws DataInvalidaException {
+	public void setData(String data) {
         if ((data == null) || (data.trim().equals("")) || !(checaData(data))) {
-                throw new DataInvalidaException();
+                throw new IllegalArgumentException("Data inválida");
         }
         this.data = data.trim();
 }
@@ -120,9 +115,9 @@ public abstract class CaronaAbstract implements Carona{
 		return hora;
 	}
 
-	public void setHora(String hora) throws HoraInvalidaException {
+	public void setHora(String hora) {
         if ((hora == null) || hora.trim().equals("") || !checaHoraInvalida(hora)) {
-                throw new HoraInvalidaException();
+                throw new IllegalArgumentException("Hora inválida");
         }
         this.hora = hora.trim();
 }
@@ -131,9 +126,9 @@ public abstract class CaronaAbstract implements Carona{
 		return vagas;
 	}
 
-	public void setVagas(int vagas) throws VagaInvalidaException {
+	public void setVagas(int vagas) {
 		if(vagas < 0){
-			throw new VagaInvalidaException();
+			throw new IllegalArgumentException("Vaga inválida");
 		}
 		this.vagas = vagas;
 	}

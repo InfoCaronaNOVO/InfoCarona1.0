@@ -5,10 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SessaoInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.VagaInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Sistema.Carona;
 import ufcg.si1.InfoCaronaMaven.Sistema.CaronaComum;
 import ufcg.si1.InfoCaronaMaven.Sistema.CaronaException;
@@ -64,7 +60,7 @@ public class TestaCarona {
 	}
 	
 	@Before
-	public void instanciandoObjetos() throws SessaoInvalidaException, CaronaException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException, NumeroMaximoException, LoggerException {
+	public void instanciandoObjetos() throws CaronaException, NumeroMaximoException, LoggerException {
 		id = new Id(5);
 		Usuario jose = new Usuario("Jose", "jose@email", "rua da paz", "12345", "Jose");
 		Usuario mario = new Usuario("Mario", "mario@email", "rua da paz", "12345", "Mario");
@@ -117,21 +113,21 @@ public class TestaCarona {
 		try {
 			criaCarona6();
 			Assert.fail("Nao pode existir carona com data passada.");
-		} catch (DataInvalidaException e) {
+		} catch (IllegalArgumentException e) {
 			Assert.assertEquals("Data inválida", e.getMessage());
 		}
 		
 		try {
 			criaCarona7();
 			Assert.fail("Nao pode existir carona com hora invalida.");
-		} catch (HoraInvalidaException e) {
+		} catch (IllegalArgumentException e) {
 			Assert.assertEquals("Hora inválida", e.getMessage());
 		}
 		
 		try {
 			criaCarona8();
 			Assert.fail("Nao pode existir carona com o numero de vagas menor que 0.");
-		} catch (VagaInvalidaException e) {
+		} catch (IllegalArgumentException e) {
 			Assert.assertEquals("Vaga inválida", e.getMessage());
 		}
 		
@@ -329,35 +325,35 @@ public class TestaCarona {
 		try {
 			carona1.setData("");
 			Assert.fail("A data da carona nao pode ser vazia.");
-		} catch (DataInvalidaException e) {
+		} catch (IllegalArgumentException e) {
 			Assert.assertEquals("Data inválida", e.getMessage());
 		}
 		
 		try {
 			carona2.setData(null);
 			Assert.fail("A data da carona nao pode ser null.");
-		} catch (DataInvalidaException e) {
+		} catch (IllegalArgumentException e) {
 			Assert.assertEquals("Data inválida", e.getMessage());
 		}
 		
 		try {
 			carona3.setData("21/13/2012");
 			Assert.fail("A data da carona tem que ser v�lida.");
-		} catch (DataInvalidaException e) {
+		} catch (IllegalArgumentException e) {
 			Assert.assertEquals("Data inválida", e.getMessage());
 		}
 		
 		try {
 			carona4.setData("01/01/2000");
 			Assert.fail("A data da carona nao pode ser uma data passada.");
-		} catch (DataInvalidaException e) {
+		} catch (IllegalArgumentException e) {
 			Assert.assertEquals("Data inválida", e.getMessage());
 		}
 		
 		Assert.assertEquals("22/10/2012", carona1.getData());
 		try {
 			carona1.setData("01/01/2021");
-		} catch (DataInvalidaException e) {
+		} catch (IllegalArgumentException e) {
 			Assert.assertEquals("Data inválida", e.getMessage());
 		}
 		Assert.assertEquals("01/01/2021", carona1.getData());
@@ -368,28 +364,28 @@ public class TestaCarona {
 		try {
 			carona1.setHora("");
 			Assert.fail("A hora da carona nao pode ser vazia.");
-		} catch (HoraInvalidaException e) {
+		} catch (IllegalArgumentException e) {
 			Assert.assertEquals("Hora inválida", e.getMessage());
 		}
 		
 		try {
 			carona2.setHora(null);
 			Assert.fail("A hora da carona nao pode ser null.");
-		} catch (HoraInvalidaException e) {
+		} catch (IllegalArgumentException e) {
 			Assert.assertEquals("Hora inválida", e.getMessage());
 		}
 		
 		try {
 			carona3.setHora("10:66");
 			Assert.fail("A hora da carona deve ser uma hora válida");
-		} catch (HoraInvalidaException e) {
+		} catch (IllegalArgumentException e) {
 			Assert.assertEquals("Hora inválida", e.getMessage());
 		}
 		
 		Assert.assertEquals("07:00", carona4.getHora());
 		try {
 			carona4.setHora("23:40");
-		} catch (HoraInvalidaException e) {
+		} catch (IllegalArgumentException e) {
 			Assert.assertEquals("Hora inválida", e.getMessage());
 		}
 		Assert.assertEquals("23:40", carona4.getHora());
@@ -401,14 +397,14 @@ public class TestaCarona {
 		try {
 			carona2.setVagas(-2);
 			Assert.fail("A quantidade de vagas na carona nao pode ser menor que 0.");
-		} catch (VagaInvalidaException e) {
+		} catch (IllegalArgumentException e) {
 			Assert.assertEquals("Vaga inválida",e.getMessage());
 		}
 		
 		Assert.assertTrue(carona3.getVagas() == 3);
 		try {
 			carona3.setVagas(10);
-		} catch (VagaInvalidaException e) {
+		} catch (IllegalArgumentException e) {
 			Assert.assertEquals("Vaga inválida",e.getMessage());
 		}
 		Assert.assertTrue(carona3.getVagas() == 10);
@@ -416,7 +412,7 @@ public class TestaCarona {
 		Assert.assertTrue(carona4.getVagas() == 4);
 		try {
 			carona4.setVagas(1);
-		} catch (VagaInvalidaException e) {
+		} catch (IllegalArgumentException e) {
 			Assert.assertEquals("Vaga inválida",e.getMessage());
 		}
 		Assert.assertTrue(carona4.getVagas() == 1);

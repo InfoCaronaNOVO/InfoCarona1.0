@@ -4,8 +4,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
-
 public class Interesse {
 
 	private final Usuario interessado;
@@ -20,8 +18,7 @@ public class Interesse {
 
 	public Interesse(Usuario interessado, String origem, String destino,
 			String data, String horaInicio, String horaFim, String id)
-			throws CaronaException,
-			DataInvalidaException {
+			throws CaronaException {
 		this.interessado = interessado;
 		setOrigem(origem);
 		setDestino(destino);
@@ -96,9 +93,9 @@ public class Interesse {
 		this.destino = destino.trim();
 	}
 
-	public void setData(String data) throws DataInvalidaException {
+	public void setData(String data) {
 		if ((data == null) || !(checaData(data))) {
-			throw new DataInvalidaException();
+			throw new IllegalArgumentException("Data inválida");
 		}
 		this.data = data.trim();
 		// TODO devemos add mais 100 anos pra acontecer a carona caso a data

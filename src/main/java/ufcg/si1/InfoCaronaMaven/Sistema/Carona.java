@@ -2,10 +2,6 @@ package ufcg.si1.InfoCaronaMaven.Sistema;
 
 import java.util.List;
 
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.VagaInvalidaException;
-
 public interface Carona {
 	public List<String> getListaPontosDeEncontroPermitidos();
 	public List<SolicitacaoDeVaga> getListaDeSolicitacao();
@@ -24,15 +20,15 @@ public interface Carona {
 
 	public String getData();
 
-	public void setData(String data) throws DataInvalidaException;
+	public void setData(String data);
 
 	public String getHora();
 
-	public void setHora(String hora) throws HoraInvalidaException;
+	public void setHora(String hora);
 
 	public int getVagas();
 
-	public void setVagas(int vagas) throws VagaInvalidaException;
+	public void setVagas(int vagas);
 	
 	
 	public String getIdCarona();

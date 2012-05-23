@@ -4,14 +4,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.PontoInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SessaoInexistenteException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SessaoInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SolicitacaoInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SugestaoInexistenteException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.VagaInvalidaException;
 
 public class Usuario {
 
@@ -50,9 +45,7 @@ public class Usuario {
 
 	public String cadastrarCarona(String origem, String destino, String data,
 			String hora, int vagas, String idCarona)
-			throws SessaoInvalidaException, SessaoInexistenteException, CaronaException,
-			DataInvalidaException, HoraInvalidaException,
-			VagaInvalidaException, NumeroMaximoException {
+			throws SessaoInexistenteException, CaronaException, NumeroMaximoException {
 
 		Carona carona = new CaronaComum(origem, destino, data, hora, vagas,
 				idCarona, this);
@@ -66,8 +59,7 @@ public class Usuario {
 
 	public String sugerirPontoEncontro(String pontos, Carona carona,
 			String idSugestao, Usuario usuarioQueSugeriu)
-			throws CaronaException,
-			PontoInvalidoException, NumeroMaximoException {
+			throws CaronaException, NumeroMaximoException {
 		SugestaoDePontoDeEncontro sugestao = new SugestaoDePontoDeEncontro(
 				idSugestao, usuarioQueSugeriu);
 
@@ -77,7 +69,7 @@ public class Usuario {
 			if (!carona.getListaPontosDeEncontroPermitidos().contains(local)) {
 				sugestao.getListaDeSugestaoDePontosDeEncontro().add(local);
 			} else {
-				throw new PontoInvalidoException();
+				throw new IllegalArgumentException("Ponto inválido");
 			}
 
 		}
@@ -93,14 +85,14 @@ public class Usuario {
 	public void responderSugestaoPontoEncontro(
 			SugestaoDePontoDeEncontro sugestao, String pontos, Carona carona)
 			throws CaronaException,
-			SugestaoInexistenteException, PontoInvalidoException {
+			SugestaoInexistenteException {
 		String[] locais = pontos.split(";");
 		for (String local : locais) {
 			if (!carona.getListaPontosDeEncontroPermitidos().contains(local)) {
 				sugestao.getlistaDeRespostasDePontosDeEncontro().add(local);
 				carona.addPontoEncontroPermitido(local);
 			} else {
-				throw new PontoInvalidoException();
+				throw new IllegalArgumentException("Ponto inválido");
 			}
 		}
 	}
@@ -121,7 +113,7 @@ public class Usuario {
 	}
 
 	public void aceitarSolicitacaoPontoEncontro(SolicitacaoDeVaga solicitacao)
-			throws SolicitacaoInexistenteException, VagaInvalidaException {
+			throws SolicitacaoInexistenteException {
 		if (solicitacao.isSolicitacaoAceita()) {
 			throw new SolicitacaoInexistenteException();
 		}
@@ -276,9 +268,8 @@ public class Usuario {
 
 	public String cadastrarCaronaMunicipal(String origem, String destino,
 			String cidade, String data, String hora, int vagas, String idCarona)
-			throws SessaoInvalidaException,
-			CaronaException, DataInvalidaException,
-			HoraInvalidaException, VagaInvalidaException {
+			throws 
+			CaronaException{
 		Carona carona = new CaronaMunicipal(origem, destino, cidade, data,
 				hora, vagas, idCarona, this);
 		listaDeCaronas.add(carona);
@@ -291,8 +282,7 @@ public class Usuario {
 
 	public String cadastrarInteresse(String origem, String destino,
 			String data, String horaInicio, String horaFim, String id)
-			throws CaronaException,
-			DataInvalidaException {
+			throws CaronaException {
 		Interesse interesseTemp = new Interesse(this, origem, destino, data,
 				horaInicio, horaFim, id);
 		this.addInteresseCarona(interesseTemp);
