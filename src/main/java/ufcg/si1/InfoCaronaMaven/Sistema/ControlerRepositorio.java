@@ -3,7 +3,6 @@ package ufcg.si1.InfoCaronaMaven.Sistema;
 import java.util.LinkedList;
 import java.util.List;
 
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.LoginInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.ItemInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.TrajetoInexistenteException;
@@ -19,7 +18,7 @@ public class ControlerRepositorio {
 		repositorio.addUsuario(novoUsuario);
 	}
 
-	public Usuario buscarUsuarioPorLogin(String login) throws LoginInvalidoException, UsuarioInexistenteException {
+	public Usuario buscarUsuarioPorLogin(String login) throws LoggerException, UsuarioInexistenteException {
 		Usuario retorno = null;
 		retorno = repositorio.buscaUsuarioLogin(login);
 		if(retorno == null){
@@ -29,7 +28,7 @@ public class ControlerRepositorio {
 		return retorno;
 	}
 
-	public String getAtributoUsuario(String login, String atributo) throws LoginInvalidoException, UsuarioInexistenteException {
+	public String getAtributoUsuario(String login, String atributo) throws LoggerException, UsuarioInexistenteException {
 		Usuario usuarioTemp = buscarUsuarioPorLogin(login);
 		List<String> listaTemp = new LinkedList<String>();
 		String retorno = "";

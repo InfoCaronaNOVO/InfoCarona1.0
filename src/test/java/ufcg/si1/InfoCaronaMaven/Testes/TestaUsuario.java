@@ -5,20 +5,15 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.EmailInvalidoException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.EnderecoInvalidoException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.LoginInvalidoException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NomeInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.SenhaInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.OrigemInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SessaoInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SessaoInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.VagaInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Sistema.CaronaException;
 import ufcg.si1.InfoCaronaMaven.Sistema.Id;
+import ufcg.si1.InfoCaronaMaven.Sistema.LoggerException;
 import ufcg.si1.InfoCaronaMaven.Sistema.Usuario;
 
 
@@ -27,7 +22,7 @@ public class TestaUsuario {
 	private Id id;
 	
 	@Before
-	public void criaUsuariosValidos() throws EmailInvalidoException, NomeInvalidoException, LoginInvalidoException, SenhaInvalidoException, EnderecoInvalidoException {
+	public void criaUsuariosValidos() throws  LoggerException {
 		usuario1 = new Usuario("Elvis Presley", "elvispresley@rock.com", "Rua do Sucesso", "123mudar", "presley");
 		usuario2 = new Usuario("Michael Jackson", "michaeljackson@pop.com", "Rua da Felicidade", "minhasenhasecreta", "michael");
 		usuario3 = new Usuario("Princess Dianna", "dianna@princess.com", "Rua da Beleza", "soulinda", "princess");
@@ -76,42 +71,42 @@ public class TestaUsuario {
 		try{
 			criaUsuario2();
 			Assert.fail("Nome do usuario nao pode ser vazio.");
-		}catch(NomeInvalidoException e){
+		}catch(LoggerException e){
 			Assert.assertEquals("Nome inválido", e.getMessage());
 		}
 		
 		try{
 			criaUsuario3();
 			Assert.fail("Nome do usuario nao pode ser null.");
-		}catch(NomeInvalidoException e){
+		}catch(LoggerException e){
 			Assert.assertEquals("Nome inválido", e.getMessage());
 		}
 		
 		try{
 			criaUsuario4();
 			Assert.fail("Email do usuario nao pode ser vazio.");
-		}catch(EmailInvalidoException e){
+		}catch(LoggerException e){
 			Assert.assertEquals("Email inválido", e.getMessage());
 		}
 		
 		try{
 			criaUsuario5();
 			Assert.fail("Email do usuario nao pode ser null.");
-		}catch(EmailInvalidoException e){
+		}catch(LoggerException e){
 			Assert.assertEquals("Email inválido", e.getMessage());
 		}
 		
 		try{
 			criaUsuario6();
 			Assert.fail("Login do usuario nao pode ser vazio.");
-		}catch(LoginInvalidoException e){
+		}catch(LoggerException e){
 			Assert.assertEquals("Login inválido", e.getMessage());
 		}
 		
 		try{
 			criaUsuario7();
 			Assert.fail("Login do usuario nao pode ser null.");
-		}catch(LoginInvalidoException e){
+		}catch(LoggerException e){
 			Assert.assertEquals("Login inválido", e.getMessage());
 		}
 	}
@@ -215,12 +210,12 @@ public class TestaUsuario {
 
 	//Testando Metodos Set
 	@Test
-	public void testaSetNome() throws NomeInvalidoException {
+	public void testaSetNome() throws LoggerException {
 		Assert.assertEquals("Elvis Presley", usuario1.getNome());
 		try {
 			usuario1.setNome("");
 			Assert.fail("O nome do usuario nao pode ser vazio.");
-		} catch (NomeInvalidoException e) {
+		} catch (LoggerException e) {
 			Assert.assertEquals("Nome inválido", e.getMessage());
 		}
 		Assert.assertEquals("Elvis Presley", usuario1.getNome());
@@ -229,7 +224,7 @@ public class TestaUsuario {
 		try {
 			usuario2.setNome(null);
 			Assert.fail("O nome do usuario nao pode ser null.");
-		} catch (NomeInvalidoException e) {
+		} catch (LoggerException e) {
 			Assert.assertEquals("Nome inválido", e.getMessage());
 		}
 		Assert.assertEquals("Michael Jackson", usuario2.getNome());
@@ -237,7 +232,7 @@ public class TestaUsuario {
 		Assert.assertEquals("Princess Dianna", usuario3.getNome());
 		try {
 			usuario3.setNome("Dianna       ");
-		} catch (NomeInvalidoException e) {
+		} catch (LoggerException e) {
 			Assert.assertEquals("Nome inválido", e.getMessage());
 		}
 		Assert.assertEquals("Dianna", usuario3.getNome());
@@ -245,19 +240,19 @@ public class TestaUsuario {
 		Assert.assertEquals("Bob Marley", usuario4.getNome());
 		try {
 			usuario4.setNome("            Bob Marley              ");
-		} catch (NomeInvalidoException e) {
+		} catch (LoggerException e) {
 			Assert.assertEquals("Nome inválido", e.getMessage());
 		}
 		Assert.assertEquals("Bob Marley", usuario4.getNome());		
 	}
 
 	@Test
-	public void testaSetEmail() throws EmailInvalidoException {
+	public void testaSetEmail() throws LoggerException {
 		Assert.assertEquals("elvispresley@rock.com", usuario1.getEmail());
 		try {
 			usuario1.setEmail("");
 			Assert.fail("Email do usuario nao pode ser vazio.");
-		} catch (EmailInvalidoException e) {
+		} catch (LoggerException e) {
 			Assert.assertEquals("Email inválido", e.getMessage());
 		}
 		Assert.assertEquals("elvispresley@rock.com", usuario1.getEmail());
@@ -266,7 +261,7 @@ public class TestaUsuario {
 		try {
 			usuario2.setEmail(null);
 			Assert.fail("O email do usuario nao pode ser null.");
-		} catch (EmailInvalidoException e) {
+		} catch (LoggerException e) {
 			Assert.assertEquals("Email inválido", e.getMessage());
 		}
 		Assert.assertEquals("michaeljackson@pop.com", usuario2.getEmail());
@@ -275,7 +270,7 @@ public class TestaUsuario {
 		try {
 			usuario3.setEmail("Dianna       @princess.com");
 			Assert.fail("Nao pode conter espacos no email do usuario.");
-		} catch (EmailInvalidoException e) {
+		} catch (LoggerException e) {
 			Assert.assertEquals("Email inválido", e.getMessage());
 		}
 		Assert.assertEquals("dianna@princess.com", usuario3.getEmail());
@@ -284,7 +279,7 @@ public class TestaUsuario {
 		try {
 			usuario4.setEmail("            Bob Marley              @reggae.co/m");
 			Assert.fail("O email do usuario nao pode conter espacos.");
-		} catch (EmailInvalidoException e) {
+		} catch (LoggerException e) {
 			Assert.assertEquals("Email inválido", e.getMessage());
 		}
 		Assert.assertEquals("marley@reggae.com", usuario4.getEmail());
@@ -296,7 +291,7 @@ public class TestaUsuario {
 		try {
 			usuario1.setSenha("");
 			Assert.fail("A senha do usuario nao pode ser vazia.");
-		} catch (SenhaInvalidoException e) {
+		} catch (LoggerException e) {
 			Assert.assertEquals("Senha inválido", e.getMessage());
 		}
 		Assert.assertEquals("123mudar", usuario1.getSenha());
@@ -305,7 +300,7 @@ public class TestaUsuario {
 		try {
 			usuario2.setSenha(null);
 			Assert.fail("A senha do usuario nao pode ser null.");
-		} catch (SenhaInvalidoException e) {
+		} catch (LoggerException e) {
 			Assert.assertEquals("Senha inválido", e.getMessage());
 		}
 		Assert.assertEquals("minhasenhasecreta", usuario2.getSenha());
@@ -313,7 +308,7 @@ public class TestaUsuario {
 		Assert.assertEquals("soulinda", usuario3.getSenha());
 		try {
 			usuario3.setSenha("SoUlInDa");
-		} catch (SenhaInvalidoException e) {
+		} catch (LoggerException e) {
 			Assert.assertEquals("Senha inválido", e.getMessage());
 		}
 		Assert.assertEquals("SoUlInDa", usuario3.getSenha());
@@ -321,7 +316,7 @@ public class TestaUsuario {
 		Assert.assertEquals("pazeamor", usuario4.getSenha());
 		try {
 			usuario4.setSenha("   pazeamor   ");
-		} catch (SenhaInvalidoException e) {
+		} catch (LoggerException e) {
 			Assert.assertEquals("Senha inválido", e.getMessage());
 		}
 		Assert.assertEquals("pazeamor", usuario4.getSenha());		
@@ -402,7 +397,7 @@ public class TestaUsuario {
 
 	//Testando Metodos especificos
 	@Test
-	public void testaCadastrarCarona() throws SessaoInvalidaException, SessaoInexistenteException, OrigemInvalidaException, CaronaException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException, NumeroMaximoException {
+	public void testaCadastrarCarona() throws SessaoInvalidaException, SessaoInexistenteException, CaronaException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException, NumeroMaximoException {
 		usuario1.cadastrarCarona("Campina Grande", "João Pessoa", "22/12/2012", "22:00", 3, id.gerarId());
 		usuario2.cadastrarCarona("Campina Grande", "Recife", "10/10/2012", "10:00", 1, id.gerarId());
 		usuario3.cadastrarCarona("João Pessoa", "Natal", "06/08/2012", "12:00", 2, id.gerarId());

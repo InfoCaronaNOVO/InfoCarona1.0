@@ -4,7 +4,6 @@ import java.util.List;
 
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.OrigemInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.VagaInvalidaException;
 
 public interface Carona {
@@ -17,7 +16,7 @@ public interface Carona {
 	public Usuario getDonoDaCarona();
 	
 
-	public void setOrigem(String origem) throws OrigemInvalidaException;
+	public void setOrigem(String origem) throws CaronaException;
 
 	public String getDestino();
 

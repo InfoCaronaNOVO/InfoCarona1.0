@@ -5,8 +5,6 @@ import java.util.List;
 
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.AtributoInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.AtributoInvalidoException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.LoginExistenteException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.LoginInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.OpcaoInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioInexistenteException;
@@ -16,7 +14,6 @@ import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.IDCaronaInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.IDCaronaInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.ItemInexistenteException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.OrigemInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.PontoInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SessaoInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SessaoInvalidaException;
@@ -44,15 +41,13 @@ public class Fachada {
 	}
 
 	public String abrirSessao(String login, String senha)
-			throws LoginInvalidoException, UsuarioInexistenteException,
-			LoginExistenteException, NumeroMaximoException {
+			throws LoggerException, UsuarioInexistenteException, NumeroMaximoException {
 		return sistema.abrirSessao(login, senha);
 	}
 
 	public String getAtributoUsuario(String login, String atributo)
-			throws LoginInvalidoException, AtributoInvalidoException,
-			UsuarioInexistenteException, AtributoInexistenteException,
-			LoginExistenteException {
+			throws LoggerException, AtributoInvalidoException,
+			UsuarioInexistenteException, AtributoInexistenteException {
 		return sistema.getAtributoUsuario(login, atributo);
 	}
 
@@ -62,8 +57,7 @@ public class Fachada {
 
 	public String cadastrarCarona(String idSessao, String origem,
 			String destino, String data, String hora, String vagas)
-			throws SessaoInvalidaException, SessaoInexistenteException,
-			OrigemInvalidaException, CaronaException,
+			throws SessaoInvalidaException, SessaoInexistenteException, CaronaException,
 			DataInvalidaException, HoraInvalidaException, VagaInvalidaException, NumeroMaximoException, CaronaException {
 		int vaga = 0;
 		try {
@@ -76,7 +70,7 @@ public class Fachada {
 	}
 
 	public String localizarCarona(String idSessao, String origem, String destino)
-			throws OrigemInvalidaException, CaronaException, SessaoInvalidaException, SessaoInexistenteException {
+			throws CaronaException, SessaoInvalidaException, SessaoInexistenteException {
 		LinkedList<String> retorno = new LinkedList<String>();
 		List<Carona> listaCaronas = sistema.localizarCarona(origem, destino);
 		for(Carona caronaTemp : listaCaronas){
@@ -87,7 +81,7 @@ public class Fachada {
 	
 	
 	public String localizarCaronaMunicipal(String idSessao, String cidade, String origem, String destino)
-			throws OrigemInvalidaException, CaronaException, SessaoInvalidaException, SessaoInexistenteException, CaronaException {
+			throws CaronaException, SessaoInvalidaException, SessaoInexistenteException, CaronaException {
 		LinkedList<String> retorno = new LinkedList<String>();
 		List<Carona> listaCaronas = sistema.localizarCaronaMunicipal(cidade, origem, destino);
 		for(Carona caronaTemp : listaCaronas){
@@ -96,11 +90,11 @@ public class Fachada {
 		return retorno.toString().replace("[", "{").replace("]", "}").replace(", ", ",");
 	}
 	
-	public String localizarCaronaMunicipal(String idSessao, String cidade) throws OrigemInvalidaException, CaronaException, SessaoInvalidaException, SessaoInexistenteException, CaronaException{
+	public String localizarCaronaMunicipal(String idSessao, String cidade) throws SessaoInvalidaException, SessaoInexistenteException, CaronaException{
 		return localizarCaronaMunicipal(idSessao, cidade, "", "");
 	}
 	
-	public String localizarCaronaMunicipal(String idSessao, String origem, String destino) throws OrigemInvalidaException, CaronaException, SessaoInvalidaException, SessaoInexistenteException, CaronaException{
+	public String localizarCaronaMunicipal(String idSessao, String origem, String destino) throws  SessaoInvalidaException, SessaoInexistenteException, CaronaException{
 		return localizarCaronaMunicipal(idSessao, "", origem, destino);
 	}
 
@@ -181,7 +175,7 @@ public class Fachada {
 	public String getAtributoSolicitacao(String idSolicitacao, String atributo) {
 		return sistema.getAtributoSolicitacao(idSolicitacao, atributo);
 	}
-	public void reviewVagaEmCarona (String idSessao, String idCarona, String loginCaroneiro, String review) throws SessaoInvalidaException, SessaoInexistenteException, CaronaException, LoginInvalidoException, UsuarioInexistenteException, OpcaoInvalidaException, UsuarioNaoPossuiVagaNaCaronaException{
+	public void reviewVagaEmCarona (String idSessao, String idCarona, String loginCaroneiro, String review) throws SessaoInvalidaException, SessaoInexistenteException, CaronaException, LoggerException, UsuarioInexistenteException, OpcaoInvalidaException, UsuarioNaoPossuiVagaNaCaronaException{
 		sistema.reviewVagaEmCarona(idSessao, idCarona, loginCaroneiro, review);
 	}
 	public void aceitarSolicitacaoPontoEncontro(String idSessao,
@@ -195,11 +189,11 @@ public class Fachada {
 
 	}
 
-	public String visualizarPerfil(String idSesao, String login) throws LoginInvalidoException, SessaoInvalidaException, SessaoInexistenteException, UsuarioInexistenteException {
+	public String visualizarPerfil(String idSesao, String login) throws LoggerException, SessaoInvalidaException, SessaoInexistenteException, UsuarioInexistenteException {
 		return sistema.visualizarPerfil(idSesao, login);
 	}
 
-	public String getAtributoPerfil(String login, String atributo) throws SessaoInvalidaException, SessaoInexistenteException, LoginInvalidoException, UsuarioInexistenteException {
+	public String getAtributoPerfil(String login, String atributo) throws SessaoInvalidaException, SessaoInexistenteException, LoggerException, UsuarioInexistenteException {
 		String retorno = sistema.getAtributoPerfil(login, atributo);
 		if(retorno.equals(""))
 			return "[]";
@@ -258,13 +252,12 @@ public class Fachada {
 	
 	//metodos do user 9 pra frente
 	
-	public void reviewCarona (String idSessao, String idCarona, String review) throws SessaoInvalidaException, SessaoInexistenteException, CaronaException, LoginInvalidoException, UsuarioInexistenteException, OpcaoInvalidaException, UsuarioNaoPossuiVagaNaCaronaException{
+	public void reviewCarona (String idSessao, String idCarona, String review) throws SessaoInvalidaException, SessaoInexistenteException, CaronaException, LoggerException, UsuarioInexistenteException, OpcaoInvalidaException, UsuarioNaoPossuiVagaNaCaronaException{
 		sistema.reviewCarona(idSessao, idCarona, review);
 	}
 	
 	public String cadastrarCaronaMunicipal(String idSessao, String origem, String destino,String cidade, String data, String hora, String vagas)
-			throws SessaoInvalidaException, SessaoInexistenteException,
-			OrigemInvalidaException, CaronaException,
+			throws SessaoInvalidaException, SessaoInexistenteException, CaronaException,
 			DataInvalidaException, HoraInvalidaException, VagaInvalidaException, NumeroMaximoException {
 		int vaga = 0;
 		try {
@@ -275,7 +268,7 @@ public class Fachada {
 		return sistema.cadastrarCaronaMunicipal(idSessao, origem, destino, cidade, data, hora, vaga);
 	}
 	
-	public String cadastrarInteresse(String idSessao, String origem, String destino, String data, String horaInicio, String horaFim) throws SessaoInvalidaException, SessaoInexistenteException, NumeroMaximoException, OrigemInvalidaException, CaronaException, DataInvalidaException{
+	public String cadastrarInteresse(String idSessao, String origem, String destino, String data, String horaInicio, String horaFim) throws SessaoInvalidaException, SessaoInexistenteException, NumeroMaximoException, CaronaException, DataInvalidaException{
 		return sistema.cadastrarInteresse(idSessao, origem, destino, data, horaInicio, horaFim);
 	}
 	

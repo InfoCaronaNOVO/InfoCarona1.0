@@ -10,7 +10,6 @@ import java.util.Map;
 
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.OrigemInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SessaoInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.VagaInvalidaException;
 
@@ -39,7 +38,7 @@ public abstract class CaronaAbstract implements Carona{
 	 * @throws HoraInvalidaException- retorna uma exceção caso a hora passada seja null, vazia ou data em formato inválida
 	 * @throws VagaInvalidaException - retorna uma exceção caso o numero de vagsa seja negativo ou nao seja um numéro válido.
 	 */
-	public CaronaAbstract(String origem, String destino, String data, String hora, int vagas, String idCarona, Usuario donoDaCarona) throws SessaoInvalidaException, OrigemInvalidaException, CaronaException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException {
+	public CaronaAbstract(String origem, String destino, String data, String hora, int vagas, String idCarona, Usuario donoDaCarona) throws SessaoInvalidaException, CaronaException, DataInvalidaException, HoraInvalidaException, VagaInvalidaException {
         setOrigem(origem);
         setDestino(destino);
         setData(data);
@@ -88,9 +87,9 @@ public abstract class CaronaAbstract implements Carona{
 	}
 	
 
-	public void setOrigem(String origem) throws OrigemInvalidaException {
+	public void setOrigem(String origem) throws CaronaException {
         if((origem == null) || (origem.matches("[\\-/.\\[_\\]()!\"+,:;<=>{|}#@$%¨&*0-9].*")) ||(origem.trim().equals(""))){
-        	throw new OrigemInvalidaException();
+        	throw new CaronaException("Origem inválida");
         }
         this.origem = origem.trim();
 	}

@@ -3,15 +3,9 @@ package ufcg.si1.InfoCaronaMaven.Sistema;
 import java.util.LinkedList;
 import java.util.List;
 
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.EmailInvalidoException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.EnderecoInvalidoException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.LoginInvalidoException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NomeInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.SenhaInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.DataInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.HoraInvalidaException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.OrigemInvalidaException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.PontoInvalidoException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SessaoInexistenteException;
 import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SessaoInvalidaException;
@@ -33,10 +27,7 @@ public class Usuario {
 	private int presencaEmVagas;
 	private String nome, email, endereco, senha, login;
 
-	public Usuario(String nome, String email, String endereco, String senha,
-			String login) throws EmailInvalidoException, NomeInvalidoException,
-			LoginInvalidoException, SenhaInvalidoException,
-			EnderecoInvalidoException {
+	public Usuario(String nome, String email, String endereco, String senha,String login) throws LoggerException{
 		setNome(nome);
 		setEmail(email);
 		setEndereco(endereco);
@@ -51,7 +42,6 @@ public class Usuario {
 		this.caronaNaoFuncionaram = 0;
 		this.faltasEmVagas = 0;
 		this.presencaEmVagas = 0;
-
 	}
 
 	public List<Interesse> getListaDeInteresses() {
@@ -60,8 +50,7 @@ public class Usuario {
 
 	public String cadastrarCarona(String origem, String destino, String data,
 			String hora, int vagas, String idCarona)
-			throws SessaoInvalidaException, SessaoInexistenteException,
-			OrigemInvalidaException, CaronaException,
+			throws SessaoInvalidaException, SessaoInexistenteException, CaronaException,
 			DataInvalidaException, HoraInvalidaException,
 			VagaInvalidaException, NumeroMaximoException {
 
@@ -183,9 +172,9 @@ public class Usuario {
 		return email;
 	}
 
-	public void setEmail(String email) throws EmailInvalidoException {
+	public void setEmail(String email) throws LoggerException {
 		if ((email == null || email.trim().equals("") || email.contains(" "))) {
-			throw new EmailInvalidoException();
+			throw new LoggerException("Email inválido");
 		}
 		this.email = email.trim();
 	}
@@ -206,9 +195,9 @@ public class Usuario {
 		return this.listaDeMensagens;
 	}
 
-	public void setSenha(String senha) throws SenhaInvalidoException {
+	public void setSenha(String senha) throws LoggerException {
 		if ((senha == null || senha.trim().equals(""))) {
-			throw new SenhaInvalidoException();
+			throw new LoggerException("Senha inválido");
 		}
 		this.senha = senha.trim();
 	}
@@ -221,16 +210,16 @@ public class Usuario {
 		return login;
 	}
 
-	private void setLogin(String login) throws LoginInvalidoException {
+	private void setLogin(String login) throws LoggerException {
 		if ((login == null || login.trim().equals(""))) {
-			throw new LoginInvalidoException();
+			throw new LoggerException("Login inválido");
 		}
 		this.login = login.trim();
 	}
 
-	public void setNome(String nome) throws NomeInvalidoException {
+	public void setNome(String nome) throws LoggerException {
 		if (nome == null || nome.trim().equals("")) {
-			throw new NomeInvalidoException();
+			throw new LoggerException("Nome inválido");
 		}
 		this.nome = nome.trim();
 	}
@@ -287,7 +276,7 @@ public class Usuario {
 
 	public String cadastrarCaronaMunicipal(String origem, String destino,
 			String cidade, String data, String hora, int vagas, String idCarona)
-			throws SessaoInvalidaException, OrigemInvalidaException,
+			throws SessaoInvalidaException,
 			CaronaException, DataInvalidaException,
 			HoraInvalidaException, VagaInvalidaException {
 		Carona carona = new CaronaMunicipal(origem, destino, cidade, data,
@@ -302,7 +291,7 @@ public class Usuario {
 
 	public String cadastrarInteresse(String origem, String destino,
 			String data, String horaInicio, String horaFim, String id)
-			throws OrigemInvalidaException, CaronaException,
+			throws CaronaException,
 			DataInvalidaException {
 		Interesse interesseTemp = new Interesse(this, origem, destino, data,
 				horaInicio, horaFim, id);
