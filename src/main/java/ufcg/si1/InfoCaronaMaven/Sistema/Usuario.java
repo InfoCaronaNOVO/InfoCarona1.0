@@ -3,10 +3,6 @@ package ufcg.si1.InfoCaronaMaven.Sistema;
 import java.util.LinkedList;
 import java.util.List;
 
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SessaoInexistenteException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SolicitacaoInexistenteException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.SugestaoInexistenteException;
 
 public class Usuario {
 
@@ -45,7 +41,7 @@ public class Usuario {
 
 	public String cadastrarCarona(String origem, String destino, String data,
 			String hora, int vagas, String idCarona)
-			throws SessaoInexistenteException, CaronaException, NumeroMaximoException {
+			throws CaronaException, NumeroMaximoException {
 
 		Carona carona = new CaronaComum(origem, destino, data, hora, vagas,
 				idCarona, this);
@@ -84,8 +80,7 @@ public class Usuario {
 
 	public void responderSugestaoPontoEncontro(
 			SugestaoDePontoDeEncontro sugestao, String pontos, Carona carona)
-			throws CaronaException,
-			SugestaoInexistenteException {
+			throws CaronaException {
 		String[] locais = pontos.split(";");
 		for (String local : locais) {
 			if (!carona.getListaPontosDeEncontroPermitidos().contains(local)) {
@@ -112,10 +107,9 @@ public class Usuario {
 		return IdSolicitacao;
 	}
 
-	public void aceitarSolicitacaoPontoEncontro(SolicitacaoDeVaga solicitacao)
-			throws SolicitacaoInexistenteException {
+	public void aceitarSolicitacaoPontoEncontro(SolicitacaoDeVaga solicitacao) throws ArgumentoInexistenteException {
 		if (solicitacao.isSolicitacaoAceita()) {
-			throw new SolicitacaoInexistenteException();
+			throw new ArgumentoInexistenteException("Solicitação inexistente");
 		}
 		solicitacao.solicitacaoAceita();
 	}
@@ -217,9 +211,9 @@ public class Usuario {
 	}
 
 	public void rejeitarSolicitacao(SolicitacaoDeVaga solicitacao)
-			throws SolicitacaoInexistenteException {
+			throws ArgumentoInexistenteException{
 		if (solicitacao.isSolicitacaoRejeitada()) {
-			throw new SolicitacaoInexistenteException();
+			throw new ArgumentoInexistenteException("Solicitação inexistente");
 		}
 		solicitacao.solicitacaoRejeitada();
 

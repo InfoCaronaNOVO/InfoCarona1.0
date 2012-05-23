@@ -1,4 +1,4 @@
-package ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario;
+package ufcg.si1.InfoCaronaMaven.Sistema;
 
 
 public class NumeroMaximoException extends Exception {

@@ -3,10 +3,6 @@ package ufcg.si1.InfoCaronaMaven.Sistema;
 import java.util.LinkedList;
 import java.util.List;
 
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.UsuarioInexistenteException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.ItemInexistenteException;
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionsCarona.TrajetoInexistenteException;
-
 public class ControlerRepositorio {
 	Repositorio repositorio;
 	
@@ -18,17 +14,17 @@ public class ControlerRepositorio {
 		repositorio.addUsuario(novoUsuario);
 	}
 
-	public Usuario buscarUsuarioPorLogin(String login) throws LoggerException, UsuarioInexistenteException {
+	public Usuario buscarUsuarioPorLogin(String login) throws LoggerException, ArgumentoInexistenteException {
 		Usuario retorno = null;
 		retorno = repositorio.buscaUsuarioLogin(login);
 		if(retorno == null){
-			throw new UsuarioInexistenteException();
+			throw new ArgumentoInexistenteException("Usuário inexistente");
 		}
 		
 		return retorno;
 	}
 
-	public String getAtributoUsuario(String login, String atributo) throws LoggerException, UsuarioInexistenteException {
+	public String getAtributoUsuario(String login, String atributo) throws LoggerException, ArgumentoInexistenteException {
 		Usuario usuarioTemp = buscarUsuarioPorLogin(login);
 		List<String> listaTemp = new LinkedList<String>();
 		String retorno = "";
@@ -86,10 +82,10 @@ public class ControlerRepositorio {
 		
 	}
 
-	public String getAtributoCarona(String idCarona, String atributo) throws ItemInexistenteException {
+	public String getAtributoCarona(String idCarona, String atributo) throws ArgumentoInexistenteException {
 		Carona caronaTemp = repositorio.localizaCaronaPorId(idCarona);
 		if(caronaTemp == null){
-			throw new ItemInexistenteException();
+			throw new ArgumentoInexistenteException("Item inexistente");
 		}
 		String retorno = "";
         
@@ -116,11 +112,11 @@ public class ControlerRepositorio {
 		return repositorio.getCaronaId(idCarona);
 	}
 
-	public String getTrajeto(String idCarona) throws CaronaException, TrajetoInexistenteException {
+	public String getTrajeto(String idCarona) throws CaronaException, ArgumentoInexistenteException {
 		
 		Carona caronaTemp = repositorio.getCaronaId(idCarona);
 		if(caronaTemp == null){
-			throw new TrajetoInexistenteException();
+			throw new ArgumentoInexistenteException("Trajeto Inexistente");
 		}
 		return caronaTemp.getOrigem() + " - " + caronaTemp.getDestino();
 	}

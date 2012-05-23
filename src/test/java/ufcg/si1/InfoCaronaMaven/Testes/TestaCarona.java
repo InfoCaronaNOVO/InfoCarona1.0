@@ -4,13 +4,13 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException;
 import ufcg.si1.InfoCaronaMaven.Sistema.Carona;
 import ufcg.si1.InfoCaronaMaven.Sistema.CaronaComum;
 import ufcg.si1.InfoCaronaMaven.Sistema.CaronaException;
 import ufcg.si1.InfoCaronaMaven.Sistema.CaronaMunicipal;
 import ufcg.si1.InfoCaronaMaven.Sistema.Id;
 import ufcg.si1.InfoCaronaMaven.Sistema.LoggerException;
+import ufcg.si1.InfoCaronaMaven.Sistema.NumeroMaximoException;
 import ufcg.si1.InfoCaronaMaven.Sistema.Usuario;
 
 public class TestaCarona {

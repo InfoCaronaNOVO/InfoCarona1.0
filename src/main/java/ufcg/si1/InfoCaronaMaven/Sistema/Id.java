@@ -1,6 +1,5 @@
 package ufcg.si1.InfoCaronaMaven.Sistema;
 
-import ufcg.si1.InfoCaronaMaven.Exception.ExceptionUsuario.NumeroMaximoException;
 
 public class Id {
 	
