@@ -9,22 +9,20 @@ public class Interesse {
 	private final Usuario interessado;
 	private String origem;
 	private String data;
-	private String horaInicio;
-	private String horaFim;
+	private Calendar calendarioFinal;
+	private Calendar calendarioInicial;
 	private final String id;
-	private final String horaInicioDefault = "00:00";
-	private final String horaFimDefault = "23:59";
 	private String destino;
 
 	public Interesse(Usuario interessado, String origem, String destino,
-			String data, String horaInicio, String horaFim, String id)
+			Calendar calendarioInicial, Calendar calendarioFinal, String id)
 			throws CaronaException {
 		this.interessado = interessado;
 		setOrigem(origem);
 		setDestino(destino);
 		setData(data);
-		setHoraInicio(horaInicio);
-		setHoraFim(horaFim);
+		setCalendarioInicial(calendarioInicial);
+		setCalendarioFinal(calendarioFinal);
 		this.id = id;
 
 	}
@@ -48,29 +46,21 @@ public class Interesse {
 	public String getData() {
 		return data;
 	}
-
-	public String getHoraInicio() {
-		return horaInicio;
+	
+	public Calendar getCalendarioInicial(){
+		return this.calendarioInicial;
 	}
-
-	public String getHoraFim() {
-		return horaFim;
+	
+	public Calendar getCalendarioFinal(){
+		return this.calendarioFinal;
 	}
-
-	private void setHoraInicio(String horaInicial) {
-		if (horaInicial.equals("")) {
-			this.horaInicio = horaInicioDefault;
-		} else {
-			this.horaInicio = horaInicial;
-		}
+	
+	public void setCalendarioInicial(Calendar calendario){
+		this.calendarioInicial = calendario;
 	}
-
-	private void setHoraFim(String horaFinal) {
-		if (horaFinal.equals("")) {
-			this.horaFim = horaFimDefault;
-		} else {
-			this.horaFim = horaFinal;
-		}
+	
+	public void setCalendarioFinal(Calendar calendario){
+		this.calendarioFinal = calendario;
 	}
 
 	private void setOrigem(String origem) throws CaronaException {

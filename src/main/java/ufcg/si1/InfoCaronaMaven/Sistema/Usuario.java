@@ -1,5 +1,6 @@
 package ufcg.si1.InfoCaronaMaven.Sistema;
 
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -39,11 +40,10 @@ public class Usuario {
 		return listaDeInteresses;
 	}
 
-	public String cadastrarCarona(String origem, String destino, String data,
-			String hora, int vagas, String idCarona)
+	public String cadastrarCarona(String origem, String destino, Calendar calendar, int vagas, String idCarona)
 			throws CaronaException, NumeroMaximoException {
 
-		Carona carona = new CaronaComum(origem, destino, data, hora, vagas,
+		Carona carona = new CaronaComum(origem, destino, calendar, vagas,
 				idCarona, this);
 		listaDeCaronas.add(carona);
 		return idCarona;
@@ -261,11 +261,10 @@ public class Usuario {
 	}
 
 	public String cadastrarCaronaMunicipal(String origem, String destino,
-			String cidade, String data, String hora, int vagas, String idCarona)
+			String cidade, Calendar calendario, int vagas, String idCarona)
 			throws 
 			CaronaException{
-		Carona carona = new CaronaMunicipal(origem, destino, cidade, data,
-				hora, vagas, idCarona, this);
+		Carona carona = new CaronaMunicipal(origem, destino, cidade, calendario, vagas, idCarona, this);
 		listaDeCaronas.add(carona);
 		return idCarona;
 	}
@@ -275,10 +274,10 @@ public class Usuario {
 	}
 
 	public String cadastrarInteresse(String origem, String destino,
-			String data, String horaInicio, String horaFim, String id)
+			Calendar calendarioInicial, Calendar calendarioFinal, String id)
 			throws CaronaException {
-		Interesse interesseTemp = new Interesse(this, origem, destino, data,
-				horaInicio, horaFim, id);
+		Interesse interesseTemp = new Interesse(this, origem, destino,
+				calendarioInicial, calendarioFinal, id);
 		this.addInteresseCarona(interesseTemp);
 
 		return id;

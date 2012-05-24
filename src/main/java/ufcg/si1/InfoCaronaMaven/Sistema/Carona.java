@@ -1,5 +1,6 @@
 package ufcg.si1.InfoCaronaMaven.Sistema;
 
+import java.util.Calendar;
 import java.util.List;
 
 public interface Carona {
@@ -18,13 +19,9 @@ public interface Carona {
 
 	public void setDestino(String destino) throws CaronaException;
 
-	public String getData();
-
-	public void setData(String data);
-
-	public String getHora();
-
-	public void setHora(String hora);
+	public Calendar getCalendario();
+	
+	public void setCalendario(Calendar calendario);
 
 	public int getVagas();
 
@@ -34,12 +31,6 @@ public interface Carona {
 	public String getIdCarona();
 	
 	public TiposCarona getTipoCarona();
-	/**
-	 * Metodo que retorna os atributos  de uma carona
-	 * @param atributo - recebe como parametro uma String q pode ser "origem", "vagas", "destino", "data"
-	 * @return - retorna uma String de acordo com o atributo solicitado.
-	 */
-	public String getAtributo(String atributo);
 	/**
 	 * Metodo que retorna o to String das caronas
 	 * @return - retorna uma String no formato "ORIGEM para DESTINO no dia XX/XX/XXXX as XX:XX

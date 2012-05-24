@@ -3,6 +3,8 @@ package ufcg.si1.InfoCaronaMaven.Sistema;
 import java.util.LinkedList;
 import java.util.List;
 
+import util.UtilInfo;
+
 public class ControlerRepositorio {
 	Repositorio repositorio;
 	
@@ -96,7 +98,7 @@ public class ControlerRepositorio {
         }else if(atributo.equals("destino")){
                 retorno = caronaTemp.getDestino();
         }else if(atributo.equals("data")){
-                retorno = caronaTemp.getData();
+                retorno = UtilInfo.converteCalendarEmStringData(caronaTemp.getCalendario());
         }else if(atributo.equals("ehMunicipal")){
             if(caronaTemp.getTipoCarona().equals(TiposCarona.MUNICIPAL)){
             	retorno = "true" ;

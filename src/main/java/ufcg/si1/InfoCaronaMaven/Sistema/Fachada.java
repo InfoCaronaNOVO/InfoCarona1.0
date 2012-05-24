@@ -1,7 +1,11 @@
 package ufcg.si1.InfoCaronaMaven.Sistema;
 
+import java.text.ParseException;
+import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
+
+import util.UtilInfo;
 
 
 public class Fachada {
@@ -38,14 +42,17 @@ public class Fachada {
 	public String cadastrarCarona(String idSessao, String origem,
 			String destino, String data, String hora, String vagas)
 			throws  CaronaException,
-			 NumeroMaximoException, CaronaException, ArgumentoInexistenteException {
+			 NumeroMaximoException, CaronaException, ArgumentoInexistenteException, ParseException {
 		int vaga = 0;
 		try {
 			vaga = Integer.parseInt(vagas);
 		} catch (Exception e) {
 			throw new IllegalArgumentException("Vaga inválida");
 		}
-		return sistema.cadastrarCarona(idSessao, origem, destino, data, hora,
+		
+		Calendar calendario = UtilInfo.converteStringEmCalendar(data, hora);
+		
+		return sistema.cadastrarCarona(idSessao, origem, destino, calendario,
 				vaga);
 	}
 
@@ -235,18 +242,21 @@ public class Fachada {
 	}
 	
 	public String cadastrarCaronaMunicipal(String idSessao, String origem, String destino,String cidade, String data, String hora, String vagas)
-			throws CaronaException, NumeroMaximoException, ArgumentoInexistenteException {
+			throws CaronaException, NumeroMaximoException, ArgumentoInexistenteException, ParseException {
 		int vaga = 0;
 		try {
 			vaga = Integer.parseInt(vagas);
 		} catch (Exception e) {
 			
 		}
-		return sistema.cadastrarCaronaMunicipal(idSessao, origem, destino, cidade, data, hora, vaga);
+		Calendar calendario = UtilInfo.converteStringEmCalendar(data, hora);
+		return sistema.cadastrarCaronaMunicipal(idSessao, origem, destino, cidade, calendario, vaga);
 	}
 	
-	public String cadastrarInteresse(String idSessao, String origem, String destino, String data, String horaInicio, String horaFim) throws NumeroMaximoException, CaronaException, ArgumentoInexistenteException{
-		return sistema.cadastrarInteresse(idSessao, origem, destino, data, horaInicio, horaFim);
+	public String cadastrarInteresse(String idSessao, String origem, String destino, String data, String horaInicio, String horaFim) throws NumeroMaximoException, CaronaException, ArgumentoInexistenteException, ParseException{
+		Calendar calendarioInicial = UtilInfo.converteStringEmCalendar(data, horaInicio);
+		Calendar calendarioFinal = UtilInfo.converteStringEmCalendar(data, horaFim);
+		return sistema.cadastrarInteresse(idSessao, origem, destino, calendarioInicial, calendarioFinal);
 	}
 	
 	public List<String> verificarMensagensPerfil(String idSessao) throws ArgumentoInexistenteException{

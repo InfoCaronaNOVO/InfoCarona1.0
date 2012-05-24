@@ -8,8 +8,11 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import util.UtilInfo;
+
 public abstract class CaronaAbstract implements Carona{
-	private String origem, destino, data, hora, idCarona;
+	private String origem, destino, idCarona;
+	private Calendar calendar;
 	private int vagas;
 	private List<SugestaoDePontoDeEncontro> listaDeSugestoes;
 	private List<SolicitacaoDeVaga> listaDeSolicitacao;
@@ -33,11 +36,10 @@ public abstract class CaronaAbstract implements Carona{
 	 * @throws HoraInvalidaException- retorna uma exceção caso a hora passada seja null, vazia ou data em formato inválida
 	 * @throws VagaInvalidaException - retorna uma exceção caso o numero de vagsa seja negativo ou nao seja um numéro válido.
 	 */
-	public CaronaAbstract(String origem, String destino, String data, String hora, int vagas, String idCarona, Usuario donoDaCarona) throws CaronaException {
+	public CaronaAbstract(String origem, String destino, Calendar calendar, int vagas, String idCarona, Usuario donoDaCarona) throws CaronaException {
         setOrigem(origem);
         setDestino(destino);
-        setData(data);
-        setHora(hora);
+        setCalendario(calendar);
         setVagas(vagas);
         
         this.donoDaCarona = donoDaCarona;
@@ -47,6 +49,7 @@ public abstract class CaronaAbstract implements Carona{
         this.listaPontosDeEncontroPermitidos = new LinkedList<String>();
         reviewsCarona = new HashMap<Usuario, String>();
 	}
+	
 	/**
 	 * Metodo que retorna os pontos de encontro permitidos pelo dono da carona para um usuário solicitar vaga e sugerir
 	 * @return - retorna uma List<String> com todos os pontos válidos
@@ -100,28 +103,14 @@ public abstract class CaronaAbstract implements Carona{
         this.destino = destino.trim();
 	}
 
-	public String getData() {
-		return data;
+	public void setCalendario(Calendar calendar){
+		this.calendar = calendar;
 	}
-
-	public void setData(String data) {
-        if ((data == null) || (data.trim().equals("")) || !(checaData(data))) {
-                throw new IllegalArgumentException("Data inválida");
-        }
-        this.data = data.trim();
-}
-
-	public String getHora() {
-		return hora;
+	
+	public Calendar getCalendario(){
+		return this.calendar;
 	}
-
-	public void setHora(String hora) {
-        if ((hora == null) || hora.trim().equals("") || !checaHoraInvalida(hora)) {
-                throw new IllegalArgumentException("Hora inválida");
-        }
-        this.hora = hora.trim();
-}
-
+	
 	public int getVagas() {
 		return vagas;
 	}
@@ -137,37 +126,18 @@ public abstract class CaronaAbstract implements Carona{
 	public String getIdCarona(){
 		return this.idCarona;
 	}
-	/**
-	 * Metodo que retorna os atributos  de uma carona
-	 * @param atributo - recebe como parametro uma String q pode ser "origem", "vagas", "destino", "data"
-	 * @return - retorna uma String de acordo com o atributo solicitado.
-	 */
-	public String getAtributo(String atributo){
-		String retorno = null;
-		
-		if(atributo.equals("origem")){
-			retorno = this.origem;
-		}else if(atributo.equals("vagas")){
-			retorno = (this.vagas+"");
-		}else if(atributo.equals("destino")){
-			retorno = this.destino;
-		}else if(atributo.equals("data")){
-			retorno = this.data;
-		}
-		
-		return retorno;
-	}
+
 	/**
 	 * Metodo que retorna o to String das caronas
 	 * @return - retorna uma String no formato "ORIGEM para DESTINO no dia XX/XX/XXXX as XX:XX
 	 */
 	@Override
 	public String toString(){
-		return (this.origem + " para " + this.destino + ", no dia " + this.data + ", as " + this.hora);
+		return (this.origem + " para " + this.destino + ", no dia " + UtilInfo.converteCalendarEmStringData(calendar) + ", as " + UtilInfo.converteCalendarEmStringHora(calendar));
 	}
 	
 	public String getDadosCarona(){
-		return ("origem=" + origem + " destino=" + destino + " data=" + data + " hora=" + hora + " vagas=" + vagas);
+		return ("origem=" + origem + " destino=" + destino + " data=" + UtilInfo.converteCalendarEmStringData(calendar) + " hora=" + UtilInfo.converteCalendarEmStringHora(calendar) + " vagas=" + vagas);
 	}
 	public void addNovaSolicitacao(SolicitacaoDeVaga novaSolicitacao){
 		listaDeSolicitacao.add(novaSolicitacao);

@@ -4,9 +4,11 @@
       <ufcg.si1.InfoCaronaMaven.Sistema.CaronaComum>
         <origem>Campina Grande</origem>
         <destino>João Pessoa</destino>
-        <data>02/06/2012</data>
-        <hora>12:00</hora>
-        <idCarona>00119</idCarona>
+        <idCarona>00107</idCarona>
+        <calendar>
+          <time>1338649248289</time>
+          <timezone>America/Sao_Paulo</timezone>
+        </calendar>
         <vagas>0</vagas>
         <listaDeSugestoes class="linked-list"/>
         <listaDeSolicitacao class="linked-list">
@@ -20,9 +22,11 @@
                   <carona class="ufcg.si1.InfoCaronaMaven.Sistema.CaronaComum">
                     <origem>Campina Grande</origem>
                     <destino>João Pessoa</destino>
-                    <data>04/06/2012</data>
-                    <hora>16:00</hora>
-                    <idCarona>00120</idCarona>
+                    <idCarona>00108</idCarona>
+                    <calendar>
+                      <time>1338836448289</time>
+                      <timezone>America/Sao_Paulo</timezone>
+                    </calendar>
                     <vagas>2</vagas>
                     <listaDeSugestoes class="linked-list"/>
                     <listaDeSolicitacao class="linked-list">
@@ -35,7 +39,7 @@
                   </carona>
                   <donoSolicitacao reference="../../.."/>
                   <ponto>Default</ponto>
-                  <idSolicitacao>00123</idSolicitacao>
+                  <idSolicitacao>00111</idSolicitacao>
                   <solicitacaoAceita>false</solicitacaoAceita>
                   <solicitacaoPendente>false</solicitacaoPendente>
                   <solicitacaoRejeitada>true</solicitacaoRejeitada>
@@ -55,7 +59,7 @@
               <login>bill</login>
             </donoSolicitacao>
             <ponto>Default</ponto>
-            <idSolicitacao>00122</idSolicitacao>
+            <idSolicitacao>00110</idSolicitacao>
             <solicitacaoAceita>true</solicitacaoAceita>
             <solicitacaoPendente>false</solicitacaoPendente>
             <solicitacaoRejeitada>false</solicitacaoRejeitada>

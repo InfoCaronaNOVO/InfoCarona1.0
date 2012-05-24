@@ -3,6 +3,8 @@ package ufcg.si1.InfoCaronaMaven.Sistema;
 import java.util.LinkedList;
 import java.util.List;
 
+import util.UtilInfo;
+
 
 
 public class Repositorio {
@@ -259,15 +261,15 @@ public class Repositorio {
 				if (interesseTemp.getOrigem().equals(carona.getOrigem())) {
 					if (interesseTemp.getDestino().equals(carona.getDestino())) {
 						if (interesseTemp.getData().equals("")) {
-							if ((Integer.parseInt(interesseTemp.getHoraInicio().substring(0, 1)) <= Integer.parseInt(carona.getHora().substring(0, 1))) && (Integer.parseInt(carona.getHora().substring(0, 1)) <= Integer.parseInt(interesseTemp.getHoraFim().substring(0, 1)))) {
-								if ((Integer.parseInt(interesseTemp.getHoraInicio().substring(3, 4)) <= Integer.parseInt(carona.getHora().substring(3, 4))) && (Integer.parseInt(carona.getHora().substring(3, 4)) <= Integer.parseInt(interesseTemp.getHoraFim().substring(3, 4)))){
+							if ((UtilInfo.getHora(interesseTemp.getCalendarioInicial()) <= UtilInfo.getHora(carona.getCalendario())) && (UtilInfo.getHora(carona.getCalendario()) <= UtilInfo.getHora(interesseTemp.getCalendarioFinal()))) {
+								if ((UtilInfo.getMinutos(interesseTemp.getCalendarioInicial()) <= UtilInfo.getMinutos(carona.getCalendario())) && (UtilInfo.getMinutos(carona.getCalendario()) <= UtilInfo.getMinutos(interesseTemp.getCalendarioFinal()))){
 									retorno.add(usuarioTemp);
 								}
 							}
 						}else{
-							if (interesseTemp.getData().equals(carona.getData())) {
-								if ((Integer.parseInt(interesseTemp.getHoraInicio().substring(0, 1)) <= Integer.parseInt(carona.getHora().substring(0, 1))) && (Integer.parseInt(carona.getHora().substring(0, 1)) <= Integer.parseInt(interesseTemp.getHoraFim().substring(0, 1)))) {
-									if ((Integer.parseInt(interesseTemp.getHoraInicio().substring(3, 4)) <= Integer.parseInt(carona.getHora().substring(3, 4))) && (Integer.parseInt(carona.getHora().substring(3, 4)) <= Integer.parseInt(interesseTemp.getHoraFim().substring(3, 4)))){
+							if (UtilInfo.converteCalendarEmStringData(interesseTemp.getCalendarioInicial()).equals(UtilInfo.converteCalendarEmStringData(carona.getCalendario()))) {
+								if ((UtilInfo.getHora(interesseTemp.getCalendarioInicial()) <= UtilInfo.getHora(carona.getCalendario())) && (UtilInfo.getHora(carona.getCalendario()) <= UtilInfo.getHora(interesseTemp.getCalendarioFinal()))) {
+									if ((UtilInfo.getMinutos(interesseTemp.getCalendarioInicial()) <= UtilInfo.getMinutos(carona.getCalendario())) && (UtilInfo.getMinutos(carona.getCalendario()) <= UtilInfo.getMinutos(interesseTemp.getCalendarioFinal()))){
 										retorno.add(usuarioTemp);
 									}
 								}

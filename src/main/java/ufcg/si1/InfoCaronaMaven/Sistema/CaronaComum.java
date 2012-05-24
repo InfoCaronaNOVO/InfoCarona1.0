@@ -1,5 +1,7 @@
 package ufcg.si1.InfoCaronaMaven.Sistema;
 
+import java.util.Calendar;
+
 /**
  * Classe Carona, que gerencia os dados da carona e possui as listas de solicitações, sugestões e pontos de encontro.
  * @author Felipe Lindemberg
@@ -23,9 +25,8 @@ public class CaronaComum extends CaronaAbstract{
 	 * @throws HoraInvalidaException- retorna uma exceção caso a hora passada seja null, vazia ou data em formato inválida
 	 * @throws VagaInvalidaException - retorna uma exceção caso o numero de vagsa seja negativo ou nao seja um numéro válido.
 	 */
-	public CaronaComum(String origem, String destino, String data, String hora, int vagas, String idCarona, Usuario donoDaCarona) throws CaronaException {
-        super(origem, destino, data, hora, vagas, idCarona, donoDaCarona);
+	public CaronaComum(String origem, String destino, Calendar calendar, int vagas, String idCarona, Usuario donoDaCarona) throws CaronaException {
+        super(origem, destino, calendar, vagas, idCarona, donoDaCarona);
         super.tipoCarona = TiposCarona.COMUM;
 	}
-
 }

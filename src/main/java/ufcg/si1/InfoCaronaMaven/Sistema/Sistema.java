@@ -1,5 +1,7 @@
 package ufcg.si1.InfoCaronaMaven.Sistema;
 
+import java.text.ParseException;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -152,12 +154,11 @@ public class Sistema {
 	}
 
 	public String cadastrarCarona(String idSessao, String origem,
-			String destino, String data, String hora, int vagas)
-			throws CaronaException, NumeroMaximoException, CaronaException, ArgumentoInexistenteException {
+			String destino, Calendar calendario, int vagas)
+			throws CaronaException, NumeroMaximoException, CaronaException, ArgumentoInexistenteException, ParseException {
 
 		Usuario usuarioTemp = procuraUsuarioLogado(idSessao);
-		String idCarona = usuarioTemp.cadastrarCarona(origem, destino, data,
-				hora, vagas, id.gerarId());
+		String idCarona = usuarioTemp.cadastrarCarona(origem, destino, calendario, vagas, id.gerarId());
 		
 		Carona caronaTemp = controleRepositorio.localizaCaronaPorId(idCarona);
 		enviaMsgAInteressadosEmCarona(caronaTemp);
@@ -442,12 +443,11 @@ public class Sistema {
 		}	
 	}
 	
-	public String cadastrarCaronaMunicipal(String idSessao, String origem, String destino, String cidade, String data, String hora, int vagas)
+	public String cadastrarCaronaMunicipal(String idSessao, String origem, String destino, String cidade, Calendar calendario, int vagas)
 			throws CaronaException, NumeroMaximoException, ArgumentoInexistenteException {
 
 			Usuario usuarioTemp = procuraUsuarioLogado(idSessao);
-		String idCarona = usuarioTemp.cadastrarCaronaMunicipal(origem, destino, cidade, data,
-			hora, vagas, id.gerarId());
+		String idCarona = usuarioTemp.cadastrarCaronaMunicipal(origem, destino, cidade, calendario, vagas, id.gerarId());
 
 		return idCarona;
 	}
@@ -470,16 +470,16 @@ public class Sistema {
 		return controleRepositorio.localizarCaronaMunicipal(cidade, origem, destino);
 	}
 
-	public String cadastrarInteresse(String idSessao, String origem, String destino, String data, String horaInicio, String horaFim) throws NumeroMaximoException, CaronaException, ArgumentoInexistenteException {
+	public String cadastrarInteresse(String idSessao, String origem, String destino, Calendar calendarioInicial, Calendar calendarioFinal) throws NumeroMaximoException, CaronaException, ArgumentoInexistenteException {
 		Usuario usuarioTemp = procuraUsuarioLogado(idSessao);
-		return usuarioTemp.cadastrarInteresse(origem, destino, data, horaInicio, horaFim, id.gerarId());
+		return usuarioTemp.cadastrarInteresse(origem, destino, calendarioInicial, calendarioFinal, id.gerarId());
 		
 	}
 	
 	public void enviaMsgAInteressadosEmCarona(Carona carona){
 		List<Usuario> listaDeInteressados = controleRepositorio.localizaInteressados(carona);
 		for (Usuario usuario : listaDeInteressados) {
-			String novaMensagem = "Carona cadastrada no dia " + carona.getData() + ", às " + carona.getHora() + " de acordo com os seus interesses registrados. Entrar em contato com " + carona.getDonoDaCarona().getEmail();
+			String novaMensagem = "Carona cadastrada no dia " + UtilInfo.converteCalendarEmStringData(carona.getCalendario()) + ", às " + UtilInfo.converteCalendarEmStringHora(carona.getCalendario()) + " de acordo com os seus interesses registrados. Entrar em contato com " + carona.getDonoDaCarona().getEmail();
 			usuario.addMensagen(novaMensagem);
 		}
 	}

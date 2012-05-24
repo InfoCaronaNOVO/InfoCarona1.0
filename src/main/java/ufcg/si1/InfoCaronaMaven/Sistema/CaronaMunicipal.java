@@ -1,12 +1,14 @@
 package ufcg.si1.InfoCaronaMaven.Sistema;
 
+import java.util.Calendar;
+
 
 public class CaronaMunicipal extends CaronaAbstract {
 	
 	private String cidade;
-	public CaronaMunicipal(String origem, String destino, String cidade, String data, String hora, int vagas, String idCarona, Usuario donoDaCarona)
+	public CaronaMunicipal(String origem, String destino, String cidade, Calendar calendario, int vagas, String idCarona, Usuario donoDaCarona)
 			throws CaronaException {
-		super(origem, destino, data, hora, vagas, idCarona, donoDaCarona);
+		super(origem, destino, calendario, vagas, idCarona, donoDaCarona);
 		this.cidade = cidade;
 		super.tipoCarona = TiposCarona.MUNICIPAL;
 	}
@@ -14,6 +16,4 @@ public class CaronaMunicipal extends CaronaAbstract {
 	public String getCidade() {
 		return cidade;
 	}
-	
-
 }
