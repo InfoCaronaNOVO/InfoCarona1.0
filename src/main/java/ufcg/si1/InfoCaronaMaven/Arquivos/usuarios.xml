@@ -4,9 +4,9 @@
       <ufcg.si1.InfoCaronaMaven.Sistema.CaronaComum>
         <origem>Campina Grande</origem>
         <destino>João Pessoa</destino>
-        <idCarona>00107</idCarona>
+        <idCarona>00109</idCarona>
         <calendar>
-          <time>1338649248289</time>
+          <time>1338649227381</time>
           <timezone>America/Sao_Paulo</timezone>
         </calendar>
         <vagas>0</vagas>
@@ -22,9 +22,9 @@
                   <carona class="ufcg.si1.InfoCaronaMaven.Sistema.CaronaComum">
                     <origem>Campina Grande</origem>
                     <destino>João Pessoa</destino>
-                    <idCarona>00108</idCarona>
+                    <idCarona>00110</idCarona>
                     <calendar>
-                      <time>1338836448289</time>
+                      <time>1338836427382</time>
                       <timezone>America/Sao_Paulo</timezone>
                     </calendar>
                     <vagas>2</vagas>
@@ -39,7 +39,7 @@
                   </carona>
                   <donoSolicitacao reference="../../.."/>
                   <ponto>Default</ponto>
-                  <idSolicitacao>00111</idSolicitacao>
+                  <idSolicitacao>00113</idSolicitacao>
                   <solicitacaoAceita>false</solicitacaoAceita>
                   <solicitacaoPendente>false</solicitacaoPendente>
                   <solicitacaoRejeitada>true</solicitacaoRejeitada>
@@ -59,7 +59,7 @@
               <login>bill</login>
             </donoSolicitacao>
             <ponto>Default</ponto>
-            <idSolicitacao>00110</idSolicitacao>
+            <idSolicitacao>00112</idSolicitacao>
             <solicitacaoAceita>true</solicitacaoAceita>
             <solicitacaoPendente>false</solicitacaoPendente>
             <solicitacaoRejeitada>false</solicitacaoRejeitada>

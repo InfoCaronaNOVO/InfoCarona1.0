@@ -39,7 +39,7 @@ expectError "Origem inválida" cadastrarInteresse idSessao=${sessaoZezito} origem
 expectError "Destino inválido" cadastrarInteresse idSessao=${sessaoZezito} origem="Campina Grande" destino="!" data="23/06/2012" horaInicio="06:00" horaFim="16:00"
 expectError "Destino inválido" cadastrarInteresse idSessao=${sessaoZezito} origem="Campina Grande" destino="-" data="23/06/2012" horaInicio="06:00" horaFim="16:00"
 expectError "Destino inválido" cadastrarInteresse idSessao=${sessaoZezito} origem="Campina Grande" destino="-" data="" horaInicio="06:00" horaFim="16:00"
-expectError "Destino inválido" cadastrarInteresse idSessao=${sessaoZezito} origem="Campina Grande" destino="-" data= horaInicio="06:00" horaFim="16:00"
+expectError "Data inválida" cadastrarInteresse idSessao=${sessaoZezito} origem="Campina Grande" destino="-" data= horaInicio="06:00" horaFim="16:00"
 
 
 #Cadastrar caronas.

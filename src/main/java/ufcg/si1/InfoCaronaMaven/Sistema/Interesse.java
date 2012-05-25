@@ -65,7 +65,7 @@ public class Interesse {
 				|| (origem
 						.matches("[\\-/.\\[_\\]()!\"+,:;<=>{|}#@$%¨&*0-9].*"))
 				|| (origem.trim().equals(""))) {
-			throw new CaronaException("Origem inválida");
+			throw new IllegalArgumentException("Origem inválida");
 		}
 		this.origem = origem.trim();
 	}
@@ -75,7 +75,7 @@ public class Interesse {
 				|| (destino
 						.matches("[\\-/.\\[_\\]()!\"+,:;<=>{|}#@$%¨&*0-9].*"))
 				|| (destino.trim().equals(""))) {
-			throw new CaronaException("Destino inválido");
+			throw new IllegalArgumentException("Destino inválido");
 		}
 		this.destino = destino.trim();
 	}

@@ -260,7 +260,7 @@ public class Repositorio {
 			for (Interesse interesseTemp : usuarioTemp.getListaDeInteresses()) {
 				if (interesseTemp.getOrigem().equals(carona.getOrigem())) {
 					if (interesseTemp.getDestino().equals(carona.getDestino())) {
-						if (interesseTemp.caronaEhNoDiaMarcado()) {
+						if (!interesseTemp.caronaEhNoDiaMarcado()) {
 							if ((UtilInfo.getHora(interesseTemp.getCalendarioInicial()) <= UtilInfo.getHora(carona.getCalendario())) && (UtilInfo.getHora(carona.getCalendario()) <= UtilInfo.getHora(interesseTemp.getCalendarioFinal()))) {
 								if ((UtilInfo.getMinutos(interesseTemp.getCalendarioInicial()) <= UtilInfo.getMinutos(carona.getCalendario())) && (UtilInfo.getMinutos(carona.getCalendario()) <= UtilInfo.getMinutos(interesseTemp.getCalendarioFinal()))){
 									retorno.add(usuarioTemp);

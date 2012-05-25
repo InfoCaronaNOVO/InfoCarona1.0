@@ -4,6 +4,9 @@ import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
 
+import util.EnviarEmail;
+import util.UtilInfo;
+
 
 public class Usuario {
 
@@ -288,7 +291,7 @@ public class Usuario {
 	}
 
 	public boolean enviarEmail(String destino, String message) {
-		// TODO usar a biblioteca
+		//return EnviarEmail.enviarEmail("Info Carona", destino, "Negociação de Caronas", message);
 		return true;
 	}
 }

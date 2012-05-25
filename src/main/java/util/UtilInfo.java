@@ -26,7 +26,6 @@ public class UtilInfo {
 	}
 
 	public static Calendar converteStringEmCalendar(String data, String hora){
-		
 		if (data == null || data.equals("")) throw new IllegalArgumentException("Data inválida");
 		if (hora == null || hora.equals("")) throw new IllegalArgumentException("Hora inválida");
 		
@@ -85,5 +84,9 @@ public class UtilInfo {
 	
 	public static int getMinutos(Calendar calendario){
 		return calendario.get(calendario.MINUTE);
+	}
+	
+	public static void main(String[] args) {
+		EnviarEmail.enviarEmail("Info Carona", "felipelindemberg.cc.ufcg@gmail.com", "testando", "mensagem testando");
 	}
 }

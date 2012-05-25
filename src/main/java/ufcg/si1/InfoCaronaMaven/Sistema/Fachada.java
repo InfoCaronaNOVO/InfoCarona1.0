@@ -255,6 +255,10 @@ public class Fachada {
 	}
 	
 	public String cadastrarInteresse(String idSessao, String origem, String destino, String data, String horaInicio, String horaFim) throws NumeroMaximoException, CaronaException, ArgumentoInexistenteException, ParseException{
+		if(data == null){ //coloquei isso pq vai quebrar no equals aki, mas depois nos vê como ajeita
+			throw new IllegalArgumentException("Data inválida");
+		}
+		
 		boolean caronaEhNoDia = true;
 		if(data.equals("")){
 			Calendar novaData = new GregorianCalendar();
@@ -268,6 +272,7 @@ public class Fachada {
 		if(horaFim.equals("")){
 			horaFim = "11:59";
 		}
+		
 		Calendar calendarioInicial = UtilInfo.converteStringEmCalendar(data, horaInicio);
 		Calendar calendarioFinal = UtilInfo.converteStringEmCalendar(data, horaFim);
 		return sistema.cadastrarInteresse(idSessao, origem, destino, calendarioInicial, calendarioFinal, caronaEhNoDia);
