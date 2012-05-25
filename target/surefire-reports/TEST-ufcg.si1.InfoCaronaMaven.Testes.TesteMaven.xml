@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="1" time="0.583" errors="0" skipped="0" tests="1" name="ufcg.si1.InfoCaronaMaven.Testes.TesteMaven">
+<testsuite failures="1" time="1.578" errors="0" skipped="0" tests="1" name="ufcg.si1.InfoCaronaMaven.Testes.TesteMaven">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.7.0_04\jre\bin"/>
@@ -14,37 +14,37 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Users\Italo\git\InfoCarona1.0"/>
+    <property name="user.dir" value="C:\Users\Felipe Lindemberg\git\InfoCarona1.0"/>
     <property name="java.runtime.version" value="1.7.0_04-b20"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="basedir" value="C:\Users\Italo\git\InfoCarona1.0"/>
+    <property name="basedir" value="C:\Users\Felipe Lindemberg\git\InfoCarona1.0"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.7.0_04\jre\lib\endorsed"/>
     <property name="os.arch" value="x86"/>
-    <property name="surefire.real.class.path" value="C:\Users\Italo\git\InfoCarona1.0\target\surefire\surefirebooter8800983577863279403.jar"/>
-    <property name="java.io.tmpdir" value="C:\Users\Italo\AppData\Local\Temp\"/>
+    <property name="surefire.real.class.path" value="C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\surefire\surefirebooter3723239410995909292.jar"/>
+    <property name="java.io.tmpdir" value="C:\Users\FELIPE~1\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 7"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk1.7.0_04\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre7/bin/client;C:/Program Files/Java/jre7/bin;C:/Program Files/Java/jre7/lib/i386;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\apache-maven-3.0.4\bin;C:\Program Files\Java\jdk1.7.0_04\bin;C:\Users\Italo\Desktop\eclipse;;."/>
-    <property name="surefire.test.class.path" value="C:\Users\Italo\git\InfoCarona1.0\target\test-classes;C:\Users\Italo\git\InfoCarona1.0\target\classes;C:\Users\Italo\.m2\repository\junit\junit\4.0\junit-4.0.jar;C:\Users\Italo\.m2\repository\ufcg\si1\easyaccept\1.0.0\easyaccept-1.0.0.jar;C:\Users\Italo\.m2\repository\com\thoughtworks\xstream\xstream\1.4.2\xstream-1.4.2.jar;C:\Users\Italo\.m2\repository\xmlpull\xmlpull\1.1.3.1\xmlpull-1.1.3.1.jar;C:\Users\Italo\.m2\repository\xpp3\xpp3_min\1.1.4c\xpp3_min-1.1.4c.jar;"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.7.0_04\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre7/bin/client;C:/Program Files/Java/jre7/bin;C:/Program Files/Java/jre7/lib/i386;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\Windows Live\Shared;C:\Program Files\Java\jdk1.7.0_04\bin;C:\Python26;C:\apache-maven-3.0.4\bin;C:\gwt-2.4.0;C:\Program Files\eclipse;;."/>
+    <property name="surefire.test.class.path" value="C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\test-classes;C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\classes;C:\Users\Felipe Lindemberg\.m2\repository\junit\junit\4.0\junit-4.0.jar;C:\Users\Felipe Lindemberg\.m2\repository\ufcg\si1\easyaccept\1.0.0\easyaccept-1.0.0.jar;C:\Users\Felipe Lindemberg\.m2\repository\com\thoughtworks\xstream\xstream\1.4.2\xstream-1.4.2.jar;C:\Users\Felipe Lindemberg\.m2\repository\xmlpull\xmlpull\1.1.3.1\xmlpull-1.1.3.1.jar;C:\Users\Felipe Lindemberg\.m2\repository\xpp3\xpp3_min\1.1.4c\xpp3_min-1.1.4c.jar;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="51.0"/>
     <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
     <property name="os.version" value="6.1"/>
-    <property name="user.home" value="C:\Users\Italo"/>
+    <property name="user.home" value="C:\Users\Felipe Lindemberg"/>
     <property name="user.timezone" value="America/Sao_Paulo"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="java.specification.version" value="1.7"/>
     <property name="file.encoding" value="Cp1252"/>
-    <property name="user.name" value="Italo"/>
-    <property name="java.class.path" value="C:\Users\Italo\git\InfoCarona1.0\target\test-classes;C:\Users\Italo\git\InfoCarona1.0\target\classes;C:\Users\Italo\.m2\repository\junit\junit\4.0\junit-4.0.jar;C:\Users\Italo\.m2\repository\ufcg\si1\easyaccept\1.0.0\easyaccept-1.0.0.jar;C:\Users\Italo\.m2\repository\com\thoughtworks\xstream\xstream\1.4.2\xstream-1.4.2.jar;C:\Users\Italo\.m2\repository\xmlpull\xmlpull\1.1.3.1\xmlpull-1.1.3.1.jar;C:\Users\Italo\.m2\repository\xpp3\xpp3_min\1.1.4c\xpp3_min-1.1.4c.jar;"/>
+    <property name="user.name" value="Felipe Lindemberg"/>
+    <property name="java.class.path" value="C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\test-classes;C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\classes;C:\Users\Felipe Lindemberg\.m2\repository\junit\junit\4.0\junit-4.0.jar;C:\Users\Felipe Lindemberg\.m2\repository\ufcg\si1\easyaccept\1.0.0\easyaccept-1.0.0.jar;C:\Users\Felipe Lindemberg\.m2\repository\com\thoughtworks\xstream\xstream\1.4.2\xstream-1.4.2.jar;C:\Users\Felipe Lindemberg\.m2\repository\xmlpull\xmlpull\1.1.3.1\xmlpull-1.1.3.1.jar;C:\Users\Felipe Lindemberg\.m2\repository\xpp3\xpp3_min\1.1.4c\xpp3_min-1.1.4c.jar;"/>
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.7.0_04\jre"/>
-    <property name="sun.java.command" value="C:\Users\Italo\git\InfoCarona1.0\target\surefire\surefirebooter8800983577863279403.jar C:\Users\Italo\git\InfoCarona1.0\target\surefire\surefire6054212575561176566tmp C:\Users\Italo\git\InfoCarona1.0\target\surefire\surefire8410222120962100719tmp"/>
+    <property name="sun.java.command" value="C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\surefire\surefirebooter3723239410995909292.jar C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\surefire\surefire2079828089158379847tmp C:\Users\Felipe Lindemberg\git\InfoCarona1.0\target\surefire\surefire397470092396617157tmp"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="pt"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -53,7 +53,7 @@
     <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.7.0_04\jre\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
     <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.7.0_04\jre\lib\resources.jar;C:\Program Files\Java\jdk1.7.0_04\jre\lib\rt.jar;C:\Program Files\Java\jdk1.7.0_04\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.7.0_04\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.7.0_04\jre\lib\jce.jar;C:\Program Files\Java\jdk1.7.0_04\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.7.0_04\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.7.0_04\jre\classes"/>
     <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="localRepository" value="C:\Users\Italo\.m2\repository"/>
+    <property name="localRepository" value="C:\Users\Felipe Lindemberg\.m2\repository"/>
     <property name="file.separator" value="\"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -61,7 +61,7 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase time="0.564" classname="ufcg.si1.InfoCaronaMaven.Testes.TesteMaven" name="testarEasyAcceptScript">
+  <testcase time="1.521" classname="ufcg.si1.InfoCaronaMaven.Testes.TesteMaven" name="testarEasyAcceptScript">
     <failure message="null" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: null
 	at junit.framework.Assert.fail(Assert.java:47)
 	at junit.framework.Assert.assertTrue(Assert.java:20)
@@ -102,10 +102,8 @@ Test file: scripts/US01.txt | Passed Tests: 33 | Not Passed Tests: 0
 
 ======================== 
 
-Test file: scripts/US02.txt | Passed Tests: 63 | Not Passed Tests: 1
+Test file: scripts/US02.txt | Passed Tests: 64 | Not Passed Tests: 0
 
-FAILURES:
-   At line 70: Expected &lt;Data inválida&gt;, but no error occurred.
 ======================== 
 
 Test file: scripts/US03.txt | Passed Tests: 21 | Not Passed Tests: 0
@@ -140,16 +138,12 @@ Test file: scripts/US10.txt | Passed Tests: 24 | Not Passed Tests: 0
 
 ======================== 
 
-Test file: scripts/US11.txt | Passed Tests: 25 | Not Passed Tests: 8
+Test file: scripts/US11.txt | Passed Tests: 29 | Not Passed Tests: 4
 
 FAILURES:
-   At line 30:Data inválida
-   At line 31:Data inválida
-   At line 32:Hora inválida
-   At line 33:Data inválida
-   At line 41: Expected the error message &lt;Destino inválido&gt;, but the error message was &lt;Data inválida&gt;
-   At line 42: Expected the error message &lt;Destino inválido&gt;, but the error message was &lt;Data inválida&gt;
-   At line 54: Expected &lt;[Carona cadastrada no dia 23/06/2012, às 16:00 de acordo com os seus interesses registrados. Entrar em contato com jucaPeroba@gmail.com]&gt;, but was &lt;[]&gt;
+   At line 42: Expected the error message &lt;Destino inválido&gt;, but the error message was &lt;(no message: exception = java.lang.NullPointerException)&gt;
+   At line 51: Expected &lt;[]&gt;, but was &lt;[Carona cadastrada no dia 25/06/2012, às 14:00 de acordo com os seus interesses registrados. Entrar em contato com jucaPeroba@gmail.com, Carona cadastrada no dia 25/06/2012, às 15:00 de acordo com os seus interesses registrados. Entrar em contato com marianoAdvogado@gmail.com]&gt;
+   At line 53: Expected &lt;[]&gt;, but was &lt;[Carona cadastrada no dia 23/06/2012, às 16:00 de acordo com os seus interesses registrados. Entrar em contato com jucaPeroba@gmail.com]&gt;
    At line 55: Expected &lt;[Carona cadastrada no dia 23/06/2012, às 16:00 de acordo com os seus interesses registrados. Entrar em contato com jucaPeroba@gmail.com]&gt;, but was &lt;[]&gt;
 ======================== 
 

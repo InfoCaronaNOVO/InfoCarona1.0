@@ -2,6 +2,7 @@ package ufcg.si1.InfoCaronaMaven.Sistema;
 
 import java.text.ParseException;
 import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -254,9 +255,22 @@ public class Fachada {
 	}
 	
 	public String cadastrarInteresse(String idSessao, String origem, String destino, String data, String horaInicio, String horaFim) throws NumeroMaximoException, CaronaException, ArgumentoInexistenteException, ParseException{
+		boolean caronaEhNoDia = true;
+		if(data.equals("")){
+			Calendar novaData = new GregorianCalendar();
+			novaData.add(Calendar.YEAR, 10);
+			data = UtilInfo.converteCalendarEmStringData(novaData);
+			caronaEhNoDia = false;
+		}
+		if(horaInicio.equals("")){
+			horaInicio = "00:00";
+		}
+		if(horaFim.equals("")){
+			horaFim = "11:59";
+		}
 		Calendar calendarioInicial = UtilInfo.converteStringEmCalendar(data, horaInicio);
 		Calendar calendarioFinal = UtilInfo.converteStringEmCalendar(data, horaFim);
-		return sistema.cadastrarInteresse(idSessao, origem, destino, calendarioInicial, calendarioFinal);
+		return sistema.cadastrarInteresse(idSessao, origem, destino, calendarioInicial, calendarioFinal, caronaEhNoDia);
 	}
 	
 	public List<String> verificarMensagensPerfil(String idSessao) throws ArgumentoInexistenteException{

@@ -470,9 +470,9 @@ public class Sistema {
 		return controleRepositorio.localizarCaronaMunicipal(cidade, origem, destino);
 	}
 
-	public String cadastrarInteresse(String idSessao, String origem, String destino, Calendar calendarioInicial, Calendar calendarioFinal) throws NumeroMaximoException, CaronaException, ArgumentoInexistenteException {
+	public String cadastrarInteresse(String idSessao, String origem, String destino, Calendar calendarioInicial, Calendar calendarioFinal, boolean caronaEhNoDia) throws NumeroMaximoException, CaronaException, ArgumentoInexistenteException {
 		Usuario usuarioTemp = procuraUsuarioLogado(idSessao);
-		return usuarioTemp.cadastrarInteresse(origem, destino, calendarioInicial, calendarioFinal, id.gerarId());
+		return usuarioTemp.cadastrarInteresse(origem, destino, calendarioInicial, calendarioFinal, id.gerarId(), caronaEhNoDia);
 		
 	}
 	

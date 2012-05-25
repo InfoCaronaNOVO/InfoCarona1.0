@@ -19,10 +19,10 @@ public class UtilInfo {
 		formatoHora = new SimpleDateFormat("HH:mm");
 	}
 	
-	public boolean jahPassou(Date data){
+	public static boolean jahPassou(Calendar calendario){
 		GregorianCalendar calendarioAtual=new GregorianCalendar();
 		//calendarioAtual.add(calendarioAtual.HOUR, 48);  como add mais dias na data
-        return calendarioAtual.getTime().after(data);
+        return calendarioAtual.getTime().after(calendario.getTime());
 	}
 
 	public static Calendar converteStringEmCalendar(String data, String hora){
@@ -54,6 +54,9 @@ public class UtilInfo {
 		calendar.set(ano, (mes-1), dia, hr, minuto);
 		
 		if(!UtilInfo.converteCalendarEmStringData(calendar).equals(data)){
+			throw new IllegalArgumentException("Data inválida");
+		}
+		if(jahPassou(calendar)){
 			throw new IllegalArgumentException("Data inválida");
 		}
 		

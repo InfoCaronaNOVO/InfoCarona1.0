@@ -274,10 +274,10 @@ public class Usuario {
 	}
 
 	public String cadastrarInteresse(String origem, String destino,
-			Calendar calendarioInicial, Calendar calendarioFinal, String id)
+			Calendar calendarioInicial, Calendar calendarioFinal, String id, boolean caronaEhNoDia)
 			throws CaronaException {
 		Interesse interesseTemp = new Interesse(this, origem, destino,
-				calendarioInicial, calendarioFinal, id);
+				calendarioInicial, calendarioFinal, id, caronaEhNoDia);
 		this.addInteresseCarona(interesseTemp);
 
 		return id;

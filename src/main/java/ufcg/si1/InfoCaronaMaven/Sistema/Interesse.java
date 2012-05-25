@@ -8,22 +8,22 @@ public class Interesse {
 
 	private final Usuario interessado;
 	private String origem;
-	private String data;
 	private Calendar calendarioFinal;
 	private Calendar calendarioInicial;
 	private final String id;
 	private String destino;
+	private boolean caronaEhNoDia;
 
 	public Interesse(Usuario interessado, String origem, String destino,
-			Calendar calendarioInicial, Calendar calendarioFinal, String id)
+			Calendar calendarioInicial, Calendar calendarioFinal, String id, boolean caronaEhNoDia)
 			throws CaronaException {
 		this.interessado = interessado;
 		setOrigem(origem);
 		setDestino(destino);
-		setData(data);
 		setCalendarioInicial(calendarioInicial);
 		setCalendarioFinal(calendarioFinal);
 		this.id = id;
+		this.caronaEhNoDia = caronaEhNoDia;
 
 	}
 
@@ -43,9 +43,6 @@ public class Interesse {
 		return destino;
 	}
 
-	public String getData() {
-		return data;
-	}
 	
 	public Calendar getCalendarioInicial(){
 		return this.calendarioInicial;
@@ -83,14 +80,6 @@ public class Interesse {
 		this.destino = destino.trim();
 	}
 
-	public void setData(String data) {
-		if ((data == null) || !(checaData(data))) {
-			throw new IllegalArgumentException("Data inválida");
-		}
-		this.data = data.trim();
-		// TODO devemos add mais 100 anos pra acontecer a carona caso a data
-		// seja ""
-	}
 
 	private boolean checaData(String stringData) {
 		boolean retorno = true;
@@ -113,6 +102,10 @@ public class Interesse {
 			}
 		}
 		return retorno;
+	}
+	
+	public boolean caronaEhNoDiaMarcado(){
+		return caronaEhNoDia;
 	}
 
 }
