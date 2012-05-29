@@ -87,6 +87,6 @@ public class UtilInfo {
 	}
 	
 	public static void main(String[] args) {
-		EnviarEmail.enviarEmail("Info Carona", "felipelindemberg.cc.ufcg@gmail.com", "testando", "mensagem testando");
+		//EnviarEmail.enviarEmail("Info Carona", "felipelindemberg.cc.ufcg@gmail.com", "testando", "mensagem testando");
 	}
 }
