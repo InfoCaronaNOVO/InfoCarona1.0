@@ -1,4 +1,4 @@
-package ufcg.si1.InfoCaronaMaven.Sistema;
+package ufcg.si1.infoCarona.sistema;
 
 import java.util.Calendar;
 import java.util.List;

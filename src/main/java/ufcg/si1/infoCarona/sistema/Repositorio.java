@@ -1,4 +1,4 @@
-package ufcg.si1.InfoCaronaMaven.Sistema;
+package ufcg.si1.infoCarona.sistema;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -16,7 +16,7 @@ public class Repositorio {
 	}
 
 	private void criaRepositorio() {
-		arquivo = new ManipulaArquivoXML("src/main/java/ufcg/si1/InfoCaronaMaven/Arquivos/usuarios");
+		arquivo = new ManipulaArquivoXML("src/main/java/ufcg/si1/infoCarona/arquivos/usuarios");
 		listaDeUsuarios = arquivo.ler();
 	}
 

@@ -1,4 +1,4 @@
-package ufcg.si1.InfoCaronaMaven.Sistema;
+package ufcg.si1.infoCarona.sistema;
 
 
 

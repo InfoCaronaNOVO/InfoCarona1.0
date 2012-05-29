@@ -1,3 +1,4 @@
+package ufcg.si1.infoCarona.testes;
 //package ufcg.si1.InfoCaronaMaven.Testes;
 //
 //import org.junit.Assert;

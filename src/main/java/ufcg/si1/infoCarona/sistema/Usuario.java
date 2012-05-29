@@ -1,10 +1,8 @@
-package ufcg.si1.InfoCaronaMaven.Sistema;
+package ufcg.si1.infoCarona.sistema;
 
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
-
-import util.UtilInfo;
 
 
 public class Usuario {

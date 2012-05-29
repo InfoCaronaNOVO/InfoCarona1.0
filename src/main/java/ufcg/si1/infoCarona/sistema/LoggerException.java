@@ -1,6 +1,5 @@
-package ufcg.si1.InfoCaronaMaven.Sistema;
+package ufcg.si1.infoCarona.sistema;
 
-import java.util.logging.Logger;
 
 public class LoggerException extends Exception{
 	public LoggerException(String msg){
