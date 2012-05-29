@@ -1,0 +1,90 @@
+<linked-list>
+  <ufcg.si1.infoCarona.sistema.Usuario>
+    <listaDeCaronas class="linked-list">
+      <ufcg.si1.infoCarona.sistema.CaronaComum>
+        <origem>Campina Grande</origem>
+        <destino>João Pessoa</destino>
+        <idCarona>00109</idCarona>
+        <calendar>
+          <time>1338649214554</time>
+          <timezone>America/Sao_Paulo</timezone>
+        </calendar>
+        <vagas>0</vagas>
+        <listaDeSugestoes class="linked-list"/>
+        <listaDeSolicitacao class="linked-list">
+          <ufcg.si1.infoCarona.sistema.SolicitacaoDeVaga>
+            <carona class="ufcg.si1.infoCarona.sistema.CaronaComum" reference="../../.."/>
+            <donoSolicitacao>
+              <listaDeCaronas class="linked-list"/>
+              <listaDeSolicitacaoDeVagas class="linked-list">
+                <ufcg.si1.infoCarona.sistema.SolicitacaoDeVaga reference="../../.."/>
+                <ufcg.si1.infoCarona.sistema.SolicitacaoDeVaga>
+                  <carona class="ufcg.si1.infoCarona.sistema.CaronaComum">
+                    <origem>Campina Grande</origem>
+                    <destino>João Pessoa</destino>
+                    <idCarona>00110</idCarona>
+                    <calendar>
+                      <time>1338836414556</time>
+                      <timezone>America/Sao_Paulo</timezone>
+                    </calendar>
+                    <vagas>2</vagas>
+                    <listaDeSugestoes class="linked-list"/>
+                    <listaDeSolicitacao class="linked-list">
+                      <ufcg.si1.infoCarona.sistema.SolicitacaoDeVaga reference="../../.."/>
+                    </listaDeSolicitacao>
+                    <listaPontosDeEncontroPermitidos class="linked-list"/>
+                    <reviewsCarona/>
+                    <donoDaCarona reference="../../../../../../../../.."/>
+                    <tipoCarona>COMUM</tipoCarona>
+                  </carona>
+                  <donoSolicitacao reference="../../.."/>
+                  <ponto>Default</ponto>
+                  <idSolicitacao>00113</idSolicitacao>
+                  <solicitacaoAceita>false</solicitacaoAceita>
+                  <solicitacaoPendente>false</solicitacaoPendente>
+                  <solicitacaoRejeitada>true</solicitacaoRejeitada>
+                </ufcg.si1.infoCarona.sistema.SolicitacaoDeVaga>
+              </listaDeSolicitacaoDeVagas>
+              <Reviews class="linked-list"/>
+              <listaDeInteresses class="linked-list"/>
+              <listaDeMensagens class="linked-list"/>
+              <caronasSeguras>0</caronasSeguras>
+              <caronaNaoFuncionaram>0</caronaNaoFuncionaram>
+              <faltasEmVagas>0</faltasEmVagas>
+              <presencaEmVagas>0</presencaEmVagas>
+              <nome>Bill Clinton</nome>
+              <email>bill@gmail.com</email>
+              <endereco>Hollywood, California</endereco>
+              <senha>bilz@o</senha>
+              <login>bill</login>
+            </donoSolicitacao>
+            <ponto>Default</ponto>
+            <idSolicitacao>00112</idSolicitacao>
+            <solicitacaoAceita>true</solicitacaoAceita>
+            <solicitacaoPendente>false</solicitacaoPendente>
+            <solicitacaoRejeitada>false</solicitacaoRejeitada>
+          </ufcg.si1.infoCarona.sistema.SolicitacaoDeVaga>
+        </listaDeSolicitacao>
+        <listaPontosDeEncontroPermitidos class="linked-list"/>
+        <reviewsCarona/>
+        <donoDaCarona reference="../../.."/>
+        <tipoCarona>COMUM</tipoCarona>
+      </ufcg.si1.infoCarona.sistema.CaronaComum>
+      <ufcg.si1.infoCarona.sistema.CaronaComum reference="../ufcg.si1.infoCarona.sistema.CaronaComum/listaDeSolicitacao/ufcg.si1.infoCarona.sistema.SolicitacaoDeVaga/donoSolicitacao/listaDeSolicitacaoDeVagas/ufcg.si1.infoCarona.sistema.SolicitacaoDeVaga[2]/carona"/>
+    </listaDeCaronas>
+    <listaDeSolicitacaoDeVagas class="linked-list"/>
+    <Reviews class="linked-list"/>
+    <listaDeInteresses class="linked-list"/>
+    <listaDeMensagens class="linked-list"/>
+    <caronasSeguras>0</caronasSeguras>
+    <caronaNaoFuncionaram>0</caronaNaoFuncionaram>
+    <faltasEmVagas>0</faltasEmVagas>
+    <presencaEmVagas>0</presencaEmVagas>
+    <nome>Mark Zuckerberg</nome>
+    <email>mark@facebook.com</email>
+    <endereco>Palo Alto, California</endereco>
+    <senha>m@rk</senha>
+    <login>mark</login>
+  </ufcg.si1.infoCarona.sistema.Usuario>
+  <ufcg.si1.infoCarona.sistema.Usuario reference="../ufcg.si1.infoCarona.sistema.Usuario/listaDeCaronas/ufcg.si1.infoCarona.sistema.CaronaComum/listaDeSolicitacao/ufcg.si1.infoCarona.sistema.SolicitacaoDeVaga/donoSolicitacao"/>
+</linked-list>
