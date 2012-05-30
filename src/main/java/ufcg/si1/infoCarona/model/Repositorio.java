@@ -3,6 +3,13 @@ package ufcg.si1.infoCarona.model;
 import java.util.LinkedList;
 import java.util.List;
 
+import ufcg.si1.infoCarona.model.carona.Carona;
+import ufcg.si1.infoCarona.model.carona.CaronaException;
+import ufcg.si1.infoCarona.model.carona.CaronaMunicipal;
+import ufcg.si1.infoCarona.model.carona.TiposCarona;
+import ufcg.si1.infoCarona.model.negociacao.SolicitacaoDeVaga;
+import ufcg.si1.infoCarona.model.negociacao.SugestaoDePontoDeEncontro;
+import ufcg.si1.infoCarona.model.usuario.Usuario;
 import util.UtilInfo;
 
 

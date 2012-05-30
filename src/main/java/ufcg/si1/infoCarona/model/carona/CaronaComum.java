@@ -1,6 +1,8 @@
-package ufcg.si1.infoCarona.model;
+package ufcg.si1.infoCarona.model.carona;
 
 import java.util.Calendar;
+
+import ufcg.si1.infoCarona.model.usuario.Usuario;
 
 /**
  * Classe Carona, que gerencia os dados da carona e possui as listas de solicitações, sugestões e pontos de encontro.

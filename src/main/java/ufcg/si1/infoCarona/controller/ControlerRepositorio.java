@@ -4,7 +4,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 import ufcg.si1.infoCarona.model.ArgumentoInexistenteException;
-import ufcg.si1.infoCarona.model.*;
+import ufcg.si1.infoCarona.model.LoggerException;
+import ufcg.si1.infoCarona.model.Repositorio;
+import ufcg.si1.infoCarona.model.carona.Carona;
+import ufcg.si1.infoCarona.model.carona.CaronaException;
+import ufcg.si1.infoCarona.model.carona.TiposCarona;
+import ufcg.si1.infoCarona.model.negociacao.SolicitacaoDeVaga;
+import ufcg.si1.infoCarona.model.negociacao.SugestaoDePontoDeEncontro;
+import ufcg.si1.infoCarona.model.usuario.Usuario;
 import util.UtilInfo;
 
 public class ControlerRepositorio {

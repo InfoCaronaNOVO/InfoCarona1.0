@@ -4,6 +4,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import ufcg.si1.infoCarona.model.carona.CaronaException;
+import ufcg.si1.infoCarona.model.usuario.Usuario;
+
 public class Interesse {
 
 	private final Usuario interessado;

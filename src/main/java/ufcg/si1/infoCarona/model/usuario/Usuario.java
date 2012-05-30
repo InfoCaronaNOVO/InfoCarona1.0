@@ -1,8 +1,19 @@
-package ufcg.si1.infoCarona.model;
+package ufcg.si1.infoCarona.model.usuario;
 
 import java.util.Calendar;
 import java.util.LinkedList;
 import java.util.List;
+
+import ufcg.si1.infoCarona.model.ArgumentoInexistenteException;
+import ufcg.si1.infoCarona.model.Interesse;
+import ufcg.si1.infoCarona.model.LoggerException;
+import ufcg.si1.infoCarona.model.NumeroMaximoException;
+import ufcg.si1.infoCarona.model.carona.Carona;
+import ufcg.si1.infoCarona.model.carona.CaronaComum;
+import ufcg.si1.infoCarona.model.carona.CaronaException;
+import ufcg.si1.infoCarona.model.carona.CaronaMunicipal;
+import ufcg.si1.infoCarona.model.negociacao.SolicitacaoDeVaga;
+import ufcg.si1.infoCarona.model.negociacao.SugestaoDePontoDeEncontro;
 
 
 public class Usuario {
@@ -285,10 +296,5 @@ public class Usuario {
 
 	public void addMensagen(String novaMensagem) {
 		listaDeMensagens.add(novaMensagem);
-	}
-
-	public boolean enviarEmail(String destino, String message) {
-		//return EnviarEmail.enviarEmail("Info Carona", destino, "Negociação de Caronas", message);
-		return true;
 	}
 }

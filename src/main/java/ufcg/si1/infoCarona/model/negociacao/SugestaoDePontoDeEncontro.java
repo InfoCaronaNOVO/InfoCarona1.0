@@ -1,7 +1,9 @@
-package ufcg.si1.infoCarona.model;
+package ufcg.si1.infoCarona.model.negociacao;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import ufcg.si1.infoCarona.model.usuario.Usuario;
 
 public class SugestaoDePontoDeEncontro {
 	

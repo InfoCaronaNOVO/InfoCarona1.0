@@ -1,6 +1,8 @@
-package ufcg.si1.infoCarona.model;
+package ufcg.si1.infoCarona.model.carona;
 
 import java.util.Calendar;
+
+import ufcg.si1.infoCarona.model.usuario.Usuario;
 
 
 public class CaronaMunicipal extends CaronaAbstract {

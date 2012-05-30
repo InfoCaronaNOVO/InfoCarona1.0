@@ -1,7 +1,11 @@
-package ufcg.si1.infoCarona.model;
+package ufcg.si1.infoCarona.model.carona;
 
 import java.util.Calendar;
 import java.util.List;
+
+import ufcg.si1.infoCarona.model.negociacao.SolicitacaoDeVaga;
+import ufcg.si1.infoCarona.model.negociacao.SugestaoDePontoDeEncontro;
+import ufcg.si1.infoCarona.model.usuario.Usuario;
 
 public interface Carona {
 	public List<String> getListaPontosDeEncontroPermitidos();

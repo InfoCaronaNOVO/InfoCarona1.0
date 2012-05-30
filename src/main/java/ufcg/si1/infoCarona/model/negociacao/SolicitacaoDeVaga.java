@@ -1,4 +1,7 @@
-package ufcg.si1.infoCarona.model;
+package ufcg.si1.infoCarona.model.negociacao;
+
+import ufcg.si1.infoCarona.model.carona.Carona;
+import ufcg.si1.infoCarona.model.usuario.Usuario;
 
 
 

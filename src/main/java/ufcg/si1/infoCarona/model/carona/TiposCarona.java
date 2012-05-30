@@ -1,4 +1,4 @@
-package ufcg.si1.infoCarona.model;
+package ufcg.si1.infoCarona.model.carona;
 
 public enum TiposCarona {
 	COMUM("Carona Comum"),

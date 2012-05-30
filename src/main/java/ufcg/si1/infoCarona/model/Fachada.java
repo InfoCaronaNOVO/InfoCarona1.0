@@ -6,20 +6,32 @@ import java.util.GregorianCalendar;
 import java.util.LinkedList;
 import java.util.List;
 
+import ufcg.si1.infoCarona.model.carona.Carona;
+import ufcg.si1.infoCarona.model.carona.CaronaException;
+import ufcg.si1.infoCarona.model.negociacao.SolicitacaoDeVaga;
+import ufcg.si1.infoCarona.model.sistema.*;
 import util.UtilInfo;
 
 
 public class Fachada {
 
-	private Sistema sistema;
-
+	private SistemaRaiz sistema;
+	private SistemaUsuarioNaoLogado sistemaNaoLogado;
+	private SistemaNegociacao sistemaNegociacao;
+	private SistemaCarona sistemaCarona;
+	private SistemaUsuario sistemaUsuario;
+	
 	public Fachada() {
-		this.sistema = new Sistema();
+		this.sistema = SistemaRaiz.getInstance();
+		this.sistemaNaoLogado = new SistemaUsuarioNaoLogado();
+		this.sistemaNegociacao = new SistemaNegociacao();
+		this.sistemaCarona = new SistemaCarona();
+		this.sistemaUsuario = new SistemaUsuario();
 	}
 
 	public void criarUsuario(String login, String senha, String nome,
 			String endereco, String email) throws Exception {
-		sistema.criarUsuario(login, senha, nome, endereco, email);
+		sistemaNaoLogado.criarUsuario(login, senha, nome, endereco, email);
 	}
 
 	public void zerarSistema() {
@@ -28,12 +40,12 @@ public class Fachada {
 
 	public String abrirSessao(String login, String senha)
 			throws LoggerException, NumeroMaximoException, ArgumentoInexistenteException {
-		return sistema.abrirSessao(login, senha);
+		return sistemaNaoLogado.abrirSessao(login, senha);
 	}
 
 	public String getAtributoUsuario(String login, String atributo)
 			throws LoggerException, ArgumentoInexistenteException {
-		return sistema.getAtributoUsuario(login, atributo);
+		return sistemaUsuario.getAtributoUsuario(login, atributo);
 	}
 
 	public void encerrarSistema() {
@@ -53,14 +65,14 @@ public class Fachada {
 		
 		Calendar calendario = UtilInfo.converteStringEmCalendar(data, hora);
 		
-		return sistema.cadastrarCarona(idSessao, origem, destino, calendario,
+		return sistemaCarona.cadastrarCarona(idSessao, origem, destino, calendario,
 				vaga);
 	}
 
 	public String localizarCarona(String idSessao, String origem, String destino)
 			throws CaronaException {
 		LinkedList<String> retorno = new LinkedList<String>();
-		List<Carona> listaCaronas = sistema.localizarCarona(origem, destino);
+		List<Carona> listaCaronas = sistemaCarona.localizarCarona(origem, destino);
 		for(Carona caronaTemp : listaCaronas){
 			retorno.add(caronaTemp.getIdCarona());
 		}
@@ -71,7 +83,7 @@ public class Fachada {
 	public String localizarCaronaMunicipal(String idSessao, String cidade, String origem, String destino)
 			throws CaronaException, CaronaException {
 		LinkedList<String> retorno = new LinkedList<String>();
-		List<Carona> listaCaronas = sistema.localizarCaronaMunicipal(cidade, origem, destino);
+		List<Carona> listaCaronas = sistemaCarona.localizarCaronaMunicipal(cidade, origem, destino);
 		for(Carona caronaTemp : listaCaronas){
 			retorno.add(caronaTemp.getIdCarona());
 		}
@@ -95,7 +107,7 @@ public class Fachada {
 			throw new IllegalArgumentException("Atributo inválido");
 		}
 	
-		retorno = sistema.getAtributoCarona(idCarona, atributo);
+		retorno = sistemaCarona.getAtributoCarona(idCarona, atributo);
 		
 		if(retorno.equals("")){
 	      	throw new ArgumentoInexistenteException("Atributo inexistente");
@@ -111,7 +123,7 @@ public class Fachada {
 		if(idCarona.equals("")){
 			throw new ArgumentoInexistenteException("Trajeto Inexistente");
 		}
-		return sistema.getTrajeto(idCarona);
+		return sistemaCarona.getTrajeto(idCarona);
 	}
 
 	public String getCarona(String idCarona) throws CaronaException {
@@ -130,12 +142,12 @@ public class Fachada {
 	}
 
 	public void encerrarSessao(String login) {
-		sistema.encerrarSessao(login);
+		sistemaUsuario.encerrarSessao(login);
 	}
 
 	public String sugerirPontoEncontro(String idSessao, String idCarona,
 			String pontos) throws CaronaException, NumeroMaximoException, ArgumentoInexistenteException {
-		return sistema.sugerirPontoEncontro(idSessao, idCarona, pontos);
+		return sistemaNegociacao.sugerirPontoEncontro(idSessao, idCarona, pontos);
 	}
 
 	public void responderSugestaoPontoEncontro(String idSessao,
@@ -144,50 +156,50 @@ public class Fachada {
 		if(pontos.equals("")){
 			throw new IllegalArgumentException("Ponto Inválido");
 		}
-		sistema.responderSugestaoPontoEncontro(idSessao, idCarona, idSugestao,
+		sistemaNegociacao.responderSugestaoPontoEncontro(idSessao, idCarona, idSugestao,
 				pontos);
 	}
 
 	public String solicitarVagaPontoEncontro(String idSessao, String idCarona,
 			String ponto) throws CaronaException, NumeroMaximoException, ArgumentoInexistenteException  {
-		return sistema.solicitarVagaPontoEncontro(idSessao, idCarona, ponto);
+		return sistemaNegociacao.solicitarVagaPontoEncontro(idSessao, idCarona, ponto);
 	}
 
 	public String solicitarVaga(String idSessao, String idCarona)
 			throws CaronaException, NumeroMaximoException, ArgumentoInexistenteException  {
-		return sistema.solicitarVagaPontoEncontro(idSessao, idCarona, "Default");
+		return sistemaNegociacao.solicitarVagaPontoEncontro(idSessao, idCarona, "Default");
 	}
 
 	public String getAtributoSolicitacao(String idSolicitacao, String atributo) {
-		return sistema.getAtributoSolicitacao(idSolicitacao, atributo);
+		return sistemaNegociacao.getAtributoSolicitacao(idSolicitacao, atributo);
 	}
 	public void reviewVagaEmCarona (String idSessao, String idCarona, String loginCaroneiro, String review) throws CaronaException, LoggerException, ArgumentoInexistenteException{
 		sistema.reviewVagaEmCarona(idSessao, idCarona, loginCaroneiro, review);
 	}
 	public void aceitarSolicitacaoPontoEncontro(String idSessao,
 			String idSolicitacao) throws ArgumentoInexistenteException {
-		sistema.aceitarSolicitacaoPontoEncontro(idSessao, idSolicitacao);
+		sistemaNegociacao.aceitarSolicitacaoPontoEncontro(idSessao, idSolicitacao);
 	}
 
 	public void desistirRequisicao(String idSessao, String idCarona,
 			String idSugestao) throws CaronaException, ArgumentoInexistenteException{
-		sistema.desistirRequisicao(idSessao, idCarona, idSugestao);
+		sistemaNegociacao.desistirRequisicao(idSessao, idCarona, idSugestao);
 
 	}
 
 	public String visualizarPerfil(String idSesao, String login) throws LoggerException, ArgumentoInexistenteException {
-		return sistema.visualizarPerfil(idSesao, login);
+		return sistemaUsuario.visualizarPerfil(idSesao, login);
 	}
 
 	public String getAtributoPerfil(String login, String atributo) throws LoggerException, ArgumentoInexistenteException {
-		String retorno = sistema.getAtributoPerfil(login, atributo);
+		String retorno = sistemaUsuario.getAtributoPerfil(login, atributo);
 		if(retorno.equals(""))
 			return "[]";
 		return retorno;
 	}
 	
 	public void rejeitarSolicitacao(String idSessao, String idSolicitacao) throws ArgumentoInexistenteException{
-		sistema.rejeitarSolicitacao(idSessao, idSolicitacao);
+		sistemaNegociacao.rejeitarSolicitacao(idSessao, idSolicitacao);
 	}
 	
 	public boolean ehVazioOuNull(String atributo){
@@ -202,12 +214,12 @@ public class Fachada {
 	}
 	
 	public String getCaronaUsuario(String idSessao, int indexCarona) throws ArgumentoInexistenteException{
-		return sistema.getCaronaUsuario(idSessao, indexCarona);
+		return sistemaCarona.getCaronaUsuario(idSessao, indexCarona);
 	}
 	
 	public String getTodasCaronasUsuario(String idSessao) throws ArgumentoInexistenteException{
 		List<String> retorno = new LinkedList<String>(); 
-		List<Carona> todasCaronas = sistema.getTodasCaronasUsuario(idSessao);
+		List<Carona> todasCaronas = sistemaCarona.getTodasCaronasUsuario(idSessao);
 		for (Carona caronaTemp : todasCaronas) {
 			retorno.add(caronaTemp.getIdCarona());
 		}
@@ -216,7 +228,7 @@ public class Fachada {
 	
 	public String getSolicitacoesConfirmadas(String idSessao, String idCarona) throws CaronaException{
 		List<String> retorno = new LinkedList<String>(); 
-		List<SolicitacaoDeVaga> todasSolicitacoes = sistema.getSolicitacoesConfirmadas(idCarona);
+		List<SolicitacaoDeVaga> todasSolicitacoes = sistemaNegociacao.getSolicitacoesConfirmadas(idCarona);
 		for (SolicitacaoDeVaga solicitacao : todasSolicitacoes) {
 			retorno.add(solicitacao.getIdSolicitacao());
 		}
@@ -225,21 +237,21 @@ public class Fachada {
 	}
 	
 	public String getSolicitacoesPendentes(String idSessao, String idCarona) throws CaronaException{
-		return sistema.getSolicitacoesPendentes(idCarona).toString().replace("[", "{").replace("]", "}").replace(", ", ",");
+		return sistemaNegociacao.getSolicitacoesPendentes(idCarona).toString().replace("[", "{").replace("]", "}").replace(", ", ",");
 	}                  
 	
 	public String getPontosEncontro(String idSessao, String idCarona) throws CaronaException{
-		return sistema.getPontosEncontro(idCarona).toString().replace(", ", ";");
+		return sistemaNegociacao.getPontosEncontro(idCarona).toString().replace(", ", ";");
 	}
 	
 	public String getPontosSugeridos(String idSessao, String idCarona) throws CaronaException{
-		return sistema.getPontosSugeridos(idCarona).toString().replace(", ", ";");
+		return sistemaNegociacao.getPontosSugeridos(idCarona).toString().replace(", ", ";");
 	}
 	
 	//metodos do user 9 pra frente
 	
 	public void reviewCarona (String idSessao, String idCarona, String review) throws CaronaException, LoggerException, ArgumentoInexistenteException{
-		sistema.reviewCarona(idSessao, idCarona, review);
+		sistemaCarona.reviewCarona(idSessao, idCarona, review);
 	}
 	
 	public String cadastrarCaronaMunicipal(String idSessao, String origem, String destino,String cidade, String data, String hora, String vagas)
@@ -251,7 +263,7 @@ public class Fachada {
 			
 		}
 		Calendar calendario = UtilInfo.converteStringEmCalendar(data, hora);
-		return sistema.cadastrarCaronaMunicipal(idSessao, origem, destino, cidade, calendario, vaga);
+		return sistemaCarona.cadastrarCaronaMunicipal(idSessao, origem, destino, cidade, calendario, vaga);
 	}
 	
 	public String cadastrarInteresse(String idSessao, String origem, String destino, String data, String horaInicio, String horaFim) throws NumeroMaximoException, CaronaException, ArgumentoInexistenteException, ParseException{
@@ -275,11 +287,11 @@ public class Fachada {
 		
 		Calendar calendarioInicial = UtilInfo.converteStringEmCalendar(data, horaInicio);
 		Calendar calendarioFinal = UtilInfo.converteStringEmCalendar(data, horaFim);
-		return sistema.cadastrarInteresse(idSessao, origem, destino, calendarioInicial, calendarioFinal, caronaEhNoDia);
+		return sistemaUsuario.cadastrarInteresse(idSessao, origem, destino, calendarioInicial, calendarioFinal, caronaEhNoDia);
 	}
 	
 	public List<String> verificarMensagensPerfil(String idSessao) throws ArgumentoInexistenteException{
-		return sistema.verificarMensagensPerfil(idSessao);
+		return sistemaUsuario.verificarMensagensPerfil(idSessao);
 	}
 	
 	public String enviarEmail(String idSessao, String destino, String message) throws ArgumentoInexistenteException{

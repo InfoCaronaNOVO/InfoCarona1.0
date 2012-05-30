@@ -1,4 +1,4 @@
-package ufcg.si1.infoCarona.model;
+package ufcg.si1.infoCarona.model.carona;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,6 +8,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import ufcg.si1.infoCarona.model.negociacao.SolicitacaoDeVaga;
+import ufcg.si1.infoCarona.model.negociacao.SugestaoDePontoDeEncontro;
+import ufcg.si1.infoCarona.model.usuario.Usuario;
 import util.UtilInfo;
 
 public abstract class CaronaAbstract implements Carona{

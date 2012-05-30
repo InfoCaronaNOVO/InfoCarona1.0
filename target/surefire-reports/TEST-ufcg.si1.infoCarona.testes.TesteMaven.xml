@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.58" errors="0" skipped="0" tests="1" name="ufcg.si1.infoCarona.testes.TesteMaven">
+<testsuite failures="0" time="27.15" errors="0" skipped="0" tests="1" name="ufcg.si1.infoCarona.testes.TesteMaven">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.7.0_04\jre\bin"/>
@@ -20,7 +20,7 @@
     <property name="basedir" value="C:\Users\Italo\git\InfoCarona1.0"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.7.0_04\jre\lib\endorsed"/>
     <property name="os.arch" value="x86"/>
-    <property name="surefire.real.class.path" value="C:\Users\Italo\git\InfoCarona1.0\target\surefire\surefirebooter693552253609605861.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Italo\git\InfoCarona1.0\target\surefire\surefirebooter3055929380314861584.jar"/>
     <property name="java.io.tmpdir" value="C:\Users\Italo\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
@@ -44,7 +44,7 @@
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.7.0_04\jre"/>
-    <property name="sun.java.command" value="C:\Users\Italo\git\InfoCarona1.0\target\surefire\surefirebooter693552253609605861.jar C:\Users\Italo\git\InfoCarona1.0\target\surefire\surefire7046206008053131592tmp C:\Users\Italo\git\InfoCarona1.0\target\surefire\surefire9173238410754082966tmp"/>
+    <property name="sun.java.command" value="C:\Users\Italo\git\InfoCarona1.0\target\surefire\surefirebooter3055929380314861584.jar C:\Users\Italo\git\InfoCarona1.0\target\surefire\surefire526589194292012802tmp C:\Users\Italo\git\InfoCarona1.0\target\surefire\surefire1928871292551805255tmp"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="pt"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -61,5 +61,5 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase time="0.562" classname="ufcg.si1.infoCarona.testes.TesteMaven" name="testarEasyAcceptScript"/>
+  <testcase time="27.128" classname="ufcg.si1.infoCarona.testes.TesteMaven" name="testarEasyAcceptScript"/>
 </testsuite>
