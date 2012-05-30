@@ -1,36 +1,36 @@
 <linked-list>
-  <ufcg.si1.infoCarona.sistema.Usuario>
+  <ufcg.si1.infoCarona.model.Usuario>
     <listaDeCaronas class="linked-list">
-      <ufcg.si1.infoCarona.sistema.CaronaComum>
+      <ufcg.si1.infoCarona.model.CaronaComum>
         <origem>Campina Grande</origem>
         <destino>João Pessoa</destino>
         <idCarona>00109</idCarona>
         <calendar>
-          <time>1338649214554</time>
+          <time>1338649217485</time>
           <timezone>America/Sao_Paulo</timezone>
         </calendar>
         <vagas>0</vagas>
         <listaDeSugestoes class="linked-list"/>
         <listaDeSolicitacao class="linked-list">
-          <ufcg.si1.infoCarona.sistema.SolicitacaoDeVaga>
-            <carona class="ufcg.si1.infoCarona.sistema.CaronaComum" reference="../../.."/>
+          <ufcg.si1.infoCarona.model.SolicitacaoDeVaga>
+            <carona class="ufcg.si1.infoCarona.model.CaronaComum" reference="../../.."/>
             <donoSolicitacao>
               <listaDeCaronas class="linked-list"/>
               <listaDeSolicitacaoDeVagas class="linked-list">
-                <ufcg.si1.infoCarona.sistema.SolicitacaoDeVaga reference="../../.."/>
-                <ufcg.si1.infoCarona.sistema.SolicitacaoDeVaga>
-                  <carona class="ufcg.si1.infoCarona.sistema.CaronaComum">
+                <ufcg.si1.infoCarona.model.SolicitacaoDeVaga reference="../../.."/>
+                <ufcg.si1.infoCarona.model.SolicitacaoDeVaga>
+                  <carona class="ufcg.si1.infoCarona.model.CaronaComum">
                     <origem>Campina Grande</origem>
                     <destino>João Pessoa</destino>
                     <idCarona>00110</idCarona>
                     <calendar>
-                      <time>1338836414556</time>
+                      <time>1338836417486</time>
                       <timezone>America/Sao_Paulo</timezone>
                     </calendar>
                     <vagas>2</vagas>
                     <listaDeSugestoes class="linked-list"/>
                     <listaDeSolicitacao class="linked-list">
-                      <ufcg.si1.infoCarona.sistema.SolicitacaoDeVaga reference="../../.."/>
+                      <ufcg.si1.infoCarona.model.SolicitacaoDeVaga reference="../../.."/>
                     </listaDeSolicitacao>
                     <listaPontosDeEncontroPermitidos class="linked-list"/>
                     <reviewsCarona/>
@@ -43,7 +43,7 @@
                   <solicitacaoAceita>false</solicitacaoAceita>
                   <solicitacaoPendente>false</solicitacaoPendente>
                   <solicitacaoRejeitada>true</solicitacaoRejeitada>
-                </ufcg.si1.infoCarona.sistema.SolicitacaoDeVaga>
+                </ufcg.si1.infoCarona.model.SolicitacaoDeVaga>
               </listaDeSolicitacaoDeVagas>
               <Reviews class="linked-list"/>
               <listaDeInteresses class="linked-list"/>
@@ -63,14 +63,14 @@
             <solicitacaoAceita>true</solicitacaoAceita>
             <solicitacaoPendente>false</solicitacaoPendente>
             <solicitacaoRejeitada>false</solicitacaoRejeitada>
-          </ufcg.si1.infoCarona.sistema.SolicitacaoDeVaga>
+          </ufcg.si1.infoCarona.model.SolicitacaoDeVaga>
         </listaDeSolicitacao>
         <listaPontosDeEncontroPermitidos class="linked-list"/>
         <reviewsCarona/>
         <donoDaCarona reference="../../.."/>
         <tipoCarona>COMUM</tipoCarona>
-      </ufcg.si1.infoCarona.sistema.CaronaComum>
-      <ufcg.si1.infoCarona.sistema.CaronaComum reference="../ufcg.si1.infoCarona.sistema.CaronaComum/listaDeSolicitacao/ufcg.si1.infoCarona.sistema.SolicitacaoDeVaga/donoSolicitacao/listaDeSolicitacaoDeVagas/ufcg.si1.infoCarona.sistema.SolicitacaoDeVaga[2]/carona"/>
+      </ufcg.si1.infoCarona.model.CaronaComum>
+      <ufcg.si1.infoCarona.model.CaronaComum reference="../ufcg.si1.infoCarona.model.CaronaComum/listaDeSolicitacao/ufcg.si1.infoCarona.model.SolicitacaoDeVaga/donoSolicitacao/listaDeSolicitacaoDeVagas/ufcg.si1.infoCarona.model.SolicitacaoDeVaga[2]/carona"/>
     </listaDeCaronas>
     <listaDeSolicitacaoDeVagas class="linked-list"/>
     <Reviews class="linked-list"/>
@@ -85,6 +85,6 @@
     <endereco>Palo Alto, California</endereco>
     <senha>m@rk</senha>
     <login>mark</login>
-  </ufcg.si1.infoCarona.sistema.Usuario>
-  <ufcg.si1.infoCarona.sistema.Usuario reference="../ufcg.si1.infoCarona.sistema.Usuario/listaDeCaronas/ufcg.si1.infoCarona.sistema.CaronaComum/listaDeSolicitacao/ufcg.si1.infoCarona.sistema.SolicitacaoDeVaga/donoSolicitacao"/>
+  </ufcg.si1.infoCarona.model.Usuario>
+  <ufcg.si1.infoCarona.model.Usuario reference="../ufcg.si1.infoCarona.model.Usuario/listaDeCaronas/ufcg.si1.infoCarona.model.CaronaComum/listaDeSolicitacao/ufcg.si1.infoCarona.model.SolicitacaoDeVaga/donoSolicitacao"/>
 </linked-list>

@@ -1,4 +1,4 @@
-package ufcg.si1.infoCarona.sistema;
+package ufcg.si1.infoCarona.model;
 
 import java.text.ParseException;
 import java.util.Calendar;
@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import ufcg.si1.infoCarona.controller.ControlerRepositorio;
 import util.UtilInfo;
 
 public class Sistema {

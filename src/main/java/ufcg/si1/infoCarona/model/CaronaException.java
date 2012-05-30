@@ -1,4 +1,4 @@
-package ufcg.si1.infoCarona.sistema;
+package ufcg.si1.infoCarona.model;
 
 
 public class CaronaException extends Exception {

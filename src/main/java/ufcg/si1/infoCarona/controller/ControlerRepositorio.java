@@ -1,8 +1,10 @@
-package ufcg.si1.infoCarona.sistema;
+package ufcg.si1.infoCarona.controller;
 
 import java.util.LinkedList;
 import java.util.List;
 
+import ufcg.si1.infoCarona.model.ArgumentoInexistenteException;
+import ufcg.si1.infoCarona.model.*;
 import util.UtilInfo;
 
 public class ControlerRepositorio {

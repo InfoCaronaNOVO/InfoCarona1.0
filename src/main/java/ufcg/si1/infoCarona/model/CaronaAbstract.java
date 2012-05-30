@@ -1,4 +1,4 @@
-package ufcg.si1.infoCarona.sistema;
+package ufcg.si1.infoCarona.model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

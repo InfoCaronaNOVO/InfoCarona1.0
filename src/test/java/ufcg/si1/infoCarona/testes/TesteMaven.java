@@ -4,7 +4,7 @@ package ufcg.si1.infoCarona.testes;
 import java.util.ArrayList;
 import java.util.List;
 
-import ufcg.si1.infoCarona.sistema.Fachada;
+import ufcg.si1.infoCarona.model.Fachada;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
