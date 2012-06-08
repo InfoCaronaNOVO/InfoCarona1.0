@@ -22,7 +22,7 @@ public class Fachada {
 	private SistemaUsuario sistemaUsuario;
 	
 	public Fachada() {
-		this.sistema = SistemaRaiz.getInstance();
+		this.sistema = new SistemaRaiz();
 		this.sistemaNaoLogado = new SistemaUsuarioNaoLogado();
 		this.sistemaNegociacao = new SistemaNegociacao();
 		this.sistemaCarona = new SistemaCarona();
@@ -134,7 +134,7 @@ public class Fachada {
 			throw new CaronaException("Carona Inexistente");
 		}
 		
-		Carona retorno = sistema.getCarona(idCarona);
+		Carona retorno = sistemaNegociacao.getCarona(idCarona);
 		if(retorno == null){
 			throw new CaronaException("Carona Inexistente");
 		}

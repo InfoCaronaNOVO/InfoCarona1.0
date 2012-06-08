@@ -18,13 +18,22 @@ public class Repositorio {
 	private List<Usuario> listaDeUsuarios;
 	private ManipulaArquivoXML arquivo;
 	
-	public Repositorio() {
+	public static Repositorio instance;
+	
+	protected Repositorio() {
 		criaRepositorio();
 	}
 
 	private void criaRepositorio() {
 		arquivo = new ManipulaArquivoXML("src/main/java/ufcg/si1/infoCarona/arquivos/usuarios");
 		listaDeUsuarios = arquivo.ler();
+	}
+	
+	public static Repositorio getInstance(){
+		if (instance == null){
+			instance = new Repositorio();
+		}
+		return instance;
 	}
 
 	// ///metodos que estao corretos no repositorio/////
@@ -257,36 +266,6 @@ public class Repositorio {
 		if(!existeCidade){
 			throw new CaronaException("Cidade inexistente");
 		}
-		return retorno;
-	}
-
-	public List<Usuario> localizaInteressados(Carona carona) {
-		List<Usuario> retorno = new LinkedList<Usuario>();
-		
-		for (Usuario usuarioTemp : listaDeUsuarios) {
-			for (Interesse interesseTemp : usuarioTemp.getListaDeInteresses()) {
-				if (interesseTemp.getOrigem().equals(carona.getOrigem())) {
-					if (interesseTemp.getDestino().equals(carona.getDestino())) {
-						if (!interesseTemp.caronaEhNoDiaMarcado()) {
-							if ((UtilInfo.getHora(interesseTemp.getCalendarioInicial()) <= UtilInfo.getHora(carona.getCalendario())) && (UtilInfo.getHora(carona.getCalendario()) <= UtilInfo.getHora(interesseTemp.getCalendarioFinal()))) {
-								if ((UtilInfo.getMinutos(interesseTemp.getCalendarioInicial()) <= UtilInfo.getMinutos(carona.getCalendario())) && (UtilInfo.getMinutos(carona.getCalendario()) <= UtilInfo.getMinutos(interesseTemp.getCalendarioFinal()))){
-									retorno.add(usuarioTemp);
-								}
-							}
-						}else{
-							if (UtilInfo.converteCalendarEmStringData(interesseTemp.getCalendarioInicial()).equals(UtilInfo.converteCalendarEmStringData(carona.getCalendario()))) {
-								if ((UtilInfo.getHora(interesseTemp.getCalendarioInicial()) <= UtilInfo.getHora(carona.getCalendario())) && (UtilInfo.getHora(carona.getCalendario()) <= UtilInfo.getHora(interesseTemp.getCalendarioFinal()))) {
-									if ((UtilInfo.getMinutos(interesseTemp.getCalendarioInicial()) <= UtilInfo.getMinutos(carona.getCalendario())) && (UtilInfo.getMinutos(carona.getCalendario()) <= UtilInfo.getMinutos(interesseTemp.getCalendarioFinal()))){
-										retorno.add(usuarioTemp);
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-		
 		return retorno;
 	}
 }

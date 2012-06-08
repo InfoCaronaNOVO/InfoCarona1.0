@@ -18,7 +18,7 @@ public class ControlerRepositorio {
 	Repositorio repositorio;
 	
 	public ControlerRepositorio(){
-		repositorio = new Repositorio();
+		repositorio = Repositorio.getInstance();
 	}
 
 	public void addUsuario(Usuario novoUsuario) {
@@ -182,9 +182,4 @@ public class ControlerRepositorio {
 			return repositorio.localizarCaronaMunicipal(cidade, origem, destino);
 		}
 	}
-
-	public List<Usuario> localizaInteressados(Carona carona) {
-		return repositorio.localizaInteressados(carona);
-	}
-		
 }

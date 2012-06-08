@@ -2,6 +2,7 @@ package ufcg.si1.infoCarona.model.sistema;
 
 import ufcg.si1.infoCarona.controller.ControlerRepositorio;
 import ufcg.si1.infoCarona.model.ArgumentoInexistenteException;
+import ufcg.si1.infoCarona.model.Id;
 import ufcg.si1.infoCarona.model.LoggerException;
 import ufcg.si1.infoCarona.model.NumeroMaximoException;
 import ufcg.si1.infoCarona.model.usuario.Usuario;
@@ -9,41 +10,43 @@ import util.UtilInfo;
 
 public class SistemaUsuarioNaoLogado {
 	
-	private SistemaRaiz sistema;
+	private ControlerRepositorio controler;
+	private Id id;
 	
 	public SistemaUsuarioNaoLogado(){
-		sistema = SistemaRaiz.getInstance();
+		controler = new ControlerRepositorio();
+		id = Id.getInstance(5);
 	}
 	
 	public void criarUsuario(String login, String senha, String nome,
 			String endereco, String email) throws LoggerException{
 
-		if (sistema.controleRepositorio.checaExisteLogin(login)) {
+		if (controler.checaExisteLogin(login)) {
 			throw new LoggerException("Já existe um usuário com este login");
 		}
 
-		if (sistema.controleRepositorio.checaExisteEmail(email)) {
+		if (controler.checaExisteEmail(email)) {
 			throw new LoggerException("Já existe um usuário com este email");
 		}
 
 		Usuario novoUsuario = new Usuario(nome, email, endereco, senha, login);
-		sistema.controleRepositorio.addUsuario(novoUsuario);
+		controler.addUsuario(novoUsuario);
 
 	}
 	
 	public String abrirSessao(String login, String senha)
 			throws LoggerException, NumeroMaximoException, ArgumentoInexistenteException {
 
-		String idSessao = sistema.id.gerarId();
+		String idSessao = id.gerarId();
 
 		if (!(UtilInfo.checaLogin(login))) {
 			throw new LoggerException("Login inválido");
 		}
 
-		Usuario usuarioTemp = sistema.controleRepositorio.buscarUsuarioPorLogin(login);
+		Usuario usuarioTemp = controler.buscarUsuarioPorLogin(login);
 
 		if (usuarioTemp.getSenha().equals(senha)) {
-			sistema.usuariosLogados.put(idSessao, usuarioTemp);
+			SistemaRaiz.usuariosLogados.put(idSessao, usuarioTemp);
 		} else {
 			throw new LoggerException("Login inválido");
 		}

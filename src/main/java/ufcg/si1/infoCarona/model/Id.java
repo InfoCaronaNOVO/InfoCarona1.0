@@ -6,9 +6,17 @@ public class Id {
 	private int numeroDeDigitos;
 	private int cont = 0;
 	private String ultimoId;
+	public static Id instance;
 	
-	public Id(int numeroDeDigitos){
+	protected Id(int numeroDeDigitos){
 		  this.numeroDeDigitos = numeroDeDigitos;
+	}
+	
+	public static Id getInstance(int numeroDeDigitos){
+		if (instance == null){
+			instance = new Id(numeroDeDigitos);
+		}
+		return instance;
 	}
 	
 	public String gerarId() throws NumeroMaximoException{

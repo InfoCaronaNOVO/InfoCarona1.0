@@ -17,6 +17,7 @@ import ufcg.si1.infoCarona.model.carona.Carona;
 import ufcg.si1.infoCarona.model.carona.CaronaException;
 import ufcg.si1.infoCarona.model.negociacao.SolicitacaoDeVaga;
 import ufcg.si1.infoCarona.model.negociacao.SugestaoDePontoDeEncontro;
+import ufcg.si1.infoCarona.model.usuario.Observer;
 import ufcg.si1.infoCarona.model.usuario.Usuario;
 import util.EnviarEmail;
 import util.UtilInfo;
@@ -27,27 +28,20 @@ public class SistemaRaiz {
 	 * metodos da fachada, s�o chamadas por ele.
 	 */
 
-	public ControlerRepositorio controleRepositorio;
-	public Id id;
-	public Map<String, Usuario> usuariosLogados;
+	private ControlerRepositorio controleRepositorio;
+	private Id id;
+	protected static Observer observer;
+	protected static Map<String, Usuario> usuariosLogados;
 	
-	private static SistemaRaiz instance;
-	
-	protected SistemaRaiz() {
-		id = new Id(5);
+	public SistemaRaiz() {
 		this.criaSistema();
-	}
-	
-	public static SistemaRaiz getInstance(){
-		if (instance == null){
-			instance = new SistemaRaiz();
-		}
-		return instance;
 	}
 
 	private void criaSistema() {
+		id = id.getInstance(5);
 		controleRepositorio = new ControlerRepositorio();
 		usuariosLogados = new HashMap<String, Usuario>();
+		observer = new Observer();
 	}
 
 	/**
@@ -80,12 +74,6 @@ public class SistemaRaiz {
 	 * @throws EmailExistenteException
 	 * 
 	 * */
-	public Carona getCarona(String idCarona) throws CaronaException {
-		if (UtilInfo.ehVazioOuNull(idCarona)) {
-			throw new CaronaException("Carona Inválida");
-		}
-		return controleRepositorio.localizaCaronaPorId(idCarona);
-	}
 
 	public void encerrarSistema() {
 		usuariosLogados = new HashMap<String, Usuario>();
@@ -93,7 +81,7 @@ public class SistemaRaiz {
 	}
 
 	
-	protected Usuario procuraUsuarioLogado(String idSessao)
+	protected static Usuario procuraUsuarioLogado(String idSessao)
 			throws ArgumentoInexistenteException {
 		Usuario retorno = null;
 		if (!UtilInfo.checaIdSessao(idSessao)) {
@@ -136,7 +124,7 @@ public class SistemaRaiz {
 		this.criaSistema();
 	}
 	
-	public boolean usuarioJahEstahNaCarona(Usuario usuario, Carona carona){
+	public static boolean usuarioJahEstahNaCarona(Usuario usuario, Carona carona){
 		for (SolicitacaoDeVaga solicitacao : carona.getListaDeSolicitacao()) {
 			if(solicitacao.getDonoSolicitacao().equals(usuario)){
 				if(solicitacao.isSolicitacaoAceita()){
@@ -150,13 +138,5 @@ public class SistemaRaiz {
 	
 	public boolean enviarEmail(String idSessao, String destino, String message) throws ArgumentoInexistenteException{
 		return EnviarEmail.sendMail(destino, destino, "Info Carona", message);
-	}
-	
-	public void enviaMsgAInteressadosEmCarona(Carona carona){
-		List<Usuario> listaDeInteressados = controleRepositorio.localizaInteressados(carona);
-		for (Usuario usuario : listaDeInteressados) {
-			String novaMensagem = "Carona cadastrada no dia " + UtilInfo.converteCalendarEmStringData(carona.getCalendario()) + ", às " + UtilInfo.converteCalendarEmStringHora(carona.getCalendario()) + " de acordo com os seus interesses registrados. Entrar em contato com " + carona.getDonoDaCarona().getEmail();
-			usuario.addMensagen(novaMensagem);
-		}
 	}
 }

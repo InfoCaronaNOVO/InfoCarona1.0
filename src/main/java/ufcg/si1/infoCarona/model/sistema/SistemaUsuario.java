@@ -5,7 +5,9 @@ import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
 
+import ufcg.si1.infoCarona.controller.ControlerRepositorio;
 import ufcg.si1.infoCarona.model.ArgumentoInexistenteException;
+import ufcg.si1.infoCarona.model.Id;
 import ufcg.si1.infoCarona.model.LoggerException;
 import ufcg.si1.infoCarona.model.NumeroMaximoException;
 import ufcg.si1.infoCarona.model.carona.Carona;
@@ -16,18 +18,20 @@ import util.UtilInfo;
 
 public class SistemaUsuario {
 	
-	private SistemaRaiz sistema;
+	private Id id;
+	private ControlerRepositorio controler;
 	
 	public SistemaUsuario(){
-		sistema = SistemaRaiz.getInstance();
+		id = Id.getInstance(5);
+		controler = new ControlerRepositorio();
 	}
 	
 	public void encerrarSessao(String login) {
-		Collection<String> listaUsuariosLogados = sistema.usuariosLogados.keySet();
+		Collection<String> listaUsuariosLogados = SistemaRaiz.usuariosLogados.keySet();
 		Usuario removeUsuario = null;
 		for (String idSessao : listaUsuariosLogados) {
-			if (sistema.usuariosLogados.get(idSessao).getLogin().equals(login)) {
-				removeUsuario = sistema.usuariosLogados.get(idSessao);
+			if (SistemaRaiz.usuariosLogados.get(idSessao).getLogin().equals(login)) {
+				removeUsuario = SistemaRaiz.usuariosLogados.get(idSessao);
 				break;
 			}
 		}
@@ -50,7 +54,7 @@ public class SistemaUsuario {
 			throw new ArgumentoInexistenteException("Atributo inexistente");
 		}
 
-		retorno = sistema.controleRepositorio.getAtributoUsuario(login, atributo);
+		retorno = controler.getAtributoUsuario(login, atributo);
 
 		return retorno;
 	}
@@ -60,9 +64,9 @@ public class SistemaUsuario {
 			LoggerException, ArgumentoInexistenteException {
 		
 		if (!atributo.equals("historico de vagas em caronas")) {
-			return sistema.controleRepositorio.getAtributoUsuario(login, atributo);
+			return controler.getAtributoUsuario(login, atributo);
 		}
-		Usuario usuarioTemp = sistema.controleRepositorio.buscarUsuarioPorLogin(login);
+		Usuario usuarioTemp = controler.buscarUsuarioPorLogin(login);
 			List<String> lista = new LinkedList<String>();
 			for (Carona caronaTemp : usuarioTemp.getSolicitacaoAceitas()) {
 				lista.add(caronaTemp.getIdCarona());				
@@ -75,21 +79,24 @@ public class SistemaUsuario {
 		}
 	
 	public String cadastrarInteresse(String idSessao, String origem, String destino, Calendar calendarioInicial, Calendar calendarioFinal, boolean caronaEhNoDia) throws NumeroMaximoException, CaronaException, ArgumentoInexistenteException {
-		Usuario usuarioTemp = sistema.procuraUsuarioLogado(idSessao);
-		return usuarioTemp.cadastrarInteresse(origem, destino, calendarioInicial, calendarioFinal, sistema.id.gerarId(), caronaEhNoDia);
+		Usuario usuarioTemp = SistemaRaiz.procuraUsuarioLogado(idSessao);
+		String idInteresse = usuarioTemp.cadastrarInteresse(origem, destino, calendarioInicial, calendarioFinal, id.gerarId(), caronaEhNoDia);
+		
+		SistemaRaiz.observer.addInteressado(usuarioTemp);
+		return idInteresse;
 		
 	}
 	
 	public List<String> verificarMensagensPerfil(String idSessao) throws ArgumentoInexistenteException {
-		return sistema.procuraUsuarioLogado(idSessao).getListaDeMensagens();
+		return SistemaRaiz.procuraUsuarioLogado(idSessao).getListaDeMensagens();
 	}
 	
 	public String visualizarPerfil(String idSessao, String login)
 			throws LoggerException, ArgumentoInexistenteException {
-		Usuario usuarioTemp = sistema.procuraUsuarioLogado(idSessao);
+		Usuario usuarioTemp = SistemaRaiz.procuraUsuarioLogado(idSessao);
 		Usuario usuarioProcurado = null;
 		try {
-			usuarioProcurado = sistema.controleRepositorio.buscarUsuarioPorLogin(login);
+			usuarioProcurado = controler.buscarUsuarioPorLogin(login);
 		} catch (Exception e) {
 			throw new LoggerException("Login inválido");
 		}

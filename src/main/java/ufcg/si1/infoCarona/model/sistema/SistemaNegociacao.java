@@ -3,20 +3,25 @@ package ufcg.si1.infoCarona.model.sistema;
 import java.util.LinkedList;
 import java.util.List;
 
+import ufcg.si1.infoCarona.controller.ControlerRepositorio;
 import ufcg.si1.infoCarona.model.ArgumentoInexistenteException;
+import ufcg.si1.infoCarona.model.Id;
 import ufcg.si1.infoCarona.model.NumeroMaximoException;
 import ufcg.si1.infoCarona.model.carona.Carona;
 import ufcg.si1.infoCarona.model.carona.CaronaException;
 import ufcg.si1.infoCarona.model.negociacao.SolicitacaoDeVaga;
 import ufcg.si1.infoCarona.model.negociacao.SugestaoDePontoDeEncontro;
 import ufcg.si1.infoCarona.model.usuario.Usuario;
+import util.UtilInfo;
 
 public class SistemaNegociacao {
 	
-	private SistemaRaiz sistema;
+	private Id id;
+	private ControlerRepositorio controler;
 	
 	public SistemaNegociacao(){
-		sistema = SistemaRaiz.getInstance();
+		controler = new ControlerRepositorio();
+		id = Id.getInstance(5);
 	}
 	
 	public String sugerirPontoEncontro(String idSessao, String idCarona,
@@ -25,38 +30,38 @@ public class SistemaNegociacao {
 		if (pontos == null || pontos.equals("")) {
 			throw new IllegalArgumentException("Ponto Inválido");
 		}
-		Usuario usuarioTemp = sistema.procuraUsuarioLogado(idSessao);
-		Carona caronaTemp = sistema.getCarona(idCarona);
-		if(sistema.usuarioJahEstahNaCarona(usuarioTemp, caronaTemp)){
+		Usuario usuarioTemp = SistemaRaiz.procuraUsuarioLogado(idSessao);
+		Carona caronaTemp = this.getCarona(idCarona);
+		if(SistemaRaiz.usuarioJahEstahNaCarona(usuarioTemp, caronaTemp)){
 			throw new IllegalArgumentException("Ponto Inválido");
 		}
 		
 		return usuarioTemp.sugerirPontoEncontro(pontos, caronaTemp,
-				sistema.id.gerarId(), usuarioTemp);
+				id.gerarId(), usuarioTemp);
 
 	}
 	
 	public String solicitarVagaPontoEncontro(String idSessao, String idCarona,
 			String ponto) throws CaronaException,NumeroMaximoException, ArgumentoInexistenteException {
 
-		Usuario usuarioTemp = sistema.procuraUsuarioLogado(idSessao);
-		Carona carona = sistema.controleRepositorio.localizaCaronaPorId(idCarona);
+		Usuario usuarioTemp = SistemaRaiz.procuraUsuarioLogado(idSessao);
+		Carona carona = controler.localizaCaronaPorId(idCarona);
 		if (ponto.equals("")) {
 			ponto = null; // subtende-se que o usuario aceita os pontos que o
 							// dono da carona indicou
 		}
 
 		return usuarioTemp.solicitarVagaPontoEncontro(ponto, carona,
-				sistema.id.gerarId(), usuarioTemp);
+				id.gerarId(), usuarioTemp);
 	}
 	
 	public void responderSugestaoPontoEncontro(String idSessao,
 			String idCarona, String idSugestao, String pontos)
 			throws CaronaException, ArgumentoInexistenteException{
 
-		Usuario usuarioTemp = sistema.procuraUsuarioLogado(idSessao);
-		SugestaoDePontoDeEncontro sugestaoTemp = sistema.controleRepositorio.getSugestaoId(idSugestao, idCarona);
-		Carona caronaTemp = sistema.controleRepositorio.localizaCaronaPorId(idCarona);
+		Usuario usuarioTemp = SistemaRaiz.procuraUsuarioLogado(idSessao);
+		SugestaoDePontoDeEncontro sugestaoTemp = controler.getSugestaoId(idSugestao, idCarona);
+		Carona caronaTemp = controler.localizaCaronaPorId(idCarona);
 
 		usuarioTemp.responderSugestaoPontoEncontro(sugestaoTemp, pontos, caronaTemp);
 	}
@@ -64,16 +69,16 @@ public class SistemaNegociacao {
 	public void aceitarSolicitacaoPontoEncontro(String idSessao,
 			String idSolicitacao) throws ArgumentoInexistenteException  {
 
-		Usuario usuarioTemp = sistema.procuraUsuarioLogado(idSessao);
-		SolicitacaoDeVaga solicitacao = sistema.controleRepositorio
+		Usuario usuarioTemp = SistemaRaiz.procuraUsuarioLogado(idSessao);
+		SolicitacaoDeVaga solicitacao = controler
 				.localizaSolicitacaoPorId(idSolicitacao);
 
 		usuarioTemp.aceitarSolicitacaoPontoEncontro(solicitacao);
 	}
 	
 	public void rejeitarSolicitacao(String idSessao, String idSolicitacao) throws ArgumentoInexistenteException{
-		Usuario usuarioTemp = sistema.procuraUsuarioLogado(idSessao);
-		SolicitacaoDeVaga solicitacao = sistema.controleRepositorio
+		Usuario usuarioTemp = SistemaRaiz.procuraUsuarioLogado(idSessao);
+		SolicitacaoDeVaga solicitacao = controler
 				.localizaSolicitacaoPorId(idSolicitacao);
 		usuarioTemp.rejeitarSolicitacao(solicitacao);
 
@@ -82,16 +87,16 @@ public class SistemaNegociacao {
 	public void desistirRequisicao(String idSessao, String idCarona,
 			String idSolicitacao) throws CaronaException, ArgumentoInexistenteException {
 
-		Usuario usuarioTemp = sistema.procuraUsuarioLogado(idSessao);
-		Carona caronaTemp = sistema.controleRepositorio.localizaCaronaPorId(idCarona);
-		SolicitacaoDeVaga solicitacaoTemp = sistema.controleRepositorio.localizaSolicitacaoPorId(idSolicitacao);
+		Usuario usuarioTemp = SistemaRaiz.procuraUsuarioLogado(idSessao);
+		Carona caronaTemp = controler.localizaCaronaPorId(idCarona);
+		SolicitacaoDeVaga solicitacaoTemp = controler.localizaSolicitacaoPorId(idSolicitacao);
 		usuarioTemp.desistirRequisicao(solicitacaoTemp, caronaTemp);
 
 	}
 	
 	public LinkedList<String> getPontosSugeridos(String idCarona) throws CaronaException {
 		LinkedList<String> retorno = new LinkedList<String>();
-		Carona caronaTemp = sistema.controleRepositorio.localizaCaronaPorId(idCarona);
+		Carona caronaTemp = controler.localizaCaronaPorId(idCarona);
 		List<SugestaoDePontoDeEncontro> listaSugestoes = caronaTemp.getListaDeSugestoes();
 		for(SugestaoDePontoDeEncontro sugestao : listaSugestoes){
 			for (String ponto : sugestao.getListaDeSugestaoDePontosDeEncontro()) {
@@ -104,7 +109,7 @@ public class SistemaNegociacao {
 	public List<String> getPontosEncontro(String idCarona)
 			throws CaronaException {
 		List<String> retorno = new LinkedList<String>();
-        List<SugestaoDePontoDeEncontro> sugestoes = sistema.controleRepositorio.localizaCaronaPorId(idCarona)
+        List<SugestaoDePontoDeEncontro> sugestoes = controler.localizaCaronaPorId(idCarona)
                 .getListaDeSugestoes();
         
         for (int i = 0; i < sugestoes.size(); i++) {
@@ -121,17 +126,24 @@ public class SistemaNegociacao {
 	}
 	
 	public List<SolicitacaoDeVaga> getSolicitacoesConfirmadas(String idCarona) throws CaronaException {
-		return sistema.controleRepositorio.localizaCaronaPorId(idCarona).getSolicitacoesConfirmadas();
+		return controler.localizaCaronaPorId(idCarona).getSolicitacoesConfirmadas();
 	}
 
 	public List<SolicitacaoDeVaga> getSolicitacoesPendentes(String idCarona)
 			throws CaronaException {
-		return sistema.controleRepositorio.localizaCaronaPorId(idCarona)
+		return controler.localizaCaronaPorId(idCarona)
 				.getSolicitacoesPendentes();
 	}
 	
 	public String getAtributoSolicitacao(String idSolicitacao, String atributo) {
-		return sistema.controleRepositorio.getAtributoSolicitacao(idSolicitacao,
+		return controler.getAtributoSolicitacao(idSolicitacao,
 				atributo);
+	}
+	
+	public Carona getCarona(String idCarona) throws CaronaException {
+		if (UtilInfo.ehVazioOuNull(idCarona)) {
+			throw new CaronaException("Carona Inválida");
+		}
+		return controler.localizaCaronaPorId(idCarona);
 	}
 }

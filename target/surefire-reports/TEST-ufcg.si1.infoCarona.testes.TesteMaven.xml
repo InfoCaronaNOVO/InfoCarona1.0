@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="27.15" errors="0" skipped="0" tests="1" name="ufcg.si1.infoCarona.testes.TesteMaven">
+<testsuite failures="1" time="11.097" errors="0" skipped="0" tests="1" name="ufcg.si1.infoCarona.testes.TesteMaven">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.7.0_04\jre\bin"/>
@@ -20,7 +20,7 @@
     <property name="basedir" value="C:\Users\Italo\git\InfoCarona1.0"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.7.0_04\jre\lib\endorsed"/>
     <property name="os.arch" value="x86"/>
-    <property name="surefire.real.class.path" value="C:\Users\Italo\git\InfoCarona1.0\target\surefire\surefirebooter3055929380314861584.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Italo\git\InfoCarona1.0\target\surefire\surefirebooter8477879757225657336.jar"/>
     <property name="java.io.tmpdir" value="C:\Users\Italo\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
@@ -28,7 +28,7 @@
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 7"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk1.7.0_04\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre7/bin/client;C:/Program Files/Java/jre7/bin;C:/Program Files/Java/jre7/lib/i386;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\apache-maven-3.0.4\bin;C:\Program Files\Java\jdk1.7.0_04\bin;C:\Users\Italo\Desktop\eclipse;;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.7.0_04\jre\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre7/bin/client;C:/Program Files/Java/jre7/bin;C:/Program Files/Java/jre7/lib/i386;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\apache-maven-3.0.4\bin;C:\Program Files\Java\jdk1.7.0_04\bin;C:\Program Files\Internet Explorer;C:\Users\Italo\Desktop\eclipse;;."/>
     <property name="surefire.test.class.path" value="C:\Users\Italo\git\InfoCarona1.0\target\test-classes;C:\Users\Italo\git\InfoCarona1.0\target\classes;C:\Users\Italo\.m2\repository\junit\junit\4.0\junit-4.0.jar;C:\Users\Italo\.m2\repository\ufcg\si1\easyaccept\1.0.0\easyaccept-1.0.0.jar;C:\Users\Italo\.m2\repository\com\thoughtworks\xstream\xstream\1.4.2\xstream-1.4.2.jar;C:\Users\Italo\.m2\repository\xmlpull\xmlpull\1.1.3.1\xmlpull-1.1.3.1.jar;C:\Users\Italo\.m2\repository\xpp3\xpp3_min\1.1.4c\xpp3_min-1.1.4c.jar;C:\Users\Italo\.m2\repository\ufcg\si1\mail\1.4\mail-1.4.jar;"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="51.0"/>
@@ -44,7 +44,7 @@
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="32"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.7.0_04\jre"/>
-    <property name="sun.java.command" value="C:\Users\Italo\git\InfoCarona1.0\target\surefire\surefirebooter3055929380314861584.jar C:\Users\Italo\git\InfoCarona1.0\target\surefire\surefire526589194292012802tmp C:\Users\Italo\git\InfoCarona1.0\target\surefire\surefire1928871292551805255tmp"/>
+    <property name="sun.java.command" value="C:\Users\Italo\git\InfoCarona1.0\target\surefire\surefirebooter8477879757225657336.jar C:\Users\Italo\git\InfoCarona1.0\target\surefire\surefire7426669656203877390tmp C:\Users\Italo\git\InfoCarona1.0\target\surefire\surefire2275857159151610046tmp"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="pt"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -61,5 +61,187 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase time="27.128" classname="ufcg.si1.infoCarona.testes.TesteMaven" name="testarEasyAcceptScript"/>
+  <testcase time="11.079" classname="ufcg.si1.infoCarona.testes.TesteMaven" name="testarEasyAcceptScript">
+    <failure message="null" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: null
+	at junit.framework.Assert.fail(Assert.java:47)
+	at junit.framework.Assert.assertTrue(Assert.java:20)
+	at junit.framework.Assert.assertTrue(Assert.java:27)
+	at ufcg.si1.infoCarona.testes.TesteMaven.testarEasyAcceptScript(TesteMaven.java:56)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at junit.framework.TestCase.runTest(TestCase.java:164)
+	at junit.framework.TestCase.runBare(TestCase.java:130)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:120)
+	at junit.framework.TestSuite.runTest(TestSuite.java:228)
+	at junit.framework.TestSuite.run(TestSuite.java:223)
+	at org.junit.internal.runners.OldTestClassRunner.run(OldTestClassRunner.java:35)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:35)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:146)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:97)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.apache.maven.surefire.booter.ProviderFactory$ClassLoaderProxy.invoke(ProviderFactory.java:103)
+	at $Proxy0.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:145)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcess(SurefireStarter.java:87)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:69)
+</failure>
+    <system-out>@HL
+@HL-------------------------------------------------------
+@HL T E S T S
+@HL-------------------------------------------------------
+@SLRunning ufcg.si1.infoCarona.testes.TesteMaven
+DEBUG: JavaMail version 1.4.5
+DEBUG: successfully loaded resource: /META-INF/javamail.default.providers
+DEBUG: Tables of loaded providers
+DEBUG: Providers Listed By Class Name: {com.sun.mail.smtp.SMTPSSLTransport=javax.mail.Provider[TRANSPORT,smtps,com.sun.mail.smtp.SMTPSSLTransport,Sun Microsystems, Inc], com.sun.mail.smtp.SMTPTransport=javax.mail.Provider[TRANSPORT,smtp,com.sun.mail.smtp.SMTPTransport,Sun Microsystems, Inc], com.sun.mail.imap.IMAPSSLStore=javax.mail.Provider[STORE,imaps,com.sun.mail.imap.IMAPSSLStore,Sun Microsystems, Inc], com.sun.mail.pop3.POP3SSLStore=javax.mail.Provider[STORE,pop3s,com.sun.mail.pop3.POP3SSLStore,Sun Microsystems, Inc], com.sun.mail.imap.IMAPStore=javax.mail.Provider[STORE,imap,com.sun.mail.imap.IMAPStore,Sun Microsystems, Inc], com.sun.mail.pop3.POP3Store=javax.mail.Provider[STORE,pop3,com.sun.mail.pop3.POP3Store,Sun Microsystems, Inc]}
+DEBUG: Providers Listed By Protocol: {imaps=javax.mail.Provider[STORE,imaps,com.sun.mail.imap.IMAPSSLStore,Sun Microsystems, Inc], imap=javax.mail.Provider[STORE,imap,com.sun.mail.imap.IMAPStore,Sun Microsystems, Inc], smtps=javax.mail.Provider[TRANSPORT,smtps,com.sun.mail.smtp.SMTPSSLTransport,Sun Microsystems, Inc], pop3=javax.mail.Provider[STORE,pop3,com.sun.mail.pop3.POP3Store,Sun Microsystems, Inc], pop3s=javax.mail.Provider[STORE,pop3s,com.sun.mail.pop3.POP3SSLStore,Sun Microsystems, Inc], smtp=javax.mail.Provider[TRANSPORT,smtp,com.sun.mail.smtp.SMTPTransport,Sun Microsystems, Inc]}
+DEBUG: successfully loaded resource: /META-INF/javamail.default.address.map
+DEBUG: setDebug: JavaMail version 1.4.5
+DEBUG: getProvider() returning javax.mail.Provider[TRANSPORT,smtp,com.sun.mail.smtp.SMTPTransport,Sun Microsystems, Inc]
+DEBUG SMTP: useEhlo true, useAuth true
+DEBUG SMTP: trying to connect to host &quot;smtp.gmail.com&quot;, port 465, isSSL false
+220 mx.google.com ESMTP i67sm15772012yhh.21
+DEBUG SMTP: connected to host &quot;smtp.gmail.com&quot;, port: 465
+
+EHLO Italo-PC
+250-mx.google.com at your service, [189.71.11.155]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH
+250 ENHANCEDSTATUSCODES
+DEBUG SMTP: Found extension &quot;SIZE&quot;, arg &quot;35882577&quot;
+DEBUG SMTP: Found extension &quot;8BITMIME&quot;, arg &quot;&quot;
+DEBUG SMTP: Found extension &quot;AUTH&quot;, arg &quot;LOGIN PLAIN XOAUTH&quot;
+DEBUG SMTP: Found extension &quot;ENHANCEDSTATUSCODES&quot;, arg &quot;&quot;
+DEBUG SMTP: Attempt to authenticate
+DEBUG SMTP: check mechanisms: LOGIN PLAIN DIGEST-MD5 NTLM 
+DEBUG SMTP: AUTH LOGIN command trace suppressed
+DEBUG SMTP: AUTH LOGIN failed
+DEBUG: setDebug: JavaMail version 1.4.5
+DEBUG: getProvider() returning javax.mail.Provider[TRANSPORT,smtp,com.sun.mail.smtp.SMTPTransport,Sun Microsystems, Inc]
+DEBUG SMTP: useEhlo true, useAuth true
+DEBUG SMTP: trying to connect to host &quot;smtp.gmail.com&quot;, port 465, isSSL false
+220 mx.google.com ESMTP y66sm15805914yhi.10
+DEBUG SMTP: connected to host &quot;smtp.gmail.com&quot;, port: 465
+
+EHLO Italo-PC
+250-mx.google.com at your service, [189.71.11.155]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH
+250 ENHANCEDSTATUSCODES
+DEBUG SMTP: Found extension &quot;SIZE&quot;, arg &quot;35882577&quot;
+DEBUG SMTP: Found extension &quot;8BITMIME&quot;, arg &quot;&quot;
+DEBUG SMTP: Found extension &quot;AUTH&quot;, arg &quot;LOGIN PLAIN XOAUTH&quot;
+DEBUG SMTP: Found extension &quot;ENHANCEDSTATUSCODES&quot;, arg &quot;&quot;
+DEBUG SMTP: Attempt to authenticate
+DEBUG SMTP: check mechanisms: LOGIN PLAIN DIGEST-MD5 NTLM 
+DEBUG SMTP: AUTH LOGIN command trace suppressed
+DEBUG SMTP: AUTH LOGIN failed
+DEBUG: setDebug: JavaMail version 1.4.5
+DEBUG: getProvider() returning javax.mail.Provider[TRANSPORT,smtp,com.sun.mail.smtp.SMTPTransport,Sun Microsystems, Inc]
+DEBUG SMTP: useEhlo true, useAuth true
+DEBUG SMTP: trying to connect to host &quot;smtp.gmail.com&quot;, port 465, isSSL false
+220 mx.google.com ESMTP q36sm2979750anh.6
+DEBUG SMTP: connected to host &quot;smtp.gmail.com&quot;, port: 465
+
+EHLO Italo-PC
+250-mx.google.com at your service, [189.71.11.155]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH
+250 ENHANCEDSTATUSCODES
+DEBUG SMTP: Found extension &quot;SIZE&quot;, arg &quot;35882577&quot;
+DEBUG SMTP: Found extension &quot;8BITMIME&quot;, arg &quot;&quot;
+DEBUG SMTP: Found extension &quot;AUTH&quot;, arg &quot;LOGIN PLAIN XOAUTH&quot;
+DEBUG SMTP: Found extension &quot;ENHANCEDSTATUSCODES&quot;, arg &quot;&quot;
+DEBUG SMTP: Attempt to authenticate
+DEBUG SMTP: check mechanisms: LOGIN PLAIN DIGEST-MD5 NTLM 
+DEBUG SMTP: AUTH LOGIN command trace suppressed
+DEBUG SMTP: AUTH LOGIN failed
+DEBUG: setDebug: JavaMail version 1.4.5
+DEBUG: getProvider() returning javax.mail.Provider[TRANSPORT,smtp,com.sun.mail.smtp.SMTPTransport,Sun Microsystems, Inc]
+DEBUG SMTP: useEhlo true, useAuth true
+DEBUG SMTP: trying to connect to host &quot;smtp.gmail.com&quot;, port 465, isSSL false
+220 mx.google.com ESMTP b8sm6943407anm.4
+DEBUG SMTP: connected to host &quot;smtp.gmail.com&quot;, port: 465
+
+EHLO Italo-PC
+250-mx.google.com at your service, [189.71.11.155]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH
+250 ENHANCEDSTATUSCODES
+DEBUG SMTP: Found extension &quot;SIZE&quot;, arg &quot;35882577&quot;
+DEBUG SMTP: Found extension &quot;8BITMIME&quot;, arg &quot;&quot;
+DEBUG SMTP: Found extension &quot;AUTH&quot;, arg &quot;LOGIN PLAIN XOAUTH&quot;
+DEBUG SMTP: Found extension &quot;ENHANCEDSTATUSCODES&quot;, arg &quot;&quot;
+DEBUG SMTP: Attempt to authenticate
+DEBUG SMTP: check mechanisms: LOGIN PLAIN DIGEST-MD5 NTLM 
+DEBUG SMTP: AUTH LOGIN command trace suppressed
+DEBUG SMTP: AUTH LOGIN failed
+Test file: scripts/US01.txt | Passed Tests: 33 | Not Passed Tests: 0
+
+======================== 
+
+Test file: scripts/US02.txt | Passed Tests: 64 | Not Passed Tests: 0
+
+======================== 
+
+Test file: scripts/US03.txt | Passed Tests: 21 | Not Passed Tests: 0
+
+======================== 
+
+Test file: scripts/US04.txt | Passed Tests: 41 | Not Passed Tests: 0
+
+======================== 
+
+Test file: scripts/US05.txt | Passed Tests: 32 | Not Passed Tests: 0
+
+======================== 
+
+Test file: scripts/US06.txt | Passed Tests: 26 | Not Passed Tests: 0
+
+======================== 
+
+Test file: scripts/US07.txt | Passed Tests: 62 | Not Passed Tests: 0
+
+======================== 
+
+Test file: scripts/US08.txt | Passed Tests: 48 | Not Passed Tests: 0
+
+======================== 
+
+Test file: scripts/US09.txt | Passed Tests: 46 | Not Passed Tests: 0
+
+======================== 
+
+Test file: scripts/US10.txt | Passed Tests: 24 | Not Passed Tests: 0
+
+======================== 
+
+Test file: scripts/US11.txt | Passed Tests: 33 | Not Passed Tests: 0
+
+======================== 
+
+Test file: scripts/US12.txt | Passed Tests: 22 | Not Passed Tests: 4
+
+FAILURES:
+   At line 31: Expected &lt;true&gt;, but was &lt;false&gt;
+   At line 38: Expected &lt;true&gt;, but was &lt;false&gt;
+   At line 49: Expected &lt;true&gt;, but was &lt;false&gt;
+   At line 56: Expected &lt;true&gt;, but was &lt;false&gt;
+======================== 
+
+
+</system-out>
+  </testcase>
 </testsuite>

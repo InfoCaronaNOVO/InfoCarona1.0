@@ -16,7 +16,7 @@ import ufcg.si1.infoCarona.model.negociacao.SolicitacaoDeVaga;
 import ufcg.si1.infoCarona.model.negociacao.SugestaoDePontoDeEncontro;
 
 
-public class Usuario {
+public class Usuario implements Interessado{
 
 	private List<Carona> listaDeCaronas;
 	private List<SolicitacaoDeVaga> listaDeSolicitacaoDeVagas;
@@ -277,11 +277,8 @@ public class Usuario {
 			CaronaException{
 		Carona carona = new CaronaMunicipal(origem, destino, cidade, calendario, vagas, idCarona, this);
 		listaDeCaronas.add(carona);
+		
 		return idCarona;
-	}
-
-	private void addInteresseCarona(Interesse interesse) {
-		listaDeInteresses.add(interesse);
 	}
 
 	public String cadastrarInteresse(String origem, String destino,
@@ -289,8 +286,8 @@ public class Usuario {
 			throws CaronaException {
 		Interesse interesseTemp = new Interesse(this, origem, destino,
 				calendarioInicial, calendarioFinal, id, caronaEhNoDia);
-		this.addInteresseCarona(interesseTemp);
-
+		listaDeInteresses.add(interesseTemp);
+	
 		return id;
 	}
 
