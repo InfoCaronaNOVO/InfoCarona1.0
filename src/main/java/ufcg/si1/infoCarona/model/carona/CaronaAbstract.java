@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import ufcg.si1.infoCarona.model.negociacao.EstadoSolicitacao;
 import ufcg.si1.infoCarona.model.negociacao.SolicitacaoDeVaga;
 import ufcg.si1.infoCarona.model.negociacao.SugestaoDePontoDeEncontro;
 import ufcg.si1.infoCarona.model.usuario.Usuario;
@@ -181,7 +182,7 @@ public abstract class CaronaAbstract implements Carona{
     }
     
     public void removeSolicitacao(SolicitacaoDeVaga solicitacao){
-    	if(solicitacao.isSolicitacaoAceita()){
+    	if(solicitacao.getEstado().equals(EstadoSolicitacao.ACEITA)){
     		vagas++;
     	}
     	listaDeSolicitacao.remove(solicitacao);
@@ -204,7 +205,7 @@ public abstract class CaronaAbstract implements Carona{
     public List<SolicitacaoDeVaga> getSolicitacoesConfirmadas() {
 		List<SolicitacaoDeVaga> retorno = new LinkedList<SolicitacaoDeVaga>();
 		for (SolicitacaoDeVaga solicitacao : listaDeSolicitacao) {
-			if(solicitacao.isSolicitacaoAceita()){
+			if(solicitacao.getEstado().equals(EstadoSolicitacao.ACEITA)){
 				retorno.add(solicitacao);
 			}
 		}
@@ -214,7 +215,7 @@ public abstract class CaronaAbstract implements Carona{
     public List<SolicitacaoDeVaga> getSolicitacoesPendentes(){
     	List<SolicitacaoDeVaga> retorno = new LinkedList<SolicitacaoDeVaga>();
 		for (SolicitacaoDeVaga solicitacao : listaDeSolicitacao) {
-			if(solicitacao.isSolicitacaoPendente()){
+			if(solicitacao.getEstado().equals(EstadoSolicitacao.PENDENTE)){
 				retorno.add(solicitacao);
 			}
 		}

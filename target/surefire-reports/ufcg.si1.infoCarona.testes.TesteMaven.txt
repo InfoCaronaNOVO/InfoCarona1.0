@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: ufcg.si1.infoCarona.testes.TesteMaven
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 11.098 sec <<< FAILURE!
-testarEasyAcceptScript(ufcg.si1.infoCarona.testes.TesteMaven)  Time elapsed: 11.078 sec  <<< FAILURE!
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 10.082 sec <<< FAILURE!
+testarEasyAcceptScript(ufcg.si1.infoCarona.testes.TesteMaven)  Time elapsed: 10.063 sec  <<< FAILURE!
 junit.framework.AssertionFailedError: null
 	at junit.framework.Assert.fail(Assert.java:47)
 	at junit.framework.Assert.assertTrue(Assert.java:20)

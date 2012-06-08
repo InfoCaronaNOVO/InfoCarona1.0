@@ -15,6 +15,7 @@ import ufcg.si1.infoCarona.model.LoggerException;
 import ufcg.si1.infoCarona.model.NumeroMaximoException;
 import ufcg.si1.infoCarona.model.carona.Carona;
 import ufcg.si1.infoCarona.model.carona.CaronaException;
+import ufcg.si1.infoCarona.model.negociacao.EstadoSolicitacao;
 import ufcg.si1.infoCarona.model.negociacao.SolicitacaoDeVaga;
 import ufcg.si1.infoCarona.model.negociacao.SugestaoDePontoDeEncontro;
 import ufcg.si1.infoCarona.model.usuario.Observer;
@@ -106,7 +107,7 @@ public class SistemaRaiz {
 		
 			for (SolicitacaoDeVaga solicitacao : usuarioTemp2.getListaDeSolicitacaoDeVagas()) {
 				if (solicitacao.getCarona().getIdCarona().equals(idCarona)) {
-						if(solicitacao.isSolicitacaoAceita()){
+						if(solicitacao.getEstado().equals(EstadoSolicitacao.ACEITA)){
 							if (!(review.equals("não faltou") || review.equals("faltou"))) {
 								throw new IllegalArgumentException("Opção inválida.");
 							}
@@ -127,7 +128,7 @@ public class SistemaRaiz {
 	public static boolean usuarioJahEstahNaCarona(Usuario usuario, Carona carona){
 		for (SolicitacaoDeVaga solicitacao : carona.getListaDeSolicitacao()) {
 			if(solicitacao.getDonoSolicitacao().equals(usuario)){
-				if(solicitacao.isSolicitacaoAceita()){
+				if(solicitacao.getEstado().equals(EstadoSolicitacao.ACEITA)){
 					return true;
 				}
 			}

@@ -12,6 +12,7 @@ import ufcg.si1.infoCarona.model.carona.Carona;
 import ufcg.si1.infoCarona.model.carona.CaronaComum;
 import ufcg.si1.infoCarona.model.carona.CaronaException;
 import ufcg.si1.infoCarona.model.carona.CaronaMunicipal;
+import ufcg.si1.infoCarona.model.negociacao.EstadoSolicitacao;
 import ufcg.si1.infoCarona.model.negociacao.SolicitacaoDeVaga;
 import ufcg.si1.infoCarona.model.negociacao.SugestaoDePontoDeEncontro;
 
@@ -24,10 +25,7 @@ public class Usuario implements Interessado{
 	private List<Interesse> listaDeInteresses;
 	private List<String> listaDeMensagens;
 
-	private int caronasSeguras;
-	private int caronaNaoFuncionaram;
-	private int faltasEmVagas;
-	private int presencaEmVagas;
+	private int caronasSeguras, caronaNaoFuncionaram, faltasEmVagas, presencaEmVagas;
 	private String nome, email, endereco, senha, login;
 
 	public Usuario(String nome, String email, String endereco, String senha,String login) throws LoggerException{
@@ -119,7 +117,7 @@ public class Usuario implements Interessado{
 	}
 
 	public void aceitarSolicitacaoPontoEncontro(SolicitacaoDeVaga solicitacao) throws ArgumentoInexistenteException {
-		if (solicitacao.isSolicitacaoAceita()) {
+		if (solicitacao.getEstado().equals(EstadoSolicitacao.ACEITA)) {
 			throw new ArgumentoInexistenteException("Solicitação inexistente");
 		}
 		solicitacao.solicitacaoAceita();
@@ -223,7 +221,7 @@ public class Usuario implements Interessado{
 
 	public void rejeitarSolicitacao(SolicitacaoDeVaga solicitacao)
 			throws ArgumentoInexistenteException{
-		if (solicitacao.isSolicitacaoRejeitada()) {
+		if (solicitacao.getEstado().equals(EstadoSolicitacao.REJEITADA)) {
 			throw new ArgumentoInexistenteException("Solicitação inexistente");
 		}
 		solicitacao.solicitacaoRejeitada();
@@ -264,7 +262,7 @@ public class Usuario implements Interessado{
 	public List<Carona> getSolicitacaoAceitas() {
 		LinkedList<Carona> listaCaronaAceitas = new LinkedList<Carona>();
 		for (SolicitacaoDeVaga solicitacao : listaDeSolicitacaoDeVagas) {
-			if (solicitacao.isSolicitacaoAceita()) {
+			if (solicitacao.getEstado().equals(EstadoSolicitacao.ACEITA)) {
 				listaCaronaAceitas.add(solicitacao.getCarona());
 			}
 		}

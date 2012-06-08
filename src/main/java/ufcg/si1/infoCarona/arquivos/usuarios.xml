@@ -6,7 +6,7 @@
         <destino>João Pessoa</destino>
         <idCarona>00109</idCarona>
         <calendar>
-          <time>1354456832668</time>
+          <time>1354456851425</time>
           <timezone>America/Sao_Paulo</timezone>
         </calendar>
         <vagas>0</vagas>
@@ -24,7 +24,7 @@
                     <destino>João Pessoa</destino>
                     <idCarona>00110</idCarona>
                     <calendar>
-                      <time>1354644032669</time>
+                      <time>1354644051425</time>
                       <timezone>America/Sao_Paulo</timezone>
                     </calendar>
                     <vagas>2</vagas>
@@ -40,9 +40,7 @@
                   <donoSolicitacao reference="../../.."/>
                   <ponto>Default</ponto>
                   <idSolicitacao>00113</idSolicitacao>
-                  <solicitacaoAceita>false</solicitacaoAceita>
-                  <solicitacaoPendente>false</solicitacaoPendente>
-                  <solicitacaoRejeitada>true</solicitacaoRejeitada>
+                  <estado>REJEITADA</estado>
                 </ufcg.si1.infoCarona.model.negociacao.SolicitacaoDeVaga>
               </listaDeSolicitacaoDeVagas>
               <Reviews class="linked-list"/>
@@ -60,9 +58,7 @@
             </donoSolicitacao>
             <ponto>Default</ponto>
             <idSolicitacao>00112</idSolicitacao>
-            <solicitacaoAceita>true</solicitacaoAceita>
-            <solicitacaoPendente>false</solicitacaoPendente>
-            <solicitacaoRejeitada>false</solicitacaoRejeitada>
+            <estado>ACEITA</estado>
           </ufcg.si1.infoCarona.model.negociacao.SolicitacaoDeVaga>
         </listaDeSolicitacao>
         <listaPontosDeEncontroPermitidos class="linked-list"/>

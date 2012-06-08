@@ -3,22 +3,19 @@ package ufcg.si1.infoCarona.model.negociacao;
 import ufcg.si1.infoCarona.model.carona.Carona;
 import ufcg.si1.infoCarona.model.usuario.Usuario;
 
-
-
 public class SolicitacaoDeVaga {
 	
 	private Carona carona;
 	private Usuario donoSolicitacao;
 	private String ponto, idSolicitacao;
-	private boolean solicitacaoAceita = false;
-	private boolean solicitacaoPendente = true;
-	private boolean solicitacaoRejeitada = false;
+	private EstadoSolicitacao estado;
 	
 	public SolicitacaoDeVaga(Carona carona, String ponto, String idSolicitacao, Usuario donoSolicitacao){
 		this.carona = carona;
 		this.ponto = ponto;
 		this.idSolicitacao = idSolicitacao;
 		this.donoSolicitacao = donoSolicitacao;
+		this.estado = EstadoSolicitacao.PENDENTE;
 	}
 	
 	public Usuario getDonoSolicitacao() {
@@ -36,7 +33,6 @@ public class SolicitacaoDeVaga {
 	public Usuario getDonoDaCarona(){
 		return this.carona.getDonoDaCarona();
 	}
-	
 
 	public String getPonto(){
 		return this.ponto;
@@ -46,44 +42,23 @@ public class SolicitacaoDeVaga {
 		return this.idSolicitacao;
 	}
 	
-	public String getAtributoSolicitacao(String atributo){
-		String retorno = "";
-		if(atributo.equals("origem")){
-			retorno = this.getOrigem();
-		}else if(atributo.equals("destino")){
-			retorno = this.getDestino();
-		}else if(atributo.equals("Dono da carona")){
-			retorno = this.getDonoDaCarona().getNome();
-		}else if(atributo.equals("Ponto de Encontro")){
-			retorno = this.ponto;
-		}
-		
-		return retorno;
-	}
-	
 	public void solicitacaoAceita(){
-		this.solicitacaoAceita = true;
-		this.solicitacaoPendente = false;
+		this.setEstado(EstadoSolicitacao.ACEITA);
 		carona.setVagas(carona.getVagas()-1);	
 	}
 	
 	public void solicitacaoRejeitada(){
-		this.solicitacaoRejeitada = true;
-		this.solicitacaoPendente = false;
-			
+		this.setEstado(EstadoSolicitacao.REJEITADA);
 	}
 	
-	public boolean isSolicitacaoAceita(){
-		return this.solicitacaoAceita;
+	public EstadoSolicitacao getEstado(){
+		return this.estado;
 	}
 	
-	public boolean isSolicitacaoRejeitada(){
-		return this.solicitacaoRejeitada;
+	public void setEstado(EstadoSolicitacao estado){
+		this.estado = estado;
 	}
 	
-	public boolean isSolicitacaoPendente(){
-		return this.solicitacaoPendente;
-	}
 	public Carona getCarona(){
 		return this.carona;
 	}
@@ -100,7 +75,5 @@ public class SolicitacaoDeVaga {
 		
 		return true;
 	}
-	
-	
-	
+
 }
