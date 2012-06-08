@@ -51,6 +51,9 @@ public class UtilInfo {
 		try {
 			hr = Integer.parseInt(listaHora[0]);
 			minuto = Integer.parseInt(listaHora[1]);
+			if ((hr > 23 || hr < 0) || (minuto > 59 || minuto < 0)){
+				throw new IllegalArgumentException("Hora inválida");
+			}
 		} catch (Exception e) {
 			throw new IllegalArgumentException("Hora inválida");
 		}
