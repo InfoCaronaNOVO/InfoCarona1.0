@@ -11,7 +11,7 @@ import java.util.List;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 
-public class ManipulaArquivoXML {
+public class ManipuladorArquivoXML {
 
 	private List lista = new LinkedList();
 	private String nomeDoArquivo;
@@ -26,7 +26,7 @@ public class ManipulaArquivoXML {
 	 *            xml.
 	 * 
 	 * */
-	public ManipulaArquivoXML(String nomeArquivo) {
+	public ManipuladorArquivoXML(String nomeArquivo) {
 		this.setNomeArquivo(nomeArquivo);
 		this.setLista();
 	}

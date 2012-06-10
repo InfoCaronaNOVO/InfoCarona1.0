@@ -16,7 +16,7 @@ import util.UtilInfo;
 
 public class Repositorio {
 	private List<Usuario> listaDeUsuarios;
-	private ManipulaArquivoXML arquivo;
+	private ManipuladorArquivoXML arquivo;
 	
 	public static Repositorio instance;
 	
@@ -25,7 +25,7 @@ public class Repositorio {
 	}
 
 	private void criaRepositorio() {
-		arquivo = new ManipulaArquivoXML("src/main/java/ufcg/si1/infoCarona/arquivos/usuarios");
+		arquivo = new ManipuladorArquivoXML("src/main/java/ufcg/si1/infoCarona/arquivos/usuarios");
 		listaDeUsuarios = arquivo.ler();
 	}
 	

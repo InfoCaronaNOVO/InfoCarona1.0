@@ -89,6 +89,11 @@ public class TestaSolicitacaodeVaga {
 	
 	@Test
 	public void testaGetCarona() {
+		Assert.assertFalse(carona1.equals(carona2));
+		Assert.assertFalse(carona1==carona2);
 		
+		Assert.assertEquals(carona1,solicitacao1.getCarona());
+		Assert.assertEquals(carona2,solicitacao2.getCarona());
+		Assert.assertFalse(solicitacao1.getCarona().equals(solicitacao2.getCarona()));
 	}
 }
