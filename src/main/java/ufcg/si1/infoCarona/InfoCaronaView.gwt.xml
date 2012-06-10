@@ -1,0 +1,7 @@
+<module>
+	<inherits name="com.google.gwt.user.User" />
+	<inherits name="com.google.gwt.user.theme.standard.Standard" />
+	<entry-point class="ufcg.si1.infoCarona.view.InfoCaronaView" />
+	<source path='view' />
+	<source path='shared' />
+</module>
