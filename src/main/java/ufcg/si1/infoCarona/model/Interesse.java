@@ -17,9 +17,31 @@ public class Interesse {
 	private String destino;
 	private boolean caronaEhNoDia;
 
+	/**
+	 * Construtor da classe interesse
+	 * 
+	 * @param interessado
+	 *            - o dono do objeto interesse
+	 * @param origem
+	 *            - a origem da carona que o usuario esta interessado
+	 * @param destino
+	 *            - o destino da carona que o usuario esta interessado
+	 * @param calendarioInicial
+	 *            - hora e data inicial que o usuario esta interessado em pegar
+	 *            carona
+	 * @param calendarioFinal
+	 *            - hora e data final que o usuario esta interessado em pegar
+	 *            carona
+	 * @param id
+	 *            - id do objeto interesse a ser criado
+	 * @param caronaEhNoDia
+	 *            - se a carona que o usuario busca eh no dia que ele cadastra o
+	 *            interesse
+	 * @throws CaronaException
+	 */
 	public Interesse(Usuario interessado, String origem, String destino,
-			Calendar calendarioInicial, Calendar calendarioFinal, String id, boolean caronaEhNoDia)
-			throws CaronaException {
+			Calendar calendarioInicial, Calendar calendarioFinal, String id,
+			boolean caronaEhNoDia) throws CaronaException {
 		this.interessado = interessado;
 		setOrigem(origem);
 		setDestino(destino);
@@ -30,49 +52,96 @@ public class Interesse {
 
 	}
 
+	/**
+	 * @return retorna a id do objeto interesse
+	 */
 	public String getId() {
 		return id;
 	}
 
+	/**
+	 * 
+	 * @return retorna o dono do objeto interesse
+	 */
 	public Usuario getInteressado() {
 		return interessado;
 	}
 
+	/**
+	 * 
+	 * @return retorna a origem da carona que o interessado busca
+	 */
 	public String getOrigem() {
 		return origem;
 	}
 
+	/**
+	 * 
+	 * @return retorna o destino da carona que o interessado busca
+	 */
 	public String getDestino() {
 		return destino;
 	}
 
-	
-	public Calendar getCalendarioInicial(){
+	/**
+	 * 
+	 * @return hora e data inicial que o usuario esta interessado em pegar
+	 *         carona
+	 */
+	public Calendar getCalendarioInicial() {
 		return this.calendarioInicial;
 	}
-	
-	public Calendar getCalendarioFinal(){
+
+	/**
+	 * 
+	 * @return hora e data final que o usuario esta interessado em pegar carona
+	 */
+	public Calendar getCalendarioFinal() {
 		return this.calendarioFinal;
 	}
-	
-	public void setCalendarioInicial(Calendar calendario){
+
+	/**
+	 * Define a hora e data inicial que o usuario esta interessado em pegar
+	 * carona
+	 * 
+	 * @param calendario
+	 *            - data e hora
+	 */
+	public void setCalendarioInicial(Calendar calendario) {
 		this.calendarioInicial = calendario;
 	}
-	
-	public void setCalendarioFinal(Calendar calendario){
+
+	/**
+	 * Define a hora e data final que o usuario esta interessado em pegar carona
+	 * 
+	 * @param calendario
+	 *            - data e hora
+	 */
+	public void setCalendarioFinal(Calendar calendario) {
 		this.calendarioFinal = calendario;
 	}
 
+	/**
+	 * Define a origem da carona que o usuario esta interessado
+	 * 
+	 * @param origem
+	 * @throws CaronaException
+	 */
 	private void setOrigem(String origem) throws CaronaException {
 		if ((origem == null)
-				|| (origem
-						.matches("[\\-/.\\[_\\]()!\"+,:;<=>{|}#@$%¨&*0-9].*"))
+				|| (origem.matches("[\\-/.\\[_\\]()!\"+,:;<=>{|}#@$%¨&*0-9].*"))
 				|| (origem.trim().equals(""))) {
 			throw new IllegalArgumentException("Origem inválida");
 		}
 		this.origem = origem.trim();
 	}
 
+	/**
+	 * Define o destino da carona que o usuario esta interessado
+	 * 
+	 * @param destino
+	 * @throws CaronaException
+	 */
 	private void setDestino(String destino) throws CaronaException {
 		if ((destino == null)
 				|| (destino
@@ -83,10 +152,9 @@ public class Interesse {
 		this.destino = destino.trim();
 	}
 
-
 	private boolean checaData(String stringData) {
 		boolean retorno = true;
-		if (!stringData.equals("")) {//coloquei isso aki s� pra passar no teste qdo passar string vazia mas temos q ajeitar pra qdo for do tipo DATA
+		if (!stringData.equals("")) {
 			Calendar data = Calendar.getInstance();
 			try {
 				SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
@@ -106,8 +174,13 @@ public class Interesse {
 		}
 		return retorno;
 	}
-	
-	public boolean caronaEhNoDiaMarcado(){
+
+	/**
+	 * metodo para checar se o interesse é no dia ou não
+	 * 
+	 * @return true ou false
+	 */
+	public boolean caronaEhNoDiaMarcado() {
 		return caronaEhNoDia;
 	}
 

@@ -17,14 +17,28 @@ import util.UtilInfo;
 public class ControlerRepositorio {
 	Repositorio repositorio;
 	
+	/**
+	 * Metodo que cria um repositorio caso o mesmo ainda não tenha sido criado
+	 */
 	public ControlerRepositorio(){
 		repositorio = Repositorio.getInstance();
 	}
-
+	
+	/**
+	 * Metodo que adciona um usuario ao repositorio 
+	 * @param novoUsuario
+	 */
 	public void addUsuario(Usuario novoUsuario) {
 		repositorio.addUsuario(novoUsuario);
 	}
-
+	
+	/**
+	 * Metodo que busca um usuario pelo seu login no repositorio
+	 * @param login - login do usuario que será buscado
+	 * @return - usuario localizado
+	 * @throws LoggerException
+	 * @throws ArgumentoInexistenteException - usuario inexistente
+	 */
 	public Usuario buscarUsuarioPorLogin(String login) throws LoggerException, ArgumentoInexistenteException {
 		Usuario retorno = null;
 		retorno = repositorio.buscaUsuarioLogin(login);
@@ -167,14 +181,31 @@ public class ControlerRepositorio {
 		return caronaTemp.getOrigem() + " - " + caronaTemp.getDestino();
 	}
 	
+	/**
+	 * Metodo utilizado para buscar uma sugestão de ponto de encontro em uma carona
+	 * @param idSugestao - a sugestão a ser buscada
+	 * @param idCarona - a carona que possui a sugestao
+	 * @return - a sugestão
+	 * @throws CaronaException
+	 */
 	public SugestaoDePontoDeEncontro getSugestaoId(String idSugestao, String idCarona) throws CaronaException{
 		return repositorio.getSugestaoId(idSugestao, idCarona);
 	}
 	
+	/**
+	 * Metodo que busca no repositorio a existencia de um usuario ja cadastrado com este login
+	 * @param login 
+	 * @return true ou false
+	 */
 	public boolean checaExisteLogin(String login){
 		return repositorio.checaExisteLogin(login);
 	}
-	
+
+	/**
+	 * Metodo que busca no repositorio a existencia de um usuario ja cadastrado com este email
+	 * @param email
+	 * @return true ou false
+	 */
 	public boolean checaExisteEmail(String email){
 		return repositorio.checaExisteEmail(email);
 	}
@@ -204,9 +235,15 @@ public class ControlerRepositorio {
 		return retorno;
 	}
 	
+	/**
+	 * Metodo que busca uma solicitação de vaga pela sua idsolicitação
+	 * @param idSolicitacao
+	 * @return solicitação de vaga
+	 */
 	public SolicitacaoDeVaga localizaSolicitacaoPorId(String idSolicitacao) {
 		return repositorio.localizaSolicitacaoPorId(idSolicitacao);
 	}
+	
 	/**
 	 *  Metodo utilizado para zerar o repositorio.
 	 */

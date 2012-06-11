@@ -20,28 +20,46 @@ public class Repositorio {
 	
 	public static Repositorio instance;
 	
+	/**
+	 * Metodo para criar um repositorio
+	 */
 	protected Repositorio() {
 		criaRepositorio();
 	}
-
+	
+	/**
+	 * /**
+	 * Metodo para criar um repositorio
+	 */	 
 	private void criaRepositorio() {
 		arquivo = new ManipuladorArquivoXML("src/main/java/ufcg/si1/infoCarona/arquivos/usuarios");
 		listaDeUsuarios = arquivo.ler();
 	}
 	
+	/**
+	 * Singleton
+	 * Metodo que cria um repositorio caso o mesmo ainda não tenha sido criado
+	 */
 	public static Repositorio getInstance(){
 		if (instance == null){
 			instance = new Repositorio();
 		}
 		return instance;
 	}
-
-	// ///metodos que estao corretos no repositorio/////
-
+	
+	/**
+	 * Metodo que adciona um usuario ao repositorio 
+	 * @param novoUsuario
+	 */
 	public void addUsuario(Usuario usuario) {
 		listaDeUsuarios.add(usuario);
 	}
 
+	/**
+	 * Metodo que busca um usuario pelo seu login no repositorio
+	 * @param login - login do usuario que será buscado
+	 * @return - usuario localizado
+	 */
 	public Usuario buscaUsuarioLogin(String login) {
 		Usuario retorno = null;
 		for (Usuario usuario : listaDeUsuarios) {
@@ -53,6 +71,10 @@ public class Repositorio {
 		return retorno;
 	}
 
+	/**
+	 * Metodo para remover um usuario do repositorio
+	 * @param usuario
+	 */
 	public void removeUsuarioLogin(Usuario usuario) {
 		listaDeUsuarios.remove(usuario);
 	}
@@ -107,6 +129,13 @@ public class Repositorio {
 		return null;
 	}
 	
+	/**
+	 * Metodo utilizado para buscar uma sugestão de ponto de encontro em uma carona
+	 * @param idSugestao - a sugestão a ser buscada
+	 * @param idCarona - a carona que possui a sugestao
+	 * @return - a sugestão de ponto de encontro
+	 * @throws CaronaException
+	 */
 	public SugestaoDePontoDeEncontro getSugestaoId(String idSugestao, String idCarona) throws CaronaException{
 		Carona caronaTemp = this.getCaronaId(idCarona);
 		for (SugestaoDePontoDeEncontro sugestaoTemp : caronaTemp.getListaDeSugestoes()) {
@@ -181,6 +210,11 @@ public class Repositorio {
 		return null;
 	}
 	
+	/**
+	 * Metodo que busca no repositorio a existencia de um usuario ja cadastrado com este login
+	 * @param login 
+	 * @return true ou false
+	 */
 	public boolean checaExisteLogin(String login){
 		for (Usuario UsuarioTemp : listaDeUsuarios) {
 			if(UsuarioTemp.getLogin().equals(login)){
@@ -190,6 +224,11 @@ public class Repositorio {
 		return false;
 	}
 	
+	/**
+	 * Metodo que busca no repositorio a existencia de um usuario ja cadastrado com este email
+	 * @param email
+	 * @return true ou false
+	 */
 	public boolean checaExisteEmail(String email){
 		for (Usuario UsuarioTemp : listaDeUsuarios) {
 			if(UsuarioTemp.getEmail().equals(email)){
@@ -199,6 +238,11 @@ public class Repositorio {
 		return false;
 	}
 	
+	/**
+	 * Metodo que busca uma solicitação de vaga pela sua idsolicitação
+	 * @param idSolicitacao
+	 * @return solicitação de vaga
+	 */
 	public SolicitacaoDeVaga localizaSolicitacaoPorId(String idSolicitacao) {
 		for (Usuario usuarioTemp : listaDeUsuarios) {
 			for (SolicitacaoDeVaga solicitacaoTemp : usuarioTemp.getListaDeSolicitacaoDeVagas()) {
