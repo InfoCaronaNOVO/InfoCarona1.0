@@ -79,10 +79,27 @@ public class Repositorio {
 		listaDeUsuarios.remove(usuario);
 	}
 
+	/**
+	 * Metodo para remover um usuario do repositorio
+	 * @param usuario
+	 */
+	public void removeUsuario(Usuario usuario) {
+		listaDeUsuarios.remove(usuario);
+	}
+	
+	/**
+	 *
+	 * @return retorna uma lista com todos os usuarios cadastrados
+	 */
 	public List<Usuario> getTodosOsUsuarios() {
 		return listaDeUsuarios;
 	}
 
+	/**
+	 * Metodo para buscar um usuario pelo email no repositorio
+	 * @param email - email que estamos buscando
+	 * @return o usuario se encontrou ou null caso contrario
+	 */
 	public Usuario buscaUsuarioEmail(String email) {
 		Usuario retorno = null;
 		for (Usuario usuario : listaDeUsuarios) {
@@ -94,6 +111,11 @@ public class Repositorio {
 		return retorno;
 	}
 
+	/**
+	 * 
+	 * @param nome
+	 * @return
+	 */
 	public List<Usuario> buscaUsuarioNome(String nome) {
 		List<Usuario> retorno = new LinkedList<Usuario>();
 
