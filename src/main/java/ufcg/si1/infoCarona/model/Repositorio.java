@@ -12,43 +12,42 @@ import ufcg.si1.infoCarona.model.negociacao.SugestaoDePontoDeEncontro;
 import ufcg.si1.infoCarona.model.usuario.Usuario;
 import util.UtilInfo;
 
-
-
 public class Repositorio {
 	private List<Usuario> listaDeUsuarios;
 	private ManipuladorArquivoXML arquivo;
-	
+
 	public static Repositorio instance;
-	
+
 	/**
 	 * Metodo para criar um repositorio
 	 */
 	protected Repositorio() {
 		criaRepositorio();
 	}
-	
+
 	/**
-	 * /**
-	 * Metodo para criar um repositorio
-	 */	 
+	 * /** Metodo para criar um repositorio
+	 */
 	private void criaRepositorio() {
-		arquivo = new ManipuladorArquivoXML("src/main/java/ufcg/si1/infoCarona/arquivos/usuarios");
+		arquivo = new ManipuladorArquivoXML(
+				"src/main/java/ufcg/si1/infoCarona/arquivos/usuarios");
 		listaDeUsuarios = arquivo.ler();
 	}
-	
+
 	/**
-	 * Singleton
-	 * Metodo que cria um repositorio caso o mesmo ainda não tenha sido criado
+	 * Singleton Metodo que cria um repositorio caso o mesmo ainda não tenha
+	 * sido criado
 	 */
-	public static Repositorio getInstance(){
-		if (instance == null){
+	public static Repositorio getInstance() {
+		if (instance == null) {
 			instance = new Repositorio();
 		}
 		return instance;
 	}
-	
+
 	/**
-	 * Metodo que adciona um usuario ao repositorio 
+	 * Metodo que adciona um usuario ao repositorio
+	 * 
 	 * @param novoUsuario
 	 */
 	public void addUsuario(Usuario usuario) {
@@ -57,7 +56,9 @@ public class Repositorio {
 
 	/**
 	 * Metodo que busca um usuario pelo seu login no repositorio
-	 * @param login - login do usuario que será buscado
+	 * 
+	 * @param login
+	 *            - login do usuario que será buscado
 	 * @return - usuario localizado
 	 */
 	public Usuario buscaUsuarioLogin(String login) {
@@ -73,6 +74,7 @@ public class Repositorio {
 
 	/**
 	 * Metodo para remover um usuario do repositorio
+	 * 
 	 * @param usuario
 	 */
 	public void removeUsuarioLogin(Usuario usuario) {
@@ -81,14 +83,15 @@ public class Repositorio {
 
 	/**
 	 * Metodo para remover um usuario do repositorio
+	 * 
 	 * @param usuario
 	 */
 	public void removeUsuario(Usuario usuario) {
 		listaDeUsuarios.remove(usuario);
 	}
-	
+
 	/**
-	 *
+	 * 
 	 * @return retorna uma lista com todos os usuarios cadastrados
 	 */
 	public List<Usuario> getTodosOsUsuarios() {
@@ -97,7 +100,9 @@ public class Repositorio {
 
 	/**
 	 * Metodo para buscar um usuario pelo email no repositorio
-	 * @param email - email que estamos buscando
+	 * 
+	 * @param email
+	 *            - email que estamos buscando
 	 * @return o usuario se encontrou ou null caso contrario
 	 */
 	public Usuario buscaUsuarioEmail(String email) {
@@ -112,9 +117,11 @@ public class Repositorio {
 	}
 
 	/**
+	 * Metodo que busca usuarios no repositorio pelo nome dos mesmos
 	 * 
 	 * @param nome
-	 * @return
+	 *            - nome a ser procurado
+	 * @return lista de usuarios com este nome
 	 */
 	public List<Usuario> buscaUsuarioNome(String nome) {
 		List<Usuario> retorno = new LinkedList<Usuario>();
@@ -128,6 +135,10 @@ public class Repositorio {
 		return retorno;
 	}
 
+	/**
+	 * 
+	 * @return retorna todas as caronas cadastradas no repositorio
+	 */
 	public List<Carona> getTodasAsCaronas() {
 		List<Carona> retorno = new LinkedList<Carona>();
 
@@ -139,37 +150,57 @@ public class Repositorio {
 		return retorno;
 	}
 
-	public Carona getCaronaId(String idCarona)
-			throws CaronaException {
+	/**
+	 * Metodo que busca uma carona no repositorio pelo seu id
+	 * 
+	 * @param idCarona
+	 *            - id da carona
+	 * @return carona ou null caso contrario
+	 * @throws CaronaException
+	 */
+	public Carona getCaronaId(String idCarona) throws CaronaException {
 		for (Usuario usuario : listaDeUsuarios) {
-			for(Carona caronaTemp : usuario.getCaronas()){
-				if(caronaTemp.getIdCarona().equals(idCarona)){
+			for (Carona caronaTemp : usuario.getCaronas()) {
+				if (caronaTemp.getIdCarona().equals(idCarona)) {
 					return caronaTemp;
 				}
 			}
 		}
 		return null;
 	}
-	
+
 	/**
-	 * Metodo utilizado para buscar uma sugestão de ponto de encontro em uma carona
-	 * @param idSugestao - a sugestão a ser buscada
-	 * @param idCarona - a carona que possui a sugestao
-	 * @return - a sugestão de ponto de encontro
+	 * Metodo utilizado para buscar uma sugestão de ponto de encontro em uma
+	 * carona
+	 * 
+	 * @param idSugestao
+	 *            - a sugestão a ser buscada
+	 * @param idCarona
+	 *            - a carona que possui a sugestao
+	 * @return - a sugestão de ponto de encontro ou null caso não tenha
 	 * @throws CaronaException
 	 */
-	public SugestaoDePontoDeEncontro getSugestaoId(String idSugestao, String idCarona) throws CaronaException{
+	public SugestaoDePontoDeEncontro getSugestaoId(String idSugestao,
+			String idCarona) throws CaronaException {
 		Carona caronaTemp = this.getCaronaId(idCarona);
-		for (SugestaoDePontoDeEncontro sugestaoTemp : caronaTemp.getListaDeSugestoes()) {
-			if(sugestaoTemp.getIdSugestao().equals(idSugestao)){
+		for (SugestaoDePontoDeEncontro sugestaoTemp : caronaTemp
+				.getListaDeSugestoes()) {
+			if (sugestaoTemp.getIdSugestao().equals(idSugestao)) {
 				return sugestaoTemp;
 			}
 		}
-		
+
 		return null;
 	}
 
-	
+	/**
+	 * Metodo para localizar uma carona no repositorio pelo seu ponto de origem
+	 * e destino
+	 * 
+	 * @param origem
+	 * @param destino
+	 * @return a carona procurada
+	 */
 	public List<Carona> localizaCaronaPorOrigemDestino(String origem,
 			String destino) {
 
@@ -186,6 +217,12 @@ public class Repositorio {
 		return retorno;
 	}
 
+	/**
+	 * Metodo para localizar uma carona no repositorio pelo seu ponto de destino
+	 * 
+	 * @param destino
+	 * @return a carona procurada
+	 */
 	public List<Carona> localizaCaronaPorDestino(String destino) {
 		List<Carona> retorno = new LinkedList<Carona>();
 
@@ -199,6 +236,12 @@ public class Repositorio {
 		return retorno;
 	}
 
+	/**
+	 * Metodo para localizar uma carona no repositorio pelo seu ponto de origem
+	 * 
+	 * @param destino
+	 * @return a carona procurada
+	 */
 	public List<Carona> localizaCaronaPorOrigem(String origem) {
 		List<Carona> retorno = new LinkedList<Carona>();
 
@@ -212,6 +255,10 @@ public class Repositorio {
 		return retorno;
 	}
 
+	/**
+	 * 
+	 * @return todas as caronas cadastradas
+	 */
 	public List<Carona> getCaronas() {
 		List<Carona> retorno = new LinkedList<Carona>();
 
@@ -221,6 +268,12 @@ public class Repositorio {
 		return retorno;
 	}
 
+	/**
+	 * metodo para localizar uma carona no repositorio pelo seu id
+	 * 
+	 * @param idCarona
+	 * @return a carona procurada
+	 */
 	public Carona localizaCaronaPorId(String idCarona) {
 		for (Usuario usuarioTemp : listaDeUsuarios) {
 			for (Carona caronaTemp : usuarioTemp.getCaronas()) {
@@ -231,43 +284,49 @@ public class Repositorio {
 		}
 		return null;
 	}
-	
+
 	/**
-	 * Metodo que busca no repositorio a existencia de um usuario ja cadastrado com este login
-	 * @param login 
+	 * Metodo que busca no repositorio a existencia de um usuario ja cadastrado
+	 * com este login
+	 * 
+	 * @param login
 	 * @return true ou false
 	 */
-	public boolean checaExisteLogin(String login){
+	public boolean checaExisteLogin(String login) {
 		for (Usuario UsuarioTemp : listaDeUsuarios) {
-			if(UsuarioTemp.getLogin().equals(login)){
+			if (UsuarioTemp.getLogin().equals(login)) {
 				return true;
 			}
-		}		
+		}
 		return false;
 	}
-	
+
 	/**
-	 * Metodo que busca no repositorio a existencia de um usuario ja cadastrado com este email
+	 * Metodo que busca no repositorio a existencia de um usuario ja cadastrado
+	 * com este email
+	 * 
 	 * @param email
 	 * @return true ou false
 	 */
-	public boolean checaExisteEmail(String email){
+	public boolean checaExisteEmail(String email) {
 		for (Usuario UsuarioTemp : listaDeUsuarios) {
-			if(UsuarioTemp.getEmail().equals(email)){
+			if (UsuarioTemp.getEmail().equals(email)) {
 				return true;
 			}
-		}		
+		}
 		return false;
 	}
-	
+
 	/**
 	 * Metodo que busca uma solicitação de vaga pela sua idsolicitação
+	 * 
 	 * @param idSolicitacao
-	 * @return solicitação de vaga
+	 * @return solicitação de vaga ou null caso contrario
 	 */
 	public SolicitacaoDeVaga localizaSolicitacaoPorId(String idSolicitacao) {
 		for (Usuario usuarioTemp : listaDeUsuarios) {
-			for (SolicitacaoDeVaga solicitacaoTemp : usuarioTemp.getListaDeSolicitacaoDeVagas()) {
+			for (SolicitacaoDeVaga solicitacaoTemp : usuarioTemp
+					.getListaDeSolicitacaoDeVagas()) {
 				if (solicitacaoTemp.getIdSolicitacao().equals(idSolicitacao)) {
 					return solicitacaoTemp;
 				}
@@ -275,80 +334,101 @@ public class Repositorio {
 		}
 		return null;
 	}
+
 	/**
-	 *  Metodo utilizado para zerar os dados que estavam no repositorio
-	 *  e cria outro repositorio.
+	 * Metodo utilizado para zerar os dados que estavam no repositorio e cria
+	 * outro repositorio.
 	 */
 	public void zerarSistema() {
 		arquivo.clear();
 		criaRepositorio();
 	}
-	
-	private void salvarXML(){
+
+	/**
+	 * Metodo para salvar os dadnos num arquivo de formato .xml
+	 */
+	private void salvarXML() {
 		arquivo.setLista(listaDeUsuarios);
 		arquivo.finalizarXML();
 	}
-	
+
 	/**
-	 *	salva todos os dados em um arquivo .xml
+	 * salva todos os dados em um arquivo .xml
 	 */
 	public void encerrarSistema() {
 		this.salvarXML();
 	}
+
 	/**
-	 * Metodo para localizar todas as caronas referentes a uma determinada cidade
-	 * @param cidade - Cidade da carona municipal
+	 * Metodo para localizar todas as caronas referentes a uma determinada
+	 * cidade
+	 * 
+	 * @param cidade
+	 *            - Cidade da carona municipal
 	 * @return - retorno da(s) carona(s) localizada(s)
-	 * @throws CaronaException - referentes a problemas com a localização do objeto do tipo carona
+	 * @throws CaronaException
+	 *             - referentes a problemas com a localização do objeto do tipo
+	 *             carona
 	 */
-	public List<Carona> localizarCaronaMunicipal(String cidade) throws CaronaException {
+	public List<Carona> localizarCaronaMunicipal(String cidade)
+			throws CaronaException {
 		List<Carona> retorno = new LinkedList<Carona>();
 		boolean existeCidade = false;
-		
+
 		for (Usuario UsuarioTemp : listaDeUsuarios) {
 			for (Carona caronaTemp : UsuarioTemp.getCaronas()) {
 				if (caronaTemp.getTipoCarona().equals(TiposCarona.MUNICIPAL)) {
-					if(((CaronaMunicipal) caronaTemp).getCidade().equals(cidade)){
+					if (((CaronaMunicipal) caronaTemp).getCidade().equals(
+							cidade)) {
 						existeCidade = true;
 						retorno.add(caronaTemp);
 					}
-					
+
 				}
 			}
 		}
-		if(!existeCidade){
+		if (!existeCidade) {
 			throw new CaronaException("Cidade inexistente");
 		}
 		return retorno;
 	}
-	
+
 	/**
 	 * Metodo para localizar uma carona municipal
-	 * @param cidade - Cidade da carona municipal
-	 * @param origem - Origem da carona municipal
-	 * @param destino - Destino da carona municipal
+	 * 
+	 * @param cidade
+	 *            - Cidade da carona municipal
+	 * @param origem
+	 *            - Origem da carona municipal
+	 * @param destino
+	 *            - Destino da carona municipal
 	 * @return - retorno da(s) carona(s) localizada(s)
-	 * @throws CaronaException - referentes a problemas com a localização do objeto do tipo carona
+	 * @throws CaronaException
+	 *             - referentes a problemas com a localização do objeto do tipo
+	 *             carona
 	 */
-	public List<Carona> localizarCaronaMunicipal(String cidade, String origem, String destino) throws CaronaException {
+	public List<Carona> localizarCaronaMunicipal(String cidade, String origem,
+			String destino) throws CaronaException {
 		List<Carona> retorno = new LinkedList<Carona>();
 		boolean existeCidade = false;
-		
+
 		for (Usuario usuarioTemp : listaDeUsuarios) {
 			for (Carona caronaTemp : usuarioTemp.getCaronas()) {
 				if (caronaTemp.getTipoCarona().equals(TiposCarona.MUNICIPAL)) {
-					if(((CaronaMunicipal) caronaTemp).getCidade().equals(cidade)){
+					if (((CaronaMunicipal) caronaTemp).getCidade().equals(
+							cidade)) {
 						existeCidade = true;
-						if(caronaTemp.getOrigem().equals(origem) && caronaTemp.getDestino().equals(destino)){
+						if (caronaTemp.getOrigem().equals(origem)
+								&& caronaTemp.getDestino().equals(destino)) {
 							retorno.add(caronaTemp);
 						}
-						
+
 					}
-					
+
 				}
 			}
 		}
-		if(!existeCidade){
+		if (!existeCidade) {
 			throw new CaronaException("Cidade inexistente");
 		}
 		return retorno;
