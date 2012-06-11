@@ -18,6 +18,15 @@ public class SistemaUsuarioNaoLogado {
 		id = Id.getInstance(5);
 	}
 	
+	/**
+	 * Metodo para criar um objeto do tipo Usuario
+	 * @param login - Login do Usuario
+	 * @param senha - Senha do Usuario
+	 * @param nome - Nome do Usuario
+	 * @param endereco - Endereço do Usuario
+	 * @param email - Email do Usuario
+	 * @throws LoggerException - Exceção referente a erros na criação do Objeto do tipo Usuario
+	 */
 	public void criarUsuario(String login, String senha, String nome,
 			String endereco, String email) throws LoggerException{
 
@@ -34,6 +43,15 @@ public class SistemaUsuarioNaoLogado {
 
 	}
 	
+	/**
+	 * Metodo para Abrir uma sessão de um usuario colocando o mesmo no mapa de usuarios logados
+	 * @param login - Nome do Usuario
+	 * @param senha - Senha do Usuario
+	 * @return ID da Sessão do Usuario
+	 * @throws LoggerException - referentes a problemas com a localização do objeto do usuario cadastrado
+	 * @throws NumeroMaximoException - caso o numero maximo de conexções paralelas do servidor, tenha sido alcançado
+	 * @throws ArgumentoInexistenteException - caso os argumentos passados pelo usuario, seja invalido
+	 */
 	public String abrirSessao(String login, String senha)
 			throws LoggerException, NumeroMaximoException, ArgumentoInexistenteException {
 

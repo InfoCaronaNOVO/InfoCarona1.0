@@ -35,6 +35,14 @@ public class ControlerRepositorio {
 		return retorno;
 	}
 
+	/**
+	 * Metodo para retorna um atributo de um usuario
+	 * @param login - login do usuario que queremos saber o atributo
+	 * @param atributo - o atributo procurado
+	 * @return - o atributo procurado
+	 * @throws LoggerException
+	 * @throws ArgumentoInexistenteException
+	 */
 	public String getAtributoUsuario(String login, String atributo) throws LoggerException, ArgumentoInexistenteException {
 		Usuario usuarioTemp = buscarUsuarioPorLogin(login);
 		List<String> listaTemp = new LinkedList<String>();
@@ -76,6 +84,12 @@ public class ControlerRepositorio {
 		return retorno;
 	}
 	
+	/**
+	 * Metodo para localizar um objeto do tipo carona no repositorio
+	 * @param origem - origem da carona a ser localizada
+	 * @param destino - destino da carona a ser localizada
+	 * @return - retorna da(s) carona(s) localizada(s)
+	 */
 	public List<Carona> localizarCarona(String origem, String destino) {
 		
 		List<Carona> retorno;
@@ -93,6 +107,13 @@ public class ControlerRepositorio {
 		
 	}
 
+	/**
+	 * Metodo responsavel para retornar um atributo da carona em questão.
+	 * @param idCarona - id da carona que queremos saber algum atributo
+	 * @param atributo - Atributo que iremos retornar da carona
+	 * @return o atributo requeridó
+	* @throws ArgumentoInexistenteException - quando não existe esse atributo no objeto carona
+	 */
 	public String getAtributoCarona(String idCarona, String atributo) throws ArgumentoInexistenteException {
 		Carona caronaTemp = repositorio.localizaCaronaPorId(idCarona);
 		if(caronaTemp == null){
@@ -119,10 +140,24 @@ public class ControlerRepositorio {
         return retorno;
 	}
 	
+	/**
+	 * Metodo que retorna um objeto do tipo carona cadastrada no repositorio, procurando a mesma
+	 * somente pelo o idcarona
+	 * @param idCarona - o id da carona
+	 * @return a carona procurada
+	 * @throws CaronaException - referentes a problemas com a localização do objeto do tipo carona
+	 */
 	public Carona localizaCaronaPorId(String idCarona) throws CaronaException {
 		return repositorio.getCaronaId(idCarona);
 	}
 
+	/**
+	 * Metodo para buscar o trajeto de uma Carona
+	 * @param idCarona - Id da carona que queremos saber o projeto
+	 * @return - retorna o trajeto da carona da forma: Origem - Destino
+	 * @throws CaronaException - referentes a problemas com a localização do objeto do tipo carona
+	 * @throws ArgumentoInexistenteException - quando for passado um id de carona vazio.
+	 */
 	public String getTrajeto(String idCarona) throws CaronaException, ArgumentoInexistenteException {
 		
 		Carona caronaTemp = repositorio.getCaronaId(idCarona);
@@ -144,6 +179,12 @@ public class ControlerRepositorio {
 		return repositorio.checaExisteEmail(email);
 	}
 	
+	/**
+	 * Metodo para retorna algum atributo de um objeto do tipo solicitação
+	 * @param idSolicitacao - id da solicitação 
+	 * @param atributo - atributo procurado
+	 * @return - o atributo procurado
+	 */
 	public String getAtributoSolicitacao(String idSolicitacao, String atributo) {		
 		SolicitacaoDeVaga solicitacaoTemp = localizaSolicitacaoPorId(idSolicitacao);
 		
@@ -166,15 +207,28 @@ public class ControlerRepositorio {
 	public SolicitacaoDeVaga localizaSolicitacaoPorId(String idSolicitacao) {
 		return repositorio.localizaSolicitacaoPorId(idSolicitacao);
 	}
-
+	/**
+	 *  Metodo utilizado para zerar o repositorio.
+	 */
 	public void zerarSistema() {
 		repositorio.zerarSistema();
 	}
-
+	
+	/**
+	 * Encerra o Sistema atual, salvando todos os dados em um arquivo .xml
+	 */
 	public void encerrarSistema() {
 		repositorio.encerrarSistema();
 	}
 
+	/**
+	 * Metodo para localizar uma carona municipal
+	 * @param cidade - Cidade da carona municipal
+	 * @param origem - Origem da carona municipal
+	 * @param destino - Destino da carona municipal
+	 * @return - retorno da(s) carona(s) localizada(s)
+	 * @throws CaronaException - referentes a problemas com a localização do objeto do tipo carona
+	 */
 	public List<Carona> localizarCaronaMunicipal(String cidade, String origem, String destino) throws CaronaException {
 		if(destino.equals("") && origem.equals("")){
 			return repositorio.localizarCaronaMunicipal(cidade);

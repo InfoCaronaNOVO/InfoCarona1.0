@@ -44,15 +44,19 @@ public interface Carona {
 	
 	public String getDadosCarona();
 	public void addNovaSolicitacao(SolicitacaoDeVaga novaSolicitacao);
-	
-	
-    
+	    
     public void removeSolicitacao(SolicitacaoDeVaga solicitacao);
     @Override
 	public boolean equals(Object obj);
     
+    /**
+     * Retorna todas as solicitações que foram confirmadas pelo dono da carona
+     */
     public List<SolicitacaoDeVaga> getSolicitacoesConfirmadas();
     
+    /**
+     * Retorna todas as solicitações pendentes desta carona
+     */
     public List<SolicitacaoDeVaga> getSolicitacoesPendentes();
     
     public void addPontoEncontroPermitido(String ponto);

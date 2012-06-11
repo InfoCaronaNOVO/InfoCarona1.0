@@ -10,6 +10,8 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import ufcg.si1.infoCarona.model.ArgumentoInexistenteException;
+
 public class EnviarEmail {  
     
     private static String mailSMTPServer;  
@@ -29,7 +31,15 @@ public class EnviarEmail {
         this.mailSMTPServer = mailSMTPServer;  
         this.mailSMTPServerPort = mailSMTPServerPort;  
     }  
-      
+     
+    /**
+     * Metodo para enviar um email 
+     * @param nomeDestinatario - nome do destinatário
+     * @param emailDestinatario - email do destinatário
+     * @param assunto - InfoCarona
+     * @param mensagem - mensagem do email
+     * @return
+     */
     public static boolean sendMail(String nomeDestinatario, String emailDestinatario, String assunto, String mensagem) {  
         boolean retorno = true;
         mailSMTPServer = "smtp.gmail.com";  

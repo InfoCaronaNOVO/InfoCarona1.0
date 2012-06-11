@@ -24,6 +24,16 @@ public class SistemaNegociacao {
 		id = Id.getInstance(5);
 	}
 	
+	/**
+	 * Metodo utilizado para sugerir ponto de encontro em uma carona
+	 * @param idSessao - id do usuario logado que irá sugerir os pontos
+	 * @param idCarona - id da carona no qual será sugerido os pontos
+	 * @param pontos - os pontos de encontro
+	 * @return -  o id da sugestão
+	 * @throws CaronaException - referentes a problemas com a localização do objeto do tipo carona
+	 * @throws NumeroMaximoException - referentes a problemas na criação do id da sugestçao
+	 * @throws ArgumentoInexistenteException - quando os pontos são passados vazios.
+	 */
 	public String sugerirPontoEncontro(String idSessao, String idCarona,
 			String pontos) throws CaronaException,
 			NumeroMaximoException, ArgumentoInexistenteException {
@@ -41,6 +51,16 @@ public class SistemaNegociacao {
 
 	}
 	
+	/**
+	 * Metodo utilizado para um usuario solicitar vaga em uma carona
+	 * @param idSessao - id do usuario solicitante
+	 * @param idCarona - id da carona em que o usuario solicita vaga
+	 * @param ponto - pontos referentes ao encontro na carona
+	 * @return - id da solicitação de vaga na carona
+	 * @throws CaronaException - referentes a problemas com o objeto do tipo carona 
+	 * @throws NumeroMaximoException - 
+	 * @throws ArgumentoInexistenteException
+	 */
 	public String solicitarVagaPontoEncontro(String idSessao, String idCarona,
 			String ponto) throws CaronaException,NumeroMaximoException, ArgumentoInexistenteException {
 
@@ -55,6 +75,15 @@ public class SistemaNegociacao {
 				id.gerarId(), usuarioTemp);
 	}
 	
+	/**
+	 * Metodo utilizado para o usuario dono da carona, responda a uma sugestão de ponto de encontro
+	 * @param idSessao - id do usuario logado e dono da carona
+	 * @param idCarona - id da carona do usuario e que tem um ponto de encontro para responder
+	 * @param idSugestao - id da sugestão no qual o usuario irá responder
+	 * @param pontos - os pontos com o qual o dono da carona responde em relação a sugestão
+	 * @throws CaronaException - referentes a problemas com a localização do objeto do tipo carona 
+	 * @throws ArgumentoInexistenteException - quando os pontos são passados vazios.
+	 */
 	public void responderSugestaoPontoEncontro(String idSessao,
 			String idCarona, String idSugestao, String pontos)
 			throws CaronaException, ArgumentoInexistenteException{
@@ -66,6 +95,12 @@ public class SistemaNegociacao {
 		usuarioTemp.responderSugestaoPontoEncontro(sugestaoTemp, pontos, caronaTemp);
 	}
 	
+	/**
+	 * Metodo para que o usuario aceite os pontos que outro usuario sugerio
+	 * @param idSessao - id do usuario 
+	 * @param idSolicitacao - id da solicitação que o mesmo irá aceitar
+	 * @throws ArgumentoInexistenteException
+	 */
 	public void aceitarSolicitacaoPontoEncontro(String idSessao,
 			String idSolicitacao) throws ArgumentoInexistenteException  {
 
@@ -76,6 +111,12 @@ public class SistemaNegociacao {
 		usuarioTemp.aceitarSolicitacaoPontoEncontro(solicitacao);
 	}
 	
+	/**
+	 * Metodo utilizado para que o dono da carona recuse uma solicitação de vaga em uma carona que seja dono.
+	 * @param idSessao - id do usuario logado
+	 * @param idSolicitacao - solicitação que sera recusada
+	 * @throws ArgumentoInexistenteException - quando não existe esta solicitação
+	 */
 	public void rejeitarSolicitacao(String idSessao, String idSolicitacao) throws ArgumentoInexistenteException{
 		Usuario usuarioTemp = SistemaRaiz.procuraUsuarioLogado(idSessao);
 		SolicitacaoDeVaga solicitacao = controler
@@ -84,6 +125,14 @@ public class SistemaNegociacao {
 
 	}
 
+	/**
+	 * Metodo utilizado para que um usuario desista de uma solicitação de vaga em uma determinada carona
+	 * @param idSessao - id do usuario
+	 * @param idCarona - id da carona que o mesmo solicitou vaga
+	 * @param idSolicitacao - id da sugestão da vaga
+	 * @throws CaronaException
+	 * @throws ArgumentoInexistenteException
+	 */
 	public void desistirRequisicao(String idSessao, String idCarona,
 			String idSolicitacao) throws CaronaException, ArgumentoInexistenteException {
 
@@ -94,6 +143,13 @@ public class SistemaNegociacao {
 
 	}
 	
+	/**
+	 * Metodo que retorna todos os pontos sugeridos por caroneiros
+	 * @param idSessao - id do usuario logado
+	 * @param idCarona - id da carona
+	 * @return lista de sugestão de pontos de encontro
+	 * @throws CaronaException
+	 */
 	public LinkedList<String> getPontosSugeridos(String idCarona) throws CaronaException {
 		LinkedList<String> retorno = new LinkedList<String>();
 		Carona caronaTemp = controler.localizaCaronaPorId(idCarona);
@@ -106,6 +162,13 @@ public class SistemaNegociacao {
 		return retorno;
 	}
 	
+	/**
+	 * Metodo que retorna todos os pontos de encontro que estão nesta carona
+	 * @param idSessao - id do a seção
+	 * @param idCarona - id da carona em questão
+	 * @return - lista de sugestão de pontos de encontro
+	 * @throws CaronaException
+	 */
 	public List<String> getPontosEncontro(String idCarona)
 			throws CaronaException {
 		List<String> retorno = new LinkedList<String>();
@@ -124,22 +187,47 @@ public class SistemaNegociacao {
         
         return retorno;
 	}
-	
+	/**
+	 * Metodo que retorna todas as solicitações que foram confirmadas desta carona
+	 * @param idCarona - a carona
+	 * @return - solicitações confirmadas
+	 * @throws CaronaException
+	 */
 	public List<SolicitacaoDeVaga> getSolicitacoesConfirmadas(String idCarona) throws CaronaException {
 		return controler.localizaCaronaPorId(idCarona).getSolicitacoesConfirmadas();
 	}
 
+	/**
+	 * Metodo que retorna as solicitações pendentes de uma determinada carona
+	 * @param idSessao - id do usuario logado
+	 * @param idCarona - id da carona em questão
+	 * @return - solicitações pendentes
+	 * @throws CaronaException
+	 */
 	public List<SolicitacaoDeVaga> getSolicitacoesPendentes(String idCarona)
 			throws CaronaException {
 		return controler.localizaCaronaPorId(idCarona)
 				.getSolicitacoesPendentes();
 	}
 	
+	/**
+	 * Metodo para retorna algum atributo de um objeto do tipo solicitação
+	 * @param idSolicitacao - id da solicitação 
+	 * @param atributo - atributo procurado
+	 * @return - o atributo procurado
+	 */
 	public String getAtributoSolicitacao(String idSolicitacao, String atributo) {
 		return controler.getAtributoSolicitacao(idSolicitacao,
 				atributo);
 	}
 	
+	/**
+	 * Metodo que retorna um objeto do tipo carona cadastrada no repositorio, procurando a mesma
+	 * somente pelo o idcarona
+	 * @param idCarona - o id da carona
+	 * @return a carona procurada
+	 * @throws CaronaException - referentes a problemas com a localização do objeto do tipo carona
+	 */
 	public Carona getCarona(String idCarona) throws CaronaException {
 		if (UtilInfo.ehVazioOuNull(idCarona)) {
 			throw new CaronaException("Carona Inválida");

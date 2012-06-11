@@ -202,6 +202,9 @@ public abstract class CaronaAbstract implements Carona{
 		return true;
 	}
     
+    /**
+     * Retorna todas as solicitações que foram confirmadas pelo dono da carona
+     */
     public List<SolicitacaoDeVaga> getSolicitacoesConfirmadas() {
 		List<SolicitacaoDeVaga> retorno = new LinkedList<SolicitacaoDeVaga>();
 		for (SolicitacaoDeVaga solicitacao : listaDeSolicitacao) {
@@ -212,6 +215,9 @@ public abstract class CaronaAbstract implements Carona{
 		return retorno;
 	}
     
+    /**
+     * Retorna todas as solicitações pendentes desta carona
+     */
     public List<SolicitacaoDeVaga> getSolicitacoesPendentes(){
     	List<SolicitacaoDeVaga> retorno = new LinkedList<SolicitacaoDeVaga>();
 		for (SolicitacaoDeVaga solicitacao : listaDeSolicitacao) {

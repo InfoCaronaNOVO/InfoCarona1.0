@@ -209,7 +209,10 @@ public class Repositorio {
 		}
 		return null;
 	}
-
+	/**
+	 *  Metodo utilizado para zerar os dados que estavam no repositorio
+	 *  e cria outro repositorio.
+	 */
 	public void zerarSistema() {
 		arquivo.clear();
 		criaRepositorio();
@@ -219,11 +222,19 @@ public class Repositorio {
 		arquivo.setLista(listaDeUsuarios);
 		arquivo.finalizarXML();
 	}
-
+	
+	/**
+	 *	salva todos os dados em um arquivo .xml
+	 */
 	public void encerrarSistema() {
 		this.salvarXML();
 	}
-
+	/**
+	 * Metodo para localizar todas as caronas referentes a uma determinada cidade
+	 * @param cidade - Cidade da carona municipal
+	 * @return - retorno da(s) carona(s) localizada(s)
+	 * @throws CaronaException - referentes a problemas com a localização do objeto do tipo carona
+	 */
 	public List<Carona> localizarCaronaMunicipal(String cidade) throws CaronaException {
 		List<Carona> retorno = new LinkedList<Carona>();
 		boolean existeCidade = false;
@@ -245,6 +256,14 @@ public class Repositorio {
 		return retorno;
 	}
 	
+	/**
+	 * Metodo para localizar uma carona municipal
+	 * @param cidade - Cidade da carona municipal
+	 * @param origem - Origem da carona municipal
+	 * @param destino - Destino da carona municipal
+	 * @return - retorno da(s) carona(s) localizada(s)
+	 * @throws CaronaException - referentes a problemas com a localização do objeto do tipo carona
+	 */
 	public List<Carona> localizarCaronaMunicipal(String cidade, String origem, String destino) throws CaronaException {
 		List<Carona> retorno = new LinkedList<Carona>();
 		boolean existeCidade = false;
