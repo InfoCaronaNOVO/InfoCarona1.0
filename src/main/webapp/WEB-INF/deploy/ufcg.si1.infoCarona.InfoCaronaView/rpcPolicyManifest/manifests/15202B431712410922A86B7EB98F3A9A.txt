@@ -1,0 +1,2 @@
+serviceClass: ufcg.si1.infoCarona.view.InfoCaronaServer
+path: E4F1B3BEAD482EA847BED08961866EBF.gwt.rpc
