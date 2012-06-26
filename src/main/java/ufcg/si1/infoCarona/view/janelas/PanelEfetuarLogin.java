@@ -1,7 +1,13 @@
 package ufcg.si1.infoCarona.view.janelas;
 
+import ufcg.si1.infoCarona.model.sistema.SistemaRaiz;
+import ufcg.si1.infoCarona.view.ExceptionSerialized;
+import ufcg.si1.infoCarona.view.InfoCaronaServerAsync;
+
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DialogBox;
@@ -17,8 +23,11 @@ import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class PanelEfetuarLogin extends Composite {
-
-	public PanelEfetuarLogin() {
+	
+	private InfoCaronaServerAsync controller;
+	
+	public PanelEfetuarLogin(final InfoCaronaServerAsync controller) {
+		this.controller = controller;
 		VerticalPanel vPanel01 = new VerticalPanel();
 		Label labelNome = new Label("Login");
 		labelNome.setStyleName("labelNomeBranco");
@@ -27,6 +36,7 @@ public class PanelEfetuarLogin extends Composite {
 		boxLogin.setWidth("180px");
 		Hyperlink link = new Hyperlink();
 		link.setText("Esqueceu seus dados?");
+		link.setStyleName("link");
 		link.addClickHandler(new ClickHandler() {
 			
 			public void onClick(ClickEvent event) {
@@ -76,14 +86,6 @@ public class PanelEfetuarLogin extends Composite {
 		Button botaoEntrar = new Button("Entrar");
 		botaoEntrar.setStyleName("botaoModificado");
 		botaoEntrar.setWidth("100px");
-		botaoEntrar.addClickHandler(new ClickHandler() {
-			
-			public void onClick(ClickEvent event) {
-				JanelaLogado janelaLogado = new JanelaLogado(boxLogin.getText());
-				RootPanel.get().clear();
-				RootPanel.get().add(janelaLogado);				
-			}
-		});
 		
 		Image imageTwitter = new Image("imagens/twitter.png"); 
 		imageTwitter.setSize("24px", "24px");
@@ -105,7 +107,7 @@ public class PanelEfetuarLogin extends Composite {
 		VerticalPanel vPanel02 = new VerticalPanel();
 		Label labelSenha = new Label("Senha");
 		labelSenha.setStyleName("labelNomeBranco");
-		PasswordTextBox passwordLogin = new PasswordTextBox();
+		final PasswordTextBox passwordLogin = new PasswordTextBox();
 		passwordLogin.setWidth("172px");
 		passwordLogin.setStyleName("boxModificada2");
 		
@@ -128,6 +130,25 @@ public class PanelEfetuarLogin extends Composite {
 		panelEfetuarLogin.setCellVerticalAlignment(vPanel02,HasVerticalAlignment.ALIGN_TOP);
 		panelEfetuarLogin.setCellHorizontalAlignment(vPanel02, HasHorizontalAlignment.ALIGN_RIGHT);
 		panelEfetuarLogin.setStyleName("panelFundoLaranja");
+		
+		botaoEntrar.addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				controller.abrirSessao(boxLogin.getText(), passwordLogin.getText(), new AsyncCallback<String>() {
+					public void onSuccess(String result) {
+						JanelaLogado janelaLogado = new JanelaLogado(controller,result, boxLogin.getText());
+						RootPanel.get().clear();
+						RootPanel.get().add(janelaLogado);
+						
+					}					
+					public void onFailure(Throwable caught) {
+						DialogMensagemUsuario dialogErro = new DialogMensagemUsuario("Falhou", caught.getMessage());
+						dialogErro.show();
+					}
+					
+					
+				});
+			}
+		});
 		
 		initWidget(panelEfetuarLogin);
 	}

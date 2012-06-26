@@ -46,18 +46,36 @@ public class SistemaRaiz {
 	}
 
 	/**
-	 *  Metodo utilizado para zerar o sistema.
-	 *  criando um novo sistema e limpando os dados do repositorio 
+	 * Metodo para Zerar as configura��es do Usuario
 	 */
 	public void zerarSistema() {
 		this.criaSistema();
 		controleRepositorio.zerarSistema();
 	}
 
-	
 	/**
-	 * Encerra o Sistema atual, salvando todos os dados em um arquivo .xml
-	 */
+	 * criarUsuario metodo para criar um novo objeto da Classe Usuario.
+	 * 
+	 * @param login
+	 *            - login a ser cadastrado no usuario.
+	 * @param senha
+	 *            - senha de acesso do usuario.
+	 * @param nome
+	 *            - nome do usuario a ser cadastrado.
+	 * @param endereco
+	 *            - endereco do usuario.
+	 * @param email
+	 *            - email do usuario
+	 * @throws EnderecoInvalidoException
+	 * @throws SenhaInvalidoException
+	 * @throws LoginInvalidoException
+	 * @throws NomeInvalidoException
+	 * @throws EmailInvalidoException
+	 * @throws LoginExistenteException
+	 * @throws EmailExistenteException
+	 * 
+	 * */
+
 	public void encerrarSistema() {
 		usuariosLogados = new HashMap<String, Usuario>();
 		controleRepositorio.encerrarSistema();		
@@ -79,16 +97,7 @@ public class SistemaRaiz {
 
 		return retorno;
 	}
-	/**
-	 * Metodo para o dono da carona adcionar um comentario em alguma pessoa que pegou carona com ele
-	 * @param idSessao - id do usuario 
-	 * @param idCarona - id da carona que ele foi dono
-	 * @param loginCaroneiro - id do usuario que participou da carona
-	 * @param review - comentario da carona
-	 * @throws CaronaException 
-	 * @throws LoggerException 
-	 * @throws ArgumentoInexistenteException
-	 */
+
 	public void reviewVagaEmCarona(String idSessao, String idCarona, String loginCaroneiro, String review) throws CaronaException, LoggerException, ArgumentoInexistenteException {
 		
 		boolean achou = false;
@@ -111,9 +120,7 @@ public class SistemaRaiz {
 				throw new CaronaException("Usuário não possui vaga na carona.");
 			}
 	}
-	/**
-	 * Metodo para reiniciar o sistema criando outro sistema com os dados salvos.
-	 */
+
 	public void reiniciarSistema() {
 		this.criaSistema();
 	}
@@ -130,15 +137,11 @@ public class SistemaRaiz {
 		return false;
 	}
 	
-	/**
-	 * Metodo para enviar um email 
-	 * @param idSessao - id do usuario
-	 * @param destino - email destinatário
-	 * @param message - mensagem do email
-	 * @return - confirmação de enviou
-	 * @throws ArgumentoInexistenteException
-	 */
 	public boolean enviarEmail(String idSessao, String destino, String message) throws ArgumentoInexistenteException{
 		return EnviarEmail.sendMail(destino, destino, "Info Carona", message);
+	}
+	
+	public void addUsuario(String id, Usuario usuario){
+		usuariosLogados.put(id, usuario);
 	}
 }

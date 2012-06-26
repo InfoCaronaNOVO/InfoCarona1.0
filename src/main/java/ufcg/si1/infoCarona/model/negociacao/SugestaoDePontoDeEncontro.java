@@ -28,10 +28,7 @@ public class SugestaoDePontoDeEncontro {
 		return usuarioQueSugeriu;
 	}
 
-	/**
-	 * 
-	 * @return lista de sugestão de ponto de encontro
-	 */
+
 	public List<String> getListaDeSugestaoDePontosDeEncontro(){
 		return this.listaDeSugestaoDePontosDeEncontro;
 	}

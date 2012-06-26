@@ -1,3 +1,7 @@
+.link {
+	cursor: pointer;
+	text-decoration: underline;
+}
 .labelNomeJanela {
 	font-size: 20px;
 	font-weight: bold;

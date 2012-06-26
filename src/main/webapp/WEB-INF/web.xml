@@ -6,6 +6,15 @@
          xmlns="http://java.sun.com/xml/ns/javaee">
 
   <!-- Servlets -->
+  <servlet>
+  	<servlet-name>greetServlet</servlet-name>
+    <servlet-class>ufcg.si1.infoCarona.server.InfoCaronaServerImpl</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>greetServlet</servlet-name>
+    <url-pattern>/ufcg.si1.infoCarona.InfoCaronaView/greet</url-pattern>
+  </servlet-mapping>
   
   <!-- Default page to serve -->
   <welcome-file-list>

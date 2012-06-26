@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: ufcg.si1.infoCarona.testes.TesteMaven
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 19.81 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 77.067 sec

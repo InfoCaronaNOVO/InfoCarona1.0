@@ -1,2 +1,0 @@
-serviceClass: sistema.view.client.GreetingService
-path: C9ACAB1003D43909695A8A3E6179D7EE.gwt.rpc

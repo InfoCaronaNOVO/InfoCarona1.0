@@ -1,5 +1,7 @@
 package ufcg.si1.infoCarona.view.janelas;
 
+import ufcg.si1.infoCarona.view.InfoCaronaServerAsync;
+
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.DockPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -9,12 +11,14 @@ public class JanelaLogado extends Composite {
 	private PanelCadastrarCarona panelCadastrarCarona;
 	private PanelBuscarCarona panelBuscarCarona;
 	private PanelAlterarCadastro panelAlterarCadastro;
+	private InfoCaronaServerAsync controller;
 	
-	public JanelaLogado(String nomeUsuario) {
+	public JanelaLogado(InfoCaronaServerAsync controller, String idUsuario, String loginUsuario) {
+		this.controller = controller;
 		DockPanel panelLogado = new DockPanel();
 		panelLogado.setWidth("100%");
 		
-		PanelUsuarioLogado panelUsuarioLogado = new PanelUsuarioLogado(nomeUsuario);
+		PanelUsuarioLogado panelUsuarioLogado = new PanelUsuarioLogado(loginUsuario);
 		panelLogado.add(panelUsuarioLogado, DockPanel.NORTH);
 		
 		PanelRodape panelRodape = new PanelRodape();

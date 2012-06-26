@@ -1,5 +1,6 @@
 package ufcg.si1.infoCarona.testes;
 
+import java.awt.List;
 import java.util.Calendar;
 import java.util.LinkedList;
 
@@ -56,15 +57,6 @@ public class TestaRepositorio {
 		
 		Assert.assertFalse(user.equals(usuario2));
 		Assert.assertEquals(usuario1, user);
-		user = repositorio.buscaUsuarioEmail("marck@gmail.com");
-		Assert.assertFalse(user.equals(usuario2));
-		Assert.assertEquals(usuario1, user);
-		
-		lista = (LinkedList) repositorio.buscaUsuarioNome("Marck");
-		Assert.assertEquals(1, lista.size());
-		Assert.assertFalse(lista.get(0).equals(usuario2));
-		Assert.assertEquals(usuario1, lista.get(0));
-		
 		Assert.assertEquals(1, repositorio.getTodosOsUsuarios().size());
 		Assert.assertEquals(1, repositorio.getTodasAsCaronas().size());
 		
@@ -75,25 +67,6 @@ public class TestaRepositorio {
 		Assert.assertEquals(usuario2, user);
 		Assert.assertEquals(2, repositorio.getTodosOsUsuarios().size());
 		Assert.assertEquals(1, repositorio.getTodasAsCaronas().size());
-		
-		user = repositorio.buscaUsuarioLogin("Juan");
-		Assert.assertFalse(user.equals(usuario1));
-		Assert.assertEquals(usuario2, user);
-		
-		lista = new LinkedList<Usuario>();
-		lista.add(usuario1);
-		lista.add(usuario2);
-		Assert.assertEquals(lista, repositorio.getTodosOsUsuarios());
-		
-		lista.remove(usuario1);
-		repositorio.removeUsuario(usuario1);
-		Assert.assertEquals(lista, repositorio.getTodosOsUsuarios());
-		Assert.assertEquals(1, repositorio.getTodosOsUsuarios().size());
-		
-		lista.remove(usuario2);
-		repositorio.removeUsuario(usuario2);
-		Assert.assertEquals(lista, repositorio.getTodosOsUsuarios());
-		Assert.assertEquals(0, repositorio.getTodosOsUsuarios().size());
 	}
 	
 	@Test
@@ -122,33 +95,5 @@ public class TestaRepositorio {
 		lista.add(carona0);
 		Assert.assertEquals(lista, repositorio.localizaCaronaPorDestino("alí"));
 		Assert.assertEquals(lista, repositorio.localizaCaronaPorOrigem("aculá"));
-		Assert.assertEquals(lista, repositorio.localizaCaronaPorOrigemDestino("aculá", "alí"));
-		Assert.assertEquals(carona0, repositorio.localizaCaronaPorId(id1));
-
-		repositorio.removeUsuario(usuario1);
-		Assert.assertEquals(2, repositorio.getTodasAsCaronas().size());
-		Assert.assertEquals(null, repositorio.getCaronaId(id0));
-		repositorio.removeUsuario(usuario2);
-		Assert.assertEquals(0, repositorio.getTodasAsCaronas().size());
-		Assert.assertEquals(null, repositorio.getCaronaId(id1));
-		Assert.assertEquals(null, repositorio.getCaronaId(id2));
 	}
-	
-	@Test
-	public void testaChecaExisteLoginEmail(){
-		Assert.assertEquals(false, repositorio.checaExisteLogin("Marck"));
-		Assert.assertEquals(false, repositorio.checaExisteLogin("Juan"));
-		Assert.assertEquals(false, repositorio.checaExisteEmail("marck@gmail.com"));
-		Assert.assertEquals(false, repositorio.checaExisteEmail("juan@gmail.com"));
-		
-		repositorio.addUsuario(usuario1);
-		Assert.assertEquals(true, repositorio.checaExisteLogin("Marck"));
-		Assert.assertEquals(true, repositorio.checaExisteEmail("marck@gmail.com"));
-		Assert.assertEquals(false, repositorio.checaExisteLogin("Juan"));
-		Assert.assertEquals(false, repositorio.checaExisteEmail("juan@gmail.com"));
-		repositorio.addUsuario(usuario2);
-		Assert.assertEquals(true, repositorio.checaExisteLogin("Juan"));
-		Assert.assertEquals(true, repositorio.checaExisteEmail("juan@gmail.com"));
-	}
-	
 }

@@ -1,2 +1,3 @@
 # Module ufcg.si1.infoCarona.InfoCaronaView
 # RPC service class, partial path of RPC policy file
+ufcg.si1.infoCarona.view.InfoCaronaServer, CB3B06D28F1BEEB2685E189ECD71A995.gwt.rpc
